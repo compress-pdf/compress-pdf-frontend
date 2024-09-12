@@ -1,0 +1,15 @@
+{
+  "HomePage": {
+    "title": "Hallo Welt!",
+    "about": "Gehe zur Über-Seite"
+  },
+  "Navbar": {
+    "home": "Startseite",
+    "about": "Über",
+    "contact": "Kontakt"
+  },
+  "Contents": {
+    "mainContainer": "Hauptcontainer",
+    "contentContainer": "Inhaltscontainer"
+  }
+}
