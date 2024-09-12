@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <div className="relative w-full">
-      <nav className="fixed top-0 w-full bg-[#FAFAFA] dark:bg-slate-800 shadow-md z-50 left-0 right-0">
+      <nav className="fixed top-0 w-full bg-[#FAFAFA] dark:bg-[#232323] shadow-md z-50 left-0 right-0">
         <SectionContainer className="my-0 md:my-0">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">

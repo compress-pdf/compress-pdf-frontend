@@ -18,14 +18,14 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="flex flex-col items-center justify-center w-full">
+      <body className="flex flex-col items-center justify-center w-full dark:bg-[#232323]">
         <ReduxProvider>
           <ThemeProvider attribute="class" defaultTheme="system">
             <NextIntlClientProvider messages={messages}>
               <Header />
-              <div className="w-full grid grid-cols-1 xl:grid-cols-[324px_1fr_324px] 2xl:grid-cols-[320px_1fr_320px] 3xl:grid-cols-[340px_1fr_340px]">
+              <div className="w-full grid grid-cols-1 xl:grid-cols-[324px_1fr_324px] 2xl:grid-cols-[320px_1fr_320px] 3xl:grid-cols-[340px_1fr_340px] xl:max-w-[1920px]">
                 <SideAd />
-                <main className="w-full mx-auto min-h-screen px-0 xl:max-w-[1920px]">
+                <main className="w-full mx-auto min-h-screen px-0">
                   {children}
                 </main>
                 <SideAd />

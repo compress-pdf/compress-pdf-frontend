@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { ElementType } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 import { SectionContainerType } from '@/types/SectionContainer';
 
-const SectionContainer = ({ children, className }: SectionContainerType) => {
+interface ExtendedSectionContainerType extends SectionContainerType {
+  as?: ElementType; // Optional prop to specify the HTML tag
+}
+
+const SectionContainer = ({
+  children,
+  className,
+  as: Component = 'div', // Default to 'div' if not provided
+}: ExtendedSectionContainerType) => {
   return (
-    <div
+    <Component
       className={twMerge(
-        'w-[89.33vw] md:w-[89.58vw] lg:w-[92.19vw] xl:w-[45.63vw] 2xl:w-[52.78vw] 3xl:w-[52.08vw] my-[10px] md:my-[20px] mx-auto max-w-[1920px]',
+        'w-[89.33vw] md:w-[76.04vw] lg:w-[74.22vw] xl:w-[45.62vw] 2xl:w-[52.78vw] 3xl:w-[52.08vw] mx-auto max-w-[988px]',
         className
       )}
     >
       {children}
-    </div>
+    </Component>
   );
 };
 

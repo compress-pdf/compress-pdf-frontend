@@ -34,7 +34,7 @@
     "semi": ["error", "always"],
     "array-element-newline": "off",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-props-no-spreading": ["error", { "custom": "ignore" }],
+    // "react/jsx-props-no-spreading": ["error", { "custom": "ignore" }],
     "import/order": [
       "warn",
       {
