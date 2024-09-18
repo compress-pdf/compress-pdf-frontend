@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  /* Your default theme */
   --background: white;
   --foreground: black;
   font-size: 16px;
@@ -13,86 +12,140 @@
   --background: black;
   --foreground: white;
 }
+
+html,
+body {
+  font-family: var(--font-open-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-poppins);
+}
+
 body {
   overflow-x: hidden;
 }
 
-.complex-container {
+.fullwidth-container {
   position: relative;
   width: 100vw;
   max-width: 100vw;
   margin-inline: calc(-50vw + 50%);
-  /* z-index: -999; */
-
-  /* display: flex;
-  justify-content: space-between;
-  background-color: transparent;
-  border: 1px solid pink; */
 }
 
 .gradient-container {
-  display: flex;
   justify-content: space-between;
 }
-
+.right-oval,
 .left-oval {
   position: relative;
   display: inline-block;
-  height: 30%;
+  aspect-ratio: 1/1;
   width: 30%;
+  height: auto;
   border-radius: 30px;
+  overflow: hidden;
 }
+
+.left-oval {
+  top: -140px;
+  left: -160px;
+}
+
 .right-oval {
-  position: relative;
-  display: inline-block;
-  height: 700px;
-  width: 800px;
-  margin-top: -200px;
-  margin-right: -200px;
-  border-radius: 30px;
+  top: -120px;
+  right: -60px;
+}
+
+.left-shape,
+.right-shape {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  transition: all 0.4s ease;
 }
 
 .left-shape {
+  animation: morph-left 10s infinite ease-in-out alternate;
   clip-path: polygon(
-    44.2% 0%,
-    73.2% 4.8%,
-    100% 27.3%,
-    89.6% 77.3%,
-    61.2% 100%,
-    7% 72.5%,
-    7.9% 52.8%,
-    0% 35.8%,
-    16.8% 7%
+    55% 0%,
+    85% 10%,
+    100% 50%,
+    75% 90%,
+    40% 100%,
+    15% 80%,
+    5% 50%,
+    20% 20%
   );
-  border-radius: inherit; /* Inherits border-radius from parent to match */
-  background-color: #ffe8ccec;
-  height: 100%;
-  width: 100%;
 }
+
 .right-shape {
+  animation: morph-right 7s infinite ease-in-out alternate;
   clip-path: polygon(
-    44.2% 0%,
-    73.2% 4.8%,
-    100% 27.3%,
-    89.6% 77.3%,
-    61.2% 100%,
-    7% 72.5%,
-    7.9% 52.8%,
-    0% 35.8%,
-    16.8% 7%
+    55% 0%,
+    85% 10%,
+    100% 50%,
+    75% 90%,
+    40% 100%,
+    15% 80%,
+    5% 50%,
+    20% 20%
   );
-  border-radius: inherit; /* Inherits border-radius from parent to match */
-  background-color: #ffe8ccec;
-  height: 100%;
-  width: 100%;
 }
+
+/* Keyframes for left shape animation */
+@keyframes morph-left {
+  0% {
+    transform: scale(1) translateX(100px);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.7) translateX(-100px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) translateX(100px);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for right shape animation */
+@keyframes morph-right {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.7) rotate(90deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
 .overlay {
   position: absolute;
   inset: 0;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 16px;
-  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.1); /* Fallback solid color */
+}
+
+/* Apply backdrop filter if supported */
+@supports (backdrop-filter: blur(50px)) or (-webkit-backdrop-filter: blur(50px)) {
+  .overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    -webkit-backdrop-filter: blur(50px); /* For Safari */
+    backdrop-filter: blur(50px); /* Standard */
+  }
 }

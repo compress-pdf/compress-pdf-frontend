@@ -15,7 +15,7 @@ const config: Config = {
         lg: '1024px', // Min-width: 1024px (Desktops)
         xl: '1280px', // Min-width: 1280px (Large desktops)
         '2xl': '1440px', // Min-width: 1440px (Extra large desktops)
-        '3xl': '1920px', // Min-width: 1920px (Ultra large desktops)
+        '3xl': '1820px', // Min-width: 1920px (Ultra large desktops)
       },
       fontSize: {
         xs: ['0.625rem', '0.875rem'], // Font size: 10px, Line height: 14px

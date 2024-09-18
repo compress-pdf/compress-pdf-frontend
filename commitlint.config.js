@@ -1,43 +1,38 @@
-module.exports = {
-  rules: {
-    'header-max-length': [0], // Disable the max length check
-    'subject-case': [0], // Disable the subject case check
-    'type-case': [0], // Disable the type case check
-    'type-enum': [0], // Disable the type enumeration check
-  },
-};
-
 // module.exports = {
-//   extends: ['@commitlint/config-conventional'],
-
 //   rules: {
-//     'header-max-length': [2, 'always', 70],
-//     'subject-case': [2, 'always', 'lower-case'],
-//     'type-case': [2, 'always', 'lower-case'],
-//     'type-enum': [
-//       2,
-//       'always',
-//       [
-//         'feat',
-//         'fix',
-//         'docs',
-//         'style',
-//         'refactor',
-//         'perf',
-//         'test',
-//         'chore',
-//         'revert',
-//       ],
-//     ],
-//     // New rule to enforce issue reference
-//     'references-empty': [2, 'never'],
-//     'footer-max-line-length': [2, 'always', 100],
-//     'footer-leading-blank': [2, 'always'],
-//     'footer-full-stop': [0, 'always', '.'],
-//     'footer-reference-format': [
-//       2,
-//       'always',
-//       /#\d+\)$/, // Regex to enforce the format (#123) at the end of the subject line
-//     ],
+//     'header-max-length': [0], // Disable the max length check
+//     'subject-case': [0], // Disable the subject case check
+//     'type-case': [0], // Disable the type case check
+//     'type-enum': [0], // Disable the type enumeration check
 //   },
 // };
+
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+
+  rules: {
+    'header-max-length': [2, 'always', 90], // Enforce max length for header
+    'subject-case': [2, 'always', 'lower-case'], // Subject should be lowercase
+    'type-case': [2, 'always', 'lower-case'], // Type should be lowercase
+    'type-enum': [
+      2,
+      'always',
+      [
+        'feat', // New feature
+        'fix', // Bug fix
+        'docs', // Documentation change
+        'style', // Code style change
+        'refactor', // Code refactor without adding new functionality
+        'perf', // Performance improvement
+        'test', // Adding or updating tests
+        'chore', // Maintenance or chore tasks
+        'revert', // Reverting a previous commit
+      ],
+    ],
+    'references-empty': [0], // Allow commit messages without issue references
+    // 'footer-max-line-length': [2, 'always', 100], // Max footer length
+    // 'footer-leading-blank': [2, 'always'], // Enforce a blank line before footer
+    // 'footer-full-stop': [0], // Allow optional full-stop in footer
+    'body-leading-blank': [1, 'always'], // Ensure a blank line before the body (if body exists)
+  },
+};

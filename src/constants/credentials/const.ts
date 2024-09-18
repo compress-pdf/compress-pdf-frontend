@@ -1,0 +1,7 @@
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const DISCOVERY_DOCS = [process.env.NEXT_PUBLIC_DISCOVERY_DOCS];
+const SCOPES = process.env.NEXT_PUBLIC_SCOPES;
+const SECRET = process.env.NEXT_PUBLIC_SECRET;
+
+export { CLIENT_ID, API_KEY, DISCOVERY_DOCS, SCOPES, SECRET };

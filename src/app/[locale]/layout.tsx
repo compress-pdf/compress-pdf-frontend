@@ -1,5 +1,5 @@
 import '../globals.css';
-
+import { Poppins, Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
@@ -11,6 +11,20 @@ import { SideAd } from '@/components/common/blocks/ads/SideAds';
 
 import ReduxProvider from '../../../providers/redux';
 
+const poppins = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-poppins',
+});
+
+const openSans = Open_Sans({
+  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-open-sans',
+});
+
 export default async function RootLayout({
   children,
   params: { locale },
@@ -18,7 +32,9 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="flex flex-col items-center justify-center w-full dark:bg-[#232323]">
+      <body
+        className={`${poppins.variable} ${openSans.variable} ${'flex flex-col items-center justify-center w-full dark:bg-[#232323]'}`}
+      >
         <ReduxProvider>
           <ThemeProvider attribute="class" defaultTheme="system">
             <NextIntlClientProvider messages={messages}>

@@ -3,7 +3,10 @@ import { Link } from '@/i18n/routing';
 
 export default function NotFound() {
   return (
-    <SectionContainer className="bg-blue-200 dark:bg-slate-800 py-10 text-center">
+    <SectionContainer
+      className="bg-blue-200 dark:bg-slate-800 py-10 text-center"
+      as="section"
+    >
       <h2 className="text-xl font-bold text-red-500">404 Not Found</h2>
       <Link
         href="/"

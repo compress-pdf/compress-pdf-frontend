@@ -25,6 +25,7 @@
       "@pages/*": ["./src/components/pages/*"],
       // "@ui/*": ["./src/components/ui/*"],
       "@types/*": ["./src/types/*"],
+      "@constants/*": ["./src/constants/*"],
       "@libs/*": ["./src/libs/*"],
       "@styles/*": ["./src/styles/*"],
       "@utils/*": ["./src/utils/*"],
