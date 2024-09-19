@@ -48,7 +48,7 @@ const Tooltip = ({
             left: x ?? 0,
             pointerEvents: 'none', // Prevent tooltip from affecting layout
           }}
-          className={`bg-[#163b45] text-[#fafafa] w-[120px] font-normal leading-tight text-center text-sm px-[10px] py-2 rounded shadow-lg z-50 `}
+          className={`tooltip bg-[#163b45] text-[#fafafa] w-[120px] font-normal leading-tight text-center text-sm px-[10px] py-2 rounded shadow-lg z-50 `}
           data-testid="error-tooltip"
         >
           <p>{content}</p>
