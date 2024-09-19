@@ -94,7 +94,7 @@ const GoogleDrive = ({ setIsLoading, handleNewFiles }: IProps) => {
 
   return (
     <button
-      title="open-picker"
+      aria-label="google drive"
       onClick={handleOpenPicker}
       className="shadow-md p-2 bg-white dark:bg-[#484848] rounded-md h-full hover:scale-105 transition-all duration-200 ease-in"
     >

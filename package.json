@@ -17,6 +17,8 @@
     "cypress:open": "cypress open"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.26.24",
+    "@floating-ui/react-dom-interactions": "^0.13.3",
     "@headlessui/react": "^2.1.8",
     "@reduxjs/toolkit": "^2.2.7",
     "autoprefixer": "^10.4.20",

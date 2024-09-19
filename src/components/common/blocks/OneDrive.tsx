@@ -14,15 +14,13 @@ const OneDrive = ({ handleNewFiles }: Props) => {
   };
 
   return (
-    <div>
-      <button
-        title="one-drive-icon"
-        className="shadow-md p-[0.625rem] bg-white dark:bg-[#484848] rounded-md h-full hover:scale-105 transition-all duration-200 ease-in"
-        onClick={handleClick}
-      >
-        <OnedriveIcon />
-      </button>
-    </div>
+    <button
+      title="one-drive-icon"
+      className="shadow-md p-[0.625rem] bg-white dark:bg-[#484848] rounded-md h-full hover:scale-105 transition-all duration-200 ease-in"
+      onClick={handleClick}
+    >
+      <OnedriveIcon />
+    </button>
   );
 };
 

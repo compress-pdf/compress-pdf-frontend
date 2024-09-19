@@ -56,7 +56,7 @@ const BeforeUpload = ({
           <Image
             className="w-[23px] h-auto -mt-1"
             src={browseIcon}
-            alt="browse-files"
+            alt="Upload PDF files"
           />
           {`Browse File`}
         </label>
