@@ -33,11 +33,7 @@ const BeforeUpload = ({
   };
 
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    handleFileChange(event.target.files, () => {
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-    });
+    handleFileChange(event.target.files as FileList);
   };
 
   return (
