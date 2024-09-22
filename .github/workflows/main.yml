@@ -1,0 +1,58 @@
+name: Build and Deploy Docker Image
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Code from Repository ⤵️
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx 🏗️
+        uses: docker/setup-buildx-action@v2
+        with:
+          install: true
+
+      - name: Create .env file 📄
+        run: |
+          echo "${{ vars.ENV }}" > .env
+
+      - name: Log in to GitHub Container Registry 🔑
+        run: echo "${{ vars.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build and push Docker image 🐋
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/compress-pdf/compress-next:latest
+
+  deploy:
+    runs-on: ubuntu-22.04
+
+    needs: build
+
+    steps:
+      - name: Checkout Code from Repository ⤵️
+        uses: actions/checkout@v3
+
+      - name: Install sshpass 🪪
+        run: sudo apt-get install -y sshpass
+
+      - name: Deploy Docker Container to VPS 🚀
+        env:
+          SSH_PASSWORD: ${{ vars.VPS_PASSWORD }}
+        run: |
+          sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} << 'EOF'
+            docker login ghcr.io -u ${{ github.actor }} --password ${{ vars.GHCR_PAT }}
+            docker container stop compress-next || true
+            docker container rm compress-next || true
+            docker image pull ghcr.io/compress-pdf/compress-next
+            docker run -d --name compress-next -p 3000:3000 ghcr.io/compress-pdf/compress-next
+          EOF
