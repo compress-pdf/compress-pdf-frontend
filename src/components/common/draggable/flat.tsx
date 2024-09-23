@@ -8,6 +8,7 @@ import { GrRotateLeft, GrRotateRight } from 'react-icons/gr';
 import helpers from '@/services/helpers';
 
 import LoadingUpload from '../blocks/Loading';
+import SectionContainer from '../containers/SectionContainer';
 
 // Define proper types for the props
 interface DraggableFlatProps {
@@ -75,7 +76,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
       {loading ? (
         <LoadingUpload />
       ) : (
-        <div className="flex justify-between draggable-container pt-5">
+        <SectionContainer className="flex justify-between draggable-container pt-5 bg-red-400">
           <div
             className={`relative draggable-flat flex justify-center flex-wrap gap-2.5 p-8 mx-auto lg:py-24 bg-transparent self-center p-2.5 h-full pt-[80px] overflow-x-hidden overflow-y-auto ${
               files.length > 1 ? 'basis-8/12' : 'basis-11/12'
@@ -174,7 +175,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
               </div>
             ))}
           </div>
-        </div>
+        </SectionContainer>
       )}
     </>
   );

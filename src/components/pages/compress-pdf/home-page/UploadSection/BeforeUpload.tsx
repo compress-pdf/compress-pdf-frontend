@@ -35,7 +35,6 @@ const BeforeUpload = ({
   };
 
   const onFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsLoading(true);
     handleFileChange(event.target.files as FileList);
     // Clear the input by setting its value to an empty string
     const isCorrupted = await validatePdfFiles(
@@ -46,7 +45,6 @@ const BeforeUpload = ({
     if (fileInputRef.current && !isCorrupted.valid) {
       fileInputRef.current.value = ''; // Clear the input
     }
-    setIsLoading(false);
   };
 
   return (

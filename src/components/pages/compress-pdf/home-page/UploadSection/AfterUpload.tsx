@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 const Cloud = dynamic(() => import('@/components/common/blocks/Cloud'));
 
 import DraggableFlat from '@/components/common/draggable/flat';
+import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 
 // Define specific types for props
 interface AfterUploadProps {
@@ -31,33 +32,31 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   fileRotations,
 }) => {
   return (
-    <div>
-      <div className="max-w-[100%]">
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <DraggableFlat
-            files={pdfFiles}
-            onDeleteFile={handleDeleteFile}
-            onUpdateFiles={handleUpdatedFiles}
-            rotateClockwise={rotateClockwise}
-            rotateAnticlockwise={rotateAnticlockwise}
-            fileRotations={fileRotations}
-          />
+    <FullwidthContainer className="bg-yellow-200">
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <DraggableFlat
+          files={pdfFiles}
+          onDeleteFile={handleDeleteFile}
+          onUpdateFiles={handleUpdatedFiles}
+          rotateClockwise={rotateClockwise}
+          rotateAnticlockwise={rotateAnticlockwise}
+          fileRotations={fileRotations}
+        />
 
-          <div className="flex justify-center mb-5">
-            <button
-              type="submit"
-              className="bg-green-500 w-96 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2"
-            >
-              Compress
-            </button>
-          </div>
-        </form>
-
-        <div className="mx-auto justify-center flex">
-          <Cloud handleNewFiles={handleNewFiles} setIsLoading={setIsLoading} />
+        <div className="flex justify-center mb-5">
+          <button
+            type="submit"
+            className="bg-green-500 w-96 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2"
+          >
+            Compress
+          </button>
         </div>
+      </form>
+
+      <div className="mx-auto justify-center flex">
+        <Cloud handleNewFiles={handleNewFiles} setIsLoading={setIsLoading} />
       </div>
-    </div>
+    </FullwidthContainer>
   );
 };
 
