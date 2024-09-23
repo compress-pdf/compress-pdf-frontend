@@ -3,12 +3,9 @@ import SectionContainer from '@/components/common/containers/SectionContainer';
 
 const HomeStaticContent = () => {
   return (
-    <FullwidthContainer
-      className="children-two-server mb-5 bg-yellow-50"
-      as={'main'}
-    >
-      <SectionContainer className="text-center flex flex-col md:flex-row gap-9 hidden">
-        rest
+    <FullwidthContainer className="children-two-server mb-5" as={'main'}>
+      <SectionContainer>
+        <p className="">rest</p>
       </SectionContainer>
     </FullwidthContainer>
   );

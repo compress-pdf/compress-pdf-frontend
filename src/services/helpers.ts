@@ -279,6 +279,171 @@ const checkFileSizeWithLength = (
   return totalSize >= size || fileConcat.length > fileLength;
 };
 
+const validatePdfFiles = async (
+  files: FileList,
+  maxFiles: number,
+  maxSizeMB: number
+): Promise<{ valid: boolean; messages: string[] }> => {
+  const messages: string[] = [];
+
+  // Step 1: Check for non-PDF files
+  const nonPdfFiles = Array.from(files).filter(
+    file => !file.type.startsWith('application/pdf')
+  );
+  if (nonPdfFiles.length > 0) {
+    messages.push('Only PDF files are allowed.');
+  }
+
+  // Step 2: Check for corrupted PDF files
+  const corruptedFiles = await Promise.all(
+    Array.from(files).map(async file => {
+      if (file.type === 'application/pdf') {
+        const fileContent = await file.text();
+        return !fileContent.startsWith('%PDF-');
+      }
+      return false;
+    })
+  );
+
+  if (corruptedFiles.some(isCorrupted => isCorrupted)) {
+    messages.push('Corrupted PDFs cannot be compressed.');
+  }
+
+  // Step 3: Check for password-protected PDFs (basic check)
+  // Note: This is a very basic check and might not work for all PDFs. To handle password-protected PDFs properly, you'd need a library that can parse and check the PDF encryption.
+  const passwordProtectedFiles = await Promise.all(
+    Array.from(files).map(async file => {
+      if (file.type === 'application/pdf') {
+        const fileContent = await file.text();
+        return fileContent.includes('/Encrypt'); // Basic check for password protection
+      }
+      return false;
+    })
+  );
+
+  if (passwordProtectedFiles.some(isProtected => isProtected)) {
+    messages.push('Password-protected PDFs cannot be compressed.');
+  }
+
+  // Step 4: Check for total file size and number of files
+  const totalSizeMB = Array.from(files).reduce(
+    (total, file) => total + file.size / (1024 * 1024),
+    0
+  ); // Calculate total size in MB
+  if (files.length > maxFiles) {
+    messages.push(
+      `Maximum upload limit exceeded: Only ${maxFiles} files are allowed.`
+    );
+  }
+  if (totalSizeMB > maxSizeMB) {
+    messages.push(
+      `Maximum size limit exceeded: Total size must be under ${maxSizeMB}MB.`
+    );
+  }
+
+  // Step 5: Return validation result
+  const valid = messages.length === 0;
+  return { valid, messages };
+};
+
+export const detectTheme = (): 'light' | 'dark' => {
+  // This could be improved by using a React Context or checking localStorage, Tailwind's dark mode class, etc.
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+};
+
+export type ValidationResult = {
+  valid: boolean;
+  messages: string[];
+};
+
+export const validatePdfLink = async (
+  link: string,
+  maxSizeMB: number
+): Promise<ValidationResult> => {
+  const validationResult: ValidationResult = {
+    valid: true,
+    messages: [],
+  };
+
+  try {
+    // Step 1: Check if the link is a PDF by checking the extension
+    if (!link.toLowerCase().endsWith('.pdf')) {
+      validationResult.valid = false;
+      validationResult.messages.push('Only PDF files are allowed.');
+      return validationResult;
+    }
+
+    // Step 2: Validate that the link is accessible
+    const response = await fetch(link, { method: 'HEAD' });
+    if (!response.ok) {
+      validationResult.valid = false;
+      validationResult.messages.push('The link is not valid or accessible.');
+      return validationResult;
+    }
+
+    // Step 3: Check Content-Type header to ensure it's a PDF
+    const contentType = response.headers.get('content-type');
+    if (!contentType || !contentType.startsWith('application/pdf')) {
+      validationResult.valid = false;
+      validationResult.messages.push('The file is not a valid PDF.');
+      return validationResult;
+    }
+
+    // Step 4: Check file size
+    const contentLength = response.headers.get('content-length');
+    if (contentLength) {
+      const fileSizeMB = parseInt(contentLength, 10) / (1024 * 1024); // Convert bytes to MB
+      if (fileSizeMB > maxSizeMB) {
+        validationResult.valid = false;
+        validationResult.messages.push(
+          `Maximum file size exceeded (limit: ${maxSizeMB}MB).`
+        );
+        return validationResult;
+      }
+    } else {
+      validationResult.valid = false;
+      validationResult.messages.push('Could not determine the file size.');
+      return validationResult;
+    }
+
+    // Step 5: Fetch the PDF content to check for password protection and corruption
+    const pdfResponse = await fetch(link);
+    if (pdfResponse.ok) {
+      const fileContent = await pdfResponse.arrayBuffer();
+      const uint8Array = new Uint8Array(fileContent);
+      const decoder = new TextDecoder('utf-8');
+      const textContent = decoder.decode(uint8Array);
+
+      // Basic check for corruption
+      if (!textContent.startsWith('%PDF-')) {
+        validationResult.valid = false;
+        validationResult.messages.push('Corrupted PDFs cannot be compressed.');
+      }
+
+      // Basic check for password protection
+      if (textContent.includes('/Encrypt')) {
+        validationResult.valid = false;
+        validationResult.messages.push(
+          'Password-protected PDFs cannot be compressed.'
+        );
+      }
+    }
+  } catch (error) {
+    validationResult.valid = false;
+    validationResult.messages.push(
+      'An error occurred while validating the link.'
+    );
+  }
+
+  return validationResult;
+};
+
+export function fileArrayToFileList(filesArray: File[]) {
+  const dataTransfer = new DataTransfer(); // Use DataTransfer to create a FileList-like object
+  filesArray.forEach(file => dataTransfer.items.add(file)); // Add each file to the DataTransfer object
+  return dataTransfer.files; // This returns a FileList
+}
+
 const helpers = {
   hexToRgb,
   sortAsc,
@@ -291,6 +456,7 @@ const helpers = {
   getRotationValues,
   getTruncatedFileName,
   matchNoPdfFiles,
+  validatePdfFiles,
   matchNoExcelFiles,
   memorize,
   debounce,

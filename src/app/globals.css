@@ -30,6 +30,9 @@ h6 {
 body {
   overflow-x: hidden;
 }
+.Toastify__toast-icon {
+  display: none !important;
+}
 
 .fullwidth-container {
   position: relative;
@@ -147,5 +150,69 @@ body {
     );
     -webkit-backdrop-filter: blur(50px); /* For Safari */
     backdrop-filter: blur(50px); /* Standard */
+  }
+}
+
+.fadein-title {
+  animation: faded-in 1s;
+}
+.fadein-desc {
+  animation: faded-in 1.2s;
+}
+.appear-anim {
+  animation: appear-in 1.2s;
+}
+
+/* animations  */
+@keyframes faded-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+  }
+}
+@keyframes appear-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.star-top {
+  width: 30px; /* Set width explicitly for the star */
+  animation: star-travel 2s;
+  transform: scale(0.8);
+}
+.star-bottom {
+  width: 30px; /* Set width explicitly for the star */
+  animation: star-travel-bottom 3s;
+  transform: translateX(40px) scale(0.8);
+}
+
+@keyframes star-travel {
+  0% {
+    transform: translateX(20px) translateY(30px) scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px) translateY(0px) scale(0.8);
+    opacity: 1;
+  }
+}
+@keyframes star-travel-bottom {
+  0% {
+    transform: translateY(-20px) translateX(10px) scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(0px) translateX(40px) scale(0.8);
+    opacity: 1;
   }
 }

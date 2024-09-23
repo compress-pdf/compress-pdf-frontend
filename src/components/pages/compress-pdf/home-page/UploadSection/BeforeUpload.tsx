@@ -33,7 +33,9 @@ const BeforeUpload = ({
   };
 
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true);
     handleFileChange(event.target.files as FileList);
+    setIsLoading(false);
   };
 
   return (
@@ -44,9 +46,9 @@ const BeforeUpload = ({
         onChange={onFileChange}
         onClick={handleButtonClick}
         style={{ display: 'none' }}
-        id="file-upload"
         multiple={true}
         accept={'.pdf'}
+        id="file-upload"
       />
       <Button className="p-0 flex h-14 w-[80%] items-center justify-center mb-3">
         <label
@@ -55,6 +57,7 @@ const BeforeUpload = ({
         >
           <Image
             className="w-[23px] h-auto -mt-1"
+            data-label="file-upload"
             src={browseIcon}
             alt="Upload PDF files"
           />

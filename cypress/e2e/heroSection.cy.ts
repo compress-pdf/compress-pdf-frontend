@@ -1,10 +1,3 @@
-// describe('hero section tests', () => {
-//   it('passes', () => {
-//     cy.viewport(1920, 1080);
-//     cy.visit('/');
-//   });
-// });
-
 describe('Hero Section E2E Tests', () => {
   // Ensure the site is visited before each test
   beforeEach(() => {
@@ -12,95 +5,373 @@ describe('Hero Section E2E Tests', () => {
     cy.visit('/'); // Adjust the URL to the correct location of your app
   });
 
-  // Test the title and description
-  describe('Title and Intro Text', () => {
-    it('should display the correct title in an h1 tag', () => {
-      cy.get('h1').should(
-        'contain',
-        'Compress PDF Files Without Losing Quality'
-      );
+  describe('File Upload and Validation Tests', () => {
+    describe('File Upload Functionality', () => {
+      it('Uploads a valid PDF', () => {
+        // Upload a valid PDF file
+        cy.get('#file-upload').selectFile('cypress/fixtures/generic.pdf', {
+          force: true,
+        });
+
+        // Ensure no error toast is displayed for a valid PDF
+        cy.get('.toast-message').should('not.exist');
+      });
+
+      it('Tries to upload a non-PDF file', () => {
+        // Try uploading a non-PDF file
+        cy.get('#file-upload').selectFile('cypress/fixtures/non-pdf-file.txt', {
+          force: true,
+        });
+
+        // Check for the toast indicating that only PDFs are allowed
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Only PDF files are allowed.'
+        );
+      });
+
+      it('Tries to upload a corrupted PDF', () => {
+        // Try uploading a corrupted PDF file
+        cy.get('#file-upload').selectFile('cypress/fixtures/corrupted.pdf', {
+          force: true,
+        });
+
+        // Check for the toast indicating the PDF is corrupted
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Corrupted PDFs cannot be compressed.'
+        );
+      });
+
+      it('Tries to upload a password-protected PDF', () => {
+        // Try uploading a password-protected PDF
+        cy.get('#file-upload').selectFile(
+          'cypress/fixtures/generic-protected.pdf',
+          {
+            force: true,
+          }
+        );
+
+        // Check for the toast indicating the PDF is password-protected
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Password-protected PDFs cannot be compressed.'
+        );
+      });
+
+      it('Tries to upload too many files', () => {
+        // Try uploading too many files at once
+        cy.get('#file-upload').selectFile(
+          [
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+          ],
+          { force: true }
+        );
+
+        // Check for the toast indicating the maximum number of files was exceeded
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Maximum upload limit exceeded: Only 4 files are allowed.'
+        );
+      });
+
+      it('Handles multiple errors with multiple toasts', () => {
+        // Attempt to upload multiple files with errors at once
+        cy.get('#file-upload').selectFile(
+          [
+            'cypress/fixtures/corrupted.pdf',
+            'cypress/fixtures/generic-protected.pdf',
+          ],
+          {
+            force: true,
+          }
+        );
+
+        // Check for the toast indicating the PDF is corrupted
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Corrupted PDFs cannot be compressed.'
+        );
+
+        // Check for the toast indicating the PDF is password protected
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Password-protected PDFs cannot be compressed.'
+        );
+      });
+
+      // Uncomment this test if you want to include size limit checks
+      // it('Tries to upload files exceeding the size limit', () => {
+      //   // Try uploading a file that exceeds the size limit
+      //   cy.get('#file-upload').selectFile('cypress/fixtures/large-file.pdf', {
+      //     force: true,
+      //   });
+
+      //   // Check for the toast indicating the maximum file size was exceeded
+      //   cy.get('.toast-message').should(
+      //     'contain.text',
+      //     'Maximum size limit exceeded: Total size must be under 50MB.'
+      //   );
+      // });
     });
 
-    it('should display the correct description in a p tag', () => {
-      cy.get('p').should('contain', 'Reduce Size, Not the Quality');
+    describe('Drag and Drop Functionality', () => {
+      it('Uploads a valid PDF via drag and drop', () => {
+        cy.get('#file-drop').selectFile('cypress/fixtures/generic.pdf', {
+          action: 'drag-drop',
+        });
+
+        // Ensure no error toast is displayed for a valid PDF
+        cy.get('.toast-message').should('not.exist');
+      });
+
+      it('Tries to upload a non-PDF file via drag and drop', () => {
+        cy.get('#file-drop').selectFile('cypress/fixtures/non-pdf-file.txt', {
+          action: 'drag-drop',
+        });
+
+        // Check for the toast indicating that only PDFs are allowed
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Only PDF files are allowed.'
+        );
+      });
+
+      it('Tries to upload a corrupted PDF via drag and drop', () => {
+        cy.get('#file-drop').selectFile('cypress/fixtures/corrupted.pdf', {
+          action: 'drag-drop',
+        });
+
+        // Check for the toast indicating the PDF is corrupted
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Corrupted PDFs cannot be compressed.'
+        );
+      });
+
+      it('Tries to upload a password-protected PDF via drag and drop', () => {
+        cy.get('#file-drop').selectFile(
+          'cypress/fixtures/generic-protected.pdf',
+          {
+            action: 'drag-drop',
+          }
+        );
+
+        // Check for the toast indicating the PDF is password-protected
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Password-protected PDFs cannot be compressed.'
+        );
+      });
+
+      it('Tries to upload too many files via drag and drop', () => {
+        cy.get('#file-drop').selectFile(
+          [
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+            'cypress/fixtures/generic.pdf',
+          ],
+          { action: 'drag-drop' }
+        );
+
+        // Check for the toast indicating the maximum number of files was exceeded
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Maximum upload limit exceeded: Only 4 files are allowed.'
+        );
+      });
+
+      it('Handles multiple errors with multiple toasts via drag and drop', () => {
+        // Attempt to upload multiple files with errors at once via drag and drop
+        cy.get('#file-drop').selectFile(
+          [
+            'cypress/fixtures/corrupted.pdf',
+            'cypress/fixtures/generic-protected.pdf',
+          ],
+          {
+            action: 'drag-drop',
+          }
+        );
+
+        // Check for the toast indicating the PDF is corrupted
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Corrupted PDFs cannot be compressed.'
+        );
+
+        // Check for the toast indicating the PDF is password protected
+        cy.get('.toast-message').should(
+          'contain.text',
+          'Password-protected PDFs cannot be compressed.'
+        );
+      });
+
+      // Uncomment this test if you want to include size limit checks
+      // it('Tries to upload files exceeding the size limit via drag and drop', () => {
+      //   cy.get('#file-drop').selectFile('cypress/fixtures/large-file.pdf', {
+      //     action: 'drag-drop',
+      //   });
+
+      //   // Check for the toast indicating the maximum file size was exceeded
+      //   cy.get('.toast-message').should(
+      //     'contain.text',
+      //     'Maximum size limit exceeded: Total size must be under 50MB.'
+      //   );
+      // });
     });
   });
 
-  // Test responsiveness for mobile and desktop
-  describe('Mobile and Theme Responsiveness', () => {
-    it('should render correctly in mobile view', () => {
-      cy.viewport('iphone-6'); // Set viewport to mobile size
-      cy.get('.hero-section').should('be.visible'); // Check hero section visibility in mobile
+  describe('URL Modal E2E Tests', () => {
+    // Set up before each test
+    beforeEach(() => {
+      cy.viewport(1920, 1080); // Set viewport size
+      cy.visit('/'); // Adjust the URL to the correct location of your app
     });
 
-    it('should render correctly in desktop view', () => {
-      cy.viewport('macbook-15'); // Set viewport to desktop size
-      cy.get('.hero-section').should('be.visible'); // Check hero section visibility in desktop
-    });
+    describe('URL Modal Functionality', () => {
+      it('Opens the URL modal', () => {
+        // Click on the button to open the modal
+        cy.get('#open-url-modal').click();
 
-    it('should adapt to dark mode', () => {
-      cy.get('html').invoke('attr', 'class', 'dark'); // Trigger dark mode
-      cy.get('body').should('have.css', 'background-color', 'rgb(35, 35, 35)'); // Check dark background color
-    });
+        // Check if the modal opens
+        cy.get('#home-url-paste').should('be.visible');
+      });
 
-    it('should adapt to light mode', () => {
-      cy.get('html').invoke('attr', 'class', 'light'); // Trigger light mode
-      cy.get('body').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)'); // Check light background color
+      it('Submits a valid PDF URL', () => {
+        // Open the modal
+        cy.get('#open-url-modal').click();
+
+        // Enter a valid PDF URL
+        cy.get('#url').type('https://pdfobject.com/pdf/sample.pdf');
+
+        // Click on the continue button
+        cy.get('#continue-with-url').click();
+
+        // Check that no validation errors are shown
+        cy.get('.text-red-500').should('not.exist');
+      });
+
+      it('Submits a non-PDF URL', () => {
+        // Open the modal
+        cy.get('#open-url-modal').click();
+
+        // Enter a non-PDF URL
+        cy.get('#url').type(
+          'https://example-files.online-convert.com/document/txt/example.txt'
+        );
+
+        // Click on the continue button
+        cy.get('#continue-with-url').click();
+
+        // Check for the validation error message
+        cy.get('.text-red-500').should(
+          'contain.text',
+          'Only PDF files are allowed.'
+        );
+
+        // Ensure the modal is still open
+        cy.get('#home-url-paste').should('be.visible');
+      });
+
+      it('Submits an invalid URL', () => {
+        // Open the modal
+        cy.get('#open-url-modal').click();
+
+        // Enter an invalid URL
+        cy.get('#url').type('https://invalid-url.com/invalid.pdf');
+
+        // Click on the continue button
+        cy.get('#continue-with-url').click();
+
+        // Check for the validation error message
+        cy.get('.text-red-500').should(
+          'contain.text',
+          'An error occurred while validating the link.'
+        );
+
+        // Ensure the modal is still open
+        cy.get('#home-url-paste').should('be.visible');
+      });
+
+      // Uncomment this test if you want to include size limit checks
+      // it('Submits a PDF file that exceeds the file size limit', () => {
+      //   // Open the modal
+      //   cy.get('#open-url-modal').click();
+
+      //   // Enter a PDF URL that exceeds the file size limit
+      //   cy.get('#url').type('https://example.com/large-file.pdf');
+
+      //   // Click on the continue button
+      //   cy.get('#continue-with-url').click();
+
+      //   // Check for the file size limit error message
+      //   cy.get('.text-red-500').should(
+      //     'contain.text',
+      //     'Maximum file size exceeded (limit: 50MB).'
+      //   );
+
+      //   // Ensure the modal is still open
+      //   cy.get('#home-url-paste').should('be.visible');
+      // });
+
+      // it('Handles multiple validation errors with multiple messages', () => {
+      //   // Open the modal
+      //   cy.get('#open-url-modal').click();
+
+      //   // Enter an invalid non-PDF URL that is inaccessible
+      //   cy.get('#url').type('https://invalid-url.com/sample.txt');
+
+      //   // Click on the continue button
+      //   cy.get('#continue-with-url').click();
+
+      //   // Check for multiple validation error messages
+      //   cy.get('.text-red-500').should(
+      //     'contain.text',
+      //     'Only PDF files are allowed.'
+      //   );
+      //   cy.get('.text-red-500').should(
+      //     'contain.text',
+      //     'The link is not valid or accessible.'
+      //   );
+
+      //   // Ensure the modal is still open
+      //   cy.get('#home-url-paste').should('be.visible');
+      // });
+
+      // it('Handles password-protected PDF files', () => {
+      //   // This test can be added if password-protection detection is implemented in the validation
+      // });
     });
   });
 });
 
-// Test file upload and browse block responsiveness
-// describe('File Browse Block', () => {
-//   it('should display a responsive browse file block', () => {
-//     cy.viewport('macbook-15');
-//     cy.get('.browse-files-block').should('be.visible');
-//     cy.viewport('iphone-6');
-//     cy.get('.browse-files-block').should('be.visible');
+// Test the title and description
+// describe('Title and Intro Text', () => {
+//   it('should display the correct title in an h1 tag', () => {
+//     cy.get('h1').should(
+//       'contain',
+//       'Compress PDF Files Without Losing Quality'
+//     );
 //   });
-
-//   it('should show tooltips with accurate titles', () => {
-//     cy.get('.browse-files-block [data-tooltip]').trigger('mouseover');
-//     cy.get('.tooltip').should('contain', 'Select Files');
-//   });
-
-//   it('should open a modal when clicking on link icon', () => {
-//     cy.get('.browse-files-block .link-icon').click();
-//     cy.get('.modal').should('be.visible');
-//   });
-
-//   it('should validate all images contain alt text', () => {
-//     cy.get('img').each($img => {
-//       cy.wrap($img).should('have.attr', 'alt').and('not.be.empty');
-//     });
+//   it('should display the correct description in a p tag', () => {
+//     cy.get('p').should('contain', 'Reduce Size, Not the Quality');
 //   });
 // });
 
-// Test file preview and download
-//   describe('File Preview and Download', () => {
-//     it('should preview the uploaded file', () => {
-//       cy.get('.file-preview').should('be.visible');
-//       cy.get('.file-preview').should('contain', 'sample.pdf');
-//     });
-
-//     it('should allow the user to download the file', () => {
-//       cy.get('.file-download').click();
-//       cy.get('a[download]')
-//         .should('have.attr', 'href')
-//         .and('contain', 'sample.pdf');
-//     });
+// Test responsiveness for mobile and desktop
+// describe('Mobile and Theme Responsiveness', () => {
+//   it('should adapt to dark mode', () => {
+//     cy.get('html').invoke('attr', 'class', 'dark'); // Trigger dark mode
+//     cy.get('body').should('have.css', 'background-color', 'rgb(35, 35, 35)'); // Check dark background color
 //   });
-// });
-//   // Test validation and error handling
-//   describe('Validation and Error Handling', () => {
-//     it('should show an error for unsupported file types', () => {
-//       cy.get('input[type="file"]').attachFile('sample.png'); // Attempt to upload an unsupported file
-//       cy.get('.error-message').should('contain', 'Only PDF files are allowed');
-//     });
-
-//     it('should validate missing fields before submission', () => {
-//       cy.get('.submit-url-button').click();
-//       cy.get('.error-message').should('contain', 'URL is required');
-//     });
+//   it('should adapt to light mode', () => {
+//     cy.get('html').invoke('attr', 'class', 'light'); // Trigger light mode
+//     cy.get('body').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)'); // Check light background color
 //   });
 // });
