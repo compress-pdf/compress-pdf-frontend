@@ -369,7 +369,7 @@ export const validatePdfLink = async (
     // Step 1: Check if the link is a PDF by checking the extension
     if (!link.toLowerCase().endsWith('.pdf')) {
       validationResult.valid = false;
-      validationResult.messages.push('Only PDF files are allowed.');
+      validationResult.messages.push('Please provide a valid PDF link!');
       return validationResult;
     }
 
@@ -377,7 +377,7 @@ export const validatePdfLink = async (
     const response = await fetch(link, { method: 'HEAD' });
     if (!response.ok) {
       validationResult.valid = false;
-      validationResult.messages.push('The link is not valid or accessible.');
+      validationResult.messages.push('Please provide a valid PDF link!');
       return validationResult;
     }
 
@@ -385,7 +385,7 @@ export const validatePdfLink = async (
     const contentType = response.headers.get('content-type');
     if (!contentType || !contentType.startsWith('application/pdf')) {
       validationResult.valid = false;
-      validationResult.messages.push('The file is not a valid PDF.');
+      validationResult.messages.push('Please provide a valid PDF link!');
       return validationResult;
     }
 
@@ -430,9 +430,7 @@ export const validatePdfLink = async (
     }
   } catch (error) {
     validationResult.valid = false;
-    validationResult.messages.push(
-      'An error occurred while validating the link.'
-    );
+    validationResult.messages.push('Please provide a valid PDF link!');
   }
 
   return validationResult;

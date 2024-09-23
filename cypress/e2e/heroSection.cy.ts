@@ -114,7 +114,7 @@ describe('Hero Section E2E Tests', () => {
       //   // Check for the toast indicating the maximum file size was exceeded
       //   cy.get('.toast-message').should(
       //     'contain.text',
-      //     'Maximum size limit exceeded: Total size must be under 50MB.'
+      //     'Maximum size limit exceeded: Total size must be under X MB.'
       //   );
       // });
     });
@@ -221,7 +221,7 @@ describe('Hero Section E2E Tests', () => {
       //   // Check for the toast indicating the maximum file size was exceeded
       //   cy.get('.toast-message').should(
       //     'contain.text',
-      //     'Maximum size limit exceeded: Total size must be under 50MB.'
+      //     'Maximum size limit exceeded: Total size must be under X MB.'
       //   );
       // });
     });
@@ -272,7 +272,7 @@ describe('Hero Section E2E Tests', () => {
         // Check for the validation error message
         cy.get('.text-red-500').should(
           'contain.text',
-          'Only PDF files are allowed.'
+          'Please provide a valid PDF link!'
         );
 
         // Ensure the modal is still open
@@ -292,7 +292,7 @@ describe('Hero Section E2E Tests', () => {
         // Check for the validation error message
         cy.get('.text-red-500').should(
           'contain.text',
-          'An error occurred while validating the link.'
+          'Please provide a valid PDF link!'
         );
 
         // Ensure the modal is still open
@@ -313,7 +313,7 @@ describe('Hero Section E2E Tests', () => {
       //   // Check for the file size limit error message
       //   cy.get('.text-red-500').should(
       //     'contain.text',
-      //     'Maximum file size exceeded (limit: 50MB).'
+      //     'Maximum file size exceeded (limit: X MB).'
       //   );
 
       //   // Ensure the modal is still open
@@ -333,7 +333,7 @@ describe('Hero Section E2E Tests', () => {
       //   // Check for multiple validation error messages
       //   cy.get('.text-red-500').should(
       //     'contain.text',
-      //     'Only PDF files are allowed.'
+      //     'Please provide a valid PDF link!'
       //   );
       //   cy.get('.text-red-500').should(
       //     'contain.text',
