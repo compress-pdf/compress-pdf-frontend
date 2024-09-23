@@ -3,11 +3,14 @@ import { Poppins, Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
+import { ToastContainer } from 'react-toastify';
 
 import { RootLayoutType } from '@/types/Layout';
 import Header from '@/components/common/blocks/Header';
 import Footer from '@/components/common/blocks/Footer';
 import { SideAd } from '@/components/common/blocks/ads/SideAds';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import ReduxProvider from '../../../providers/redux';
 
@@ -50,6 +53,7 @@ export default async function RootLayout({
             </NextIntlClientProvider>
           </ThemeProvider>
         </ReduxProvider>
+        <ToastContainer />
       </body>
     </html>
   );

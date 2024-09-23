@@ -7,6 +7,7 @@ type ButtonProps = {
   type?: 'reset' | 'submit' | 'button' | undefined;
   disabled?: boolean;
   title?: string;
+  id?: string; // Add the id prop here
 };
 
 export const Button = ({
@@ -16,6 +17,7 @@ export const Button = ({
   type = 'button',
   disabled = false,
   title = '',
+  id, // Destructure id here
   ...props
 }: ButtonProps) => {
   return (
@@ -29,6 +31,7 @@ export const Button = ({
       onClick={onClick}
       type={type}
       disabled={disabled}
+      id={id} // Pass id to the button element
       {...props}
       title={title}
     >

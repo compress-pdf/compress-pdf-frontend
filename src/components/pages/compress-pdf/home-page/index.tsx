@@ -5,9 +5,10 @@ import { pdfjs } from 'react-pdf';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
+import helpers from '@/services/helpers';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 import SectionContainer from '@/components/common/containers/SectionContainer';
-import jackCursorIcon from '@/assets/icons/svgs/jackAlexCursor.svg';
+import CustomToast from '@/components/common/core/ToastMessage';
 import pinkStarIcon from '@/assets/icons/svgs/pinkStar.svg';
 import brownStarIcon from '@/assets/icons/svgs/brownStar.svg';
 
@@ -21,6 +22,7 @@ const ShowSaveDriveComp = dynamic(
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const HomePageContent = ({ children }: { children: ReactNode[] }) => {
+  const { validatePdfFiles } = helpers;
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   // const [progressValue, setProgressValue] = useState<number>(0);
@@ -30,8 +32,18 @@ const HomePageContent = ({ children }: { children: ReactNode[] }) => {
   }>({});
   // const router = useRouter();
 
-  const handleFileChange = (selectedFiles: FileList) => {
-    setPdfFiles(Array.from(selectedFiles));
+  const handleFileChange = async (selectedFiles: FileList) => {
+    const isCorrupted = await validatePdfFiles(selectedFiles, 4, 50);
+    if (isCorrupted.valid) {
+      setPdfFiles(Array.from(selectedFiles));
+    } else {
+      isCorrupted.messages.map(each => {
+        CustomToast({
+          type: 'error',
+          message: each,
+        });
+      });
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -87,7 +99,12 @@ const HomePageContent = ({ children }: { children: ReactNode[] }) => {
   return (
     <>
       <div>
-        {!showSaveDrive && pdfFiles?.length !== 0 ? (
+        {isLoading ? (
+          <div className="fixed bg-white dark:bg-[#232323] inset-0">
+            <GradientOne />
+            {/* TODO: loading screen */}
+          </div>
+        ) : !showSaveDrive && pdfFiles?.length !== 0 ? (
           <AfterUpload
             isLoading={isLoading}
             handleSubmit={handleSubmit}
@@ -112,7 +129,7 @@ const HomePageContent = ({ children }: { children: ReactNode[] }) => {
                 <GradientOne />
                 <SectionContainer className="hero-section text-center flex flex-col md:flex-row gap-[30px] md:gap-[51px] lg:gap-[39px] xl:gap-[51px] 2xl:gap-[39px] 3xl:gap-[134px] pt-[35px] md:pt-[85px] xl:pt-[115px] 2xl:pt-[130px] 3xl:pt-[160px]">
                   {children[0]}
-                  <div className="relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]">
+                  <div className="appear-anim relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]">
                     <BeforeUpload
                       handleFileChange={handleFileChange}
                       fileReq={{ size: 50, count: 4 }}
@@ -120,21 +137,14 @@ const HomePageContent = ({ children }: { children: ReactNode[] }) => {
                       handleNewFiles={handleNewFiles}
                     />
                     <Image
-                      className="float hidden md:block absolute w-[28px] h-auto top-0 -mt-9 -ml-12 z-10 rotate-6"
+                      className="star-top float hidden md:block absolute w-[28px] h-auto top-0 -mt-6 -ml-8 z-10 rotate-6"
                       width={0}
                       height={0}
                       src={brownStarIcon}
                       alt="cursor-logo"
                     />
                     <Image
-                      className="float hidden xl:block absolute w-[28%] h-auto mt-7 ml-[20%] -z-10"
-                      width={0}
-                      height={0}
-                      src={jackCursorIcon}
-                      alt="cursor-logo"
-                    />
-                    <Image
-                      className="float hidden md:block absolute w-[30px] h-auto mt-4 ml-auto right-[6%] -z-10"
+                      className="star-bottom float hidden md:block absolute w-[30px] h-auto mt-4 ml-auto right-[6%] -z-10"
                       width={0}
                       height={0}
                       src={pinkStarIcon}
