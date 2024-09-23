@@ -18,19 +18,39 @@ enum ToastType {
 }
 
 // Mapping string types to ToastType enum
-const getToastTypeEnum = (type: string): ToastType => {
+const getToastTypeEnum = (
+  type: string
+): { toastType: ToastType; headerText: string } => {
+  const headerText =
+    type === 'success'
+      ? 'Sent Successfully'
+      : type === 'error'
+        ? 'Error Occurred'
+        : type === 'warning'
+          ? 'Action Required'
+          : 'Notification';
+
+  let toastType: ToastType;
+
   switch (type) {
     case 'success':
-      return ToastType.Success;
+      toastType = ToastType.Success;
+      break;
     case 'error':
-      return ToastType.Error;
+      toastType = ToastType.Error;
+      break;
     case 'warning':
-      return ToastType.Warning;
+      toastType = ToastType.Warning;
+      break;
     case 'info':
-      return ToastType.Info;
+      toastType = ToastType.Info;
+      break;
     default:
-      return ToastType.Default;
+      toastType = ToastType.Default;
+      break;
   }
+
+  return { toastType, headerText };
 };
 
 // ToastMessage logic using images for icons and TailwindCSS
@@ -42,7 +62,7 @@ const ToastMessage = (type: string, message: string) => {
   };
 
   // Map string type to enum type
-  const toastType = getToastTypeEnum(type);
+  const { toastType, headerText } = getToastTypeEnum(type);
 
   // Define the icon element for each toast type
   let iconElement;
@@ -83,7 +103,7 @@ const ToastMessage = (type: string, message: string) => {
     <div className="flex items-start">
       {iconElement}
       <div className="ml-3">
-        <div className="text-sm font-bold">Notification</div>
+        <div className="text-sm font-bold">{headerText}</div>
         <div className="text-sm font-normal toast-message">{message}</div>
       </div>
     </div>

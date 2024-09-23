@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useTransition } from 'react';
+import React, { useState, useRef, useTransition } from 'react';
 
 import { validatePdfLink } from '@/services/helpers';
 import UrlIcon from '@/assets/icons/svgs/upload-client/urlIcon';
@@ -19,10 +19,14 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
   const [validationMessages, setValidationMessages] = useState<string[]>([]);
   const [isPending, startTransition] = useTransition();
 
+  // Create a ref for the URL input
+  const UrlInputRef = useRef<HTMLInputElement>(null);
+
   const closeModal = () => setIsOpen(false);
   const openModal = () => {
     setIsOpen(true);
     setValidationMessages([]);
+    setURL(''); // Clear URL when opening modal
   };
 
   const handleURLSubmit = async () => {
@@ -35,7 +39,6 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
       try {
         if (!validationResult.valid) {
           setValidationMessages(validationResult.messages);
-          // setIsLoading(false);
           return;
         }
         const response = await fetch(URL);
@@ -44,6 +47,10 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
         if (file) {
           handleNewFiles([file]);
           closeModal();
+          setURL(''); // Clear the URL input after a successful upload
+          if (UrlInputRef.current) {
+            UrlInputRef.current.value = ''; // Clear the input ref
+          }
         }
       } catch (error) {
         setValidationMessages(['Error fetching the PDF file.']);
@@ -72,6 +79,7 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
             Paste URL
           </label>
           <input
+            ref={UrlInputRef}
             className="px-[17.28px] border border-[#e1dede] w-full rounded-[10px] pt-[21.5px] pb-[16.5px] mt-[29.5px]"
             value={URL}
             placeholder="https://example.com/sample.pdf"

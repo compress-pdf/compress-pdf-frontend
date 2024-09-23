@@ -26,7 +26,7 @@ const DraggableBox = ({ children, handleFileChange }: Props) => {
 
   return (
     <div
-      className={`w-full cursor-pointer`}
+      className={`w-full`}
       id="file-drop"
       onDrop={handleFileDrop}
       onDragOver={handleDragOver}
