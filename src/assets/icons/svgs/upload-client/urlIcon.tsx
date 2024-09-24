@@ -1,12 +1,19 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 
 const UrlIcon = () => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
+  const [fillColor, setFillColor] = useState('#163B45'); // Default to light theme color
 
-  // Set color based on the theme
-  const fillColor = theme === 'dark' ? '#ffffff' : '#163B45';
+  useEffect(() => {
+    // Set color based on the resolved theme
+    if (resolvedTheme === 'dark') {
+      setFillColor('#ffffff'); // White color for dark mode
+    } else {
+      setFillColor('#163B45'); // Default color for light mode
+    }
+  }, [resolvedTheme]);
 
   return (
     <svg

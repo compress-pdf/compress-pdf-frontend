@@ -3,7 +3,10 @@ import React, { useEffect, useState } from 'react';
 import useDrivePicker from 'react-google-drive-picker';
 import { CallbackDoc } from 'react-google-drive-picker/dist/typeDefs';
 
+import helpers, { fileArrayToFileList } from '@/services/helpers';
 import GoogledriveIcon from '@/assets/icons/svgs/upload-client/googledriveIcon';
+
+import CustomToast from '../core/ToastMessage';
 
 import { API_KEY, CLIENT_ID } from '@constants/credentials/const';
 
@@ -13,6 +16,7 @@ interface IProps {
 }
 
 const GoogleDrive = ({ setIsLoading, handleNewFiles }: IProps) => {
+  const { validatePdfFiles } = helpers;
   const [authToken, setAuthToken] = useState<string | undefined>('');
   const [filesPicked, setFilesPicked] = useState<CallbackDoc[]>([]); // Update to store multiple files
 
@@ -76,9 +80,32 @@ const GoogleDrive = ({ setIsLoading, handleNewFiles }: IProps) => {
         fetchedFiles.push(file); // Add file to the array
       }
 
-      handleNewFiles(fetchedFiles); // Pass all fetched files
+      // Convert File[] to FileList-like object for validation
+      const fileListLike = fileArrayToFileList(fetchedFiles);
+
+      // Validate fetched files (check if corrupted, etc.)
+      const validationResult = await validatePdfFiles(fileListLike, 4, 50);
+
+      if (validationResult.valid) {
+        // If all files are valid, pass them to the next step
+        handleNewFiles(fetchedFiles);
+      } else {
+        // If some files are invalid, show error messages in a toast
+        validationResult.messages.forEach(message => {
+          CustomToast({
+            type: 'error',
+            message,
+          });
+        });
+      }
     } catch (error) {
-      // console.error('Error fetching the files:', error);
+      // Handle other errors (like network issues, fetch failures, etc.)
+      CustomToast({
+        type: 'error',
+        message:
+          (error as Error).message ||
+          'An error occurred while fetching the files',
+      });
     } finally {
       setIsLoading(false);
     }

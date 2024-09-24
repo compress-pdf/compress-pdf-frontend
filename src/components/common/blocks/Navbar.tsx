@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl'; // External imports
+// import { useTranslations } from 'next-intl'; // External imports
 
 import { Link } from '@/i18n/routing'; // Alias imports
 import Logo from '@/assets/icons/svgs/Logo';
@@ -11,13 +11,13 @@ import ThemeSwitcher from '../core/ThemeSwitcher'; // Relative imports
 import SectionContainer from '../containers/SectionContainer';
 
 export default function Navbar() {
-  const t = useTranslations('Navbar');
+  // const t = useTranslations('Navbar');
 
-  const navLinks = [
-    { href: '/', label: t('home') },
-    { href: '/about', label: t('about') },
-    { href: '/contact', label: t('contact') },
-  ];
+  // const navLinks = [
+  //   { href: '/', label: t('home') },
+  //   { href: '/about', label: t('about') },
+  //   { href: '/contact', label: t('contact') },
+  // ];
 
   return (
     <div className="relative w-full">
@@ -35,7 +35,7 @@ export default function Navbar() {
 
             <div className="flex gap-2 items-center">
               <div className="hidden md:block">
-                <div className="flex items-center space-x-2">
+                {/* <div className="flex items-center space-x-2">
                   {navLinks.map(link => (
                     <Link
                       key={link.href}
@@ -45,7 +45,7 @@ export default function Navbar() {
                       {link.label}
                     </Link>
                   ))}
-                </div>
+                </div> */}
               </div>
               <ThemeSwitcher />
               <LanguageSwitcher />
