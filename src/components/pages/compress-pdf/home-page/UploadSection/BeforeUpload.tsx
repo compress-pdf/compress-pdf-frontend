@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import Cloud from '@/components/common/blocks/Cloud';
 import DraggableBox from '@/components/common/draggable/box';
@@ -9,22 +10,20 @@ import browseIcon from '@assets/icons/pngs/browseFileIcon.png';
 
 type Props = {
   handleFileChange: (files: FileList) => void;
-  fileReq: {
-    size: number;
-    count: number;
-  };
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   handleNewFiles: (files: File[]) => void;
+  tool: string;
 };
 
 const BeforeUpload = ({
   handleFileChange,
-  fileReq,
   handleNewFiles,
   setIsLoading,
+  tool,
 }: Props) => {
+  const t = useTranslations(tool);
+  const tc = useTranslations('common');
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const defaultDropBoxDescription = `Maximum ${fileReq?.count} files, upto ${fileReq?.size}MB, `;
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
@@ -56,15 +55,15 @@ const BeforeUpload = ({
           <Image
             className="w-[23px] h-auto -mt-1"
             src={browseIcon}
-            alt="Upload PDF files"
+            alt={t('content.heroSection.imageAlt')}
           />
-          {`Browse File`}
+          {tc('heroSectionTooltip.buttonLabel')}
         </label>
       </Button>
       <small className="text-[#6B7280] font-normal mb-[16.78px] text-[0.875rem] leading-[170%] md:">
-        {defaultDropBoxDescription}
+        {t('content.heroSection.fileInfo')}
       </small>
-      <p className="mb-[16.78px]">or, drop the files here</p>
+      <p className="mb-[16.78px]">{tc('heroSectionTooltip.cloudInfo')}</p>
       <Cloud handleNewFiles={handleNewFiles} setIsLoading={setIsLoading} />
     </DraggableBox>
   );

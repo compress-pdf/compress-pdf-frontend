@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 import UrlIcon from '@/assets/icons/svgs/upload-client/urlIcon';
 
@@ -13,6 +14,7 @@ type Props = {
 };
 
 const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
+  const t = useTranslations('common');
   const [isOpen, setIsOpen] = useState(false);
   const [URL, setURL] = useState<string>('');
 
@@ -43,7 +45,7 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
 
   return (
     <>
-      <Tooltip content="Paste URL" className="h-full">
+      <Tooltip content={t('heroSectionTooltip.url')} className="h-full">
         <button
           title="open-url-modal"
           onClick={openModal}
@@ -57,12 +59,12 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
       <Modal isOpen={isOpen} closeModal={closeModal}>
         <div className="flex flex-col items-center">
           <label className="text-[#163b45] dark:text-[#ffffff] text-lg font-bold font-['Open Sans'] leading-snug">
-            Paste URL
+            {t('urlModal.title')}
           </label>
           <input
             className="px-[17.28px] border border-[#e1dede] w-full rounded-[10px] pt-[21.5px] pb-[16.5px] mt-[29.5px]"
             value={URL}
-            placeholder="https://example.com/sample.pdf"
+            placeholder={t('urlModal.placeholder')}
             required
             onChange={e => setURL(e.target.value)}
             type="text"
@@ -77,7 +79,7 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
             onClick={handleURLSubmit}
             className="w-full justify-center"
           >
-            Continue
+            {t('urlModal.buttonLabel')}
           </Button>
         </div>
       </Modal>

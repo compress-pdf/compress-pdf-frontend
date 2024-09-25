@@ -11,13 +11,9 @@ import ThemeSwitcher from '../core/ThemeSwitcher'; // Relative imports
 import SectionContainer from '../containers/SectionContainer';
 
 export default function Navbar() {
-  const t = useTranslations('Navbar');
+  const t = useTranslations('common.header');
 
-  const navLinks = [
-    { href: '/', label: t('home') },
-    { href: '/about', label: t('about') },
-    { href: '/contact', label: t('contact') },
-  ];
+  const menus = t.raw('menu');
 
   return (
     <div className="relative w-full">
@@ -36,15 +32,17 @@ export default function Navbar() {
             <div className="flex gap-2 items-center">
               <div className="hidden md:block">
                 <div className="flex items-center space-x-2">
-                  {navLinks.map(link => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="text-gray-800 dark:text-white rounded-md text-base font-medium"
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                  {menus
+                    .slice(0, 2)
+                    .map((menu: { label: string; path: string }) => (
+                      <Link
+                        key={menu.label}
+                        href={menu.path}
+                        className="text-gray-800 dark:text-white rounded-md text-base font-medium"
+                      >
+                        {menu.label}
+                      </Link>
+                    ))}
                 </div>
               </div>
               <ThemeSwitcher />
