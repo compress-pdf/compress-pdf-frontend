@@ -1,20 +1,25 @@
-'use client';
+'use client'; // Ensure this component is client-side since it handles interaction
 
 import { twMerge } from 'tailwind-merge';
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 
 import { DropdownIconFaq } from '@/assets/icons/svgs/dropdownIcon';
 
 type AccordionProps = {
   title: string;
-  open?: boolean;
+  isOpen: boolean; // State passed from the parent to control open/close
+  onClick: () => void; // Handler passed from the parent
   className?: string;
   children: ReactNode;
 };
 
-const Accordion = ({ title, children, open, className }: AccordionProps) => {
-  const [isOpen, setIsOpen] = useState(open || false);
-
+const Accordion = ({
+  title,
+  children,
+  isOpen,
+  onClick,
+  className,
+}: AccordionProps) => {
   return (
     <div
       className={twMerge(
@@ -32,7 +37,7 @@ const Accordion = ({ title, children, open, className }: AccordionProps) => {
         )}
       >
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={onClick} // Invoke the parent's onClick function to toggle accordion
           className={twMerge(
             'flex justify-between items-center w-full gap-4',
             className

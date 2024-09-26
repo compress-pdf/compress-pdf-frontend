@@ -21,8 +21,13 @@ const ShowSaveDriveComp = dynamic(
 );
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-const HomePageContent = ({ children }: { children: ReactNode[] }) => {
-  const { validatePdfFiles } = helpers;
+const HomePageContent = ({
+  children,
+  tool,
+}: {
+  children: ReactNode[];
+  tool: string;
+}) => {
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   // const [progressValue, setProgressValue] = useState<number>(0);
@@ -33,7 +38,7 @@ const HomePageContent = ({ children }: { children: ReactNode[] }) => {
   // const router = useRouter();
 
   const handleFileChange = async (selectedFiles: FileList) => {
-    const isCorrupted = await validatePdfFiles(selectedFiles, 4, 50);
+    const isCorrupted = await helpers.validatePdfFiles(selectedFiles, 4, 50);
     if (isCorrupted.valid) {
       setPdfFiles(Array.from(selectedFiles));
     } else {
@@ -124,7 +129,7 @@ const HomePageContent = ({ children }: { children: ReactNode[] }) => {
             <>
               <FullwidthContainer
                 className="mb-[33.92px] md:mb-[84.92px] lg:mb-[75.65px] xl:mb-[114.92px] 2xl:mb-[127.35] 3xl:mb-[160px]"
-                as={'main'}
+                as={'div'}
               >
                 <GradientOne />
                 <SectionContainer className="hero-section text-center flex flex-col md:flex-row gap-[30px] md:gap-[51px] lg:gap-[39px] xl:gap-[51px] 2xl:gap-[39px] 3xl:gap-[134px] pt-[35px] md:pt-[85px] xl:pt-[115px] 2xl:pt-[130px] 3xl:pt-[160px]">
@@ -132,9 +137,9 @@ const HomePageContent = ({ children }: { children: ReactNode[] }) => {
                   <div className="appear-anim relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]">
                     <BeforeUpload
                       handleFileChange={handleFileChange}
-                      fileReq={{ size: 50, count: 4 }}
                       setIsLoading={setIsLoading}
                       handleNewFiles={handleNewFiles}
+                      tool={tool}
                     />
                     <Image
                       className="star-top float hidden md:block absolute w-[28px] h-auto top-0 -mt-6 -ml-8 z-10 rotate-6"
