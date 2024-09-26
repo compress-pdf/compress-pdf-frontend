@@ -4,18 +4,19 @@ import { useTranslations } from 'next-intl';
 
 import { validatePdfLink } from '@/services/helpers';
 import UrlIcon from '@/assets/icons/svgs/upload-client/urlIcon';
+import { useLoading } from '@/context/UploadingContext';
 
 import Modal from '../core/Modal';
 import { Button } from '../core/Button';
 import Tooltip from '../core/Tooltip';
 
 type Props = {
-  setIsLoading: (value: boolean) => void;
   handleNewFiles: (files: File[]) => void;
 };
 
-const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
+const LinkComponent = ({ handleNewFiles }: Props) => {
   const t = useTranslations('common');
+  const { setLoading } = useLoading();
   const [isOpen, setIsOpen] = useState(false);
   const [URL, setURL] = useState<string>('');
   const [validationMessages, setValidationMessages] = useState<string[]>([]);
@@ -34,7 +35,7 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
   const handleURLSubmit = async () => {
     setValidationMessages([]);
     startTransition(async () => {
-      setIsLoading(true);
+      setLoading(true);
 
       const validationResult = await validatePdfLink(URL, 50);
 
@@ -57,7 +58,7 @@ const LinkComponent = ({ setIsLoading, handleNewFiles }: Props) => {
       } catch (error) {
         setValidationMessages(['Error fetching the PDF file.']);
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     });
   };

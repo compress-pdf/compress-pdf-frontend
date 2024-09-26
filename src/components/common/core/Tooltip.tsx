@@ -1,4 +1,3 @@
-// components/Tooltip.tsx
 import { useState, useRef, ReactNode } from 'react';
 import {
   useFloating,
@@ -28,7 +27,12 @@ const Tooltip = ({
 
   const { x, y, reference, floating, strategy, middlewareData } = useFloating({
     placement,
-    middleware: [offset(8), shift(), flip(), arrow({ element: arrowRef })],
+    middleware: [
+      offset(10), // Set positive offset to ensure it appears below
+      shift(),
+      flip(),
+      arrow({ element: arrowRef }),
+    ],
   });
 
   return (
@@ -48,27 +52,24 @@ const Tooltip = ({
             left: x ?? 0,
             pointerEvents: 'none', // Prevent tooltip from affecting layout
           }}
-          className={`tooltip bg-[#163b45] text-[#fafafa] w-[120px] font-normal leading-tight text-center text-sm px-[10px] py-2 rounded shadow-lg z-50 `}
+          className={`tooltip bg-[#163b45] text-[#fafafa] w-[120px] font-normal leading-tight text-center text-sm px-[10px] py-2 rounded shadow-lg z-50`}
           data-testid="error-tooltip"
         >
           <p>{content}</p>
           <div
             ref={arrowRef}
-            className={`absolute w-2 h-2 bg-gray-700 transform rotate-45 ${
+            className={`absolute w-2 h-2 bg-[#163b45] transform rotate-45 ${
               (content === '' || !content) && 'hidden'
             }`}
             style={{
               top: middlewareData.arrow?.y ?? '',
               left: middlewareData.arrow?.x ?? '',
               right: middlewareData.arrow?.x !== null ? '' : '0',
-              bottom: middlewareData.arrow?.y !== null ? '100%' : '0', // Adjust arrow position for bottom placement
+              bottom: middlewareData.arrow?.y !== null ? '100%' : '0',
               transform:
                 middlewareData.arrow?.y !== null
                   ? 'translateY(50%) rotate(45deg)'
                   : 'rotate(45deg)',
-              backgroundColor: '#163b45',
-              borderLeft: '1px solid #163b45',
-              borderTop: '1px solid #163b45',
             }}
           />
         </div>

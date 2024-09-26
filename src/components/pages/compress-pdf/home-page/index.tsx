@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { pdfjs } from 'react-pdf';
 // import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
@@ -11,6 +11,8 @@ import SectionContainer from '@/components/common/containers/SectionContainer';
 import CustomToast from '@/components/common/core/ToastMessage';
 import pinkStarIcon from '@/assets/icons/svgs/pinkStar.svg';
 import brownStarIcon from '@/assets/icons/svgs/brownStar.svg';
+import { useLoading } from '@/context/UploadingContext';
+import { useCompressionContext } from '@/context/CompressionContext';
 
 import GradientOne from './backgrounds/gradient-one';
 import BeforeUpload from './UploadSection/BeforeUpload';
@@ -28,9 +30,11 @@ const HomePageContent = ({
   children: ReactNode[];
   tool: string;
 }) => {
+  const { updateFiles, updateRotationParameters } = useCompressionContext();
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { loading, setLoading } = useLoading();
   // const [progressValue, setProgressValue] = useState<number>(0);
+  const { state } = useCompressionContext();
   const [showSaveDrive, setShowSaveDrive] = useState<boolean>(false);
   const [fileRotations, setFileRotations] = useState<{
     [index: number]: number;
@@ -53,16 +57,40 @@ const HomePageContent = ({
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsLoading(true);
-    // console.log('pdfFiles', fileRotations);
+    setLoading(true);
 
     const formData = new FormData();
+
+    // Append PDF files to formData under a single key "files[]"
     pdfFiles.forEach(file => {
-      formData.append('pdf', file);
+      formData.append('files[]', file);
     });
-    // router.push("/save-drive");
+
+    // Update the context with the current files and rotation parameters
+    updateFiles(pdfFiles);
+    updateRotationParameters(fileRotations);
+
+    // Append rotation parameters as a single JSON string
+    formData.append('rotation_parameter', JSON.stringify(fileRotations));
+
+    // Append other customization options from the state
+    formData.append('compressType', state.compressType);
+    if (state.compressLevel !== undefined) {
+      formData.append('compressLevel', state.compressLevel.toString());
+    }
+    if (state.enhancementLevel) {
+      formData.append('enhancementLevel', state.enhancementLevel);
+    }
+    if (state.dpi !== undefined) {
+      formData.append('dpi', state.dpi.toString());
+    }
+    formData.append('rgb', state.rgb.toString());
+
+    // Debugging: log formData and state
+    console.log(Object.fromEntries(formData));
+
     setShowSaveDrive(true);
-    setIsLoading(false);
+    setLoading(false);
   };
 
   const handleNewFiles = (newFiles: File[]) => {
@@ -90,7 +118,7 @@ const HomePageContent = ({
   const rotateClockwise = (index: number) => {
     setFileRotations(prevRotations => ({
       ...prevRotations,
-      [index]: (prevRotations[index] || 0) + 90,
+      [index]: ((prevRotations[index] || 0) + 90) % 360,
     }));
   };
 
@@ -98,20 +126,27 @@ const HomePageContent = ({
   const rotateAnticlockwise = (index: number) => {
     setFileRotations(prevRotations => ({
       ...prevRotations,
-      [index]: (prevRotations[index] || 0) - 90,
+      [index]:
+        (prevRotations[index] || 0) === 0
+          ? 270
+          : (prevRotations[index] - 90) % 360,
     }));
   };
+
+  useEffect(() => {
+    console.log(fileRotations);
+  }, [fileRotations]);
+
   return (
     <>
       <div>
-        {isLoading ? (
+        {loading ? (
           <div className="fixed bg-white dark:bg-[#232323] inset-0">
             <GradientOne />
             {/* TODO: loading screen */}
           </div>
         ) : !showSaveDrive && pdfFiles?.length !== 0 ? (
           <AfterUpload
-            isLoading={isLoading}
             handleSubmit={handleSubmit}
             handleNewFiles={handleNewFiles}
             handleDeleteFile={handleDeleteFile}
@@ -119,7 +154,6 @@ const HomePageContent = ({
             pdfFiles={pdfFiles}
             // progressValue={progressValue}
             progressValue={0}
-            setIsLoading={setIsLoading}
             rotateClockwise={rotateClockwise}
             rotateAnticlockwise={rotateAnticlockwise}
             fileRotations={fileRotations}
@@ -137,7 +171,6 @@ const HomePageContent = ({
                   <div className="appear-anim relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]">
                     <BeforeUpload
                       handleFileChange={handleFileChange}
-                      setIsLoading={setIsLoading}
                       handleNewFiles={handleNewFiles}
                       tool={tool}
                     />

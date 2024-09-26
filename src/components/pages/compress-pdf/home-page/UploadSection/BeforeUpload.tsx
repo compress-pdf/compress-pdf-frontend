@@ -11,17 +11,11 @@ import browseIcon from '@assets/icons/pngs/browseFileIcon.png';
 
 type Props = {
   handleFileChange: (files: FileList) => void;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   handleNewFiles: (files: File[]) => void;
   tool: string;
 };
 
-const BeforeUpload = ({
-  handleFileChange,
-  handleNewFiles,
-  setIsLoading,
-  tool,
-}: Props) => {
+const BeforeUpload = ({ handleFileChange, handleNewFiles, tool }: Props) => {
   const t = useTranslations(tool);
   const tc = useTranslations('common');
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -75,7 +69,7 @@ const BeforeUpload = ({
         {t('content.heroSection.fileInfo')}
       </small>
       <p className="mb-[16.78px]">{tc('heroSectionTooltip.cloudInfo')}</p>
-      <Cloud handleNewFiles={handleNewFiles} setIsLoading={setIsLoading} />
+      <Cloud handleNewFiles={handleNewFiles} />
     </DraggableBox>
   );
 };

@@ -5,17 +5,18 @@ import { CallbackDoc } from 'react-google-drive-picker/dist/typeDefs';
 
 import helpers, { fileArrayToFileList } from '@/services/helpers';
 import GoogledriveIcon from '@/assets/icons/svgs/upload-client/googledriveIcon';
+import { useLoading } from '@/context/UploadingContext';
 
 import CustomToast from '../core/ToastMessage';
 
 import { API_KEY, CLIENT_ID } from '@constants/credentials/const';
 
 interface IProps {
-  setIsLoading: (value: boolean) => void;
   handleNewFiles: (files: File[]) => void; // Update type to handle an array of files
 }
 
-const GoogleDrive = ({ setIsLoading, handleNewFiles }: IProps) => {
+const GoogleDrive = ({ handleNewFiles }: IProps) => {
+  const { setLoading } = useLoading();
   const { validatePdfFiles } = helpers;
   const [authToken, setAuthToken] = useState<string | undefined>('');
   const [filesPicked, setFilesPicked] = useState<CallbackDoc[]>([]); // Update to store multiple files
@@ -52,7 +53,7 @@ const GoogleDrive = ({ setIsLoading, handleNewFiles }: IProps) => {
 
   const fetchFiles = async (docs: CallbackDoc[]) => {
     try {
-      setIsLoading(true);
+      setLoading(true);
       const fetchedFiles: File[] = [];
 
       for (const doc of docs) {
@@ -107,7 +108,7 @@ const GoogleDrive = ({ setIsLoading, handleNewFiles }: IProps) => {
           'An error occurred while fetching the files',
       });
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 

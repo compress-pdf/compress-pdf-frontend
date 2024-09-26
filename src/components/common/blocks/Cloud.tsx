@@ -11,20 +11,16 @@ import DropBox from './DropBox';
 import LinkComponent from './LinkComponent';
 
 type Props = {
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   handleNewFiles: (files: File[]) => void;
 };
 
-const Cloud = ({ setIsLoading, handleNewFiles }: Props) => {
+const Cloud = ({ handleNewFiles }: Props) => {
   const t = useTranslations('common');
 
   return (
     <div className="flex gap-1 lg:gap-4 h-[32.4px] lg:h-[50px] xl:h-[32.4px] xl:gap-[4px] 2xl:h-[50px] 2xl:gap-4">
       <Tooltip content={t('heroSectionTooltip.drive')}>
-        <GoogleDrive
-          setIsLoading={setIsLoading}
-          handleNewFiles={handleNewFiles}
-        />
+        <GoogleDrive handleNewFiles={handleNewFiles} />
       </Tooltip>
       <Tooltip content={t('heroSectionTooltip.onedrive')}>
         <OneDrive handleNewFiles={handleNewFiles} />
@@ -32,10 +28,7 @@ const Cloud = ({ setIsLoading, handleNewFiles }: Props) => {
       <Tooltip content={t('heroSectionTooltip.dropbox')}>
         <DropBox handleNewFiles={handleNewFiles} />
       </Tooltip>
-      <LinkComponent
-        handleNewFiles={handleNewFiles}
-        setIsLoading={setIsLoading}
-      />
+      <LinkComponent handleNewFiles={handleNewFiles} />
     </div>
   );
 };
