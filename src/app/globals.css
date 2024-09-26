@@ -216,3 +216,76 @@ body {
     opacity: 1;
   }
 }
+
+.fixed-page-height {
+  width: 197.26px !important;
+  height: 264.79px !important;
+}
+
+@media (min-width: 768px) {
+  /* Applies to tablets and above */
+  .fixed-page-height {
+    width: 223.77px !important;
+    height: 300px !important;
+  }
+}
+
+.compress-btn {
+  border: none;
+  position: relative; /* Set position to relative */
+  animation: shadowAnimation 2s infinite; /* Apply animation */
+}
+
+@keyframes shadowAnimation {
+  0% {
+    box-shadow:
+      0px 0 0 #dfa91d33,
+      /* Shadow color */ 0px 0 0 #df861d29; /* Shadow color */
+  }
+  50% {
+    box-shadow:
+      -10px 0 0 #dfa91d33,
+      /* Shadow color */ -20px 0 0 #df861d29; /* Shadow color */
+  }
+  100% {
+    box-shadow:
+      0px 0 0 #dfa91d33,
+      /* Shadow color */ 0px 0 0 #df861d29; /* Shadow color */
+  }
+}
+
+.start-comp-anim {
+  animation: scale-infinite 3s ease-in-out infinite;
+  transform: scale(1.1);
+  margin-left: -4px;
+}
+
+@keyframes scale-infinite {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes arrow-speed-forward {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.arro-ico-anim {
+  transform: scale(1);
+  animation: arrow-speed-forward 3s ease-in-out infinite;
+  animation-delay: 1.5s; /* Start the arrow animation halfway through the scale */
+}

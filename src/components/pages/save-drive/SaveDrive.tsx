@@ -6,6 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { CLIENT_ID, SCOPES } from '@/constants/credentials/const';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { useLoading } from '@/context/UploadingContext';
 
 type TypeSaveDrive = {
   PDF_URL: string;
@@ -35,7 +36,7 @@ declare const google: {
 };
 
 const SaveDrive = ({ PDF_URL }: TypeSaveDrive) => {
-  const [loading, setLoading] = useState(false);
+  const { loading, setLoading } = useLoading();
   const [isOpen, setIsOpen] = useState<boolean>(true);
 
   const createFolder = async (

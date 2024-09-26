@@ -14,16 +14,10 @@ type Props = {
     size: number;
     count: number;
   };
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   handleNewFiles: (files: File[]) => void;
 };
 
-const BeforeUpload = ({
-  handleFileChange,
-  fileReq,
-  handleNewFiles,
-  setIsLoading,
-}: Props) => {
+const BeforeUpload = ({ handleFileChange, fileReq, handleNewFiles }: Props) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const defaultDropBoxDescription = `Maximum ${fileReq?.count} files, upto ${fileReq?.size}MB, `;
   const { validatePdfFiles } = helpers;
@@ -77,7 +71,7 @@ const BeforeUpload = ({
         {defaultDropBoxDescription}
       </small>
       <p className="mb-[16.78px]">or, drop the files here</p>
-      <Cloud handleNewFiles={handleNewFiles} setIsLoading={setIsLoading} />
+      <Cloud handleNewFiles={handleNewFiles} />
     </DraggableBox>
   );
 };

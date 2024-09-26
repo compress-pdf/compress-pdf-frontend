@@ -6,6 +6,7 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { GrRotateLeft, GrRotateRight } from 'react-icons/gr';
 
 import helpers from '@/services/helpers';
+import { useLoading } from '@/context/UploadingContext';
 
 import LoadingUpload from '../blocks/Loading';
 import SectionContainer from '../containers/SectionContainer';
@@ -25,6 +26,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
   files,
   onDeleteFile,
   onUpdateFiles,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   convertsNonPdfFile = false,
   rotateAnticlockwise,
   rotateClockwise,
@@ -34,7 +36,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
 
   const [totalPages, setTotalPages] = useState<Record<number, number>>({});
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [loading, setIsLoading] = useState<boolean>(false);
+  const { loading } = useLoading();
   const dragItem = useRef<number | null>(null);
   const dragOverItem = useRef<number | null>(null);
 
@@ -76,102 +78,100 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
       {loading ? (
         <LoadingUpload />
       ) : (
-        <SectionContainer className="flex justify-between draggable-container pt-5 bg-red-400">
+        <SectionContainer
+          className="flex flex-col justify-between draggable-container overflow-x-hidden max-w-full box-content pt-2"
+          id="jojo"
+        >
           <div
-            className={`relative draggable-flat flex justify-center flex-wrap gap-2.5 p-8 mx-auto lg:py-24 bg-transparent self-center p-2.5 h-full pt-[80px] overflow-x-hidden overflow-y-auto ${
-              files.length > 1 ? 'basis-8/12' : 'basis-11/12'
-            }`}
+            className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[35px] pt-[41.42px] md:pt-[55px]`}
             onDrop={handleNewFiles}
             onDragOver={handleDragOver}
           >
             {files?.map((file: File, index: number) => (
-              <div
-                className={`pdf-box ${
-                  files.length > 1 ? 'cursor-grab' : 'cursor-default'
-                } flex flex-col`}
-                key={index}
-                draggable={files.length > 1}
-                onDragStart={() => (dragItem.current = index)}
-                onDragEnter={() => (dragOverItem.current = index)}
-                onDragEnd={() =>
-                  handleDragSorting(dragItem.current, dragOverItem.current)
-                }
-              >
-                <div className="bg-slate-500 relative w-max">
-                  {totalPages[index] > 1 && !convertsNonPdfFile && (
-                    <div className="w-full h-full absolute bg-white bottom-2 right-2 -z-10 rounded-sm custom-box-shadow" />
-                  )}
-
-                  <div className="document-box bg-white flex flex-col justify-center items-center px-4 pt-4 pb-2 aspect-[3/4] custom-box-shadow relative">
-                    {/* Rotate buttons */}
-                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 z-10">
-                      <button
-                        title={'rotate-anti-clockwise'}
-                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                          e.preventDefault();
-                          rotateAnticlockwise(index);
-                        }}
-                        className="cursor-pointer mx-2"
-                      >
-                        <GrRotateLeft color="green" />
-                      </button>
-                      <button
-                        title="rotate-clockwise-button"
-                        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                          e.preventDefault();
-                          rotateClockwise(index);
-                        }}
-                        className="cursor-pointer mx-2"
-                      >
-                        <GrRotateRight color="green" />
-                      </button>
+              <div key={index}>
+                <div
+                  className={`pdf-box ${
+                    files.length > 1 ? 'cursor-grab' : 'cursor-default'
+                  } flex flex-col shadow-md shadow-[#0000003d] dark:shadow-[#ffffff3d] rounded-[10px]`}
+                  key={index}
+                  draggable={files.length > 1}
+                  onDragStart={() => (dragItem.current = index)}
+                  onDragEnter={() => (dragOverItem.current = index)}
+                  onDragEnd={() =>
+                    handleDragSorting(dragItem.current, dragOverItem.current)
+                  }
+                >
+                  <div className="relative w-max group">
+                    <div className="absolute bg-[#00000020] rounded-[10px] inset-0 z-10 text-xs md:text-[0.875rem] hidden group-hover:block">
+                      <div className="absolute top-[11px] gap-[10px] w-full flex justify-center">
+                        <button
+                          title="page-number"
+                          className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
+                          type="button"
+                        >
+                          {totalPages[index]}{' '}
+                          {totalPages[index] > 1 ? 'Pages' : 'Page'}
+                        </button>
+                        <button
+                          title="file-size-value"
+                          className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
+                          type="button"
+                        >
+                          {helpers.getFileSize(file)}MB
+                        </button>
+                      </div>
+                      <div className="absolute bottom-[11px] left-1/2 transform -translate-x-1/2 flex gap-[10px]">
+                        <button
+                          title={'rotate-anti-clockwise'}
+                          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.preventDefault();
+                            rotateAnticlockwise(index);
+                          }}
+                          className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
+                        >
+                          <GrRotateLeft color="inherit" />
+                        </button>
+                        <button
+                          title="rotate-clockwise-button"
+                          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            e.preventDefault();
+                            rotateClockwise(index);
+                          }}
+                          className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
+                        >
+                          <GrRotateRight color="inherit" />
+                        </button>
+                        <button
+                          title="delete-button"
+                          onClick={() => onDeleteFile(index)}
+                          className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
-
-                    <div
-                      className="flex justify-center items-center max-h-full max-w-full"
-                      style={{ height: '222px', width: '170.5px' }}
+                    <Document
+                      file={file}
+                      className="pdf_document flex items-center justify-center bg-transparent rounded-[10px] w-[197.26px] h-[264.79px] md:w-[223.77px] md:h-[300px] overflow-clip"
+                      onLoadSuccess={pdf =>
+                        handleDocumentLoadSuccess(index, pdf)
+                      }
                     >
-                      <Document
-                        file={file}
-                        className="pdf_document"
-                        onLoadSuccess={pdf =>
-                          handleDocumentLoadSuccess(index, pdf)
-                        }
-                      >
-                        <Page
-                          rotate={fileRotations[index] || 0}
-                          pageNumber={1}
-                          className="fixed-page-height border-2 border-gray shadow text-green-500"
-                          width={170.5}
-                        />
-                      </Document>
-                    </div>
-
-                    <p
-                      className="mt-4 text-sm w-full text-center break-words"
-                      title={file.name}
-                    >
-                      {helpers.getTruncatedFileName(file.name)}
-                    </p>
+                      <Page
+                        rotate={fileRotations[index] || 0}
+                        pageNumber={1}
+                        className="border-2 border-gray shadow text-green-500"
+                        width={197}
+                      />
+                    </Document>
                   </div>
                 </div>
-
-                <div className="tools-box text-white justify-center items-center py-1 shadow-md">
-                  <button
-                    title="delete-button"
-                    onClick={() => onDeleteFile(index)}
-                    className="cursor-pointer mx-2"
-                  >
-                    Delete
-                  </button>
-                  <small>
-                    {helpers.getFileSize(file)} MB:{' '}
-                    {!convertsNonPdfFile &&
-                      `${totalPages[index]} ${
-                        totalPages[index] > 1 ? 'pages' : 'page'
-                      }`}
-                  </small>
-                </div>
+                <p
+                  className="mt-[7.42px] md:mt-[12px] md:text-base text-[#6B7280] text-sm text-center"
+                  title={file.name}
+                >
+                  {helpers.getTruncatedFileName(file.name)}
+                </p>
               </div>
             ))}
           </div>

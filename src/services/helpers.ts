@@ -442,6 +442,12 @@ export function fileArrayToFileList(filesArray: File[]) {
   return dataTransfer.files; // This returns a FileList
 }
 
+export function numberToStringWithSign(number: number) {
+  return number > 0 ? `+${number}` : `${number}`;
+}
+export function stringWithSignToNumber(str: string) {
+  return parseInt(str, 10);
+}
 const helpers = {
   hexToRgb,
   sortAsc,

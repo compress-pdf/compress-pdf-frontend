@@ -141,6 +141,34 @@ describe('Hero Section E2E Tests', () => {
         );
       });
 
+      // it.only('Tries to upload corrupted and protected PDFs via drag and drop 100 times', () => {
+      //   const files = [
+      //     'cypress/fixtures/corrupted.pdf',
+      //     'cypress/fixtures/generic-protected.pdf'
+      //   ];
+
+      //   for (let i = 0; i < 100; i++) {
+      //     const fileToUpload = files[i % 2]; // Alternate between the two files
+
+      //     cy.get('#file-drop').selectFile(fileToUpload, {
+      //       action: 'drag-drop',
+      //     });
+
+      //     // Check for the appropriate toast message based on the file type
+      //     if (fileToUpload === 'cypress/fixtures/corrupted.pdf') {
+      //       cy.get('.toast-message').should(
+      //         'contain.text',
+      //         'Corrupted PDFs cannot be compressed.'
+      //       );
+      //     } else {
+      //       cy.get('.toast-message').should(
+      //         'contain.text',
+      //         'Password-protected PDFs cannot be compressed.'
+      //       );
+      //     }
+      //   }
+      // });
+
       it('Tries to upload a corrupted PDF via drag and drop', () => {
         cy.get('#file-drop').selectFile('cypress/fixtures/corrupted.pdf', {
           action: 'drag-drop',
