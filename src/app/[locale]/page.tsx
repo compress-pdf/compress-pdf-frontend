@@ -1,9 +1,16 @@
+import Schema from '@/components/common/blocks/Schema';
 import CompressPdf from '@/components/pages/compress-pdf';
+import { generatePageMetadata } from '@/services/metadata';
+
+export async function generateMetadata() {
+  return generatePageMetadata('general.metaData');
+}
 
 const HomePage = () => {
   return (
     <>
-      <CompressPdf />
+      <Schema tool={'general'} />
+      <CompressPdf tool={'general'} />
     </>
   );
 };

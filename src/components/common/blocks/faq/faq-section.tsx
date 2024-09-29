@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import SectionContainer from '../../containers/SectionContainer';
 import ContentTitle from '../../core/ContentTitle';
 
-import Accordion from './accordion';
+import FaqAccordionClient from './FaqAccordionClient';
 
 interface FaqProps {
   question: string;
@@ -15,10 +15,11 @@ interface FaqProps {
 
 interface FaqSectionProps {
   data?: FaqProps[];
+  title: string;
   className?: string;
 }
 
-const FaqSection: React.FC<FaqSectionProps> = ({ data, className }) => {
+const FaqSection: React.FC<FaqSectionProps> = ({ data, title, className }) => {
   return (
     <SectionContainer
       className={twMerge(
@@ -28,15 +29,8 @@ const FaqSection: React.FC<FaqSectionProps> = ({ data, className }) => {
       )}
     >
       <section>
-        <ContentTitle title="Frequently Asked Questions (FAQs)" />
-        {data?.map((each, index) => (
-          <Accordion key={index} title={each.question}>
-            <div
-              className="rounded pt-2 text-left"
-              dangerouslySetInnerHTML={{ __html: each.answer }}
-            />
-          </Accordion>
-        ))}
+        <ContentTitle title={title} />
+        <FaqAccordionClient data={data} />
       </section>
     </SectionContainer>
   );

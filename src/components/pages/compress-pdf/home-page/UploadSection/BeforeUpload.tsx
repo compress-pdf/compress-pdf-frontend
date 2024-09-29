@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import Cloud from '@/components/common/blocks/Cloud';
 import DraggableBox from '@/components/common/draggable/box';
@@ -10,17 +11,14 @@ import browseIcon from '@assets/icons/pngs/browseFileIcon.png';
 
 type Props = {
   handleFileChange: (files: FileList) => void;
-  fileReq: {
-    size: number;
-    count: number;
-  };
   handleNewFiles: (files: File[]) => void;
+  tool: string;
 };
 
-const BeforeUpload = ({ handleFileChange, fileReq, handleNewFiles }: Props) => {
+const BeforeUpload = ({ handleFileChange, handleNewFiles, tool }: Props) => {
+  const t = useTranslations(tool);
+  const tc = useTranslations('common');
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const defaultDropBoxDescription = `Maximum ${fileReq?.count} files, upto ${fileReq?.size}MB, `;
-  const { validatePdfFiles } = helpers;
 
   const handleButtonClick = () => {
     if (fileInputRef.current) {
@@ -31,7 +29,7 @@ const BeforeUpload = ({ handleFileChange, fileReq, handleNewFiles }: Props) => {
   const onFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     handleFileChange(event.target.files as FileList);
     // Clear the input by setting its value to an empty string
-    const isCorrupted = await validatePdfFiles(
+    const isCorrupted = await helpers.validatePdfFiles(
       event.target.files as FileList,
       4,
       50
@@ -62,15 +60,15 @@ const BeforeUpload = ({ handleFileChange, fileReq, handleNewFiles }: Props) => {
             className="w-[23px] h-auto -mt-1"
             data-label="file-upload"
             src={browseIcon}
-            alt="Upload PDF files"
+            alt={t('content.heroSection.imageAlt')}
           />
-          {`Browse File`}
+          {tc('heroSectionTooltip.buttonLabel')}
         </label>
       </Button>
       <small className="text-[#6B7280] font-normal mb-[16.78px] text-[0.875rem] leading-[170%] md:">
-        {defaultDropBoxDescription}
+        {t('content.heroSection.fileInfo')}
       </small>
-      <p className="mb-[16.78px]">or, drop the files here</p>
+      <p className="mb-[16.78px]">{tc('heroSectionTooltip.cloudInfo')}</p>
       <Cloud handleNewFiles={handleNewFiles} />
     </DraggableBox>
   );
