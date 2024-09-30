@@ -47,12 +47,15 @@ jobs:
 
       - name: Deploy Docker Container to VPS 🚀
         env:
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_USER: ${{ vars.VPS_USER }}
+          SSH_PORT: ${{ vars.SSH_PORT }}
           SSH_PASSWORD: ${{ vars.VPS_PASSWORD }}
         run: |
-          sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no ${{ vars.VPS_USER }}@${{ vars.VPS_HOST }} << 'EOF'
+          sshpass -p $SSH_PASSWORD ssh -p $SSH_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
             docker login ghcr.io -u ${{ github.actor }} --password ${{ vars.GHCR_PAT }}
             docker container stop compress-next || true
             docker container rm compress-next || true
             docker image pull ghcr.io/compress-pdf/compress-next
-            docker run -d --name compress-next -p 3000:3000 ghcr.io/compress-pdf/compress-next
+            docker run -d --name compress-next -p 5000:5000 ghcr.io/compress-pdf/compress-next
           EOF
