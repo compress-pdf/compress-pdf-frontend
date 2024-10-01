@@ -170,14 +170,14 @@
       "errorMessage": "Please provide a valid pdf link!"
     },
     "uploading": {
-      "title": "{File/Files} Uploading",
+      "title": "{file} Uploading",
       "description": "Please do not close your browser. Wait until your files are uploading and processed! This might take a few minutes. :)",
       "imageAlt": "Upload PDF files"
     },
     "processing": {
-      "title": "{File/Files} Processing",
+      "title": "{file} Processing",
       "description": "Please do not close your browser. Wait until your files are uploading and processed! This might take a few minutes. :)",
-      "imageAlt": "Processing  PDF files"
+      "imageAlt": "Processing PDF files"
     },
     "custom": {
       "viewPage": {
