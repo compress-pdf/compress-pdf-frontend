@@ -5,8 +5,9 @@ import {
   shift,
   flip,
   arrow,
+  autoUpdate,
+  Placement,
 } from '@floating-ui/react-dom-interactions';
-import { Placement } from '@floating-ui/core';
 import { twMerge } from 'tailwind-merge';
 
 type TooltipProps = {
@@ -14,6 +15,8 @@ type TooltipProps = {
   placement?: Placement;
   className?: string;
   children: ReactNode;
+  withArrow?: boolean;
+  hide?: boolean;
 };
 
 const Tooltip = ({
@@ -21,19 +24,38 @@ const Tooltip = ({
   placement = 'bottom',
   className,
   children,
+  withArrow = true,
+  hide = false,
 }: TooltipProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const arrowRef = useRef<HTMLDivElement>(null);
 
-  const { x, y, reference, floating, strategy, middlewareData } = useFloating({
+  const {
+    x,
+    y,
+    reference,
+    floating,
+    strategy,
+    middlewareData,
+    placement: currentPlacement,
+  } = useFloating({
     placement,
-    middleware: [
-      offset(10), // Set positive offset to ensure it appears below
-      shift(),
-      flip(),
-      arrow({ element: arrowRef }),
-    ],
+    middleware: [offset(10), shift(), flip(), arrow({ element: arrowRef })],
+    whileElementsMounted: autoUpdate,
   });
+
+  // Determine the arrow's styles based on the placement
+  const arrowStyles = {
+    top: currentPlacement.startsWith('bottom') ? '-4px' : '',
+    bottom: currentPlacement.startsWith('top') ? '-4px' : '',
+    left: currentPlacement.startsWith('right') ? '-4px' : '',
+    right: currentPlacement.startsWith('left') ? '-4px' : '',
+    transform:
+      currentPlacement.startsWith('top') ||
+      currentPlacement.startsWith('bottom')
+        ? 'rotate(45deg)'
+        : 'rotate(-45deg)',
+  };
 
   return (
     <div
@@ -50,28 +72,24 @@ const Tooltip = ({
             position: strategy,
             top: y ?? 0,
             left: x ?? 0,
-            pointerEvents: 'none', // Prevent tooltip from affecting layout
+            pointerEvents: 'none',
           }}
-          className={`tooltip bg-[#163b45] text-[#fafafa] w-[120px] font-normal leading-tight text-center text-sm px-[10px] py-2 rounded shadow-lg z-50`}
-          data-testid="error-tooltip"
+          className={`bg-[#163b45] dark:bg-[#F2F2F2] text-[#fafafa] dark:text-[#000000] w-[120px] font-normal leading-tight text-center text-sm px-[10px] py-2 rounded shadow-lg z-50 border border-slate-500 ${
+            hide && 'hidden'
+          }`}
         >
           <p>{content}</p>
-          <div
-            ref={arrowRef}
-            className={`absolute w-2 h-2 bg-[#163b45] transform rotate-45 ${
-              (content === '' || !content) && 'hidden'
-            }`}
-            style={{
-              top: middlewareData.arrow?.y ?? '',
-              left: middlewareData.arrow?.x ?? '',
-              right: middlewareData.arrow?.x !== null ? '' : '0',
-              bottom: middlewareData.arrow?.y !== null ? '100%' : '0',
-              transform:
-                middlewareData.arrow?.y !== null
-                  ? 'translateY(50%) rotate(45deg)'
-                  : 'rotate(45deg)',
-            }}
-          />
+          {withArrow && (
+            <div
+              ref={arrowRef}
+              className="absolute w-2 h-2 bg-[#163b45] dark:bg-[#F2F2F2]"
+              style={{
+                ...arrowStyles,
+                top: middlewareData.arrow?.y ?? arrowStyles.top,
+                left: middlewareData.arrow?.x ?? arrowStyles.left,
+              }}
+            />
+          )}
         </div>
       )}
     </div>

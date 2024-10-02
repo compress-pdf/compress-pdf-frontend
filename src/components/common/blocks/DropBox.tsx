@@ -7,11 +7,11 @@ import dropboxIcon from '@assets/icons/pngs/dropboxIcon.png';
 
 type Props = {
   handleNewFiles: (files: File[]) => void;
+  onDropdown?: boolean;
 };
 
-const DropBox = ({ handleNewFiles }: Props) => {
-  const token =
-    'sl.B8UuzJ6k31taN_a9pxBAeO8GPJxJs9SA8oaO8rCiSNK8R_dmk4kAGvjTPpcS5Kl6mSp_qOLi-wTDb8MEWspERZNFVFDqUZbs3RHDPhC9o6N1oPfO2DU9SBOjsuNuVybj8duibp7djDAi';
+const DropBox = ({ handleNewFiles, onDropdown = false }: Props) => {
+  const token = 'YOUR_ACCESS_TOKEN';
 
   const handleSuccess = async (files: DropboxFile[]) => {
     const URL = files[0].link;
@@ -29,7 +29,7 @@ const DropBox = ({ handleNewFiles }: Props) => {
   return (
     <div className="h-full">
       <DropboxChooser
-        appKey={'7f0txhw5fuyg0ud'}
+        appKey={'YOUR_APP_KEY'}
         success={handleSuccess}
         cancel={() => {}}
         multiselect={true}
@@ -37,14 +37,22 @@ const DropBox = ({ handleNewFiles }: Props) => {
         folderselect={true}
       >
         <button
-          title="dropbox-upload"
-          className="shadow-md p-2 bg-white dark:bg-[#484848] rounded-md h-[32.4px] lg:h-[50px] 2xl:h-[50px] xl:h-[32.4px] hover:scale-105 transition-all duration-200 ease-in"
+          type="button"
+          aria-label="dropbox-upload"
+          className={`${
+            onDropdown
+              ? 'flex items-center gap-2 text-sm md:text-base text-[#164B45] dark:text-[#f5f5f5] h-4'
+              : 'shadow-md p-2 bg-white dark:bg-[#484848] rounded-md hover:scale-105 transition-all duration-200 ease-in h-[32.4px] lg:h-[50px] xl:h-[32.4px] 2xl:h-[50px]'
+          }`}
         >
           <Image
             className="h-full w-auto"
             src={dropboxIcon}
             alt="dropbox-icon"
           />
+          <p className={`${onDropdown ? 'block text-nowrap' : 'hidden'}`}>
+            From Dropbox
+          </p>
         </button>
       </DropboxChooser>
     </div>

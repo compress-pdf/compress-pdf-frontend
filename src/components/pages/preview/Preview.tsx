@@ -1,14 +1,15 @@
 'use client';
 import { Dialog, DialogPanel } from '@headlessui/react';
-import React, { useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import useTouchableDevice from '@/hooks/useTouchableDevice';
 
 type TypePreview = {
   url: string;
+  children: ReactNode;
 };
 
-const Preview = ({ url }: TypePreview) => {
+const Preview = ({ url, children }: TypePreview) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const { isTouchable } = useTouchableDevice();
@@ -18,12 +19,13 @@ const Preview = ({ url }: TypePreview) => {
   };
 
   return (
-    <div>
+    <>
       <button
-        className="border w-full bg-blue-500 text-white rounded py-2 px-4"
+        title="preview"
+        className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10"
         onClick={handleClick}
       >
-        Preview
+        {children}
       </button>
       <Dialog
         open={isOpen}
@@ -63,7 +65,7 @@ const Preview = ({ url }: TypePreview) => {
           </DialogPanel>
         </div>
       </Dialog>
-    </div>
+    </>
   );
 };
 

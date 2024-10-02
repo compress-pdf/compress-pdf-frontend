@@ -1,23 +1,33 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 // Define the type for the actions in the dropdown
 type DropdownAction = {
-  label: string;
-  onClick: () => void;
+  label: ReactNode;
+  onClick?: () => void;
 };
 
 // Define the prop types for the SplitButton component
 interface SplitButtonProps {
   onMainClick: () => void;
   dropdownActions: DropdownAction[];
+  label?: ReactNode;
+  className?: string;
+  classNameDropdownIcon?: string;
+  classNameDropdown?: string;
 }
 
 const SplitButton: React.FC<SplitButtonProps> = ({
   onMainClick,
   dropdownActions,
+  label = '',
+  className = '',
+  classNameDropdownIcon = '',
+  classNameDropdown = '',
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null); // Reference to the dropdown element
+  const modalRef = useRef<HTMLDivElement>(null); // Reference to the modal element
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -32,7 +42,9 @@ const SplitButton: React.FC<SplitButtonProps> = ({
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        !dropdownRef.current.contains(event.target as Node) &&
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
       }
@@ -51,16 +63,26 @@ const SplitButton: React.FC<SplitButtonProps> = ({
         <button
           type="button"
           onClick={handleMainClick}
-          className="bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-4 py-2 rounded-l-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent text-nowrap  transition-all duration-200 ease-in "
+          className={twMerge(
+            'bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-4 py-2 rounded-l-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent text-nowrap  transition-all duration-200 ease-in',
+            className
+          )}
         >
-          Add more
+          {label}
         </button>
 
         {/* Dropdown Toggle Button */}
         <button
+          title="toggle dropdown"
           type="button"
-          className="bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-3 py-2 rounded-r-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent  transition-all duration-200 ease-in "
-          onClick={toggleDropdown}
+          className={twMerge(
+            'bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-3 py-2 rounded-r-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent  transition-all duration-200 ease-in ',
+            classNameDropdownIcon
+          )}
+          onClick={event => {
+            event.stopPropagation(); // Prevent modal from opening
+            toggleDropdown();
+          }}
         >
           <svg
             className="w-5 h-5"
@@ -81,16 +103,22 @@ const SplitButton: React.FC<SplitButtonProps> = ({
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 z-50 rounded-md shadow-lg bg-white  dark:bg-[#2c2c2c] text-[#4B5563] dark:text-slate-100 ring-1 ring-black ring-opacity-5  transition-all duration-200 ease-in ">
+        <div
+          className={twMerge(
+            'origin-top-right absolute right-0 mt-2 w-56 z-50 rounded-md shadow-lg bg-white dark:bg-[#2c2c2c] text-[#4B5563] dark:text-slate-100 ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in',
+            classNameDropdown
+          )}
+        >
           <div className="py-1">
             {dropdownActions.map((action, index) => (
               <button
+                type="button"
+                title="dropdown option"
                 key={index}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700  hover:bg-slate-200 dark:bg-[#2c2c2c] dark:text-slate-100 dark:hover:bg-[#1b1b1b] transition-all duration-300 ease-in "
-                onClick={() => {
-                  action.onClick();
-                  setIsOpen(false); // Close dropdown after action
-                }}
+                className={twMerge(
+                  'block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-slate-200 dark:bg-[#2c2c2c] dark:text-slate-100 dark:hover:bg-[#1b1b1b] transition-all duration-300 ease-in',
+                  classNameDropdown
+                )}
               >
                 {action.label}
               </button>

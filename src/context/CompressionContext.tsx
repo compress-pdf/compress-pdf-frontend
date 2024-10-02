@@ -14,7 +14,6 @@ interface CompressionState {
   compressLevel?: number;
   enhancementLevel?: string;
   dpi?: number;
-  files: File[];
   rotationParameters: { [index: number]: number };
   rgb: boolean;
 }
@@ -25,7 +24,6 @@ interface CompressionContextType {
   updateCompressLevel: (level: number) => void;
   updateEnhancementLevel: (level: string) => void;
   updateDpi: (dpi: number) => void;
-  updateFiles: (files: File[]) => void;
   updateRotationParameters: (params: { [index: number]: number }) => void;
   updateRgb: (rgb: boolean) => void;
 }
@@ -41,7 +39,6 @@ export const CompressionProvider = ({ children }: { children: ReactNode }) => {
     compressLevel: 5,
     enhancementLevel: '0',
     dpi: 150,
-    files: [],
     rotationParameters: {},
     rgb: true,
   });
@@ -73,10 +70,6 @@ export const CompressionProvider = ({ children }: { children: ReactNode }) => {
     setState(prevState => ({ ...prevState, dpi }));
   };
 
-  const updateFiles = (files: File[]) => {
-    setState(prevState => ({ ...prevState, files }));
-  };
-
   const updateRotationParameters = (params: { [index: number]: number }) => {
     setState(prevState => ({
       ...prevState,
@@ -96,7 +89,6 @@ export const CompressionProvider = ({ children }: { children: ReactNode }) => {
         updateCompressLevel,
         updateEnhancementLevel,
         updateDpi,
-        updateFiles,
         updateRotationParameters,
         updateRgb,
       }}

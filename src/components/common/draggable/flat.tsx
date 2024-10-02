@@ -80,7 +80,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
       ) : (
         <SectionContainer
           className="flex flex-col justify-between draggable-container overflow-x-hidden max-w-full box-content pt-2"
-          id="jojo"
+          id="pdf-scrollable"
         >
           <div
             className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[35px] pt-[41.42px] md:pt-[55px]`}
@@ -142,11 +142,23 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                           <GrRotateRight color="inherit" />
                         </button>
                         <button
+                          type="button"
                           title="delete-button"
                           onClick={() => onDeleteFile(index)}
                           className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
                         >
-                          Delete
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="13"
+                            height="16"
+                            viewBox="0 0 13 16"
+                            className="fill-[#163B45] dark:fill-slate-100"
+                          >
+                            <path
+                              d="M0.864784 13.8136C0.864784 14.76 1.63913 15.5344 2.58556 15.5344H9.46868C10.4151 15.5344 11.1895 14.76 11.1895 13.8136V3.48892H0.864784V13.8136ZM12.0498 0.907752H9.03848L8.17809 0.0473633H3.87615L3.01576 0.907752H0.00439453V2.62853H12.0498V0.907752Z"
+                              fill="inherit"
+                            />
+                          </svg>
                         </button>
                       </div>
                     </div>

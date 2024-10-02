@@ -12,9 +12,10 @@ import Tooltip from '../core/Tooltip';
 
 type Props = {
   handleNewFiles: (files: File[]) => void;
+  onDropdown?: boolean;
 };
 
-const LinkComponent = ({ handleNewFiles }: Props) => {
+const LinkComponent = ({ handleNewFiles, onDropdown = false }: Props) => {
   const t = useTranslations('common');
   const { setLoading } = useLoading();
   const [isOpen, setIsOpen] = useState(false);
@@ -22,14 +23,13 @@ const LinkComponent = ({ handleNewFiles }: Props) => {
   const [validationMessages, setValidationMessages] = useState<string[]>([]);
   const [isPending, startTransition] = useTransition();
 
-  // Create a ref for the URL input
   const UrlInputRef = useRef<HTMLInputElement>(null);
 
   const closeModal = () => setIsOpen(false);
   const openModal = () => {
     setIsOpen(true);
     setValidationMessages([]);
-    setURL(''); // Clear URL when opening modal
+    setURL('');
   };
 
   const handleURLSubmit = async () => {
@@ -50,9 +50,9 @@ const LinkComponent = ({ handleNewFiles }: Props) => {
         if (file) {
           handleNewFiles([file]);
           closeModal();
-          setURL(''); // Clear the URL input after a successful upload
+          setURL('');
           if (UrlInputRef.current) {
-            UrlInputRef.current.value = ''; // Clear the input ref
+            UrlInputRef.current.value = '';
           }
         }
       } catch (error) {
@@ -65,14 +65,25 @@ const LinkComponent = ({ handleNewFiles }: Props) => {
 
   return (
     <>
-      <Tooltip content={t('heroSectionTooltip.url')} className="h-full">
+      <Tooltip
+        content={t('heroSectionTooltip.url')}
+        className={`h-full`}
+        hide={onDropdown}
+      >
         <button
-          title="open-url-modal"
-          id="open-url-modal"
+          type="button"
+          aria-label="open-url-modal"
           onClick={openModal}
-          className="shadow-md p-2 bg-white dark:bg-[#484848] rounded-md h-full hover:scale-105 transition-all duration-200 ease-in"
+          className={`${
+            onDropdown
+              ? 'flex items-center gap-2 text-sm md:text-base text-[#164B45] dark:text-[#f5f5f5] h-4'
+              : 'shadow-md p-2 bg-white dark:bg-[#484848] rounded-md hover:scale-105 transition-all duration-200 ease-in h-full'
+          }`}
         >
           <UrlIcon />
+          <p className={`${onDropdown ? 'block text-nowrap' : 'hidden'}`}>
+            From URL
+          </p>
         </button>
       </Tooltip>
 
@@ -89,7 +100,6 @@ const LinkComponent = ({ handleNewFiles }: Props) => {
             required
             onChange={e => setURL(e.target.value)}
             type="text"
-            id="url"
           />
           {validationMessages.length > 0 && (
             <div className="text-red-500 mt-2 text-sm">
@@ -108,7 +118,6 @@ const LinkComponent = ({ handleNewFiles }: Props) => {
             onClick={handleURLSubmit}
             className="w-full justify-center"
             disabled={isPending}
-            id="continue-with-url"
           >
             {t('urlModal.buttonLabel')}
           </Button>

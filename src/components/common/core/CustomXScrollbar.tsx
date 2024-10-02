@@ -1,18 +1,23 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 
 interface CustomXScrollbarProps {
   divId: string;
+  className?: string;
 }
 
-const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({ divId }) => {
+const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({
+  divId,
+  className = '',
+}) => {
   const scrollbarRef = useRef<HTMLDivElement | null>(null);
-  const thumbRef = useRef<HTMLDivElement | null>(null);
+  const thumbRef = useRef<HTMLButtonElement | null>(null);
   const [scrollThumbWidth, setScrollThumbWidth] = useState<number>(0);
   const [scrollLeft, setScrollLeft] = useState<number>(0);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollStartLeft, setScrollStartLeft] = useState<number>(0);
-  const [isScrollbarVisible, setIsScrollbarVisible] = useState<boolean>(true);
+  const [, setIsScrollbarVisible] = useState<boolean>(true);
   const [zoomLevel, setZoomLevel] = useState<number>(window.devicePixelRatio); // Track zoom level
 
   const sensitivity = 2; // Sensitivity for scroll dragging
@@ -24,16 +29,24 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({ divId }) => {
     setScrollStartLeft(scrollLeft); // Store the current scroll position
   };
 
-  const handleMouseUp = () => {
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].clientX); // Store the starting touch X position
+    setScrollStartLeft(scrollLeft); // Store the current scroll position
+  };
+
+  const handleMouseUpOrTouchEnd = () => {
     setIsDragging(false);
   };
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMoveOrTouchMove = (e: MouseEvent | TouchEvent) => {
     if (!isDragging || !scrollbarRef.current || !thumbRef.current) return;
 
     const container = document.getElementById(divId);
     if (container) {
-      const deltaX = (e.clientX - startX) * sensitivity; // Apply sensitivity factor
+      const clientX =
+        'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const deltaX = (clientX - startX) * sensitivity; // Apply sensitivity factor
       const scrollBarWidth = scrollbarRef.current.offsetWidth;
       const containerScrollWidth =
         container.scrollWidth - container.clientWidth;
@@ -106,40 +119,36 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({ divId }) => {
   }, [divId, zoomLevel]);
 
   useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('mousemove', handleMouseMoveOrTouchMove);
+    document.addEventListener('mouseup', handleMouseUpOrTouchEnd);
+    document.addEventListener('touchmove', handleMouseMoveOrTouchMove);
+    document.addEventListener('touchend', handleMouseUpOrTouchEnd);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('mousemove', handleMouseMoveOrTouchMove);
+      document.removeEventListener('mouseup', handleMouseUpOrTouchEnd);
+      document.removeEventListener('touchmove', handleMouseMoveOrTouchMove);
+      document.removeEventListener('touchend', handleMouseUpOrTouchEnd);
     };
   }, [isDragging, startX, scrollStartLeft]);
 
   return (
-    <div className="w-full">
-      {isScrollbarVisible && ( // Conditionally render the scrollbar based on visibility
-        <div
-          ref={scrollbarRef}
-          className={`relative w-[60%] h-[12px] bg-[#e4e4e4] dark:bg-[#a5a5a5] rounded-lg mt-2 block mx-auto`}
-        >
-          <div
-            role="button"
-            ref={thumbRef}
-            tabIndex={0} // Make the element focusable
-            className="absolute h-full bg-[#8b8b8b] dark:bg-[#535353] rounded-lg cursor-pointer"
-            style={{
-              width: `${scrollThumbWidth}px`,
-              left: `${scrollLeft}px`,
-            }}
-            onMouseDown={handleMouseDown}
-            onKeyDown={e => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                handleMouseDown(e as never); // Trigger onMouseDown when pressing Enter or Space
-              }
-            }}
-          />
-        </div>
-      )}
+    <div className={twMerge('w-full', className)}>
+      <div
+        ref={scrollbarRef}
+        className={`relative w-[60%] h-[10px] bg-[#e4e4e4] rounded-lg mt-2 block mx-auto`}
+      >
+        <button
+          ref={thumbRef}
+          className="absolute h-full bg-[#8b8b8b] rounded-lg cursor-pointer"
+          style={{
+            width: `${scrollThumbWidth}px`,
+            left: `${scrollLeft}px`,
+          }}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
+        />
+      </div>
     </div>
   );
 };
