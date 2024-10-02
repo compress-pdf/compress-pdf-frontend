@@ -11,22 +11,19 @@ jobs:
 
     steps:
       - name: Checkout Code from Repository ⤵️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Docker Buildx 🏗️
-        uses: docker/setup-buildx-action@v2
-        with:
-          install: true
+        uses: docker/setup-buildx-action@v3
 
       - name: Create .env file 📄
-        run: |
-          echo "${{ vars.ENV }}" > .env
+        run: echo "${{ vars.ENV }}" > .env
 
       - name: Log in to GitHub Container Registry 🔑
         run: echo "${{ vars.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build and push Docker image 🐋
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./Dockerfile
@@ -40,7 +37,7 @@ jobs:
 
     steps:
       - name: Checkout Code from Repository ⤵️
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install sshpass 🪪
         run: sudo apt-get install -y sshpass
@@ -53,9 +50,31 @@ jobs:
           SSH_PASSWORD: ${{ vars.VPS_PASSWORD }}
         run: |
           sshpass -p $SSH_PASSWORD ssh -p $SSH_PORT -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
+            echo -e "\n Logging in to GitHub Container Registry 🗝️ \n"
             docker login ghcr.io -u ${{ github.actor }} --password ${{ vars.GHCR_PAT }}
-            docker container stop compress-next || true
-            docker container rm compress-next || true
+
+            if [ "$(docker ps -q -f name=compress-next)" ]; then
+                echo -e "\n Stopping running container: compress-next 🛑 \n"
+                docker container stop compress-next
+            else
+                echo -e "\n No running container named 'compress-next' to stop ⚠️ \n"
+            fi
+
+            if [ "$(docker container ls -a -q -f name=compress-next)" ]; then
+                echo -e "\n Removing stopped container: compress-next 🚧 \n"
+                docker container rm compress-next
+            else
+                echo -e "\n No container named 'compress-next' to remove ⚠️ \n"
+            fi
+
+            echo -e "\n Pulling the latest image from GHCR 📥 \n"
             docker image pull ghcr.io/compress-pdf/compress-next
+
+            echo -e "\n Running the new container: compress-next 🛩️ \n"
             docker run -d --name compress-next -p 5000:5000 ghcr.io/compress-pdf/compress-next
+
+            echo -e "\n Pruning unused Docker images 🧹 \n"
+            docker image prune -f
+
+            echo -e "\n Your application is live! 🎉 \n"
           EOF
