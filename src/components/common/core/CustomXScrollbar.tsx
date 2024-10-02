@@ -140,6 +140,7 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({
       >
         <button
           ref={thumbRef}
+          type="button"
           className="absolute h-full bg-[#8b8b8b] rounded-lg cursor-pointer"
           style={{
             width: `${scrollThumbWidth}px`,

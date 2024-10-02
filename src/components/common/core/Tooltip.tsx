@@ -74,7 +74,7 @@ const Tooltip = ({
             left: x ?? 0,
             pointerEvents: 'none',
           }}
-          className={`bg-[#163b45] dark:bg-[#F2F2F2] text-[#fafafa] dark:text-[#000000] w-[120px] font-normal leading-tight text-center text-sm px-[10px] py-2 rounded shadow-lg z-50 border border-slate-500 ${
+          className={`bg-[#163b45] dark:bg-[#F2F2F2] text-[#fafafa] dark:text-[#000000] w-[182px] font-normal leading-tight text-left text-sm px-[10px] py-2 rounded shadow-lg z-50 border border-slate-500 ${
             hide && 'hidden'
           }`}
         >
