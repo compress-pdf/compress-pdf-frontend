@@ -13,33 +13,40 @@ const Footer = () => {
   const t = useTranslations('common');
   const footerLinks = t.raw('footer.links');
 
+  const socialClasses =
+    'rounded-[var(--Radius-sm,_6px)] border-[1.5px] border-[var(--Neutrals-Base-White,_#FAFAFA)] bg-[var(--Base-Base-White,_#FAFAFA)] shadow-[inset_0px_12px_12px_0px_rgba(255,_255,_255,_0.12),_inset_0px_-2px_2px_0px_rgba(48,_48,_48,_0.10)] h-10 w-10 flex items-center justify-center dark:border-[#3C3C3C] dark:bg-[#323232] dark:shadow-none dark:border-[#404040]';
+
   return (
     <footer className="bg-[#ECECEC] dark:bg-[#3C3C3C] w-full py-4 mx-auto">
       <SectionContainer className="flex 2xl:flex-row flex-col gap-y-2 justify-between items-center text-sm font-normal md:font-semibold">
         <div className="flex gap-x-2">
-          <div
-            className="rounded-[var(--Radius-sm,_6px)] border border-[var(--Neutrals-Base-White,_#FAFAFA)] bg-[var(--Base-Base-White,_#FAFAFA)] shadow-[inset_0px_12px_12px_0px_rgba(255,_255,_255,_0.12),_inset_0px_-2px_2px_0px_rgba(48,_48,_48,_0.10)] h-10 w-10 flex items-center justify-center
-            dark:border-[#3C3C3C] dark:bg-[#323232]
-          "
-          >
+          <div className={socialClasses}>
             <Image
               src={FacebookIcon}
               width={20}
               height={20}
               alt="logo"
+              unoptimized={true}
               // className="dark:bg-red-500 rounded-full"
             />
           </div>
-          <div className="rounded-[var(--Radius-sm,_6px)] border border-[var(--Neutrals-Base-White,_#FAFAFA)] bg-[var(--Base-Base-White,_#FAFAFA)] shadow-[inset_0px_12px_12px_0px_rgba(255,_255,_255,_0.12),_inset_0px_-2px_2px_0px_rgba(48,_48,_48,_0.10)] h-10 w-10 flex items-center justify-center dark:border-[#3C3C3C] dark:bg-[#323232]">
-            <Image src={LinkedInIcon} width={20} height={20} alt="logo" />
+          <div className={socialClasses}>
+            <Image
+              src={LinkedInIcon}
+              width={20}
+              height={20}
+              alt="logo"
+              unoptimized={true}
+            />
           </div>
-          <div className="rounded-[var(--Radius-sm,_6px)] border border-[var(--Neutrals-Base-White,_#FAFAFA)] bg-[var(--Base-Base-White,_#FAFAFA)] shadow-[inset_0px_12px_12px_0px_rgba(255,_255,_255,_0.12),_inset_0px_-2px_2px_0px_rgba(48,_48,_48,_0.10)] h-10 w-10 flex items-center justify-center dark:border-[#3C3C3C] dark:bg-[#323232]">
+          <div className={socialClasses}>
             <Image
               src={TwitterIcon}
               className="invert dark:invert-0"
               width={20}
               height={20}
               alt="logo"
+              unoptimized={true}
             />
           </div>
         </div>
@@ -48,7 +55,7 @@ const Footer = () => {
           {footerLinks?.map((item: { label: string; link: string }) => (
             <li key={item.label}>
               <Link
-                className=" text-sm md:text-md 2xl:text-base leading-7 text-[#163B45] dark:text-white"
+                className=" text-sm md:text-md 2xl:text-base leading-7 text-[#163B45] dark:text-[#FAFAFA] font-normal"
                 href={item.link}
               >
                 {item.label}
@@ -57,9 +64,9 @@ const Footer = () => {
           ))}
         </ul>
       </SectionContainer>
-      <hr className="my-3 border border-gray dark:border-[#727272] " />
+      <hr className="my-3 border[0.2px] border-gray dark:border-[#727272]" />
       <SectionContainer className="flex justify-center items-center ">
-        <p className="text-[10px] md:text-sm 2xl:text-md text-[#949494] dark:text-white leading-4">
+        <p className="text-[10px] md:text-sm 2xl:text-md text-[#949494] dark:text-[#FAFAFA] leading-4">
           {t('footer.copyright')}
         </p>
       </SectionContainer>
