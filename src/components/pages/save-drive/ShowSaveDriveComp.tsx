@@ -1,8 +1,6 @@
 'use client';
 import React from 'react';
 
-import Preview from '../preview/Preview';
-
 import SaveDrive from './SaveDrive';
 
 type FileType = {
@@ -29,7 +27,7 @@ const ShowSaveDriveComp = ({ files }: Props) => {
   return (
     <div className="flex justify-center items-center h-[60vh]">
       {files.map((file: FileType, index: number) => {
-        const fileUrl = URL.createObjectURL(file);
+        const fileUrl: string = URL.createObjectURL(file);
         return (
           <div
             key={index}
@@ -39,7 +37,7 @@ const ShowSaveDriveComp = ({ files }: Props) => {
             <p>Size: {file.size} bytes</p>
 
             <SaveDrive PDF_URL={fileUrl} />
-            <Preview url={fileUrl} />
+            {/* <Preview url={fileUrl} /> */}
           </div>
         );
       })}

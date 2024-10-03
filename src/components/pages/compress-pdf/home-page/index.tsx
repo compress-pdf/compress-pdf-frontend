@@ -5,7 +5,7 @@ import { pdfjs } from 'react-pdf';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-import helpers from '@/services/helpers';
+import helpers, { fileArrayToFileList } from '@/services/helpers';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 import SectionContainer from '@/components/common/containers/SectionContainer';
 import CustomToast from '@/components/common/core/ToastMessage';
@@ -13,6 +13,7 @@ import pinkStarIcon from '@/assets/icons/svgs/pinkStar.svg';
 import brownStarIcon from '@/assets/icons/svgs/brownStar.svg';
 import { useLoading } from '@/context/UploadingContext';
 import { useCompressionContext } from '@/context/CompressionContext';
+import { useRouter } from '@/i18n/routing';
 
 import GradientOne from './backgrounds/gradient-one';
 import BeforeUpload from './UploadSection/BeforeUpload';
@@ -30,16 +31,17 @@ const HomePageContent = ({
   children: ReactNode[];
   tool: string;
 }) => {
-  const { updateFiles, updateRotationParameters } = useCompressionContext();
+  const { updateRotationParameters } = useCompressionContext();
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
   const { loading, setLoading } = useLoading();
   // const [progressValue, setProgressValue] = useState<number>(0);
   const { state } = useCompressionContext();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [showSaveDrive, setShowSaveDrive] = useState<boolean>(false);
   const [fileRotations, setFileRotations] = useState<{
     [index: number]: number;
   }>({});
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleFileChange = async (selectedFiles: FileList) => {
     const isCorrupted = await helpers.validatePdfFiles(selectedFiles, 4, 50);
@@ -67,7 +69,6 @@ const HomePageContent = ({
     });
 
     // Update the context with the current files and rotation parameters
-    updateFiles(pdfFiles);
     updateRotationParameters(fileRotations);
 
     // Append rotation parameters as a single JSON string
@@ -76,26 +77,55 @@ const HomePageContent = ({
     // Append other customization options from the state
     formData.append('compressType', state.compressType);
     if (state.compressLevel !== undefined) {
-      formData.append('compressLevel', state.compressLevel.toString());
+      formData.append('compression_level', state.compressLevel.toString());
     }
     if (state.enhancementLevel) {
-      formData.append('enhancementLevel', state.enhancementLevel);
+      formData.append('enhancement_level', state.enhancementLevel);
     }
     if (state.dpi !== undefined) {
       formData.append('dpi', state.dpi.toString());
     }
-    formData.append('rgb', state.rgb.toString());
+    formData.append('RGB', state.rgb.toString());
 
     // Debugging: log formData and state
-    console.log(Object.fromEntries(formData));
+    // console.log('pdfFiles:', pdfFiles);
 
-    setShowSaveDrive(true);
+    // Log all entries in the FormData
+    // Array.from(formData.entries()).forEach(([key, value]) => {
+    //   console.log(key, value);
+    // });
     setLoading(false);
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const apiLink =
+      state.compressType === 'by-level'
+        ? 'https://api.compresspdf.to/v1.1: with validation/general-compression'
+        : state.compressType === 'by-level-no-img'
+          ? 'https://api.compresspdf.to/v1.1:with validation/level-based-without-image'
+          : 'https://api.compresspdf.to/v1/image-based';
+
+    // hit axios with form data
+
+    router.push('/download/xyz');
   };
 
-  const handleNewFiles = (newFiles: File[]) => {
+  const handleNewFiles = async (newFiles: File[]) => {
     const updatedFiles = [...pdfFiles];
-    setPdfFiles([...updatedFiles, ...newFiles]);
+    const isCorrupted = await helpers.validatePdfFiles(
+      fileArrayToFileList([...updatedFiles, ...newFiles]),
+      4,
+      50
+    );
+    if (isCorrupted.valid) {
+      setPdfFiles([...updatedFiles, ...newFiles]);
+    } else {
+      isCorrupted.messages.map(each => {
+        CustomToast({
+          type: 'error',
+          message: each,
+        });
+      });
+    }
   };
 
   const handleUpdatedFiles = (updatedFiles: File[]) => {
@@ -147,6 +177,7 @@ const HomePageContent = ({
           </div>
         ) : !showSaveDrive && pdfFiles?.length !== 0 ? (
           <AfterUpload
+            handleFileChange={handleFileChange}
             handleSubmit={handleSubmit}
             handleNewFiles={handleNewFiles}
             handleDeleteFile={handleDeleteFile}

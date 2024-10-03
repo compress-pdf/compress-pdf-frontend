@@ -12,14 +12,15 @@ import CustomToast from '../core/ToastMessage';
 import { API_KEY, CLIENT_ID } from '@constants/credentials/const';
 
 interface IProps {
-  handleNewFiles: (files: File[]) => void; // Update type to handle an array of files
+  handleNewFiles: (files: File[]) => void;
+  onDropdown?: boolean;
 }
 
-const GoogleDrive = ({ handleNewFiles }: IProps) => {
+const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
   const { setLoading } = useLoading();
   const { validatePdfFiles } = helpers;
   const [authToken, setAuthToken] = useState<string | undefined>('');
-  const [filesPicked, setFilesPicked] = useState<CallbackDoc[]>([]); // Update to store multiple files
+  const [filesPicked, setFilesPicked] = useState<CallbackDoc[]>([]);
 
   const [openPicker, authRes] = useDrivePicker();
 
@@ -36,16 +37,13 @@ const GoogleDrive = ({ handleNewFiles }: IProps) => {
       viewId: 'PDFS',
       showUploadView: true,
       showUploadFolders: true,
-      multiselect: true, // Enable multiple selection
+      multiselect: true,
       customScopes: ['https://www.googleapis.com/auth/drive'],
       setOrigin: window.location.origin,
       viewMimeTypes: 'application/pdf',
       callbackFunction: async data => {
-        if (data.action === 'cancel') {
-          // console.log('User clicked cancel/close button');
-        }
         if (data.action === 'picked') {
-          setFilesPicked(data.docs); // Set all picked files
+          setFilesPicked(data.docs);
         }
       },
     });
@@ -78,20 +76,16 @@ const GoogleDrive = ({ handleNewFiles }: IProps) => {
           type: 'application/pdf',
         });
 
-        fetchedFiles.push(file); // Add file to the array
+        fetchedFiles.push(file);
       }
 
-      // Convert File[] to FileList-like object for validation
       const fileListLike = fileArrayToFileList(fetchedFiles);
 
-      // Validate fetched files (check if corrupted, etc.)
       const validationResult = await validatePdfFiles(fileListLike, 4, 50);
 
       if (validationResult.valid) {
-        // If all files are valid, pass them to the next step
         handleNewFiles(fetchedFiles);
       } else {
-        // If some files are invalid, show error messages in a toast
         validationResult.messages.forEach(message => {
           CustomToast({
             type: 'error',
@@ -100,7 +94,6 @@ const GoogleDrive = ({ handleNewFiles }: IProps) => {
         });
       }
     } catch (error) {
-      // Handle other errors (like network issues, fetch failures, etc.)
       CustomToast({
         type: 'error',
         message:
@@ -113,20 +106,26 @@ const GoogleDrive = ({ handleNewFiles }: IProps) => {
   };
 
   useEffect(() => {
-    // Fetch files only after the token is available and files have been picked
     if (authToken && filesPicked.length > 0) {
       fetchFiles(filesPicked);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authToken, filesPicked]);
 
   return (
     <button
+      type="button"
       aria-label="google drive"
       onClick={handleOpenPicker}
-      className="shadow-md p-2 bg-white dark:bg-[#484848] rounded-md h-full hover:scale-105 transition-all duration-200 ease-in"
+      className={`${
+        onDropdown
+          ? 'flex items-center gap-2 text-sm md:text-base text-[#164B45] dark:text-[#f5f5f5] h-4'
+          : 'shadow-md p-2 bg-white dark:bg-[#484848] rounded-md hover:scale-105 transition-all duration-200 ease-in h-full'
+      }`}
     >
       <GoogledriveIcon />
+      <p className={`${onDropdown ? 'block text-nowrap' : 'hidden'}`}>
+        From Drive
+      </p>
     </button>
   );
 };

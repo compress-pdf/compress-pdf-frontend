@@ -145,9 +145,9 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
             <Button
               key={label}
               className={`w-full px-0 py-[5.5px] rounded-[3.49px] justify-center ${
-                selectedCompression === label
-                  ? 'bg-gradient-to-tl from-[#b33f400d] to-[#b33f400d] text-[#B33F40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] dark:text-white'
-                  : 'dark:dark:bg-gradient-to-tl dark:from-[#545454] dark:to-[#545454] dark:text-white'
+                selectedCompression !== label
+                  ? 'bg-gradient-to-tl from-[#b33f400d] to-[#b33f400d] text-[#B33F40] dark:from-[#545454] dark:to-[#545454] dark:text-white'
+                  : 'dark:dark:bg-gradient-to-tl dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] dark:text-white'
               } `}
               onClick={() => setSelectedCompression(label)} // Set selected compression on button click
             >

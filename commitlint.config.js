@@ -27,6 +27,7 @@ module.exports = {
         'test', // Adding or updating tests
         'chore', // Maintenance or chore tasks
         'revert', // Reverting a previous commit
+        'merge',
       ],
     ],
     'references-empty': [0], // Allow commit messages without issue references

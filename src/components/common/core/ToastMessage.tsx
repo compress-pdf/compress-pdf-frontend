@@ -23,7 +23,7 @@ const getToastTypeEnum = (
 ): { toastType: ToastType; headerText: string } => {
   const headerText =
     type === 'success'
-      ? 'Sent Successfully'
+      ? 'Successful'
       : type === 'error'
         ? 'Error Occurred'
         : type === 'warning'

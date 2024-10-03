@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import DraggableFlat from '@/components/common/draggable/flat';
@@ -10,11 +10,17 @@ import SectionContainer from '@/components/common/containers/SectionContainer';
 import CustomXScrollbar from '@/components/common/core/CustomXScrollbar';
 import CustomizeSection from '@/components/common/blocks/CustomizeSection';
 import { Button } from '@/components/common/core/Button';
+import GoogleDrive from '@/components/common/blocks/GoogleDrive';
+import LinkComponent from '@/components/common/blocks/LinkComponent';
+import DropBox from '@/components/common/blocks/DropBox';
+import OneDrive from '@/components/common/blocks/OneDrive';
+import helpers, { fileListToFileArray } from '@/services/helpers';
 
 import arrowIcon from '@assets/icons/pngs/customize-page/arrow.png';
 
 // Use the native `File` type from JavaScript
 interface AfterUploadProps {
+  handleFileChange: (files: FileList) => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   pdfFiles: File[]; // Native `File` type
   handleNewFiles: (files: File[]) => void;
@@ -30,6 +36,8 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   handleSubmit,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleNewFiles,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  handleFileChange,
   handleDeleteFile,
   handleUpdatedFiles,
   pdfFiles,
@@ -38,10 +46,28 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   fileRotations,
 }) => {
   const [files, setSortedFiles] = useState<File[]>(pdfFiles);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setSortedFiles(pdfFiles); // Set sorted files when pdfFiles changes
   }, [pdfFiles]);
+
+  const handleAdditionalUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (e.target.files) {
+      handleNewFiles(fileListToFileArray(e.target.files));
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const isCorrupted = await helpers.validatePdfFiles(
+        e.target.files as FileList,
+        4,
+        50
+      );
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''; // Clear the input
+      }
+    }
+  };
 
   return (
     <FullwidthContainer>
@@ -55,33 +81,83 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
             rotateAnticlockwise={rotateAnticlockwise}
             fileRotations={fileRotations}
           />
-          <SectionContainer className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+          <SectionContainer className="relative flex flex-col-reverse gap-4 md:gap-0 md:flex-row-reverse items-center justify-between w-full text-sm md:text-[0.875rem] 3xl:text-base pt-4 md:pt-0">
+            {/* For md+ devices, this will be the 1st element. For md- devices, it will be the 2nd element. */}
+            <div className="flex items-center gap-2 order-1 md:order-2">
               Sort:{' '}
               <ToggleButtonGroup
                 files={files}
                 setSortedFiles={setSortedFiles}
               />
             </div>
-            <CustomXScrollbar divId={'jojo'} />
+
+            {/* For md+ devices, this will be the 2nd element. For md- devices, it will be the 1st element. */}
+            <CustomXScrollbar
+              divId={'pdf-scrollable'}
+              className="order-2 md:order-1 absolute left-1/2 transform -translate-x-1/2 w-[60%] -top-[20px] md:top-[8px]"
+            />
+
+            {/* Split button is always the 3rd element */}
             <SplitButton
+              className="py-1 px-1"
+              label={
+                <>
+                  <input
+                    title="add more"
+                    type="file"
+                    accept={'.pdf'}
+                    onChange={handleAdditionalUpload}
+                    ref={fileInputRef}
+                    multiple={true}
+                    id="addMore"
+                    className="hidden"
+                  />
+                  <label
+                    htmlFor="addMore"
+                    className="flex items-center gap-2 h-[24px]"
+                  >
+                    <span className="text-xl">+</span> Add More
+                  </label>
+                </>
+              }
               onMainClick={() => {}}
               dropdownActions={[
                 {
-                  label: 'Action 1',
-                  onClick: () => console.log('Action 1 clicked'),
+                  label: (
+                    <GoogleDrive
+                      handleNewFiles={handleNewFiles}
+                      onDropdown={true}
+                    />
+                  ),
                 },
                 {
-                  label: 'Action 2',
-                  onClick: () => console.log('Action 2 clicked'),
+                  label: (
+                    <DropBox
+                      handleNewFiles={handleNewFiles}
+                      onDropdown={true}
+                    />
+                  ),
                 },
                 {
-                  label: 'Action 3',
-                  onClick: () => console.log('Action 3 clicked'),
+                  label: (
+                    <OneDrive
+                      handleNewFiles={handleNewFiles}
+                      onDropdown={true}
+                    />
+                  ),
+                },
+                {
+                  label: (
+                    <LinkComponent
+                      handleNewFiles={handleNewFiles}
+                      onDropdown={true}
+                    />
+                  ),
                 },
               ]}
             />
           </SectionContainer>
+
           <CustomizeSection>
             <Button
               type="submit"
@@ -101,20 +177,6 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
               </div>
             </Button>
           </CustomizeSection>
-          {/* <div className="flex justify-center mb-5">
-            <button
-              type="submit"
-              className="bg-green-500 w-96 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2"
-            >
-              Compress
-            </button>
-          </div>
-          <div className="mx-auto justify-center flex">
-            <Cloud
-              handleNewFiles={handleNewFiles}
-              setIsLoading={setIsLoading}
-            />
-          </div> */}
         </form>
       </SectionContainer>
     </FullwidthContainer>

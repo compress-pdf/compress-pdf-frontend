@@ -442,12 +442,48 @@ export function fileArrayToFileList(filesArray: File[]) {
   return dataTransfer.files; // This returns a FileList
 }
 
+export function fileListToFileArray(fileList: FileList): File[] {
+  return Array.from(fileList);
+}
+
 export function numberToStringWithSign(number: number) {
   return number > 0 ? `+${number}` : `${number}`;
 }
 export function stringWithSignToNumber(str: string) {
   return parseInt(str, 10);
 }
+
+export const calculateTimeLeft = (expireTime: string) => {
+  // Get the current time
+  const now = new Date();
+
+  // Get the expiration time
+  const expireDate = new Date(expireTime);
+
+  // Calculate the difference in milliseconds
+  const difference = expireDate.getTime() - now.getTime();
+
+  // If the difference is negative, the time has already passed
+  if (difference <= 0) {
+    return {
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+    };
+  }
+
+  // Calculate hours, minutes, and seconds
+  const hours = Math.floor(difference / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+  return {
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
+  };
+};
+
 const helpers = {
   hexToRgb,
   sortAsc,

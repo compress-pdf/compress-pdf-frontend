@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import dynamic from 'next/dynamic';
 const GoogleDrive = dynamic(() => import('./GoogleDrive'), { ssr: false });
