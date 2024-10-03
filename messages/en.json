@@ -318,45 +318,43 @@
 
       "sectionThree": {
         "title": "How to Reduce PDF File Size Online?",
-        "steps": [
-          {
-            "stepNumber": 1,
-            "stepTitle": "Upload Your Files Directly to the Web",
-            "stepDescription": "Our tool allows you to upload files using 6 methods: local storage, drag & drop, Google Drive, OneDrive, Dropbox, and URL. Once uploaded, you'll be redirected to the customization page.",
-            "imageAlt": "File upload options, including URL pasting and drag-and-drop, with a highlighted user interface for uploading documents.",
-            "imageUploadTitle": "Upload your document",
-            "inputLabel": "Paste your URL",
-            "placeholder": "https://www.figma.com/design"
-          },
-          {
-            "stepNumber": 2,
-            "stepTitle": "Customize According to Your Preferences",
-            "stepDescription": "Our tool lets you customize files by adjusting compression (extreme, medium, less), image settings (brightness, contrast, color), resolution, and color mode (color or B&W). You can also remove images, rotate pages, add or remove files, and sort by size or alphabetically. Click to start compression.",
-            "imageAlt": "PDF customization options, including image resolution, file adjustments, and compression levels, with a 'before and after' comparison of file sizes.",
-            "before": "Before",
-            "size": "10kb",
-            "after": "After",
-            "afterSize": "1.1 MB",
-            "rangeLabel": "Image Resolution",
-            "rangeValue": "40%",
-            "buttonLabel": "Image Files",
-            "keep": "Keep",
-            "remove": "Remove",
-            "compressionLevel": "Compression Level",
-            "compressionValue": "40%"
-          },
-          {
-            "stepNumber": 3,
-            "stepTitle": "Download, Share, and Manage Compressed Files",
-            "stepDescription": "Download files individually or as a zip, and save to Dropbox, OneDrive, or Google Drive. Share via Facebook, LinkedIn, Gmail, Twitter, or QR code/URL link. Edit names, delete files, print with settings (copies, paper size, orientation), and preview for quality.",
-            "imageAlt": "File download interface showing a titled PDF and its progress bar.",
-            "firstImageTitle": "Your PDF Name",
-            "percentOne": "10%",
-            "size": "90kb",
-            "rangeLevel": "Downloading Your Zip",
-            "rangeValue": "65%"
-          }
-        ]
+        "stepOne": {
+          "stepNumber": "Step 1",
+          "stepTitle": "Upload Your Files Directly to the Web",
+          "stepDescription": "Our tool allows you to upload files using 6 methods: local storage, drag & drop, Google Drive, OneDrive, Dropbox, and URL. Once uploaded, you'll be redirected to the customization page.",
+          "imageAlt": "File upload options, including URL pasting and drag-and-drop, with a highlighted user interface for uploading documents.",
+          "imageUploadTitle": "Upload your document",
+          "inputLabel": "Paste your URL",
+          "placeholder": "https://www.figma.com/design"
+        },
+        "stepTwo": {
+          "stepNumber": "Step 2",
+          "stepTitle": "Customize According to Your Preferences",
+          "stepDescription": "Our tool lets you customize files by adjusting compression (extreme, medium, less), image settings (brightness, contrast, color), resolution, and color mode (color or B&W). You can also remove images, rotate pages, add or remove files, and sort by size or alphabetically. Click to start compression.",
+          "imageAlt": "PDF customization options, including image resolution, file adjustments, and compression levels, with a 'before and after' comparison of file sizes.",
+          "before": "Before",
+          "size": "10kb",
+          "after": "After",
+          "afterSize": "1.1 MB",
+          "rangeLabel": "Image Resolution",
+          "rangeValue": "40%",
+          "buttonLabel": "Image Files",
+          "keep": "Keep",
+          "remove": "Remove",
+          "compressionLevel": "Compression Level",
+          "compressionValue": "40%"
+        },
+        "stepThree": {
+          "stepNumber": "Step 3",
+          "stepTitle": "Download, Share, and Manage Compressed Files",
+          "stepDescription": "Download files individually or as a zip, and save to Dropbox, OneDrive, or Google Drive. Share via Facebook, LinkedIn, Gmail, Twitter, or QR code/URL link. Edit names, delete files, print with settings (copies, paper size, orientation), and preview for quality.",
+          "imageAlt": "File download interface showing a titled PDF and its progress bar.",
+          "firstImageTitle": "Your PDF Name",
+          "percentOne": "10%",
+          "size": "90kb",
+          "rangeLevel": "Downloading Your Zip",
+          "rangeValue": "65%"
+        }
       },
 
       "faqSection": {
