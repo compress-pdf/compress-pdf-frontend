@@ -1,58 +1,107 @@
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import React from 'react';
 
-const SectionThree = () => {
-  const t = useTranslations('general');
+import ImageOne from '@/assets/icons/pngs/home/section-three-one.png';
+import ImageTwo from '@/assets/icons/pngs/home/section-three-two.png';
+import ImageThree from '@/assets/icons/pngs/home/section-three-three.png';
+
+const SectionThree = ({ tool }: { tool: string }) => {
+  const t = useTranslations(tool);
 
   return (
     <section>
-      <h2 className="text-3xl md:text-[2.5rem] mb-6 leading-[3.4rem] font-bold  text-[#163B45] dark:text-[#fafafa]">
+      <h2 className="text-lg leading-6 md:text-xl md:leading-7 md:full w-[80%] mx-auto lg:text-xl lg:leading-8 xl:text-xl  2xl:text-[28px] 2xl:leading-8 3xl:text-[34px] 3xl:leading-10 font-bold text-[#163B45] dark:text-[#FAFAFA] ">
         {t('content.sectionThree.title')}
       </h2>
-      <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8">
-            <div className="flex-1 justify-start">
-              <div className="inline-block  rounded-full bg-red-100 px-3 py-1 text-sm text-red-700 mb-4">
-                Step 1
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-                Upload Your Files Directly to the Web
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Our tool allows you to upload files using 6 methods: local
-                storage, drag & drop, Google Drive, OneDrive, Dropbox, and URL.
-                Once uploaded, you all be redirected to the customization page.
-              </p>
+
+      <div className="mt-10 flex flex-col lg:gap-10 gap-5 ">
+        <div className="flex flex-col md:flex-row lg:gap-[14px] gap-1 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
+          <div className="flex flex-col items-start gap-y-5 lg:pl-10 px-5 lg:py-[37px] py-5">
+            <span className="text-base rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] px-[1px]">
+              <span className="px-5 bg-[#F3F3F3] rounded-[22px] leading-none text-[#B23F40]">
+                {t('content.sectionThree.stepOne.stepNumber')}
+              </span>
+            </span>
+            <h2 className="3xl:text-xl font-semibold 3xl:leading-7 2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left 3xl:w-[80%] w-full ">
+              {t('content.sectionThree.stepOne.stepTitle')}
+            </h2>
+            <p
+              className="2xl:text-base 3xl:leading-[1.7rem] xl:text-md xl:leading-6 
+               lg:text-base md:text-md text-sm leading-5 font-normal  text-justify text-[#6B7280] dark:text-[#E1DEDE]"
+            >
+              {t('content.sectionThree.stepOne.stepDescription')}
+            </p>
+          </div>
+          <div>
+            <Image
+              src={ImageOne}
+              width={0}
+              height={0}
+              className="w-full h-auto bg-transparent "
+              alt={t('content.sectionThree.stepOne.imageAlt')}
+            />
+          </div>
+        </div>
+
+        <div className="flex 3xl:flex-row flex-col gap-2">
+          {/* left side  */}
+          <div className="flex flex-col items-start px-10 py-[37px] bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
+            <span className="text-base rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] px-[1px]">
+              <span className="px-5 bg-[#F3F3F3] rounded-[22px] leading-none text-[#B23F40]">
+                {t('content.sectionThree.stepTwo.stepNumber')}
+              </span>
+            </span>
+
+            <h2 className="3xl:text-xl 3xl:leading-[1.8rem] 3xl:w-[80%] w-full  2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left mt-4 font-semibold">
+              {t('content.sectionThree.stepTwo.stepTitle')}
+            </h2>
+            <p
+              className="2xl:text-base 3xl:leading-[1.7rem] xl:text-md xl:leading-6 
+               lg:text-base md:text-md text-sm leading-5 font-normal mt-4 lg:mt-[15px] text-justify text-[#6B7280] dark:text-[#E1DEDE]"
+            >
+              {t('content.sectionThree.stepTwo.stepDescription')}
+            </p>
+
+            <div className="3xl:w-full w-[80%] mx-auto">
+              <Image
+                src={ImageTwo}
+                width={0}
+                height={0}
+                unoptimized
+                className="pt-2 w-full h-[200px]"
+                alt={t('content.sectionThree.stepTwo.imageAlt')}
+              />
             </div>
-            <div className="w-full lg:w-1/2 bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="bg-gray-800 p-2 flex items-center space-x-2">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm text-gray-500">Paste your URL</span>
-                  <span className="text-sm text-blue-500">Jack Alex</span>
-                </div>
-                <div className="relative mb-4">
-                  <input
-                    type="text"
-                    placeholder="https://www.figma.com/design"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                  {/* <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" /> */}
-                  <p className="text-sm text-gray-500 mb-2">
-                    Upload your document
-                  </p>
-                  <button className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2">
-                    Choose File
-                  </button>
-                </div>
-              </div>
+          </div>
+
+          {/* right side  */}
+          <div className="flex flex-col items-start px-10 py-[37px] bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
+            <span className="text-base rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] px-[1px]">
+              <span className="px-5 bg-[#F3F3F3] rounded-[22px] leading-none text-[#B23F40]">
+                {t('content.sectionThree.stepThree.stepNumber')}
+              </span>
+            </span>
+
+            <h2 className="3xl:text-xl 3xl:leading-[1.8rem] 3xl:w-[90%] w-full 2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left mt-4 font-semibold">
+              {t('content.sectionThree.stepThree.stepTitle')}
+            </h2>
+            <p
+              className="2xl:text-base 3xl:leading-[1.7rem] xl:text-md xl:leading-6 
+               lg:text-base md:text-md text-sm leading-5 font-normal mt-4 lg:mt-[15px] text-justify text-[#6B7280] dark:text-[#E1DEDE]"
+            >
+              {t('content.sectionThree.stepThree.stepDescription')}
+            </p>
+
+            <div className="3xl:w-full w-[80%] mx-auto">
+              <Image
+                src={ImageThree}
+                width={0}
+                height={0}
+                unoptimized
+                className="pt-8 w-full h-[200px]"
+                alt={t('content.sectionThree.stepTwo.imageAlt')}
+              />
             </div>
           </div>
         </div>
