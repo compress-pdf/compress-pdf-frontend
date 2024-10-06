@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 import { useCompressionContext } from '@/context/CompressionContext';
 import {
@@ -23,6 +24,8 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
     updateRgb,
   } = useCompressionContext();
 
+  const t = useTranslations('common.custom');
+
   const { compressLevel, rgb, dpi, enhancementLevel, compressType } = state;
   // Manage compress type with specific states
   const [compressionType, setcompressionType] = useState<
@@ -31,7 +34,7 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
 
   // State for the buttons: Extreme Compression, Medium Compression, etc.
   const [selectedCompression, setSelectedCompression] = useState(
-    'Extreme Compression'
+    t('compression.extreme')
   );
   const [compressionLevel, setCompressionLevel] = useState(compressLevel);
   const [imageEnhancement, setImageEnhancement] = useState(
@@ -68,13 +71,13 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
   // Update compression level based on selected button
   useEffect(() => {
     switch (selectedCompression) {
-      case 'Extreme Compression':
+      case t('compression.extreme'):
         setCompressionLevel(3);
         break;
-      case 'Medium Compression':
+      case t('compression.medium'):
         setCompressionLevel(6);
         break;
-      case 'Less Compression':
+      case t('compression.low'):
         setCompressionLevel(9);
         break;
       default:
@@ -130,7 +133,7 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
           aria-pressed={isByLevelActive} // ARIA attribute to indicate the pressed state
           aria-label="Toggle Compression Level"
         >
-          <p>Compression Level</p>
+          <p> {t('compression.title')} </p>
           <RangeSlider
             min={1}
             max={9}
@@ -138,9 +141,9 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
             onChange={setCompressionLevel}
           />
           {[
-            'Extreme Compression',
-            'Medium Compression',
-            'Less Compression',
+            t('compression.extreme'),
+            t('compression.medium'),
+            t('compression.low'),
           ].map(label => (
             <Button
               key={label}
@@ -176,10 +179,8 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
           <div className="flex flex-col justify-between w-full md:w-1/2 self-stretch gap-[20px] flex-1">
             <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1">
               <Label
-                text={'Image Enhancement'}
-                tooltipContent={
-                  'Adjusts brightness, contrast, sharpness, and color to make an image clearer and more appealing.'
-                }
+                text={t('imageEnhancement.rangeLabel')}
+                tooltipContent={t('imageEnhancement.rangeTooltip')}
               />
               <RangeSlider
                 min={-3}
@@ -191,13 +192,14 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
             </div>
             <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1 flex flex-col">
               <Label
-                text={'Image Color Scope'}
-                tooltipContent={
-                  'Sets the color mode: "Original" for original color and "Grayscale" for black & white only.'
-                }
+                text={t('imageEnhancement.buttonLabel')}
+                tooltipContent={t('imageEnhancement.buttonTooltip')}
               />
               <ButtonGroup
-                options={['Original', 'GrayScale']}
+                options={[
+                  t('imageEnhancement.btnLabelOne'),
+                  t('imageEnhancement.btnLabelTwo'),
+                ]}
                 value={imageColorScope}
                 setValue={setImageColorScope}
               />
@@ -207,10 +209,8 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
           <div className="flex flex-col justify-between w-full md:w-1/2 self-stretch gap-[20px] flex-1">
             <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1">
               <Label
-                text={'Image Resolution'}
-                tooltipContent={
-                  'Controls detail in pixels: higher means clearer, lower means more pixelated.'
-                }
+                text={t('imageResolution.rangeLabel')}
+                tooltipContent={t('imageResolution.rangeTooltip')}
               />
               <RangeSlider
                 min={72}
@@ -223,13 +223,14 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
             </div>
             <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1 flex flex-col">
               <Label
-                text={'Image Files'}
-                tooltipContent={
-                  'Removes image files from the document to get smaller file size or keep images as it is in the pdf.'
-                }
+                text={t('imageResolution.buttonLabel')}
+                tooltipContent={t('imageResolution.buttonTooltip')}
               />
               <ButtonGroup
-                options={['Keep', 'Remove']}
+                options={[
+                  t('imageResolution.btnLabelOne'),
+                  t('imageResolution.btnLabelTwo'),
+                ]}
                 value={imageFiles}
                 setValue={newValue => {
                   setImageFiles(newValue);

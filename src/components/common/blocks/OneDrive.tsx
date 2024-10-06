@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { useTranslations } from 'next-intl';
 
 import OnedriveIcon from '@/assets/icons/svgs/upload-client/onedriveIcon';
 
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const OneDrive = ({ handleNewFiles, onDropdown = false }: Props) => {
+  const t = useTranslations('common.custom.add');
   const handleClick = () => {
     handleNewFiles([]);
   };
@@ -26,7 +28,7 @@ const OneDrive = ({ handleNewFiles, onDropdown = false }: Props) => {
     >
       <OnedriveIcon />
       <p className={`${onDropdown ? 'block text-nowrap' : 'hidden'}`}>
-        From OneDrive
+        {t('onedrive')}
       </p>
     </button>
   );

@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import QRCode from 'qrcode';
+import { useTranslations } from 'next-intl';
 
 import SplitButton from '@/components/common/core/SplitButton';
 import ModalWithButton from '@/components/common/core/ModalWithButton';
@@ -27,6 +28,7 @@ const DownloadMain = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [qr, setQr] = useState<string>('');
   const url = `https://pdfpack.com/TGxKkBC6L2k`;
+  const t = useTranslations('common.download');
 
   const generateQR = async (link: string): Promise<string | null> => {
     try {
@@ -54,7 +56,7 @@ const DownloadMain = () => {
       .then(() => {
         CustomToast({
           type: 'success',
-          message: `URL copied successfully`,
+          message: t('body.shareModal.successMessage'),
         });
       })
       .catch(err => {
@@ -64,7 +66,7 @@ const DownloadMain = () => {
 
   const files = [
     {
-      name: 'Dummy dcsfwvcdsd',
+      name: 'Dummy sample',
       size: '2MB',
       compressionPercentage: '-70%',
       compressedSize: '50KB',
@@ -79,10 +81,10 @@ const DownloadMain = () => {
           <div className="w-full md:w-[48%] lg:w-[44%] xl:w-[44%] 3xl:w-[56%] flex flex-col md:flex-row items-center md:items-start justify-between">
             <div className="flex flex-col gap-2 md:gap-4 justify-start text-center md:text-start">
               <h1 className="text-[#FF8224] text-md font-bold md:text-base lg:text-lg xl:text-base 2xl:text-lg 3xl:text-xl leading-4">
-                Download Compressed Files
+                {t('header.title')}
               </h1>
               <p className="text-xs md:text-sm lg:text-md xl:text-sm 2xl:text-[0.875rem] text-center md:text-left">
-                1 pdf optimized | 610 KB Total
+                1 {t('header.filesTitle')}| 610 KB {t('header.total')}
               </p>
             </div>
 
@@ -99,10 +101,10 @@ const DownloadMain = () => {
           <div className="w-full md:w-[52%] lg:w-[56%] xl:w-[56%] 3xl:w-[44%] flex flex-col md:flex-row items-center md:items-start justify-end md:gap-4">
             <div className="flex md:flex-col flex-row items-center gap-3">
               <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] 3xl:text-[1.125rem] text-[#FF8224] leading-4 md:leading-6">
-                Compression Time
+                {t('header.timeLabel')}
               </p>
               <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem]  3xl:text-[0.875rem] font-bold leading-4 md:leading-6">
-                00:59 sec
+                00:59 {t('header.time')}
               </p>
             </div>
 
@@ -126,7 +128,7 @@ const DownloadMain = () => {
                         fill="#FAFAFA"
                       />
                     </svg>
-                    Download Zip
+                    {t('header.buttonModal.label')}
                   </span>
                 }
                 dropdownActions={[
@@ -139,7 +141,7 @@ const DownloadMain = () => {
                           width={14}
                           alt={'download to dropbox'}
                         />
-                        Save to Dropbox
+                        {t('header.buttonModal.dropbox')}
                       </span>
                     ),
                   },
@@ -150,9 +152,9 @@ const DownloadMain = () => {
                           src={oneDriveIcon}
                           height={14}
                           width={14}
-                          alt={'download to onedrive'}
+                          alt={t('header.buttonModal.onedrive')}
                         />
-                        Save to OneDrive
+                        {t('header.buttonModal.onedrive')}
                       </span>
                     ),
                   },
@@ -163,9 +165,9 @@ const DownloadMain = () => {
                           src={googleDriveIcon}
                           height={14}
                           width={14}
-                          alt={'download to google drive'}
+                          alt={t('header.buttonModal.drive')}
                         />
-                        Save to Google Drive
+                        {t('header.buttonModal.drive')}
                       </span>
                     ),
                   },
@@ -197,7 +199,7 @@ const DownloadMain = () => {
               fill="#FAFAFA"
             />
           </svg>
-          <p className="mr-4 font-bold">Share :</p>
+          <p className="mr-4 font-bold">{t('footer.share')} :</p>
           <div className="flex space-x-2 items-center">
             <button className="bg-transparent ">
               <Image
@@ -253,7 +255,7 @@ const DownloadMain = () => {
               <div>
                 <div className="flex flex-col my-2 items-center gap-3">
                   <p className="text-[#163B45] dark:text-white text-[1.125rem] font-bold w-full text-center mb-5">
-                    Share QR
+                    {t('footer.qrModal.title')}
                   </p>
 
                   {qr && (
@@ -266,13 +268,13 @@ const DownloadMain = () => {
                     />
                   )}
                   <p className="text-[#6B7280] text-sm mb-2">
-                    Scan QR to Instantly Download{' '}
+                    {t('footer.qrModal.description')}
                   </p>
 
                   <div className="relative flex w-full border border-[#D8DAE5] dark:bg-[#353535] dark:border-transparent rounded-[8px] text-sm items-center">
                     <input
                       type="text"
-                      placeholder={'https://example.com/result'}
+                      placeholder={t('footer.qrModal.placeholder')}
                       value={url}
                       className="py-4 px-[18px] ps-4 w-full focus:outline-none h-8 bg-transparent font-light text-[#163B45] dark:text-[#ffffff] text-[0.875rem] pe-6"
                       readOnly
@@ -281,13 +283,15 @@ const DownloadMain = () => {
                       onClick={handleCopyURL}
                       className="rounded-[7px] my-1 me-1"
                     >
-                      Copy
+                      {t('footer.qrModal.buttonLabel')}
                     </Button>
                   </div>
                   <p className="text-sm text-[#F81818] mt-[13px]">
-                    Your files will be automatically deleted after
-                    {44}hour {37}min {9}
-                    sec
+                    {t('footer.qrModal.alert', {
+                      hour: '45',
+                      min: '37',
+                      sec: '9',
+                    })}
                   </p>
                 </div>
               </div>
@@ -296,7 +300,7 @@ const DownloadMain = () => {
         </div>
       </div>
       <p className="text-[#A8A4A4] dark:text-[#E1DEDE] font-light text-base md:text-lg w-fit flex items-center mx-auto gap-1">
-        Need further customization?
+        {t('footer.info')}
         <Link
           href="https://www.google.com"
           className="text-[#B23F40] flex items-center gap-1 font-normal"
@@ -305,10 +309,10 @@ const DownloadMain = () => {
             src={goBackIcon}
             height={22}
             width={22}
-            alt="go-back"
+            alt={t('footer.buttonLabel')}
             unoptimized
           ></Image>
-          Go back
+          {t('footer.buttonLabel')}
         </Link>
       </p>
     </>

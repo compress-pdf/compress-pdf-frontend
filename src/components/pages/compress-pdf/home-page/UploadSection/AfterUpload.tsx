@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import DraggableFlat from '@/components/common/draggable/flat';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
@@ -47,6 +48,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
 }) => {
   const [files, setSortedFiles] = useState<File[]>(pdfFiles);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations('common.custom');
 
   useEffect(() => {
     setSortedFiles(pdfFiles); // Set sorted files when pdfFiles changes
@@ -84,7 +86,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
           <SectionContainer className="relative flex flex-col-reverse gap-4 md:gap-0 md:flex-row-reverse items-center justify-between w-full text-sm md:text-[0.875rem] 3xl:text-base pt-4 md:pt-0">
             {/* For md+ devices, this will be the 1st element. For md- devices, it will be the 2nd element. */}
             <div className="flex items-center gap-2 order-1 md:order-2">
-              Sort:{' '}
+              {t('sort.title')}
               <ToggleButtonGroup
                 files={files}
                 setSortedFiles={setSortedFiles}
@@ -103,7 +105,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
               label={
                 <>
                   <input
-                    title="add more"
+                    title={t('add.dropDownTitle')}
                     type="file"
                     accept={'.pdf'}
                     onChange={handleAdditionalUpload}
@@ -116,7 +118,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                     htmlFor="addMore"
                     className="flex items-center gap-2 h-[24px]"
                   >
-                    <span className="text-xl">+</span> Add More
+                    <span className="text-xl">+</span> {t('add.buttonLabel')}
                   </label>
                 </>
               }
@@ -172,7 +174,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                   />
                 </div>
                 <p className="start-comp-anim flex-mt-0 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-2 3xl:mt-2">
-                  START COMPRESSING
+                  {t('compressButtonLabel')}
                 </p>
               </div>
             </Button>

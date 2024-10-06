@@ -24,7 +24,7 @@ const BeforeUpload = ({ handleFileChange, handleNewFiles, tool }: Props) => {
         iconAlt={t('content.heroSection.imageAlt')}
       />
       <small className="text-[#6B7280] font-normal mb-[16.78px] text-[0.875rem] leading-[170%] md:">
-        {t('content.heroSection.fileInfo')}
+        {t('content.heroSection.fileInfo', { file: '4', size: '50' })}
       </small>
       <p className="mb-[16.78px]">{tc('heroSectionTooltip.cloudInfo')}</p>
       <Cloud handleNewFiles={handleNewFiles} />

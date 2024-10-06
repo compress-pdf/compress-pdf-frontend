@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import useDrivePicker from 'react-google-drive-picker';
 import { CallbackDoc } from 'react-google-drive-picker/dist/typeDefs';
+import { useTranslations } from 'next-intl';
 
 import helpers, { fileArrayToFileList } from '@/services/helpers';
 import GoogledriveIcon from '@/assets/icons/svgs/upload-client/googledriveIcon';
@@ -21,6 +22,7 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
   const { validatePdfFiles } = helpers;
   const [authToken, setAuthToken] = useState<string | undefined>('');
   const [filesPicked, setFilesPicked] = useState<CallbackDoc[]>([]);
+  const t = useTranslations('common.custom.add');
 
   const [openPicker, authRes] = useDrivePicker();
 
@@ -124,7 +126,7 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
     >
       <GoogledriveIcon />
       <p className={`${onDropdown ? 'block text-nowrap' : 'hidden'}`}>
-        From Drive
+        {t('drive')}
       </p>
     </button>
   );
