@@ -1000,5 +1000,100 @@
         }
       }
     ]
+  },
+
+  "about": {
+    "heading": "Über PDF Komprimieren",
+    "description": "Willkommen bei Online PDF Komprimieren, Ihrer ersten Wahl für effiziente und hochwertige PDF-Komprimierung. Egal, ob Sie ein Profi sind, der große Berichte bearbeitet, ein Student, der Aufgaben einreicht, oder ein Kleinunternehmer, der Dokumente archiviert, wir erleichtern Ihren PDF-Management-Prozess.",
+    "sectionOne": {
+      "title": "Was ist unsere Mission?",
+      "description": "Bei PDF Komprimieren ist es unsere Mission, die Verwaltung von PDF-Dateien zu vereinfachen, indem wir ein benutzerfreundliches und effizientes Tool zur Komprimierung anbieten. Wir verstehen, dass große PDF-Dateien mühsam sein können, egal ob Sie Dokumente per E-Mail teilen, auf Websites hochladen oder einfach Speicherplatz sparen möchten. Unser Ziel ist es, eine nahtlose, zugängliche Lösung zu bieten, die Ihre Produktivität und Ihren Komfort verbessert und es Ihnen ermöglicht, Ihre PDF-Dateien mühelos zu handhaben."
+    },
+    "sectionTwo": {
+      "title": "Was bieten wir an?",
+      "description": "Wir bieten eine umfassende Palette an Funktionen, die alle Ihre Bedürfnisse in der PDF-Komprimierung abdecken:",
+      "items": [
+        {
+          "title": "Mehrere Upload-Systeme",
+          "description": "Laden Sie Ihre Dateien ganz einfach von Ihrem Gerät, aus der Cloud oder per Drag & Drop auf unsere Plattform hoch."
+        },
+        {
+          "title": "Flexible Download-Methoden",
+          "description": "Sobald Ihr PDF komprimiert ist, laden Sie es über verschiedene, auf Ihre Vorlieben zugeschnittene Optionen herunter."
+        },
+        {
+          "title": "Online Teilen und Drucken",
+          "description": "Teilen Sie Ihre komprimierten PDFs direkt per E-Mail oder in sozialen Medien und drucken Sie sie mit nur wenigen Klicks."
+        },
+        {
+          "title": "Anpassungsfunktionen",
+          "description": "Passen Sie die Komprimierungseinstellungen an, um das Gleichgewicht zwischen Qualität und Dateigröße nach Ihren Anforderungen zu gestalten."
+        }
+      ]
+    },
+    "sectionThree": {
+      "title": "Unser Team",
+      "description": "Unser Team besteht aus einer vielfältigen Gruppe engagierter Fachleute, die sich für Technologie und Benutzererfahrung begeistern. Von Softwareentwicklern und Designern bis hin zu Kundendienstspezialisten bringt jedes Mitglied Fachwissen und Begeisterung mit. Wir setzen uns dafür ein, unser Tool kontinuierlich zu verbessern und sicherzustellen, dass es Ihren Anforderungen mit höchster Leistung und Zuverlässigkeit entspricht.",
+      "teams": [
+        {
+          "name": "John Doe",
+          "role": "Softwareentwickler",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Jane Smith",
+          "role": "UI/UX Designerin",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        }
+      ]
+    },
+    "sectionFour": {
+      "title": "Warum uns wählen?",
+      "description": "PDF Komprimieren bedeutet, eine zuverlässige, intuitive und kostenlose Lösung für Ihre PDF-Komprimierungsanforderungen zu wählen. Hier ist, warum wir herausragen:",
+      "items": [
+        {
+          "title": "Benutzerfreundlichkeit",
+          "description": "Unsere Plattform ist einfach gestaltet, sodass sie für jeden zugänglich ist, unabhängig von den technischen Fähigkeiten."
+        },
+        {
+          "title": "Anpassbare Optionen",
+          "description": "Passen Sie die Komprimierungseinstellungen nach Ihren Vorlieben an, um die Qualität Ihrer Dokumente bei gleichzeitiger Größenreduzierung beizubehalten."
+        },
+        {
+          "title": "Schnell und effizient",
+          "description": "Erleben Sie schnelle Verarbeitungszeiten und hochwertige Ergebnisse dank unserer fortschrittlichen Komprimierungstechnologie."
+        },
+        {
+          "title": "Sicher und zuverlässig",
+          "description": "Ihre Dateien werden mit größter Sorgfalt behandelt, um Ihre Daten sicher und privat zu halten."
+        }
+      ]
+    }
   }
 }

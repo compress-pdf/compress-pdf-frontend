@@ -1004,5 +1004,99 @@
         }
       }
     ]
+  },
+  "about": {
+    "heading": "About Compress PDF",
+    "description": "Welcome to Online Compress PDF, your go-to solution for efficient and high-quality PDF compression. Whether you're a professional handling large reports, a student submitting assignments, or a small business owner archiving documents, we are here to simplify your PDF management process.",
+    "sectionOne": {
+      "title": "What is Our Mission?",
+      "description": "At Compress PDF, our mission is to simplify the management of PDF files by providing a user-friendly and efficient tool for compressing PDFs. We understand that large PDF files can be cumbersome, whether you're sharing documents via email, uploading to websites, or simply trying to save storage space. Our goal is to offer a seamless, accessible solution that enhances your productivity and convenience, allowing you to handle your PDF files with ease."
+    },
+    "sectionTwo": {
+      "title": "What Do We Offer?",
+      "description": "We offer a comprehensive suite of features designed to meet all your PDF compression needs:",
+      "items": [
+        {
+          "title": "Multiple Upload Systems",
+          "description": "Easily upload your files from your device, cloud storage, or drag-and-drop directly onto our platform."
+        },
+        {
+          "title": "Flexible Download Methods",
+          "description": "Once your PDF is compressed, download it through various options tailored to your preferences."
+        },
+        {
+          "title": "Online Sharing and Printing",
+          "description": "Share your compressed PDFs directly through email or social media and print them with just a few clicks."
+        },
+        {
+          "title": "Customization Features",
+          "description": "Adjust compression settings to balance quality and file size according to your specific requirements."
+        }
+      ]
+    },
+    "sectionThree": {
+      "title": "Our Team Members",
+      "description": "Our team is a diverse group of dedicated professionals passionate about technology and user experience. From software developers and designers to customer support specialists, each member brings expertise and enthusiasm to the table. We are committed to continually improving our tool and ensuring it meets your needs with the highest standards of performance and reliability.",
+      "teams": [
+        {
+          "name": "John Doe",
+          "role": "Software Developer",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Jane Smith",
+          "role": "UI/UX Designer",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Customer Support Specialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Customer Support Specialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Customer Support Specialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Customer Support Specialist",
+          "facebook": "",
+          "linkedin": ""
+        }
+      ]
+    },
+    "sectionFour": {
+      "title": "Why Choose Us?",
+      "description": "Choosing Compress PDF means opting for a reliable, intuitive, and cost-free solution to your PDF compression needs. Here’s why we stand out:",
+      "items": [
+        {
+          "title": "Ease of Use",
+          "description": "Our platform is designed with simplicity in mind, making it accessible to everyone, regardless of technical skill."
+        },
+        {
+          "title": "Customizable Options",
+          "description": "Tailor the compression settings to your preferences to maintain the quality of your documents while reducing their size."
+        },
+        {
+          "title": "Fast and Efficient",
+          "description": "Experience quick processing times and high-quality results with our advanced compression technology."
+        },
+        {
+          "title": "Secure and Reliable",
+          "description": "Your files are handled with the utmost care, ensuring your data remains private and secure."
+        }
+      ]
+    }
   }
 }
