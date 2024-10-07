@@ -4,6 +4,7 @@ import { Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { GrRotateLeft, GrRotateRight } from 'react-icons/gr';
+import { useTranslations } from 'next-intl';
 
 import helpers from '@/services/helpers';
 import { useLoading } from '@/context/UploadingContext';
@@ -33,6 +34,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
   fileRotations,
 }) => {
   // const fileInputRef = useRef<HTMLInputElement>(null);
+  const t = useTranslations('common.custom');
 
   const [totalPages, setTotalPages] = useState<Record<number, number>>({});
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -110,19 +112,22 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                           type="button"
                         >
                           {totalPages[index]}{' '}
-                          {totalPages[index] > 1 ? 'Pages' : 'Page'}
+                          {totalPages[index] > 1
+                            ? t('viewPage.pages')
+                            : t('viewPage.page')}
                         </button>
                         <button
                           title="file-size-value"
                           className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
                           type="button"
                         >
-                          {helpers.getFileSize(file)}MB
+                          {helpers.getFileSize(file)}
+                          {t('viewPage.mb')}
                         </button>
                       </div>
                       <div className="absolute bottom-[11px] left-1/2 transform -translate-x-1/2 flex gap-[10px]">
                         <button
-                          title={'rotate-anti-clockwise'}
+                          title={t('viewPage.rotateLeft')}
                           onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault();
                             rotateAnticlockwise(index);
@@ -132,7 +137,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                           <GrRotateLeft color="inherit" />
                         </button>
                         <button
-                          title="rotate-clockwise-button"
+                          title={t('viewPage.rotateRight')}
                           onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                             e.preventDefault();
                             rotateClockwise(index);
@@ -143,7 +148,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                         </button>
                         <button
                           type="button"
-                          title="delete-button"
+                          title={t('viewPage.delete')}
                           onClick={() => onDeleteFile(index)}
                           className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
                         >

@@ -1,4 +1,5 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 
 // Use the native `File` type from JavaScript
@@ -16,6 +17,7 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
   >(null);
   const [isAlphabeticalAsc, setIsAlphabeticalAsc] = useState<boolean>(true);
   const [isSizeAsc, setIsSizeAsc] = useState<boolean>(true);
+  const t = useTranslations('common.custom');
 
   // Handle A-Z/Z-A sorting
   const handleAZClick = () => {
@@ -55,7 +57,9 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
             : 'border-transparent bg-[#E1DEDE] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] transition-all duration-200 ease-in  shadow text-[#163b45] dark:text-white hover:bg-[#b1aeae]'
         }`}
       >
-        {isAlphabeticalAsc ? 'A-Z' : 'Z-A'}
+        {isAlphabeticalAsc
+          ? t('sort.alphabeticallyOne')
+          : t('sort.alphabeticallyTwo')}
       </button>
 
       {/* Min-Max/Max-Min Button */}
@@ -69,7 +73,7 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
             : 'border-transparent bg-[#E1DEDE] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] transition-all duration-200 ease-in shadow text-[#163b45] dark:text-white hover:bg-[#b1aeae] text-nowrap'
         }`}
       >
-        {isSizeAsc ? 'Min-Max' : 'Max-Min'}
+        {isSizeAsc ? t('sort.sizeOne') : t('sort.sizeTwo')}
       </button>
     </div>
   );

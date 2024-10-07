@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -28,6 +29,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null); // Reference to the dropdown element
   const modalRef = useRef<HTMLDivElement>(null); // Reference to the modal element
+  const t = useTranslations('common.custom.add');
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -73,7 +75,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
 
         {/* Dropdown Toggle Button */}
         <button
-          title="toggle dropdown"
+          title={t('dropDownOption')}
           type="button"
           className={twMerge(
             'bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-3 py-2 rounded-r-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent  transition-all duration-200 ease-in ',
@@ -113,7 +115,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
             {dropdownActions.map((action, index) => (
               <button
                 type="button"
-                title="dropdown option"
+                title={t('dropDownOption')}
                 key={index}
                 className={twMerge(
                   'block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-slate-200 dark:bg-[#2c2c2c] dark:text-slate-100 dark:hover:bg-[#1b1b1b] transition-all duration-300 ease-in',

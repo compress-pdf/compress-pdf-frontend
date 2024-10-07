@@ -37,7 +37,11 @@ const LinkComponent = ({ handleNewFiles, onDropdown = false }: Props) => {
     startTransition(async () => {
       setLoading(true);
 
-      const validationResult = await validatePdfLink(URL, 50);
+      const validationResult = await validatePdfLink(
+        URL,
+        50,
+        t('urlModal.errorMessage')
+      );
 
       try {
         if (!validationResult.valid) {
@@ -82,7 +86,7 @@ const LinkComponent = ({ handleNewFiles, onDropdown = false }: Props) => {
         >
           <UrlIcon />
           <p className={`${onDropdown ? 'block text-nowrap' : 'hidden'}`}>
-            From URL
+            {t('custom.add.url')}
           </p>
         </button>
       </Tooltip>

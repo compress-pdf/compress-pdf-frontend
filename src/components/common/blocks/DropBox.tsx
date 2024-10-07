@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import DropboxChooser, { DropboxFile } from 'react-dropbox-chooser';
+import { useTranslations } from 'next-intl';
 
 import dropboxIcon from '@assets/icons/pngs/dropboxIcon.png';
 
@@ -11,6 +12,7 @@ type Props = {
 };
 
 const DropBox = ({ handleNewFiles, onDropdown = false }: Props) => {
+  const t = useTranslations('common.custom.add');
   const token = 'YOUR_ACCESS_TOKEN';
 
   const handleSuccess = async (files: DropboxFile[]) => {
@@ -51,7 +53,7 @@ const DropBox = ({ handleNewFiles, onDropdown = false }: Props) => {
             alt="dropbox-icon"
           />
           <p className={`${onDropdown ? 'block text-nowrap' : 'hidden'}`}>
-            From Dropbox
+            {t('dropbox')}
           </p>
         </button>
       </DropboxChooser>

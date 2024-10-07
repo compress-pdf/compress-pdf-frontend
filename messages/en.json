@@ -184,20 +184,25 @@
         "rotateLeft": "Rotate Left",
         "rotateRight": "Rotate Right",
         "delete": "Delete",
+        "pages": "pages",
         "page": "page",
         "mb": "MB"
       },
       "sort": {
         "title": "Sort",
-        "alphabetically": "A-Z",
-        "size": "Min-Max"
+        "alphabeticallyOne": "A-Z",
+        "alphabeticallyTwo": "Z-A",
+        "sizeOne": "Min-Max",
+        "sizeTwo": "Max-Min"
       },
       "add": {
+        "dropDownTitle": "toggle dropdown",
         "buttonLabel": "Add more",
         "drive": "From Drive",
         "dropbox": "From Dropbox",
         "onedrive": "From OneDrive",
-        "url": "From URL"
+        "url": "From URL",
+        "dropDownOption": "dropdown option"
       },
       "compression": {
         "title": "Compression Level",
@@ -239,14 +244,23 @@
       },
       "body": {
         "editTooltip": "Edit file name",
-        "deleteTooltip": "Remove File",
+        "deleteModal": {
+          "deleteTooltip": "Remove File",
+          "title": "File available time",
+          "description": "All your files will be automatically deleted after",
+          "hours": "hours",
+          "min": "Minutes",
+          "sec": "Seconds",
+          "btnLabel": "Delete Now"
+        },
         "shareModal": {
           "title": "Share",
-          "buttonLabel:": "Copy",
-          "alert": "Your files will be automatically deleted after",
+          "btn": "Copy",
+          "alert": "Your files will be automatically deleted after {hour} hour {min} min {sec} sec",
           "hour": "hour",
           "min": "min",
-          "sec": "sec"
+          "sec": "sec",
+          "successMessage": "URL copied successfully"
         },
         "downloadModal": {
           "label": "Download",
@@ -260,15 +274,27 @@
         "qrModal": {
           "title": "Share QR",
           "description": "Scan QR to Instantly Download",
+          "placeholder": "https://compresspdf.to/adtadflke3",
           "buttonLabel": "Copy",
-          "alert": "Your files will be automatically deleted after",
+          "alert": "Your files will be automatically deleted after {hour} hour {min} min {sec} sec",
           "hour": "hour",
           "min": "min",
           "sec": "sec"
         },
         "info": "Need further customization ? ",
         "buttonLabel": "Go Back"
-      }
+      },
+      "rating": {
+        "title": "Rate This Tool!",
+        "subTitle": "Rating"
+      },
+      "copyMessage": "URL copied successfully"
+    },
+    "toast": {
+      "success": "successfully.",
+      "error": "Error Occurred",
+      "required": "Action Required",
+      "notification": "Notification"
     }
   },
   "general": {
@@ -277,7 +303,7 @@
         "title": "Compress PDF Files Without Losing Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum 4 files, upto 50 MB"
+        "fileInfo": "Maximum {file} files, upto {size} MB"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -592,513 +618,111 @@
       }
     ]
   },
-  "10kb": {
-    "content": {
-      "heroSection": {
-        "title": "Compress PDF to 10KB Without Losing Quality",
-        "subtitle": "Reduce Size, Not the Quality",
-        "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum 4 files, upto 40 MB"
-      },
-      "sectionOne": {
-        "title": "What is a PDF Compressor?",
-        "description": "A PDF compression tool is a software application designed to reduce the file size of PDF documents. This process involves optimizing the contents of the PDF, such as images and fonts, to decrease the overall file size while maintaining as much quality as possible. PDF compression tools are essential for managing large files, improving upload/download speeds, and conserving storage space.",
-        "imageAlt": "Illustration of what a PDF compressor is.",
-        "imageTitle": "PDF"
-      },
-      "sectionTwo": {
-        "title": "Why Use Our PDF Compression Tool?",
-        "description": "Our PDF compression tool stands out for its efficiency and user-friendly design. Here are a few reasons to choose our tool:",
-        "features": [
-          {
-            "featureTitle": "Extensive Customization",
-            "featureDescription": "Customize your PDF files with various compression levels, image qualities, color settings, and additional options."
-          },
-          {
-            "featureTitle": "File Size Reduction",
-            "featureDescription": "Compress your PDF files to a manageable size for easier sharing and storage, ensuring convenience and efficiency."
-          },
-          {
-            "featureTitle": "Batch Processing",
-            "featureDescription": "Compress multiple PDF files simultaneously for added convenience and streamline your document management process."
-          },
-          {
-            "featureTitle": "Fast Processing",
-            "featureDescription": "Compress files in seconds to save time and effort, making your document management faster and more efficient."
-          },
-          {
-            "featureTitle": "Multiple Upload & Download",
-            "featureDescription": "Upload files from cloud storage, URLs or local drives with drag & drop. Save them to your preferred locations easily."
-          },
-          {
-            "featureTitle": "Print & Preview Files",
-            "featureDescription": "Preview and print compressed PDF files directly for enhanced convenience, making document handling quicker & easier."
-          }
-        ]
-      },
 
-      "sectionThree": {
-        "title": "How to Reduce PDF File Size Online?",
-        "steps": [
-          {
-            "stepNumber": 1,
-            "stepTitle": "Upload Your Files Directly to the Web",
-            "stepDescription": "Our tool allows you to upload files using 6 methods: local storage, drag & drop, Google Drive, OneDrive, Dropbox, and URL. Once uploaded, you'll be redirected to the customization page.",
-            "imageAlt": "File upload options, including URL pasting and drag-and-drop, with a highlighted user interface for uploading documents.",
-            "imageUploadTitle": "Upload your document",
-            "inputLabel": "Paste your URL",
-            "placeholder": "https://www.figma.com/design"
-          },
-          {
-            "stepNumber": 2,
-            "stepTitle": "Customize According to Your Preferences",
-            "stepDescription": "Our tool lets you customize files by adjusting compression (extreme, medium, less), image settings (brightness, contrast, color), resolution, and color mode (color or B&W). You can also remove images, rotate pages, add or remove files, and sort by size or alphabetically. Click to start compression.",
-            "imageAlt": "PDF customization options, including image resolution, file adjustments, and compression levels, with a 'before and after' comparison of file sizes.",
-            "before": "Before",
-            "size": "10kb",
-            "after": "After",
-            "afterSize": "1.1 MB",
-            "rangeLabel": "Image Resolution",
-            "rangeValue": "40%",
-            "buttonLabel": "Image Files",
-            "keep": "Keep",
-            "remove": "Remove",
-            "compressionLevel": "Compression Level",
-            "compressionValue": "40%"
-          },
-          {
-            "stepNumber": 3,
-            "stepTitle": "Download, Share, and Manage Compressed Files",
-            "stepDescription": "Download files individually or as a zip, and save to Dropbox, OneDrive, or Google Drive. Share via Facebook, LinkedIn, Gmail, Twitter, or QR code/URL link. Edit names, delete files, print with settings (copies, paper size, orientation), and preview for quality.",
-            "imageAlt": "File download interface showing a titled PDF and its progress bar.",
-            "firstImageTitle": "Your PDF Name",
-            "percentOne": "10%",
-            "size": "90kb",
-            "rangeLevel": "Downloading Your Zip",
-            "rangeValue": "65%"
-          }
-        ]
-      },
-
-      "faqSection": {
-        "title": "Frequently Asked Questions (FAQs)",
-        "questions": [
-          {
-            "question": "Will Compressing My PDF Affect Its Quality?",
-            "answer": "Our tool is designed to minimize quality loss while reducing file size. You can choose from different compression levels to suit your needs."
-          },
-          {
-            "question": "Is My Data Safe After Compressing the PDF Files?",
-            "answer": "Yes, your files are deleted from our servers after processing. We prioritize your privacy and data security."
-          },
-          {
-            "question": "Can I Compress PDFs on My Mobile Device?",
-            "answer": "Absolutely! Our tool is fully responsive and works seamlessly on mobile devices and tablets."
-          },
-          {
-            "question": "Can I Compress a Password-protected PDF File?",
-            "answer": "To compress a password-protected PDF file, you first need to remove the password protection. Once the PDF is unprotected, you can upload it to our tool and compress it easily."
-          },
-          {
-            "question": "How do I Customize My PDF Files Before Compression?",
-            "answer": "You can customize your PDFs by rotating pages, adjusting image enhancement and resolution sliders, changing color scopes, selecting whether to keep or discard images, and adjusting the compression level."
-          },
-          {
-            "question": "What Are the Output Options After Compression?",
-            "answer": "After compression, you can download all files in a zip format, save them to Dropbox, OneDrive, or Google Drive, delete individual files, preview the compressed PDFs, print them, share them across platforms, or go back to the customization page."
-          }
-        ]
-      }
-    },
-    "metaData": {
-      "title": "Compress 10KB PDF Files Online Without Losing Quality",
-      "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-      "alternates": {
-        "canonical": "https://compresspdf.to/10kb",
-        "hreflangs": [
-          {
-            "href": "https://compresspdf.to/10kb",
-            "hreflang": "en"
-          },
-          {
-            "href": "https://compresspdf.to/es/10kb",
-            "hreflang": "es"
-          },
-          {
-            "href": "https://compresspdf.to/fr/10kb",
-            "hreflang": "fr"
-          },
-          {
-            "href": "https://compresspdf.to/id/10kb",
-            "hreflang": "id"
-          },
-          {
-            "href": "https://compresspdf.to/tr/10kb",
-            "hreflang": "tr"
-          },
-          {
-            "href": "https://compresspdf.to/ru/10kb",
-            "hreflang": "ru"
-          },
-          {
-            "href": "https://compresspdf.to/it/10kb",
-            "hreflang": "it"
-          },
-          {
-            "href": "https://compresspdf.to/pt/10kb",
-            "hreflang": "pt"
-          },
-          {
-            "href": "https://compresspdf.to/de/10kb",
-            "hreflang": "de"
-          },
-          {
-            "href": "https://compresspdf.to/vi/10kb",
-            "hreflang": "vi"
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-        "url": "https://compresspdf.to/10kb",
-        "images": [
-          {
-            "url": "https://compresspdf.to/image1",
-            "alt": "Compress PDF Files Online Without Losing Quality"
-          }
-        ]
-      },
-      "twitter": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-        "images": [
-          {
-            "url": "https://compresspdf.to/images1",
-            "alt": "Compress PDF Files Online Without Losing Quality"
-          }
-        ]
-      }
-    },
-    "schema": [
-      {
-        "softwareApplication": {
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "CompressPDF",
-          "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-          "applicationCategory": "Utilities",
-          "operatingSystem": "All",
-          "author": {
-            "@type": "Organization",
-            "name": "CompressPDF",
-            "url": "https://compresspdf.to/about",
-            "description": "Learn about compresspdf.to, your fast and secure PDF compression tool. Discover our mission to simplify document management with user-friendly features."
-          },
-          "datePublished": "2024-06-10",
-          "url": "https://compresspdf.to/10kb",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "1237"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "screenshot": "https://yourwebsite.com/path/to/screenshot.jpg",
-          "featureList": [
-            "Compress PDF files without quality loss.",
-            "Supports Drag-and-drop, Google Drive and Dropbox uploads.",
-            "Low, medium, and high compression levels.",
-            "Batch compression for multiple files.",
-            "Preserves images and text formatting.",
-            "Preview compressed PDFs before download.",
-            "Auto file deletion after processing.",
-            "Share PDFs via email or social media.",
-            "Fast processing for large files."
-          ]
-        }
-      },
-      {
-        "website": {
-          "@context": "https://schema.org/",
-          "@type": "WebSite",
-          "name": "CompressPDF",
-          "inLanguage": "en",
-          "description": "The platform that makes it super easy to convert and edit all your PDF files. Solving all your PDF problems in one place - and yes, free.",
-          "url": "https://compresspdf.to/10kb"
-        }
-      },
-      {
-        "article": {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://compresspdf.to/10kb"
-          },
-          "headline": "Compress PDF Files Online Without Losing Quality",
-          "image": "https://compresspdf.to/image1/",
-          "author": {
-            "@type": "Person",
-            "name": "Borhan Uddin",
-            "url": "https://www.linkedin.com/in/borhan-uddin-7167991b0/"
-          },
-          "publisher": {
-            "@type": "Organization",
-            "name": "CompressPDF",
-            "logo": {
-              "@type": "ImageObject",
-              "url": "https://compresspdf.to/log/"
-            }
-          },
-          "datePublished": "2024-08-05T10:30:00+06:00"
-        }
-      },
-      {
-        "faq": {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Will Compressing My PDF Affect Its Quality?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Our tool is designed to minimize quality loss while reducing file size. You can choose from different compression levels to suit your needs."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is My Data Safe After Compressing the PDF Files?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, your files are deleted from our servers after processing. We prioritize your privacy and data security."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I Compress PDFs on My Mobile Device?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolutely! Our tool is fully responsive and works seamlessly on mobile devices and tablets."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I Compress a Password-protected PDF File?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "To compress a password-protected PDF file, you first need to remove the password protection. Once the PDF is unprotected, you can upload it to our tool and compress it easily."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I Customize My PDF Files Before Compression?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "You can customize your PDFs by rotating pages, adjusting image enhancement and resolution sliders, changing color scopes, selecting whether to keep or discard images and adjusting the compression level."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What Are the Output Options After Compression?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "After compression, you can download all files in a zip format, save them to Dropbox, OneDrive, or Google Drive, delete individual files, preview the compressed PDFs, print them, share them across platforms, or go back to the customization page."
-              }
-            }
-          ]
-        }
-      }
-    ]
-  },
   "100kb": {
     "content": {
       "heroSection": {
-        "title": "Compress PDF to 10KB Without Losing Quality",
-        "subtitle": "Reduce Size, Not the Quality",
-        "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum 4 files, upto 40 MB"
+        "title": "",
+        "subtitle": "",
+        "imageAlt": "",
+        "fileInfo": ""
       },
       "sectionOne": {
-        "title": "What is a PDF Compressor?",
-        "description": "A PDF compression tool is a software application designed to reduce the file size of PDF documents. This process involves optimizing the contents of the PDF, such as images and fonts, to decrease the overall file size while maintaining as much quality as possible. PDF compression tools are essential for managing large files, improving upload/download speeds, and conserving storage space.",
-        "imageAlt": "Illustration of what a PDF compressor is.",
-        "imageTitle": "PDF"
+        "title": "",
+        "description": "",
+        "imageAlt": "",
+        "imageTitle": ""
       },
       "sectionTwo": {
-        "title": "Why Use Our PDF Compression Tool?",
-        "description": "Our PDF compression tool stands out for its efficiency and user-friendly design. Here are a few reasons to choose our tool:",
+        "title": "",
+        "description": "",
         "features": [
           {
-            "featureTitle": "Extensive Customization",
-            "featureDescription": "Customize your PDF files with various compression levels, image qualities, color settings, and additional options."
-          },
-          {
-            "featureTitle": "File Size Reduction",
-            "featureDescription": "Compress your PDF files to a manageable size for easier sharing and storage, ensuring convenience and efficiency."
-          },
-          {
-            "featureTitle": "Batch Processing",
-            "featureDescription": "Compress multiple PDF files simultaneously for added convenience and streamline your document management process."
-          },
-          {
-            "featureTitle": "Fast Processing",
-            "featureDescription": "Compress files in seconds to save time and effort, making your document management faster and more efficient."
-          },
-          {
-            "featureTitle": "Multiple Upload & Download",
-            "featureDescription": "Upload files from cloud storage, URLs or local drives with drag & drop. Save them to your preferred locations easily."
-          },
-          {
-            "featureTitle": "Print & Preview Files",
-            "featureDescription": "Preview and print compressed PDF files directly for enhanced convenience, making document handling quicker & easier."
+            "featureTitle": "",
+            "featureDescription": ""
           }
         ]
       },
-
       "sectionThree": {
-        "title": "How to Reduce PDF File Size Online?",
-        "steps": [
-          {
-            "stepNumber": 1,
-            "stepTitle": "Upload Your Files Directly to the Web",
-            "stepDescription": "Our tool allows you to upload files using 6 methods: local storage, drag & drop, Google Drive, OneDrive, Dropbox, and URL. Once uploaded, you'll be redirected to the customization page.",
-            "imageAlt": "File upload options, including URL pasting and drag-and-drop, with a highlighted user interface for uploading documents.",
-            "imageUploadTitle": "Upload your document",
-            "inputLabel": "Paste your URL",
-            "placeholder": "https://www.figma.com/design"
-          },
-          {
-            "stepNumber": 2,
-            "stepTitle": "Customize According to Your Preferences",
-            "stepDescription": "Our tool lets you customize files by adjusting compression (extreme, medium, less), image settings (brightness, contrast, color), resolution, and color mode (color or B&W). You can also remove images, rotate pages, add or remove files, and sort by size or alphabetically. Click to start compression.",
-            "imageAlt": "PDF customization options, including image resolution, file adjustments, and compression levels, with a 'before and after' comparison of file sizes.",
-            "before": "Before",
-            "size": "10kb",
-            "after": "After",
-            "afterSize": "1.1 MB",
-            "rangeLabel": "Image Resolution",
-            "rangeValue": "40%",
-            "buttonLabel": "Image Files",
-            "keep": "Keep",
-            "remove": "Remove",
-            "compressionLevel": "Compression Level",
-            "compressionValue": "40%"
-          },
-          {
-            "stepNumber": 3,
-            "stepTitle": "Download, Share, and Manage Compressed Files",
-            "stepDescription": "Download files individually or as a zip, and save to Dropbox, OneDrive, or Google Drive. Share via Facebook, LinkedIn, Gmail, Twitter, or QR code/URL link. Edit names, delete files, print with settings (copies, paper size, orientation), and preview for quality.",
-            "imageAlt": "File download interface showing a titled PDF and its progress bar.",
-            "firstImageTitle": "Your PDF Name",
-            "percentOne": "10%",
-            "size": "90kb",
-            "rangeLevel": "Downloading Your Zip",
-            "rangeValue": "65%"
-          }
-        ]
+        "title": "",
+        "stepOne": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "imageUploadTitle": "",
+          "inputLabel": "",
+          "placeholder": ""
+        },
+        "stepTwo": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "before": "",
+          "size": "",
+          "after": "",
+          "afterSize": "",
+          "rangeLabel": "",
+          "rangeValue": "",
+          "buttonLabel": "",
+          "keep": "",
+          "remove": "",
+          "compressionLevel": "",
+          "compressionValue": ""
+        },
+        "stepThree": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "firstImageTitle": "",
+          "percentOne": "",
+          "size": "",
+          "rangeLevel": "",
+          "rangeValue": ""
+        }
       },
-
       "faqSection": {
-        "title": "Frequently Asked Questions (FAQs)",
+        "title": "",
         "questions": [
           {
-            "question": "Will Compressing My PDF Affect Its Quality?",
-            "answer": "Our tool is designed to minimize quality loss while reducing file size. You can choose from different compression levels to suit your needs."
-          },
-          {
-            "question": "Is My Data Safe After Compressing the PDF Files?",
-            "answer": "Yes, your files are deleted from our servers after processing. We prioritize your privacy and data security."
-          },
-          {
-            "question": "Can I Compress PDFs on My Mobile Device?",
-            "answer": "Absolutely! Our tool is fully responsive and works seamlessly on mobile devices and tablets."
-          },
-          {
-            "question": "Can I Compress a Password-protected PDF File?",
-            "answer": "To compress a password-protected PDF file, you first need to remove the password protection. Once the PDF is unprotected, you can upload it to our tool and compress it easily."
-          },
-          {
-            "question": "How do I Customize My PDF Files Before Compression?",
-            "answer": "You can customize your PDFs by rotating pages, adjusting image enhancement and resolution sliders, changing color scopes, selecting whether to keep or discard images, and adjusting the compression level."
-          },
-          {
-            "question": "What Are the Output Options After Compression?",
-            "answer": "After compression, you can download all files in a zip format, save them to Dropbox, OneDrive, or Google Drive, delete individual files, preview the compressed PDFs, print them, share them across platforms, or go back to the customization page."
+            "question": "",
+            "answer": ""
           }
         ]
       }
     },
     "metaData": {
-      "title": "Compress 10KB PDF Files Online Without Losing Quality",
-      "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
+      "title": "",
+      "description": "",
       "alternates": {
-        "canonical": "https://compresspdf.to/10kb",
+        "canonical": "",
         "hreflangs": [
           {
-            "href": "https://compresspdf.to/10kb",
-            "hreflang": "en"
-          },
-          {
-            "href": "https://compresspdf.to/es/10kb",
-            "hreflang": "es"
-          },
-          {
-            "href": "https://compresspdf.to/fr/10kb",
-            "hreflang": "fr"
-          },
-          {
-            "href": "https://compresspdf.to/id/10kb",
-            "hreflang": "id"
-          },
-          {
-            "href": "https://compresspdf.to/tr/10kb",
-            "hreflang": "tr"
-          },
-          {
-            "href": "https://compresspdf.to/ru/10kb",
-            "hreflang": "ru"
-          },
-          {
-            "href": "https://compresspdf.to/it/10kb",
-            "hreflang": "it"
-          },
-          {
-            "href": "https://compresspdf.to/pt/10kb",
-            "hreflang": "pt"
-          },
-          {
-            "href": "https://compresspdf.to/de/10kb",
-            "hreflang": "de"
-          },
-          {
-            "href": "https://compresspdf.to/vi/10kb",
-            "hreflang": "vi"
+            "href": "",
+            "hreflang": ""
           }
         ]
       },
       "openGraph": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-        "url": "https://compresspdf.to/10kb",
+        "title": "",
+        "description": "",
+        "url": "",
         "images": [
           {
-            "url": "https://compresspdf.to/image1",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "",
+            "alt": ""
           }
         ]
       },
       "twitter": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
+        "title": "",
+        "description": "",
         "images": [
           {
-            "url": "https://compresspdf.to/images1",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "",
+            "alt": ""
           }
         ]
       }
@@ -1106,131 +730,81 @@
     "schema": [
       {
         "softwareApplication": {
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "CompressPDF",
-          "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-          "applicationCategory": "Utilities",
-          "operatingSystem": "All",
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "description": "",
+          "applicationCategory": "",
+          "operatingSystem": "",
           "author": {
-            "@type": "Organization",
-            "name": "CompressPDF",
-            "url": "https://compresspdf.to/about",
-            "description": "Learn about compresspdf.to, your fast and secure PDF compression tool. Discover our mission to simplify document management with user-friendly features."
+            "@type": "",
+            "name": "",
+            "url": "",
+            "description": ""
           },
-          "datePublished": "2024-06-10",
-          "url": "https://compresspdf.to/10kb",
+          "datePublished": "",
+          "url": "",
           "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "1237"
+            "@type": "",
+            "ratingValue": "",
+            "reviewCount": ""
           },
           "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
+            "@type": "",
+            "price": "",
+            "priceCurrency": ""
           },
-          "screenshot": "https://yourwebsite.com/path/to/screenshot.jpg",
-          "featureList": [
-            "Compress PDF files without quality loss.",
-            "Supports Drag-and-drop, Google Drive and Dropbox uploads.",
-            "Low, medium, and high compression levels.",
-            "Batch compression for multiple files.",
-            "Preserves images and text formatting.",
-            "Preview compressed PDFs before download.",
-            "Auto file deletion after processing.",
-            "Share PDFs via email or social media.",
-            "Fast processing for large files."
-          ]
+          "screenshot": "",
+          "featureList": [""]
         }
       },
       {
         "website": {
-          "@context": "https://schema.org/",
-          "@type": "WebSite",
-          "name": "CompressPDF",
-          "inLanguage": "en",
-          "description": "The platform that makes it super easy to convert and edit all your PDF files. Solving all your PDF problems in one place - and yes, free.",
-          "url": "https://compresspdf.to/10kb"
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "inLanguage": "",
+          "description": "",
+          "url": ""
         }
       },
       {
         "article": {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
+          "@context": "",
+          "@type": "",
           "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://compresspdf.to/10kb"
+            "@type": "",
+            "@id": ""
           },
-          "headline": "Compress PDF Files Online Without Losing Quality",
-          "image": "https://compresspdf.to/image1/",
+          "headline": "",
+          "image": "",
           "author": {
-            "@type": "Person",
-            "name": "Borhan Uddin",
-            "url": "https://www.linkedin.com/in/borhan-uddin-7167991b0/"
+            "@type": "",
+            "name": "",
+            "url": ""
           },
           "publisher": {
-            "@type": "Organization",
-            "name": "CompressPDF",
+            "@type": "",
+            "name": "",
             "logo": {
-              "@type": "ImageObject",
-              "url": "https://compresspdf.to/log/"
+              "@type": "",
+              "url": ""
             }
           },
-          "datePublished": "2024-08-05T10:30:00+06:00"
+          "datePublished": ""
         }
       },
       {
         "faq": {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
+          "@context": "",
+          "@type": "",
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Will Compressing My PDF Affect Its Quality?",
+              "name": "",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Our tool is designed to minimize quality loss while reducing file size. You can choose from different compression levels to suit your needs."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is My Data Safe After Compressing the PDF Files?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, your files are deleted from our servers after processing. We prioritize your privacy and data security."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I Compress PDFs on My Mobile Device?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolutely! Our tool is fully responsive and works seamlessly on mobile devices and tablets."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I Compress a Password-protected PDF File?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "To compress a password-protected PDF file, you first need to remove the password protection. Once the PDF is unprotected, you can upload it to our tool and compress it easily."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I Customize My PDF Files Before Compression?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "You can customize your PDFs by rotating pages, adjusting image enhancement and resolution sliders, changing color scopes, selecting whether to keep or discard images and adjusting the compression level."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What Are the Output Options After Compression?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "After compression, you can download all files in a zip format, save them to Dropbox, OneDrive, or Google Drive, delete individual files, preview the compressed PDFs, print them, share them across platforms, or go back to the customization page."
+                "text": ""
               }
             }
           ]
@@ -1241,187 +815,107 @@
   "200kb": {
     "content": {
       "heroSection": {
-        "title": "Compress PDF to 10KB Without Losing Quality",
-        "subtitle": "Reduce Size, Not the Quality",
-        "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum 4 files, upto 40 MB"
+        "title": "",
+        "subtitle": "",
+        "imageAlt": "",
+        "fileInfo": ""
       },
       "sectionOne": {
-        "title": "What is a PDF Compressor?",
-        "description": "A PDF compression tool is a software application designed to reduce the file size of PDF documents. This process involves optimizing the contents of the PDF, such as images and fonts, to decrease the overall file size while maintaining as much quality as possible. PDF compression tools are essential for managing large files, improving upload/download speeds, and conserving storage space.",
-        "imageAlt": "Illustration of what a PDF compressor is.",
-        "imageTitle": "PDF"
+        "title": "",
+        "description": "",
+        "imageAlt": "",
+        "imageTitle": ""
       },
       "sectionTwo": {
-        "title": "Why Use Our PDF Compression Tool?",
-        "description": "Our PDF compression tool stands out for its efficiency and user-friendly design. Here are a few reasons to choose our tool:",
+        "title": "",
+        "description": "",
         "features": [
           {
-            "featureTitle": "Extensive Customization",
-            "featureDescription": "Customize your PDF files with various compression levels, image qualities, color settings, and additional options."
-          },
-          {
-            "featureTitle": "File Size Reduction",
-            "featureDescription": "Compress your PDF files to a manageable size for easier sharing and storage, ensuring convenience and efficiency."
-          },
-          {
-            "featureTitle": "Batch Processing",
-            "featureDescription": "Compress multiple PDF files simultaneously for added convenience and streamline your document management process."
-          },
-          {
-            "featureTitle": "Fast Processing",
-            "featureDescription": "Compress files in seconds to save time and effort, making your document management faster and more efficient."
-          },
-          {
-            "featureTitle": "Multiple Upload & Download",
-            "featureDescription": "Upload files from cloud storage, URLs or local drives with drag & drop. Save them to your preferred locations easily."
-          },
-          {
-            "featureTitle": "Print & Preview Files",
-            "featureDescription": "Preview and print compressed PDF files directly for enhanced convenience, making document handling quicker & easier."
+            "featureTitle": "",
+            "featureDescription": ""
           }
         ]
       },
-
       "sectionThree": {
-        "title": "How to Reduce PDF File Size Online?",
-        "steps": [
-          {
-            "stepNumber": 1,
-            "stepTitle": "Upload Your Files Directly to the Web",
-            "stepDescription": "Our tool allows you to upload files using 6 methods: local storage, drag & drop, Google Drive, OneDrive, Dropbox, and URL. Once uploaded, you'll be redirected to the customization page.",
-            "imageAlt": "File upload options, including URL pasting and drag-and-drop, with a highlighted user interface for uploading documents.",
-            "imageUploadTitle": "Upload your document",
-            "inputLabel": "Paste your URL",
-            "placeholder": "https://www.figma.com/design"
-          },
-          {
-            "stepNumber": 2,
-            "stepTitle": "Customize According to Your Preferences",
-            "stepDescription": "Our tool lets you customize files by adjusting compression (extreme, medium, less), image settings (brightness, contrast, color), resolution, and color mode (color or B&W). You can also remove images, rotate pages, add or remove files, and sort by size or alphabetically. Click to start compression.",
-            "imageAlt": "PDF customization options, including image resolution, file adjustments, and compression levels, with a 'before and after' comparison of file sizes.",
-            "before": "Before",
-            "size": "10kb",
-            "after": "After",
-            "afterSize": "1.1 MB",
-            "rangeLabel": "Image Resolution",
-            "rangeValue": "40%",
-            "buttonLabel": "Image Files",
-            "keep": "Keep",
-            "remove": "Remove",
-            "compressionLevel": "Compression Level",
-            "compressionValue": "40%"
-          },
-          {
-            "stepNumber": 3,
-            "stepTitle": "Download, Share, and Manage Compressed Files",
-            "stepDescription": "Download files individually or as a zip, and save to Dropbox, OneDrive, or Google Drive. Share via Facebook, LinkedIn, Gmail, Twitter, or QR code/URL link. Edit names, delete files, print with settings (copies, paper size, orientation), and preview for quality.",
-            "imageAlt": "File download interface showing a titled PDF and its progress bar.",
-            "firstImageTitle": "Your PDF Name",
-            "percentOne": "10%",
-            "size": "90kb",
-            "rangeLevel": "Downloading Your Zip",
-            "rangeValue": "65%"
-          }
-        ]
+        "title": "",
+        "stepOne": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "imageUploadTitle": "",
+          "inputLabel": "",
+          "placeholder": ""
+        },
+        "stepTwo": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "before": "",
+          "size": "",
+          "after": "",
+          "afterSize": "",
+          "rangeLabel": "",
+          "rangeValue": "",
+          "buttonLabel": "",
+          "keep": "",
+          "remove": "",
+          "compressionLevel": "",
+          "compressionValue": ""
+        },
+        "stepThree": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "firstImageTitle": "",
+          "percentOne": "",
+          "size": "",
+          "rangeLevel": "",
+          "rangeValue": ""
+        }
       },
-
       "faqSection": {
-        "title": "Frequently Asked Questions (FAQs)",
+        "title": "",
         "questions": [
           {
-            "question": "Will Compressing My PDF Affect Its Quality?",
-            "answer": "Our tool is designed to minimize quality loss while reducing file size. You can choose from different compression levels to suit your needs."
-          },
-          {
-            "question": "Is My Data Safe After Compressing the PDF Files?",
-            "answer": "Yes, your files are deleted from our servers after processing. We prioritize your privacy and data security."
-          },
-          {
-            "question": "Can I Compress PDFs on My Mobile Device?",
-            "answer": "Absolutely! Our tool is fully responsive and works seamlessly on mobile devices and tablets."
-          },
-          {
-            "question": "Can I Compress a Password-protected PDF File?",
-            "answer": "To compress a password-protected PDF file, you first need to remove the password protection. Once the PDF is unprotected, you can upload it to our tool and compress it easily."
-          },
-          {
-            "question": "How do I Customize My PDF Files Before Compression?",
-            "answer": "You can customize your PDFs by rotating pages, adjusting image enhancement and resolution sliders, changing color scopes, selecting whether to keep or discard images, and adjusting the compression level."
-          },
-          {
-            "question": "What Are the Output Options After Compression?",
-            "answer": "After compression, you can download all files in a zip format, save them to Dropbox, OneDrive, or Google Drive, delete individual files, preview the compressed PDFs, print them, share them across platforms, or go back to the customization page."
+            "question": "",
+            "answer": ""
           }
         ]
       }
     },
     "metaData": {
-      "title": "Compress 10KB PDF Files Online Without Losing Quality",
-      "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
+      "title": "",
+      "description": "",
       "alternates": {
-        "canonical": "https://compresspdf.to/10kb",
+        "canonical": "",
         "hreflangs": [
           {
-            "href": "https://compresspdf.to/10kb",
-            "hreflang": "en"
-          },
-          {
-            "href": "https://compresspdf.to/es/10kb",
-            "hreflang": "es"
-          },
-          {
-            "href": "https://compresspdf.to/fr/10kb",
-            "hreflang": "fr"
-          },
-          {
-            "href": "https://compresspdf.to/id/10kb",
-            "hreflang": "id"
-          },
-          {
-            "href": "https://compresspdf.to/tr/10kb",
-            "hreflang": "tr"
-          },
-          {
-            "href": "https://compresspdf.to/ru/10kb",
-            "hreflang": "ru"
-          },
-          {
-            "href": "https://compresspdf.to/it/10kb",
-            "hreflang": "it"
-          },
-          {
-            "href": "https://compresspdf.to/pt/10kb",
-            "hreflang": "pt"
-          },
-          {
-            "href": "https://compresspdf.to/de/10kb",
-            "hreflang": "de"
-          },
-          {
-            "href": "https://compresspdf.to/vi/10kb",
-            "hreflang": "vi"
+            "href": "",
+            "hreflang": ""
           }
         ]
       },
       "openGraph": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-        "url": "https://compresspdf.to/10kb",
+        "title": "",
+        "description": "",
+        "url": "",
         "images": [
           {
-            "url": "https://compresspdf.to/image1",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "",
+            "alt": ""
           }
         ]
       },
       "twitter": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
+        "title": "",
+        "description": "",
         "images": [
           {
-            "url": "https://compresspdf.to/images1",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "",
+            "alt": ""
           }
         ]
       }
@@ -1429,131 +923,81 @@
     "schema": [
       {
         "softwareApplication": {
-          "@context": "https://schema.org",
-          "@type": "SoftwareApplication",
-          "name": "CompressPDF",
-          "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-          "applicationCategory": "Utilities",
-          "operatingSystem": "All",
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "description": "",
+          "applicationCategory": "",
+          "operatingSystem": "",
           "author": {
-            "@type": "Organization",
-            "name": "CompressPDF",
-            "url": "https://compresspdf.to/about",
-            "description": "Learn about compresspdf.to, your fast and secure PDF compression tool. Discover our mission to simplify document management with user-friendly features."
+            "@type": "",
+            "name": "",
+            "url": "",
+            "description": ""
           },
-          "datePublished": "2024-06-10",
-          "url": "https://compresspdf.to/10kb",
+          "datePublished": "",
+          "url": "",
           "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "1237"
+            "@type": "",
+            "ratingValue": "",
+            "reviewCount": ""
           },
           "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
+            "@type": "",
+            "price": "",
+            "priceCurrency": ""
           },
-          "screenshot": "https://yourwebsite.com/path/to/screenshot.jpg",
-          "featureList": [
-            "Compress PDF files without quality loss.",
-            "Supports Drag-and-drop, Google Drive and Dropbox uploads.",
-            "Low, medium, and high compression levels.",
-            "Batch compression for multiple files.",
-            "Preserves images and text formatting.",
-            "Preview compressed PDFs before download.",
-            "Auto file deletion after processing.",
-            "Share PDFs via email or social media.",
-            "Fast processing for large files."
-          ]
+          "screenshot": "",
+          "featureList": [""]
         }
       },
       {
         "website": {
-          "@context": "https://schema.org/",
-          "@type": "WebSite",
-          "name": "CompressPDF",
-          "inLanguage": "en",
-          "description": "The platform that makes it super easy to convert and edit all your PDF files. Solving all your PDF problems in one place - and yes, free.",
-          "url": "https://compresspdf.to/10kb"
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "inLanguage": "",
+          "description": "",
+          "url": ""
         }
       },
       {
         "article": {
-          "@context": "https://schema.org",
-          "@type": "BlogPosting",
+          "@context": "",
+          "@type": "",
           "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://compresspdf.to/10kb"
+            "@type": "",
+            "@id": ""
           },
-          "headline": "Compress PDF Files Online Without Losing Quality",
-          "image": "https://compresspdf.to/image1/",
+          "headline": "",
+          "image": "",
           "author": {
-            "@type": "Person",
-            "name": "Borhan Uddin",
-            "url": "https://www.linkedin.com/in/borhan-uddin-7167991b0/"
+            "@type": "",
+            "name": "",
+            "url": ""
           },
           "publisher": {
-            "@type": "Organization",
-            "name": "CompressPDF",
+            "@type": "",
+            "name": "",
             "logo": {
-              "@type": "ImageObject",
-              "url": "https://compresspdf.to/log/"
+              "@type": "",
+              "url": ""
             }
           },
-          "datePublished": "2024-08-05T10:30:00+06:00"
+          "datePublished": ""
         }
       },
       {
         "faq": {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
+          "@context": "",
+          "@type": "",
           "mainEntity": [
             {
               "@type": "Question",
-              "name": "Will Compressing My PDF Affect Its Quality?",
+              "name": "",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Our tool is designed to minimize quality loss while reducing file size. You can choose from different compression levels to suit your needs."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is My Data Safe After Compressing the PDF Files?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, your files are deleted from our servers after processing. We prioritize your privacy and data security."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I Compress PDFs on My Mobile Device?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Absolutely! Our tool is fully responsive and works seamlessly on mobile devices and tablets."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I Compress a Password-protected PDF File?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "To compress a password-protected PDF file, you first need to remove the password protection. Once the PDF is unprotected, you can upload it to our tool and compress it easily."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I Customize My PDF Files Before Compression?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "You can customize your PDFs by rotating pages, adjusting image enhancement and resolution sliders, changing color scopes, selecting whether to keep or discard images and adjusting the compression level."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What Are the Output Options After Compression?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "After compression, you can download all files in a zip format, save them to Dropbox, OneDrive, or Google Drive, delete individual files, preview the compressed PDFs, print them, share them across platforms, or go back to the customization page."
+                "text": ""
               }
             }
           ]

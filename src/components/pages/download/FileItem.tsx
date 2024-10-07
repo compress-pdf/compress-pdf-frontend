@@ -7,6 +7,7 @@ import {
   LinkedinShareButton,
   EmailShareButton,
 } from 'react-share';
+import { useTranslations } from 'next-intl';
 
 import SplitButton from '@/components/common/core/SplitButton';
 import Tooltip from '@/components/common/core/Tooltip';
@@ -93,6 +94,7 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
     calculateTimeLeft('2024-10-05T13:02:48.845+00:00')
   );
   const url = 'https://sample.com/test.pdf';
+  const t = useTranslations('common.download');
 
   useEffect(
     () => {
@@ -136,7 +138,7 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
       .then(() => {
         CustomToast({
           type: 'success',
-          message: `URL copied successfully`,
+          message: t('body.shareModal.successMessage'),
         });
       })
       .catch(err => {
@@ -169,9 +171,9 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
                 <span>{fileName}</span>.pdf
               </p>
             )}
-            <Tooltip content="Edit File Name">
+            <Tooltip content={t('body.editTooltip')}>
               <button
-                title="Edit File Name"
+                title={t('body.editTooltip')}
                 className="edit text-orange-500 ml-[1px] cursor-pointer"
                 onClick={() => setIsEditing(true)}
               >
@@ -180,7 +182,7 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
             </Tooltip>
             <ModalWithButton
               buttonLabel={
-                <Tooltip content="Delete File">
+                <Tooltip content={t('body.deleteModal.deleteTooltip')}>
                   <span className="delete text-red-500 -mt-[5.8px]">
                     {deleteIcon}
                   </span>
@@ -190,32 +192,40 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
               {/* Modal Content */}
               <div>
                 <p className="text-[1.125rem] text-[#163B45] dark:text-[#ffffff] font-bold mx-auto w-max">
-                  File available time
+                  {t('body.deleteModal.title')}
                 </p>
                 <p className="my-5 text-[0.875rem] text-[#6B7280] dark:text-[#E5E7EB] font-normal mx-auto w-max">
-                  All your files will be automatically deleted after
+                  {t('body.deleteModal.description')}
                 </p>
                 <div className="mb-5 text-[#163B45] dark:text-[white] flex items-center justify-evenly">
                   <span className="flex flex-col gap-1 items-center justify-center">
                     <p className="text-2xl md:text-[2.125rem] font-bold">
                       {timeLeft.hours}
                     </p>
-                    <p className="text-lg md:text-xl font-normal">Hours</p>
+                    <p className="text-lg md:text-xl font-normal">
+                      {t('body.deleteModal.hours')}
+                    </p>
                   </span>
                   <span className="flex flex-col gap-1 items-center justify-center">
                     <p className="text-2xl md:text-[2.125rem] font-bold">
                       {timeLeft.minutes}
                     </p>
-                    <p className="text-lg md:text-xl font-normal">Minutes</p>
+                    <p className="text-lg md:text-xl font-normal">
+                      {t('body.deleteModal.min')}
+                    </p>
                   </span>
                   <span className="flex flex-col gap-1 items-center justify-center">
                     <p className="text-2xl md:text-[2.125rem] font-bold">
                       {timeLeft.seconds}
                     </p>
-                    <p className="text-lg md:text-xl font-normal">Seconds</p>
+                    <p className="text-lg md:text-xl font-normal">
+                      {t('body.deleteModal.sec')}
+                    </p>
                   </span>
                 </div>
-                <Button className="w-full justify-center">Delete Now</Button>
+                <Button className="w-full justify-center">
+                  {t('body.deleteModal.btnLabel')}
+                </Button>
               </div>
             </ModalWithButton>
           </span>
@@ -259,7 +269,7 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
             <div>
               <div className="flex flex-col my-2 items-center gap-3">
                 <p className="text-[#163B45] dark:text-white text-[1.125rem] font-bold w-full text-center mb-5">
-                  Share
+                  {t('body.shareModal.title')}
                 </p>
 
                 <div className="flex items-center gap-4 md:gap-6 mt-2">
@@ -372,13 +382,15 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
                     onClick={handleCopyURL}
                     className="rounded-[7px] my-1 me-1"
                   >
-                    Copy
+                    {t('body.shareModal.btn')}
                   </Button>
                 </div>
                 <p className="text-sm text-[#F81818] mt-[13px]">
-                  Your files will be automatically deleted after
-                  {timeLeft.hours}hour {timeLeft.minutes}min {timeLeft.seconds}
-                  sec
+                  {t('body.shareModal.alert', {
+                    hour: timeLeft.hours,
+                    min: timeLeft.minutes,
+                    sec: timeLeft.seconds,
+                  })}
                 </p>
               </div>
             </div>
@@ -420,7 +432,7 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
                   src={downloadIcon}
                   alt="download icon"
                 />
-                Download
+                {t('body.downloadModal.label')}
               </span>
             }
             dropdownActions={[
@@ -431,9 +443,9 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
                       src={dropBoxIcon}
                       height={14}
                       width={14}
-                      alt={'download to dropbox'}
+                      alt={t('body.downloadModal.drive')}
                     />
-                    Save to Dropbox
+                    {t('body.downloadModal.drive')}
                   </span>
                 ),
               },
@@ -444,9 +456,9 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
                       src={oneDriveIcon}
                       height={14}
                       width={14}
-                      alt={'download to onedrive'}
+                      alt={t('body.downloadModal.onedrive')}
                     />
-                    Save to OneDrive
+                    {t('body.downloadModal.onedrive')}
                   </span>
                 ),
               },
@@ -457,9 +469,9 @@ const FileItem: React.FC<FileItemProps> = ({ file }) => {
                       src={googleDriveIcon}
                       height={14}
                       width={14}
-                      alt={'download to google drive'}
+                      alt={t('body.downloadModal.dropbox')}
                     />
-                    Save to Google Drive
+                    {t('body.downloadModal.dropbox')}
                   </span>
                 ),
               },

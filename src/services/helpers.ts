@@ -358,7 +358,8 @@ export type ValidationResult = {
 
 export const validatePdfLink = async (
   link: string,
-  maxSizeMB: number
+  maxSizeMB: number,
+  errorMessage: string
 ): Promise<ValidationResult> => {
   const validationResult: ValidationResult = {
     valid: true,
@@ -369,7 +370,7 @@ export const validatePdfLink = async (
     // Step 1: Check if the link is a PDF by checking the extension
     if (!link.toLowerCase().endsWith('.pdf')) {
       validationResult.valid = false;
-      validationResult.messages.push('Please provide a valid PDF link!');
+      validationResult.messages.push(errorMessage);
       return validationResult;
     }
 
@@ -377,7 +378,7 @@ export const validatePdfLink = async (
     const response = await fetch(link, { method: 'HEAD' });
     if (!response.ok) {
       validationResult.valid = false;
-      validationResult.messages.push('Please provide a valid PDF link!');
+      validationResult.messages.push(errorMessage);
       return validationResult;
     }
 
@@ -385,7 +386,7 @@ export const validatePdfLink = async (
     const contentType = response.headers.get('content-type');
     if (!contentType || !contentType.startsWith('application/pdf')) {
       validationResult.valid = false;
-      validationResult.messages.push('Please provide a valid PDF link!');
+      validationResult.messages.push(errorMessage);
       return validationResult;
     }
 
@@ -430,7 +431,7 @@ export const validatePdfLink = async (
     }
   } catch (error) {
     validationResult.valid = false;
-    validationResult.messages.push('Please provide a valid PDF link!');
+    validationResult.messages.push(errorMessage);
   }
 
   return validationResult;
