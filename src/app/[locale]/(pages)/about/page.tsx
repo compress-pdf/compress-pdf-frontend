@@ -4,6 +4,7 @@ import React from 'react';
 import SectionOne from '@/assets/icons/svgs/about/SectionOne';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 import SectionContainer from '@/components/common/containers/SectionContainer';
+import GradientTwo from '@/components/pages/compress-pdf/home-page/backgrounds/gradient-two';
 const AboutPage = () => {
   const t = useTranslations('about');
 
@@ -15,9 +16,10 @@ const AboutPage = () => {
     <div>
       {/* heading and description */}
       <FullwidthContainer
-        className="children-two-server mt-[33.92px] mb-[50px] mt:mt-[84.92px] lg:mt-[75.65px] xl:mt-[114.92px] md:mb-[100px] 2xl:mt-[127.35] 2xl:mb-[110px ] 3xl:mt-[160px] 3xl:mb-[136px]"
+        className="pt-[40px] md:pt-[60px] md:pb-[100px] 2xl:pt-[58px] 2xl:pb-[110px] 3xl:pt-[63px] 3xl:pb-[136px]"
         as={'div'}
       >
+        <GradientTwo />
         <SectionContainer className="text-center flex flex-col md:flex-row gap-9 ">
           <section>
             <div className="flex flex-col items-center gap-[14px] justify-center 3xl:mb-[54px]">
@@ -34,7 +36,7 @@ const AboutPage = () => {
 
       {/* section one  */}
       <FullwidthContainer
-        className="children-two-server mb-[50px] md:mb-[110px] 2xl:mb-[110px ] 3xl:mb-[160px] "
+        className=" mb-[50px] md:mb-[110px] 2xl:mb-[110px ] 3xl:mb-[160px] "
         as={'div'}
       >
         <SectionContainer className="relative flex flex-col md:flex-row gap-9 ">
@@ -100,7 +102,7 @@ const AboutPage = () => {
 
       {/* section three  */}
       <FullwidthContainer
-        className="children-two-server mb-[50px] md:mb-[110px] 2xl:mb-[110px ] 3xl:mb-[160px] "
+        className="mb-[50px] md:mb-[110px] 2xl:mb-[110px ] 3xl:mb-[160px] "
         as={'div'}
       >
         <SectionContainer className="relative text-center flex flex-col md:flex-row gap-9 ">
@@ -212,7 +214,7 @@ const AboutPage = () => {
 
       {/* section four  */}
       <FullwidthContainer
-        className="children-two-server mb-[50px] md:mb-[110px] 2xl:mb-[110px ] 3xl:mb-[160px] "
+        className=" mb-[50px] md:mb-[110px] 2xl:mb-[110px ] 3xl:mb-[160px] "
         as={'div'}
       >
         <SectionContainer className="relative flex flex-col md:flex-row gap-9 text-[1.65rem]">
