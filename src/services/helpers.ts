@@ -1,3 +1,5 @@
+import { FileData } from '@/types/General';
+
 // Define types for the objects with 'name' property
 interface NamedObject {
   name: string;
@@ -482,6 +484,16 @@ export const calculateTimeLeft = (expireTime: string) => {
     minutes: minutes,
     seconds: seconds,
   };
+};
+
+export const findEarliestExpireTime = (data: FileData[]) => {
+  if (!data || data.length === 0) return null;
+
+  return data.reduce((earliest, current) => {
+    return new Date(current.expire) < new Date(earliest.expire)
+      ? current
+      : earliest;
+  }).expire;
 };
 
 const helpers = {

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useState, useEffect } from 'react';
 
 import { useCompressionContext } from '@/context/CompressionContext';
@@ -5,6 +6,7 @@ import {
   numberToStringWithSign,
   stringWithSignToNumber,
 } from '@/services/helpers';
+import { getItemFromDB } from '@/services/indexedDB';
 
 import FullwidthContainer from '../containers/FullwidthContainer';
 import SectionContainer from '../containers/SectionContainer';
@@ -13,7 +15,81 @@ import { Button } from '../core/Button';
 import ButtonGroup from '../core/ButtonGroup';
 import Label from '../core/Label';
 
-const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
+type CompressionLevelSliderProps = {
+  min: number;
+  max: number;
+  value: number;
+  onChange: (value: number) => void;
+};
+
+const CompressionLevelSlider = ({
+  min,
+  max,
+  value,
+  onChange,
+}: CompressionLevelSliderProps) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value);
+    onChange(newValue);
+  };
+
+  const color = ['#ff8224', '#b33f40'];
+  const ballSize = '24px';
+
+  return (
+    <div className="flex items-center w-full max-w-xl">
+      <div className="relative w-full mt-[2px]">
+        <input
+          aria-label="compression-level-slider"
+          type="range"
+          min={min}
+          max={max}
+          value={value}
+          onChange={handleChange}
+          className="w-full h-[12px] rounded-lg appearance-none cursor-pointer transition duration-300 ease-in-out dark:brightness-[.82]"
+          style={{
+            background: `linear-gradient(to right, ${color[0]} 0%, ${
+              color[1]
+            } ${((value - min) / (max - min)) * 100}%, #E5E7EB ${
+              ((value - min) / (max - min)) * 100
+            }%, #E5E7EB 100%)`,
+          }}
+        />
+        <style jsx>{`
+          input[type='range']::-webkit-slider-thumb {
+            appearance: none;
+            width: ${ballSize};
+            height: ${ballSize};
+            border-radius: 50%;
+            background: linear-gradient(to top left, ${color[0]}, ${color[1]});
+            cursor: pointer;
+          }
+          input[type='range']::-moz-range-thumb {
+            width: ${ballSize};
+            height: ${ballSize};
+            border-radius: 50%;
+            background: linear-gradient(to top left, ${color[0]}, ${color[1]});
+            cursor: pointer;
+          }
+        `}</style>
+      </div>
+
+      <div className="ml-4 text-gray-300 text-[0.625rem] font-semibold py-[1.5px] px-[9.5px] rounded bg-[#3a3a3a] dark:bg-[#545454]">
+        {value}
+      </div>
+    </div>
+  );
+};
+
+const CustomizeSection = ({
+  children,
+  staticCustomize,
+  saved_uid,
+}: {
+  children: React.ReactNode;
+  staticCustomize: boolean;
+  saved_uid: string;
+}) => {
   const {
     state,
     updateCompressionType,
@@ -38,7 +114,9 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
     stringWithSignToNumber(enhancementLevel as string)
   );
   const [imageResolution, setImageResolution] = useState(dpi);
-  const [imageColorScope, setImageColorScope] = useState(rgb);
+  const [imageColorScope, setImageColorScope] = useState<boolean>(
+    rgb === 'rgb' ? true : false
+  );
   const [imageFiles, setImageFiles] = useState(
     compressionType === 'by-level-no-img' ? false : true
   ); // true for Keep, false for Remove
@@ -48,11 +126,55 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
   const [isByImageActive, setIsByImageActive] = useState(false);
 
   useEffect(() => {
+    const fetchDataFromDB = async () => {
+      if (staticCustomize) {
+        try {
+          const storedData = await getItemFromDB(saved_uid);
+
+          if (storedData) {
+            // Set the button selection based on the stored compression level
+            if (storedData.compressLevel >= 7) {
+              setSelectedCompression('Extreme Compression');
+            } else if (storedData.compressLevel >= 4) {
+              setSelectedCompression('Medium Compression');
+            } else {
+              setSelectedCompression('Less Compression');
+            }
+            setCompressionLevel(storedData.compressLevel || 5);
+            setImageEnhancement(
+              stringWithSignToNumber(storedData.enhancementLevel || '0')
+            );
+            setImageResolution(storedData.dpi || 150);
+            setImageColorScope(storedData.rgb === 'rgb');
+            setcompressionType(storedData.compressType || 'by-level');
+            setImageFiles(storedData.compressType !== 'by-level-no-img');
+
+            if (storedData.compressType === 'by-img') {
+              setIsByLevelActive(false);
+              setIsByImageActive(true);
+            } else if (storedData.compressType === 'by-level') {
+              setIsByLevelActive(true);
+              setIsByImageActive(false);
+            } else if (storedData.compressType === 'by-level-no-img') {
+              setIsByLevelActive(true);
+              setIsByImageActive(false);
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching data from IndexedDB:', error);
+        }
+      }
+    };
+
+    fetchDataFromDB();
+  }, [staticCustomize, saved_uid]);
+
+  useEffect(() => {
     updateCompressionType(compressionType);
     updateCompressLevel(compressionLevel || 5);
     updateEnhancementLevel(numberToStringWithSign(imageEnhancement));
     updateDpi(imageResolution || 150);
-    updateRgb(imageFiles);
+    updateRgb(imageColorScope ? 'rgb' : 'grayscale');
   }, [
     compressionLevel,
     imageEnhancement,
@@ -69,13 +191,13 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     switch (selectedCompression) {
       case 'Extreme Compression':
-        setCompressionLevel(3);
+        setCompressionLevel(9);
         break;
       case 'Medium Compression':
         setCompressionLevel(6);
         break;
       case 'Less Compression':
-        setCompressionLevel(9);
+        setCompressionLevel(3);
         break;
       default:
         setCompressionLevel(5);
@@ -110,6 +232,38 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
     setIsByLevelActive(true);
     setImageFiles(false); // Set to Remove
   };
+  // Handle changes for both slider and button selection
+  const handleCompressionLevelChange = (value: number) => {
+    setCompressionLevel(value);
+
+    // Update the button selection based on the slider value
+    if (value >= 7) {
+      setSelectedCompression('Extreme Compression');
+    } else if (value >= 4) {
+      setSelectedCompression('Medium Compression');
+    } else {
+      setSelectedCompression('Less Compression');
+    }
+  };
+
+  const handleButtonSelection = (label: string) => {
+    setSelectedCompression(label);
+
+    // Update the slider value based on button selection
+    switch (label) {
+      case 'Extreme Compression':
+        setCompressionLevel(9);
+        break;
+      case 'Medium Compression':
+        setCompressionLevel(6);
+        break;
+      case 'Less Compression':
+        setCompressionLevel(3);
+        break;
+      default:
+        setCompressionLevel(5);
+    }
+  };
 
   return (
     <FullwidthContainer className="mb-[130px]">
@@ -131,12 +285,13 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
           aria-label="Toggle Compression Level"
         >
           <p>Compression Level</p>
-          <RangeSlider
+          <CompressionLevelSlider
             min={1}
             max={9}
-            defaultValue={compressionLevel}
-            onChange={setCompressionLevel}
+            value={compressionLevel || 0}
+            onChange={handleCompressionLevelChange}
           />
+
           {[
             'Extreme Compression',
             'Medium Compression',
@@ -149,7 +304,7 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
                   ? 'bg-gradient-to-tl from-[#b33f400d] to-[#b33f400d] text-[#B33F40] dark:from-[#545454] dark:to-[#545454] dark:text-white'
                   : 'dark:dark:bg-gradient-to-tl dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] dark:text-white'
               } `}
-              onClick={() => setSelectedCompression(label)} // Set selected compression on button click
+              onClick={() => handleButtonSelection(label)}
             >
               {label}
             </Button>
@@ -176,7 +331,7 @@ const CustomizeSection = ({ children }: { children: React.ReactNode }) => {
           <div className="flex flex-col justify-between w-full md:w-1/2 self-stretch gap-[20px] flex-1">
             <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1">
               <Label
-                text={'Image Enhancement'}
+                text={`Image Enhancement`}
                 tooltipContent={
                   'Adjusts brightness, contrast, sharpness, and color to make an image clearer and more appealing.'
                 }

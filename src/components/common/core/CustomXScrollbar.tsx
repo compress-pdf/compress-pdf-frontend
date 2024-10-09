@@ -18,7 +18,7 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({
   const [startX, setStartX] = useState<number>(0);
   const [scrollStartLeft, setScrollStartLeft] = useState<number>(0);
   const [, setIsScrollbarVisible] = useState<boolean>(true);
-  const [zoomLevel, setZoomLevel] = useState<number>(window.devicePixelRatio); // Track zoom level
+  const [zoomLevel, setZoomLevel] = useState<number>(window?.devicePixelRatio); // Track zoom level
 
   const sensitivity = 2; // Sensitivity for scroll dragging
 

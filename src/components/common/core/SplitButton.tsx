@@ -60,16 +60,19 @@ const SplitButton: React.FC<SplitButtonProps> = ({
     <div ref={dropdownRef} className="relative inline-block text-left">
       <div className="flex">
         {/* Main Action Button */}
-        <button
-          type="button"
+        <div
+          // type="button"
           onClick={handleMainClick}
           className={twMerge(
             'bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-4 py-2 rounded-l-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent text-nowrap  transition-all duration-200 ease-in',
             className
           )}
+          onKeyDown={() => {}}
+          tabIndex={0}
+          role="button"
         >
           {label}
-        </button>
+        </div>
 
         {/* Dropdown Toggle Button */}
         <button
