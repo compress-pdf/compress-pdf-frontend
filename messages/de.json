@@ -1000,5 +1000,268 @@
         }
       }
     ]
+  },
+
+  "about": {
+    "heading": "Über PDF Komprimieren",
+    "description": "Willkommen bei Online PDF Komprimieren, Ihrer ersten Wahl für effiziente und hochwertige PDF-Komprimierung. Egal, ob Sie ein Profi sind, der große Berichte bearbeitet, ein Student, der Aufgaben einreicht, oder ein Kleinunternehmer, der Dokumente archiviert, wir erleichtern Ihren PDF-Management-Prozess.",
+    "sectionOne": {
+      "title": "Was ist unsere Mission?",
+      "description": "Bei PDF Komprimieren ist es unsere Mission, die Verwaltung von PDF-Dateien zu vereinfachen, indem wir ein benutzerfreundliches und effizientes Tool zur Komprimierung anbieten. Wir verstehen, dass große PDF-Dateien mühsam sein können, egal ob Sie Dokumente per E-Mail teilen, auf Websites hochladen oder einfach Speicherplatz sparen möchten. Unser Ziel ist es, eine nahtlose, zugängliche Lösung zu bieten, die Ihre Produktivität und Ihren Komfort verbessert und es Ihnen ermöglicht, Ihre PDF-Dateien mühelos zu handhaben."
+    },
+    "sectionTwo": {
+      "title": "Was bieten wir an?",
+      "description": "Wir bieten eine umfassende Palette an Funktionen, die alle Ihre Bedürfnisse in der PDF-Komprimierung abdecken:",
+      "items": [
+        {
+          "title": "Mehrere Upload-Systeme",
+          "description": "Laden Sie Ihre Dateien ganz einfach von Ihrem Gerät, aus der Cloud oder per Drag & Drop auf unsere Plattform hoch."
+        },
+        {
+          "title": "Flexible Download-Methoden",
+          "description": "Sobald Ihr PDF komprimiert ist, laden Sie es über verschiedene, auf Ihre Vorlieben zugeschnittene Optionen herunter."
+        },
+        {
+          "title": "Online Teilen und Drucken",
+          "description": "Teilen Sie Ihre komprimierten PDFs direkt per E-Mail oder in sozialen Medien und drucken Sie sie mit nur wenigen Klicks."
+        },
+        {
+          "title": "Anpassungsfunktionen",
+          "description": "Passen Sie die Komprimierungseinstellungen an, um das Gleichgewicht zwischen Qualität und Dateigröße nach Ihren Anforderungen zu gestalten."
+        }
+      ]
+    },
+    "sectionThree": {
+      "title": "Unser Team",
+      "description": "Unser Team besteht aus einer vielfältigen Gruppe engagierter Fachleute, die sich für Technologie und Benutzererfahrung begeistern. Von Softwareentwicklern und Designern bis hin zu Kundendienstspezialisten bringt jedes Mitglied Fachwissen und Begeisterung mit. Wir setzen uns dafür ein, unser Tool kontinuierlich zu verbessern und sicherzustellen, dass es Ihren Anforderungen mit höchster Leistung und Zuverlässigkeit entspricht.",
+      "teams": [
+        {
+          "name": "John Doe",
+          "role": "Softwareentwickler",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Jane Smith",
+          "role": "UI/UX Designerin",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Alex Johnson",
+          "role": "Kundendienstspezialist",
+          "facebook": "",
+          "linkedin": ""
+        }
+      ]
+    },
+    "sectionFour": {
+      "title": "Warum uns wählen?",
+      "description": "PDF Komprimieren bedeutet, eine zuverlässige, intuitive und kostenlose Lösung für Ihre PDF-Komprimierungsanforderungen zu wählen. Hier ist, warum wir herausragen:",
+      "items": [
+        {
+          "title": "Benutzerfreundlichkeit",
+          "description": "Unsere Plattform ist einfach gestaltet, sodass sie für jeden zugänglich ist, unabhängig von den technischen Fähigkeiten."
+        },
+        {
+          "title": "Anpassbare Optionen",
+          "description": "Passen Sie die Komprimierungseinstellungen nach Ihren Vorlieben an, um die Qualität Ihrer Dokumente bei gleichzeitiger Größenreduzierung beizubehalten."
+        },
+        {
+          "title": "Schnell und effizient",
+          "description": "Erleben Sie schnelle Verarbeitungszeiten und hochwertige Ergebnisse dank unserer fortschrittlichen Komprimierungstechnologie."
+        },
+        {
+          "title": "Sicher und zuverlässig",
+          "description": "Ihre Dateien werden mit größter Sorgfalt behandelt, um Ihre Daten sicher und privat zu halten."
+        }
+      ]
+    }
+  },
+
+  "cookiePolicy": {
+    "heading": "Cookie-Richtlinie",
+    "description": "Bei CompressPDF.to, betrieben von Softeko, verwenden wir derzeit keine Cookies für Werbezwecke oder ähnliche Zwecke. Diese Cookie-Richtlinie erklärt, was Cookies sind, wie wir sie in unserem aktuellen Setup verwenden und wie wir sie möglicherweise in Zukunft verwenden, wenn wir Werbung oder andere Funktionen implementieren, die Cookies erfordern.",
+    "sectionOne": {
+      "heading": "1. Was sind Cookies?",
+      "subHeadingOne": "1.1. Definition",
+      "descriptionOne": "Cookies sind kleine Textdateien, die von Websites, die Sie besuchen, auf Ihrem Gerät (Computer, Smartphone, Tablet) abgelegt werden. Sie helfen Websites, sich Ihre Vorlieben zu merken und Ihr Surferlebnis zu verbessern.",
+      "subHeadingTwo": "1.2 Arten von Cookies",
+      "descriptionTwo": "Es gibt verschiedene Arten von Cookies, darunter:",
+      "list": [
+        "Session-Cookies: Temporäre Cookies, die gelöscht werden, wenn Sie Ihren Browser schließen. Sie helfen, Ihre Sitzung zu verfolgen, während Sie unsere Seite nutzen.",
+        "Persistente Cookies: Diese verbleiben für einen festgelegten Zeitraum auf Ihrem Gerät oder bis Sie sie löschen. Sie helfen, Ihre Vorlieben und Einstellungen für zukünftige Besuche zu speichern."
+      ]
+    },
+    "sectionTwo": {
+      "heading": "2. Aktuelle Verwendung von Cookies",
+      "subHeadingOne": "2.1 Essenzielle Cookies",
+      "descriptionOne": "Wir verwenden derzeit essenzielle Cookies, die für die grundlegende Funktionalität unserer Seite erforderlich sind. Diese Cookies ermöglichen es Ihnen, die Seite zu navigieren und ihre Funktionen wie das Hoch- und Herunterladen von Dateien zu nutzen.",
+      "subHeadingTwo": "2.2 Leistungs- und Funktions-Cookies",
+      "descriptionTwo": "Derzeit verwenden wir keine Cookies, um Leistungs- oder Funktionsdaten zu sammeln. Wir verfolgen Ihr Surfverhalten nicht und speichern keine Vorlieben, die über das für die grundlegende Funktionalität Erforderliche hinausgehen."
+    },
+    "sectionThree": {
+      "heading": "3. Zukünftige Verwendung von Cookies",
+      "subHeadingOne": "3.1 Mögliche Änderungen",
+      "descriptionOne": "In Zukunft können wir Werbung oder andere Funktionen einführen, die möglicherweise die Verwendung zusätzlicher Cookies erfordern. Falls dies der Fall ist, werden wir diese Cookie-Richtlinie aktualisieren, um die Änderungen zu reflektieren und Informationen darüber bereitzustellen, wie diese Cookies verwendet werden.",
+      "subHeadingTwo": "3.2 Aktualisierungen dieser Richtlinie",
+      "descriptionTwo": "Wenn wir beginnen, Cookies über die aktuelle essenzielle Funktionalität hinaus zu verwenden, werden wir diese Cookie-Richtlinie überarbeiten, um Details zu den verwendeten Cookie-Typen, ihren Zwecken und den Verwaltungsmöglichkeiten Ihrer Vorlieben einzubeziehen."
+    },
+    "sectionFour": {
+      "heading": "4. Verwaltung von Cookies",
+      "subHeadingOne": "4.1 Browsereinstellungen",
+      "descriptionOne": "Sie können Ihre Cookie-Einstellungen über Ihre Browsereinstellungen verwalten. Die meisten Browser ermöglichen es Ihnen, Cookies abzulehnen oder zu löschen. Bitte beachten Sie jedoch, dass das Blockieren von Cookies die Funktionalität unserer Seite und Ihr Gesamterlebnis beeinträchtigen kann.",
+      "subHeadingTwo": "4.2 Opt-Out-Links",
+      "descriptionTwo": "Sollten wir in Zukunft Drittanbieter-Analysedienste oder Werbedienste einsetzen, haben Sie die Möglichkeit, diese Cookies über die jeweiligen Opt-Out-Seiten der Dienste abzulehnen."
+    },
+    "sectionFive": {
+      "heading": "5. Änderungen an dieser Cookie-Richtlinie",
+      "subHeadingOne": "5.1 Aktualisierungen",
+      "descriptionOne": "Wir können diese Cookie-Richtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken oder aus anderen betrieblichen, rechtlichen oder regulatorischen Gründen zu reflektieren. Alle Aktualisierungen werden auf dieser Seite mit einem aktualisierten Gültigkeitsdatum veröffentlicht."
+    },
+    "sectionSix": {
+      "heading": "6. Kontaktieren Sie uns",
+      "description": "Wenn Sie Fragen oder Bedenken zu dieser Cookie-Richtlinie oder unserer Verwendung von Cookies haben, kontaktieren Sie uns bitte unter:",
+      "email": "E-Mail",
+      "emailInfo": "support@compresspdf.to",
+      "address": "Adresse",
+      "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesch",
+      "phone": "Telefon",
+      "phoneInfo": "+88 01327403953",
+      "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
+    }
+  },
+
+  "termsAndConditions": {
+    "heading": "Nutzungsbedingungen",
+    "description": "Willkommen bei CompressPDF.to, betrieben von Softeko. Diese Nutzungsbedingungen (Bedingungen) regeln Ihre Nutzung unserer Website unter https://compresspdf.to/ (die Seite). Durch den Zugriff auf oder die Nutzung unserer Seite stimmen Sie zu, diese Bedingungen einzuhalten. Wenn Sie diesen Bedingungen nicht zustimmen, verwenden Sie unsere Seite bitte nicht.",
+    "sectionOne": {
+      "heading": "1. Nutzung der Seite",
+      "subHeadingOne": "1.1 Dienstbeschreibung",
+      "descriptionOne": "CompressPDF.to bietet einen Dienst zum Komprimieren von PDF-Dateien an. Durch das Hochladen von PDF-Dateien auf unsere Seite stimmen Sie zu, den Dienst ausschließlich für persönliche oder geschäftliche Zwecke und nicht für illegale oder unbefugte Zwecke zu verwenden.",
+      "subHeadingTwo": "1.2 Kontoanforderungen",
+      "descriptionTwo": "Sie müssen kein Konto erstellen, um unseren Datei-Komprimierungsdienst zu nutzen. Sie müssen jedoch mindestens 13 Jahre alt sein, um unsere Seite nutzen zu dürfen."
+    },
+    "sectionTwo": {
+      "heading": "2. Verantwortlichkeiten der Nutzer",
+      "subHeadingOne": "2.1 Hochgeladene Dateien",
+      "descriptionOne": "Sie sind allein verantwortlich für den Inhalt der Dateien, die Sie auf unsere Seite hochladen. Durch das Hochladen von Dateien erklären und gewährleisten Sie, dass Sie das Recht dazu haben und dass die Dateien keine Gesetze oder Rechte Dritter verletzen.",
+      "subHeadingTwo": "2.2 Verbotene Inhalte",
+      "descriptionTwo": "Sie dürfen keine Dateien hochladen, die illegale Inhalte enthalten, einschließlich, aber nicht beschränkt auf, Viren, Malware oder Inhalte, die verleumderisch, obszön oder anderweitig anstößig sind."
+    },
+    "sectionThree": {
+      "heading": "3. Datenspeicherung und Datenschutz",
+      "subHeadingOne": "3.1 Dateiaufbewahrung",
+      "descriptionOne": "Hochgeladene Dateien werden für maximal 2 Stunden auf unserer Seite gespeichert, um sie zu verarbeiten. Nach diesem Zeitraum werden die Dateien automatisch von unseren Servern gelöscht. Wir speichern keine persönlichen Daten oder Dateien über diesen Zeitraum hinaus.",
+      "subHeadingTwo": "3.2 Datenschutzerklärung",
+      "descriptionTwo": "Die Verarbeitung Ihrer Daten unterliegt unserer Datenschutzerklärung, die Sie hier einsehen können. Durch die Nutzung unserer Seite stimmen Sie den Bedingungen unserer Datenschutzerklärung zu."
+    },
+    "sectionFour": {
+      "heading": "4. Geistiges Eigentum",
+      "subHeadingOne": "4.1 Eigentum",
+      "descriptionOne": "Alle Inhalte, Marken und sonstigen geistigen Eigentumsrechte auf unserer Seite, einschließlich, aber nicht beschränkt auf Texte, Grafiken und Logos, sind Eigentum von Softeko oder lizenziert und durch geltende geistige Eigentumsgesetze geschützt.",
+      "subHeadingTwo": "4.2 Eingeschränkte Lizenz",
+      "descriptionTwo": "Ihnen wird eine eingeschränkte, nicht exklusive, nicht übertragbare Lizenz gewährt, um auf die Seite zuzugreifen und sie für den vorgesehenen Zweck zu nutzen. Sie dürfen die Seite oder ihre Inhalte nicht kopieren, modifizieren, verbreiten oder abgeleitete Werke daraus erstellen, ohne unsere ausdrückliche schriftliche Genehmigung."
+    },
+    "sectionFive": {
+      "heading": "5. Haftungsbeschränkung",
+      "subHeadingOne": "5.1 Haftungsausschluss",
+      "descriptionOne": "Unsere Seite wird 'wie besehen' und 'wie verfügbar' bereitgestellt. Wir geben keine Zusicherungen oder Garantien in Bezug auf die Genauigkeit, Zuverlässigkeit oder Verfügbarkeit der Seite. Soweit gesetzlich zulässig, lehnen wir alle ausdrücklichen oder stillschweigenden Garantien ab, einschließlich, aber nicht beschränkt auf, stillschweigende Garantien der Marktgängigkeit und Eignung für einen bestimmten Zweck.",
+      "subHeadingTwo": "5.2 Haftungsbeschränkung",
+      "descriptionTwo": "Softeko oder seine Partner haften unter keinen Umständen für indirekte, zufällige, besondere, Folgeschäden oder Strafschadenersatz, die sich aus oder im Zusammenhang mit Ihrer Nutzung der Seite ergeben, selbst wenn wir auf die Möglichkeit solcher Schäden hingewiesen wurden. Unsere Gesamtverantwortung für Ansprüche, die sich aus der Nutzung der Seite ergeben, übersteigt nicht den von Ihnen gezahlten Betrag, falls vorhanden, für den Zugriff auf die Seite."
+    },
+    "sectionSix": {
+      "heading": "6. Beendigung",
+      "subHeadingOne": "6.1 Beendigung des Zugangs",
+      "descriptionOne": "Wir behalten uns das Recht vor, Ihren Zugriff auf unsere Seite nach eigenem Ermessen ohne Vorankündigung zu beenden oder auszusetzen, wenn wir der Meinung sind, dass Sie gegen diese Bedingungen verstoßen haben oder ein Verhalten gezeigt haben, das unserer Seite oder anderen Nutzern schaden könnte."
+    },
+    "sectionSeven": {
+      "heading": "7. Änderungen der Bedingungen",
+      "subHeadingOne": "7.1 Aktualisierungen",
+      "descriptionOne": "Wir können diese Bedingungen von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite mit einem aktualisierten Gültigkeitsdatum veröffentlicht. Ihre fortgesetzte Nutzung der Seite nach der Veröffentlichung von Änderungen gilt als Zustimmung zu diesen Änderungen."
+    },
+    "sectionEight": {
+      "heading": "8. Kontaktieren Sie uns",
+      "description": "Wenn Sie Fragen oder Bedenken zu dieser Datenschutzrichtlinie oder zur Nutzung Ihrer Daten haben, kontaktieren Sie uns bitte unter:",
+      "email": "E-Mail",
+      "emailInfo": "support@compresspdf.to",
+      "address": "Adresse",
+      "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesch",
+      "phone": "Telefon",
+      "phoneInfo": "+88 01327403953",
+      "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
+    }
+  },
+
+  "privacyPolicy": {
+    "heading": "Datenschutzrichtlinie",
+    "description": "Willkommen bei CompressPDF.to, betrieben von Softeko. Diese Datenschutzrichtlinie erläutert, wie wir Ihre Daten erfassen, verwenden und schützen, wenn Sie unsere Website unter https://compresspdf.to/ (die Seite) nutzen. Durch die Nutzung unserer Seite stimmen Sie den in dieser Datenschutzrichtlinie beschriebenen Bedingungen zu.",
+    "sectionOne": {
+      "heading": "1. Informationen, die wir sammeln",
+      "subHeadingOne": "1.1 Hochgeladene Dateien",
+      "descriptionOne": "Wenn Sie CompressPDF.to verwenden, um PDF-Dateien zu komprimieren, erfassen wir die von Ihnen hochgeladenen Dateien. Diese Dateien werden auf unseren Servern verarbeitet, um den Komprimierungsservice bereitzustellen.",
+      "subHeadingTwo": "1.2 Nutzungsdaten",
+      "descriptionTwo": "Wir können Daten über Ihre Interaktion mit unserer Seite erfassen, einschließlich Ihrer IP-Adresse, Browsertyp und Zugriffszeiten. Diese Informationen helfen uns, unsere Dienste zu verbessern und sicherzustellen, dass die Seite korrekt funktioniert."
+    },
+    "sectionTwo": {
+      "heading": "2. Wie wir Ihre Informationen verwenden",
+      "subHeadingOne": "2.1 Datei-Verarbeitung",
+      "descriptionOne": "Die von Ihnen hochgeladenen Dateien werden in erster Linie verwendet, um Ihnen den angeforderten Komprimierungsservice bereitzustellen.",
+      "subHeadingTwo": "2.2 Nutzungsdaten",
+      "descriptionTwo": "Wir verwenden diese Informationen, um die Funktionalität und Leistung unserer Seite zu analysieren und zu verbessern. Diese Daten werden in aggregierter Form verwendet und identifizieren keine einzelnen Benutzer."
+    },
+    "sectionThree": {
+      "heading": "3. Datenspeicherung und -aufbewahrung",
+      "subHeadingOne": "3.1 Temporäre Speicherung",
+      "descriptionOne": "Die von Ihnen hochgeladenen Dateien werden für 2 Stunden auf unseren Servern gespeichert. Nach dieser Zeit werden die Dateien automatisch von unseren Servern gelöscht.",
+      "subHeadingTwo": "3.2 Keine dauerhafte Speicherung",
+      "descriptionTwo": "Wir speichern keine persönlichen Daten oder Dateien über die 2-stündige Verarbeitungszeit hinaus. Nach dem Löschen werden die Dateien unwiderruflich von unseren Servern entfernt."
+    },
+    "sectionFour": {
+      "heading": "4. Datensicherheit",
+      "subHeadingOne": "4.1 Sicherheitsmaßnahmen",
+      "descriptionOne": "Wir setzen branchenübliche Sicherheitsmaßnahmen ein, um Ihre Daten während der Übertragung und Speicherung auf unseren Servern zu schützen. Keine Methode der Datenübertragung über das Internet oder elektronische Speicherung ist jedoch vollständig sicher. Obwohl wir uns bemühen, Ihre Daten zu schützen, können wir keine absolute Sicherheit garantieren."
+    },
+    "sectionFive": {
+      "heading": "5. Dienste von Drittanbietern",
+      "subHeadingOne": "5.1 Keine Weitergabe an Dritte",
+      "descriptionOne": "Wir geben Ihre Dateien oder persönlichen Informationen nicht an Dritte weiter, verkaufen oder offenbaren sie, außer wenn dies gesetzlich vorgeschrieben ist oder um rechtlichen Verfahren nachzukommen.",
+      "subHeadingTwo": "5.2 Externe Links",
+      "descriptionTwo": "Unsere Seite kann Links zu anderen Websites enthalten. Wir sind nicht verantwortlich für die Datenschutzpraktiken oder Inhalte dieser externen Websites. Wir empfehlen Ihnen, die Datenschutzrichtlinien der von Ihnen besuchten Drittanbieter-Websites zu überprüfen."
+    },
+    "sectionSix": {
+      "heading": "6. Änderungen an dieser Datenschutzrichtlinie",
+      "subHeadingOne": "6.1 Aktualisierungen",
+      "descriptionOne": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Alle Änderungen werden auf dieser Seite mit einem aktualisierten Gültigkeitsdatum veröffentlicht. Ihre fortgesetzte Nutzung der Seite nach der Veröffentlichung von Änderungen gilt als Ihre Zustimmung zu diesen Änderungen."
+    },
+    "sectionSeven": {
+      "heading": "7. Kontaktieren Sie uns",
+      "description": "Wenn Sie Fragen oder Bedenken zu dieser Datenschutzrichtlinie oder der Verwendung Ihrer Daten haben, kontaktieren Sie uns bitte unter:",
+      "email": "E-Mail",
+      "emailInfo": "support@compresspdf.to",
+      "address": "Adresse",
+      "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesch",
+      "phone": "Telefon",
+      "phoneInfo": "+88 01327403953",
+      "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
+    }
   }
 }
