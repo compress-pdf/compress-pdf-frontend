@@ -81,7 +81,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/v1/file_data?UID=${uid}`);
+        const response = await axios.get(`${API_URL}/v1/file-data?UID=${uid}`);
         setData(response.data.data);
         setLoading(false);
       } catch (error) {
