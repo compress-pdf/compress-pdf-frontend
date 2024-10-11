@@ -267,11 +267,11 @@ const CustomizeSection = ({
 
   return (
     <FullwidthContainer className="mb-[130px]">
-      <SectionContainer className="flex flex-wrap items-center gap-[9px] md:gap-[1.54%] lg:gap-[1.18%] xl:gap-[1.54%] 2xl:gap-[1.18%] 3xl:gap-[1.5%] mt-[40px] md:mt-[60px] lg:mt-[60px] xl:mt-[60px] 2xl:mt-[60px] 3xl:mt-[60px] justify-between border-t border-[#EAEAEA] dark:border-[#54545487]">
+      <SectionContainer className="flex flex-wrap items-center gap-[9px] md:gap-[1.54%] lg:gap-[1.18%] xl:gap-[1.54%] 2xl:gap-[1.18%] 3xl:gap-[1.5%] mt-[30px] justify-between border-t border-[#EAEAEA] dark:border-[#54545487]">
         {/* By Level Container */}
         <div
           className={`by-level relative flex flex-col gap-[8px] w-full self-stretch justify-center rounded-[5px] md:w-[31.21%] lg:w-[27.65%] xl:w-[31.12%] 2xl:w-[27.65%] 3xl:w-[25%] bg-white dark:bg-[#3a3a3a] p-[14px] my-[14px] ${
-            !isByLevelActive ? 'opacity-50' : ''
+            !isByLevelActive ? 'opacity-30' : ''
           }`}
           onClick={isByLevelActive ? undefined : toggleByLevel}
           onKeyDown={e => {
@@ -317,7 +317,7 @@ const CustomizeSection = ({
         {/* By Image Container */}
         <div
           className={`by-image flex items-center flex-wrap md:flex-nowrap gap-[5px] w-full md:w-[61.25%] lg:w-[47.58%] xl:w-[61.34%] 2xl:w-[47.58%] 3xl:w-[50.5%] self-stretch p-[14px] px-0 ${
-            !isByImageActive ? 'opacity-50' : ''
+            !isByImageActive ? 'opacity-30' : ''
           }`}
           onClick={isByImageActive ? undefined : toggleByImage}
           onKeyDown={

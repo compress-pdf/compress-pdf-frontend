@@ -17,6 +17,7 @@ import { calculateTimeLeft } from '@/services/helpers';
 import CustomToast from '@/components/common/core/ToastMessage';
 import { FileData } from '@/types/General';
 import { API_URL } from '@/constants/credentials/const';
+import PdfThumbnail from '@/components/common/core/PdfThumbnail';
 
 import Preview from '../preview/Preview';
 import SaveDrive from '../save-drive/SaveDrive';
@@ -38,6 +39,7 @@ interface FileItemProps {
   handleDelete: (id: string, index: number) => void;
   handleNameChange: (uid: string, name: string, index: number) => void;
   storedState: boolean;
+  deleting: boolean;
 }
 
 const FileItem: React.FC<FileItemProps> = ({
@@ -45,6 +47,7 @@ const FileItem: React.FC<FileItemProps> = ({
   handleDelete,
   handleNameChange,
   storedState,
+  deleting,
 }) => {
   const deleteIcon = (
     <svg
@@ -94,12 +97,12 @@ const FileItem: React.FC<FileItemProps> = ({
   );
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(
-    file.file_name.endsWith('.pdf')
-      ? file.file_name.replace(/\.pdf$/i, '')
-      : file.file_name
+    file?.file_name?.endsWith('.pdf')
+      ? file?.file_name?.replace(/\.pdf$/i, '')
+      : file?.file_name
   );
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(file?.expire));
-  const url = `${API_URL}/${file.file_path}`;
+  const url = `${API_URL}/${file?.file_path}`;
 
   useEffect(
     () => {
@@ -122,32 +125,6 @@ const FileItem: React.FC<FileItemProps> = ({
   //   setIsEditing(false); // Exit editing mode on blur
   // };
   const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  // const handlePrint = async () => {
-  //   try {
-  //     const response = await axios.get(url, {
-  //       responseType: 'blob', // Fetch the file as a blob
-  //     });
-
-  //     // Create a blob URL for the fetched PDF
-  //     const blobUrl = URL.createObjectURL(
-  //       new Blob([response.data], { type: 'application/pdf' })
-  //     );
-
-  //     // Open the blob URL in a new tab
-  //     const newWindow = window.open(blobUrl, '_blank');
-
-  //     if (newWindow) {
-  //       // When the new window is loaded, trigger print
-  //       newWindow.onload = () => {
-  //         newWindow.focus();
-  //         newWindow.print();
-  //       };
-  //     }
-  //   } catch (error) {
-  //     console.error('Error fetching PDF for printing:', error);
-  //   }
-  // };
 
   const handlePrint = async () => {
     try {
@@ -227,11 +204,13 @@ const FileItem: React.FC<FileItemProps> = ({
 
   return (
     <div className="flex flex-col md:flex-row gap-[10px] justify-normal items-start bg-[#FDE9D4] dark:bg-[#2F2F2F] md:p-4 p-2 w-full border-b-4 border-white dark:border-gray-800">
-      <div className="flex flex-row items-start gap-1 w-full md:w-[48%] lg:w-[44%] xl:w-[44%] 3xl:w-[56%]">
-        <div className="bg-white p-2 mr-2 md:mr-4 rounded">
-          <div className="w-10 h-12 bg-gray-200"></div>
+      <div className="flex flex-row items-start gap-1 w-full md:w-[56%] lg:w-[56%] xl:w-[56%] 3xl:w-[56%]">
+        <div className="mr-2 md:mr-4 rounded">
+          <div className="w-10 h-12">
+            <PdfThumbnail pdfUrl={url} />
+          </div>
         </div>
-        <div className="self-start max-w-[50%] flex flex-col flex-wrap">
+        <div className="self-start max-w-[70%] flex flex-col flex-wrap">
           <span className="text-md text-[#163B45] dark:text-white font-bold flex flex-row items-center gap-[2px] max-w-full flex-wrap">
             {isEditing ? (
               <span className="flex items-center max-w-full flex-nowrap">
@@ -240,8 +219,10 @@ const FileItem: React.FC<FileItemProps> = ({
                   type="text"
                   value={fileName}
                   onChange={handleInputChange}
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
+                  autoFocus
                   onBlur={() => {
-                    handleNameChange(file.uid_fk, fileName, file.file_index);
+                    handleNameChange(file?.uid_fk, fileName, file?.file_index);
                     setIsEditing(false);
                   }}
                   className="text-[#163B45] dark:text-white font-normal text-sm md:text-xs lg:text-sm xl:text-xs 2xl:text-sm 3xl:text-[0.875rem] bg-white border-none outline-none w-full rounded-md dark:bg-[#2e150e50] px-1 py-2"
@@ -267,9 +248,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 <ModalWithButton
                   buttonLabel={
                     <Tooltip content="Delete File">
-                      <span className="delete text-red-500 -mt-[5.8px]">
-                        {deleteIcon}
-                      </span>
+                      <span className="delete text-red-500">{deleteIcon}</span>
                     </Tooltip>
                   }
                 >
@@ -307,9 +286,12 @@ const FileItem: React.FC<FileItemProps> = ({
                     </div>
                     <Button
                       className="w-full justify-center"
-                      onClick={() => handleDelete(file.uid_fk, file.file_index)}
+                      onClick={() =>
+                        handleDelete(file?.uid_fk, file?.file_index)
+                      }
+                      disabled={deleting}
                     >
-                      Delete Now
+                      {deleting ? 'Deleting..' : 'Delete Now'}
                     </Button>
                   </div>
                 </ModalWithButton>
@@ -321,29 +303,29 @@ const FileItem: React.FC<FileItemProps> = ({
               PDF
             </span>
             <span className="text-md text-[#163B45] dark:text-white">
-              {file.input_file_size.toFixed(2)}MB
+              {file?.input_file_size?.toFixed(2)}MB
             </span>
           </p>
         </div>
         <div className="ml-auto">
           <div className="flex flex-col items-center gap-3">
             <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] text-[#163B45] dark:text-slate-50 font-[1.15rem] leading-6">
-              {file.compression_ratio.toFixed(2)}%
+              {file?.compression_ratio?.toFixed(2)}%
             </p>
             <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-6 mt-0 text-slate-900 dark:text-white">
-              {file.output_file_size.toFixed(2)}MB
+              {file?.output_file_size?.toFixed(2)}MB
             </p>
           </div>
         </div>
       </div>
 
-      <div className="w-full md:w-[52%] lg:w-[56%] xl:w-[56%] 3xl:w-[44%] flex flex-row gap-2 items-center justify-between md:justify-end">
+      <div className="w-full md:w-[44%] lg:w-[44%] xl:w-[44%] 3xl:w-[44%] flex flex-row flex-wrap gap-2 items-center justify-between md:justify-end">
         <div className="flex gap-1 2xl:gap-2 items-center">
           <ModalWithButton
             buttonLabel={
-              <button
+              <span
                 aria-label="share"
-                className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 mt-[1px]"
+                className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
               >
                 <Image
                   width={0}
@@ -352,7 +334,7 @@ const FileItem: React.FC<FileItemProps> = ({
                   className="dark:mix-blend-multiply dark:brightness-150 dark:contrast-200"
                   alt="share-logo"
                 />
-              </button>
+              </span>
             }
           >
             {/* Modal Content */}
@@ -484,8 +466,12 @@ const FileItem: React.FC<FileItemProps> = ({
               </div>
             </div>
           </ModalWithButton>
-          <button
-            className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10"
+          <span
+            aria-label="print"
+            role="button"
+            tabIndex={0}
+            onKeyDown={() => {}}
+            className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
             onClick={() => handlePrint()}
           >
             <Image
@@ -495,7 +481,7 @@ const FileItem: React.FC<FileItemProps> = ({
               className="dark:mix-blend-multiply dark:brightness-150 dark:contrast-200"
               alt="print-logo"
             />
-          </button>
+          </span>
           <iframe ref={iframeRef} style={{ display: 'none' }} title="print" />
           <Preview url={url}>
             <Image
@@ -527,7 +513,7 @@ const FileItem: React.FC<FileItemProps> = ({
             dropdownActions={[
               {
                 label: (
-                  <span className="text-base font-bold text-[#FAFAFA] flex items-center gap-3">
+                  <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
                     <Image
                       src={dropBoxIcon}
                       height={14}
@@ -540,7 +526,7 @@ const FileItem: React.FC<FileItemProps> = ({
               },
               {
                 label: (
-                  <span className="text-base font-bold text-[#FAFAFA] flex items-center gap-3">
+                  <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
                     <Image
                       src={oneDriveIcon}
                       height={14}
@@ -554,7 +540,7 @@ const FileItem: React.FC<FileItemProps> = ({
               {
                 label: (
                   <SaveDrive PDF_URL={url}>
-                    <span className="text-base font-bold text-[#FAFAFA] flex items-center gap-3">
+                    <span className="font-bold text-[#FAFAFA] flex items-center gap-3 text-left">
                       <Image
                         src={googleDriveIcon}
                         height={14}
@@ -567,7 +553,9 @@ const FileItem: React.FC<FileItemProps> = ({
                 ),
               },
             ]}
-            onMainClick={() => console.log('Download clicked')}
+            onMainClick={() => {
+              //console.log('Download clicked')
+            }}
             className="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white focus:outline-none text-sm md:text-[0.875rem] border-0 border-e-[1px] dark:border-0 dark:border-e-[1px] dark:border-[#dbdbdbe0] h-full"
             classNameDropdownIcon="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white border-0 dark:border-s-transparent"
             classNameDropdown="bg-[#FF8224] dark:bg-[#FF8224] dark:hover:bg-[#ff7044] hover:bg-[#ff7044] text-white"

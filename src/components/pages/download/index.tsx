@@ -18,8 +18,13 @@ import CustomToast from '@/components/common/core/ToastMessage';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { API_URL } from '@/constants/credentials/const';
 import { FileData } from '@/types/General';
-import { getItemFromDB } from '@/services/indexedDB';
-import { calculateTimeLeft, findEarliestExpireTime } from '@/services/helpers';
+import { clearDB, getItemFromDB } from '@/services/indexedDB';
+import {
+  calculateTimeLeft,
+  convertToTimeFormat,
+  findEarliestExpireTime,
+  transformToArray,
+} from '@/services/helpers';
 
 import SaveDrive from '../save-drive/SaveDrive';
 
@@ -51,15 +56,27 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [storedState, setStoredState] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [deleting, setDeleting] = useState<boolean>(false);
+  const [timeLeft, setTimeLeft] = useState(
+    calculateTimeLeft(findEarliestExpireTime(data) || '')
+  );
 
   useEffect(() => {
     setUrl(window.location.href);
   }, [router]);
+
+  useEffect(
+    () => {
+      const timer = setInterval(() => {
+        setTimeLeft(calculateTimeLeft(findEarliestExpireTime(data) || ''));
+      }, 1000);
+
+      // Clear interval on component unmount
+      return () => clearInterval(timer);
+    },
+    [data]
+    //   [file.expireTime]
+  );
 
   useEffect(() => {
     const getState = async () => {
@@ -82,7 +99,9 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${API_URL}/v1/file-data?UID=${uid}`);
-        setData(response.data.data);
+        // console.log(response.data);
+
+        setData(transformToArray(response.data) as FileData[]);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -170,6 +189,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   const handleDelete = async (id: string, index: number) => {
     const url = `${API_URL}/v1/delete-file?UID=${id}&file_index=${index}`;
     try {
+      setDeleting(true);
       const response = await axios.delete(url);
       if (response.status === 200) {
         const updatedData = data.filter(
@@ -183,13 +203,23 @@ const DownloadMain = ({ uid }: { uid: string }) => {
         });
         if (updatedData.length === 0) {
           router.push('/');
+          const clearUID = async () => {
+            await clearDB(); // Redirect after clearing DB
+          };
+          clearUID();
         }
         setLoading(false);
       }
     } catch (error) {
       console.error('Error deleting file:', error);
+    } finally {
+      setDeleting(false);
     }
   };
+
+  // useEffect(() => {
+  //   console.log(downloadUrl);
+  // }, [downloadUrl]);
 
   useEffect(() => {
     const fetchQRCode = async () => {
@@ -214,28 +244,46 @@ const DownloadMain = ({ uid }: { uid: string }) => {
       });
   };
 
-  useEffect(() => {
-    const generateDownloadUrl = async () => {
-      const url = `${API_URL}/v1/download-zip?UID=${uid}`;
+  // useEffect(() => {
+  //   const generateDownloadUrl = async () => {
+  //     const url = `${API_URL}/v1/download-zip?UID=${uid}`;
 
-      try {
-        const response = await axios.get(url, {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json', // Assuming the response is a JSON with a downloadable link
-          },
-        });
+  //     // fetch(url).then(res=> console.log(res.headers));
 
-        // Assuming the response contains the downloadable URL in response.data.url
-        const generatedUrl = response.data.url;
-        setDownloadUrl(generatedUrl);
-      } catch (error) {
-        console.error('Error generating the download URL:', error);
-      }
-    };
+  //     try {
+  //       const response = await axios.get(url, {
+  //         // responseType: 'blob',
+  //         headers: {
+  //           Accept: 'application/json',
+  //           responseType: 'blob',
+  //           withCredentials: true,
+  //         },
+  //       });
 
-    generateDownloadUrl();
-  }, [uid]);
+  //       // Extract the file path from the content-disposition header
+  //       const contentDisposition = response.headers;
+
+  //       console.log(contentDisposition);
+
+  //       // const filePathMatch = contentDisposition?.match(/filepath=(.*)/);
+
+  //       // if (filePathMatch && filePathMatch[1]) {
+  //       //   const filePath = filePathMatch[1];
+  //       //   const generatedUrl = `${API_URL}/${filePath}`; // Construct the full download URL
+
+  //       // setDownloadUrl(generatedUrl);
+  //       // } else {
+  //       //   console.error('Filepath not found in response headers');
+  //       // }
+  //     } catch (error) {
+  //       console.error('Error generating the download URL:', error);
+  //     }
+  //   };
+
+  //   if (uid) {
+  //     generateDownloadUrl();
+  //   }
+  // }, [uid]);
 
   const handleDownloadZip = async () => {
     const url = `${API_URL}/v1/download-zip?UID=${uid}`;
@@ -279,7 +327,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
           <div className="bg-[#163B45] dark:bg-[#3A3A3A] text-white rounded-lg w-full shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in">
             {/* header  */}
             <div className="flex md:flex-row flex-col md:gap-[10px] justify-center md:justify-normal items-center md:items-start border-white dark:border-gray-800 border-b-4 w-full md:p-4 p-2">
-              <div className="w-full md:w-[48%] lg:w-[44%] xl:w-[44%] 3xl:w-[56%] flex flex-col md:flex-row items-center md:items-start justify-between">
+              <div className="w-full md:w-[56%] flex flex-col md:flex-row items-center md:items-start justify-between">
                 <div className="max-w-full flex flex-col gap-2 md:gap-4 justify-start text-center md:text-start">
                   <h1 className="max-w-full text-[#FF8224] text-md font-bold md:text-base lg:text-lg xl:text-base 2xl:text-lg 3xl:text-xl leading-4 text-wrap">
                     Download Compressed Files
@@ -300,13 +348,13 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 </div>
               </div>
 
-              <div className="w-full md:w-[52%] lg:w-[56%] xl:w-[56%] 3xl:w-[44%] flex flex-col md:flex-row items-center md:items-start justify-end md:gap-4">
+              <div className="w-full md:w-[44%] flex flex-col md:flex-row items-center flex-wrap md:items-start justify-end md:gap-4">
                 <div className="flex md:flex-col flex-row items-center gap-3">
                   <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] 3xl:text-[1.125rem] text-[#FF8224] leading-4 md:leading-6">
                     Compression Time
                   </p>
                   <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem]  3xl:text-[0.875rem] font-bold leading-4 md:leading-6">
-                    {processingTime} sec
+                    {convertToTimeFormat(processingTime)} sec
                   </p>
                 </div>
 
@@ -339,7 +387,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                     dropdownActions={[
                       {
                         label: (
-                          <span className="text-base font-bold text-[#FAFAFA] flex items-center gap-3">
+                          <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
                             <Image
                               src={dropBoxIcon}
                               height={14}
@@ -352,7 +400,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                       },
                       {
                         label: (
-                          <span className="text-base font-bold text-[#FAFAFA] flex items-center gap-3">
+                          <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
                             <Image
                               src={oneDriveIcon}
                               height={14}
@@ -365,8 +413,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                       },
                       {
                         label: (
-                          <SaveDrive PDF_URL="">
-                            <span className="text-base font-bold text-[#FAFAFA] flex items-center gap-3">
+                          <SaveDrive PDF_URL={data[0]?.zip_download_link}>
+                            <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
                               <Image
                                 src={googleDriveIcon}
                                 height={14}
@@ -395,6 +443,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 handleDelete={handleDelete}
                 handleNameChange={handleNameChange}
                 storedState={storedState}
+                deleting={deleting}
               />
             ))}
 
@@ -417,7 +466,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 <FacebookShareButton url={url}>
                   <button
                     aria-label="Facebook-share"
-                    className="bg-transparent "
+                    className="bg-transparent"
                   >
                     <Image
                       width={0}
@@ -467,7 +516,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
 
                 <ModalWithButton
                   buttonLabel={
-                    <button aria-label="qr share" className="bg-transparent">
+                    <span aria-label="qr share" className="bg-transparent">
                       <Image
                         width={0}
                         height={0}
@@ -475,7 +524,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                         alt="print-logo"
                         className="h-[32px] md:h-[42px] w-auto rounded -mt-2"
                       />
-                    </button>
+                    </span>
                   }
                 >
                   {/* Modal Content */}

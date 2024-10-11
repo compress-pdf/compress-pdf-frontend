@@ -123,12 +123,12 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
             {/* For md+ devices, this will be the 2nd element. For md- devices, it will be the 1st element. */}
             <CustomXScrollbar
               divId={'pdf-scrollable'}
-              className="order-2 md:order-1 absolute left-1/2 transform -translate-x-1/2 w-[60%] -top-[20px] md:top-[8px]"
+              className="order-2 md:order-1 absolute left-1/2 transform -translate-x-1/2 w-[60%] -top-[10px] md:top-[8px]"
             />
 
             {/* Split button is always the 3rd element */}
             <SplitButton
-              className="py-1 px-1"
+              className=""
               label={
                 <>
                   <input
@@ -197,10 +197,10 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                   <Image
                     src={arrowIcon}
                     alt="compress-now"
-                    className="w-[33.3px] h-[38px] arro-ico-anim"
+                    className="w-[30px] h-[35px] arro-ico-anim"
                   />
                 </div>
-                <p className="start-comp-anim flex-mt-0 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-2 3xl:mt-2">
+                <p className="start-comp-anim flex-mt-0 md:mt-0 lg:mt-0 xl:mt-0">
                   START COMPRESSING
                 </p>
               </div>

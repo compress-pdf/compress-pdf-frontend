@@ -2,7 +2,7 @@ import React from 'react';
 
 const DownloadSkeleton: React.FC = () => {
   return (
-    <div className="bg-white dark:bg-[#3A3A3A] rounded-lg w-full transition-all duration-300 ease-in appear-anim animate-pulse">
+    <div className="bg-white dark:bg-[#3A3A3A] rounded-lg w-full transition-all duration-75 ease-in">
       {/* Skeleton header */}
       <div className="flex flex-col md:flex-row gap-4 p-4 mb-4">
         <div className="w-full md:w-[48%] flex flex-col gap-4">

@@ -10,11 +10,13 @@ import SectionContainer from '@/components/common/containers/SectionContainer';
 import CustomToast from '@/components/common/core/ToastMessage';
 import pinkStarIcon from '@/assets/icons/svgs/pinkStar.svg';
 import brownStarIcon from '@/assets/icons/svgs/brownStar.svg';
-import { useLoading } from '@/context/UploadingContext';
+// import { useLoading } from '@/context/UploadingContext';
 import { useCompressionContext } from '@/context/CompressionContext';
 import { useRouter } from '@/i18n/routing';
 import LoadingUpload from '@/components/common/blocks/Loading';
 import { API_URL } from '@/constants/credentials/const';
+import { useFooterContext } from '@/context/FooterContext';
+import { clearDB, getItemFromDB } from '@/services/indexedDB';
 
 import GradientOne from './backgrounds/gradient-one';
 import BeforeUpload from './UploadSection/BeforeUpload';
@@ -35,7 +37,7 @@ const HomePageContent = ({
 }) => {
   const { updateRotationParameters, setFilesAndUid } = useCompressionContext();
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
-  const { loading } = useLoading();
+  // const { loading } = useLoading();
   const [compressing, setCompressing] = useState(false);
   const [progressValue, setProgressValue] = useState<number>(0);
   const { state } = useCompressionContext();
@@ -45,6 +47,18 @@ const HomePageContent = ({
     [index: number]: number;
   }>({});
   const router = useRouter();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { showScreen, setShowScreen } = useFooterContext();
+
+  useEffect(() => {
+    if (compressing) {
+      setShowScreen('loading');
+    } else if (pdfFiles?.length !== 0 || staticCustomize) {
+      setShowScreen('customize');
+    } else {
+      setShowScreen('home');
+    }
+  }, [pdfFiles, staticCustomize, compressing]);
 
   const handleFileChange = async (selectedFiles: FileList) => {
     const isCorrupted = await helpers.validatePdfFiles(selectedFiles, 4, 50);
@@ -151,10 +165,6 @@ const HomePageContent = ({
     }
   };
 
-  useEffect(() => {
-    console.log(loading);
-  }, [loading]);
-
   const handleNewFiles = async (newFiles: File[]) => {
     const updatedFiles = [...pdfFiles];
     const isCorrupted = await helpers.validatePdfFiles(
@@ -178,7 +188,7 @@ const HomePageContent = ({
     setPdfFiles(updatedFiles);
   };
 
-  const handleDeleteFile = (index: number) => {
+  const handleDeleteFile = async (index: number) => {
     const updatedFiles = [...pdfFiles];
     updatedFiles.splice(index, 1);
     setPdfFiles(updatedFiles);
@@ -187,6 +197,13 @@ const HomePageContent = ({
     ) as HTMLInputElement | null;
     if (fileInput) {
       fileInput.value = '';
+    }
+    if (updatedFiles.length === 0) {
+      const isPresent = await getItemFromDB(uid || '');
+      if (isPresent) {
+        clearDB();
+      }
+      router.push('/');
     }
   };
 
@@ -213,7 +230,7 @@ const HomePageContent = ({
   //   console.log(fileRotations);
   // }, [fileRotations])
 
-  const blockOne = (
+  const LoadingBlock = (
     <LoadingUpload
       progress={progressValue}
       title="Uploading"
@@ -221,7 +238,7 @@ const HomePageContent = ({
     />
   );
 
-  const blockTwo = (
+  const CustomizeBlock = (
     <AfterUpload
       staticCustomize={staticCustomize}
       handleFileChange={handleFileChange}
@@ -239,7 +256,7 @@ const HomePageContent = ({
     />
   );
 
-  const blockThree = (
+  const HomeBlock = (
     <>
       <FullwidthContainer
         className="mb-[33.92px] md:mb-[84.92px] lg:mb-[75.65px] xl:mb-[114.92px] 2xl:mb-[127.35] 3xl:mb-[160px]"
@@ -248,7 +265,8 @@ const HomePageContent = ({
         <GradientOne />
         <SectionContainer className="hero-section text-center flex flex-col md:flex-row gap-[30px] md:gap-[51px] lg:gap-[39px] xl:gap-[51px] 2xl:gap-[39px] 3xl:gap-[134px] pt-[35px] md:pt-[85px] xl:pt-[115px] 2xl:pt-[130px] 3xl:pt-[160px]">
           {children[0]}
-          <div className="appear-anim relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]">
+          <div className="relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]">
+            {/* <div className="appear-anim relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]"> */}
             <BeforeUpload
               handleFileChange={handleFileChange}
               handleNewFiles={handleNewFiles}
@@ -277,13 +295,17 @@ const HomePageContent = ({
 
   return (
     <>
-      <div>
-        {compressing && blockOne}
-        {!compressing &&
-          (pdfFiles?.length !== 0 || staticCustomize) &&
-          blockTwo}
-        {!compressing && !staticCustomize && blockThree}
-      </div>
+      {compressing && LoadingBlock}
+      {!compressing &&
+        (pdfFiles?.length !== 0 || staticCustomize) &&
+        CustomizeBlock}
+      {!compressing &&
+        !staticCustomize &&
+        !(!compressing && (pdfFiles?.length !== 0 || staticCustomize)) &&
+        HomeBlock}
+      {/* {showScreen === 'loading' && LoadingBlock}
+      {showScreen === 'customize' && CustomizeBlock}
+      {showScreen === 'home' && HomeBlock} */}
     </>
   );
 };

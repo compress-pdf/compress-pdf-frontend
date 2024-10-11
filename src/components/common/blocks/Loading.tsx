@@ -23,7 +23,7 @@ const LoadingUpload = ({
 }: Props) => {
   if (progress < 100) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+      <div className="flex flex-col items-center justify-center min-h-[80vh] overflow-y-clip">
         <div className="2xl:w-full w-[80%] max-w-md space-y-4">
           <div className="flex flex-col items-center">
             <div className="rounded-lg p-4 w-24 h-24 flex flex-col justify-center items-center">
@@ -72,7 +72,7 @@ const LoadingUpload = ({
     );
   } else {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh]">
+      <div className="flex flex-col items-center justify-center min-h-[80vh] overflow-y-clip">
         <div className="2xl:w-full w-[80%] max-w-md space-y-4">
           <Spinner />
         </div>

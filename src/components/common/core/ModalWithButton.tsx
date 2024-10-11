@@ -24,7 +24,7 @@ const ModalWithButton: React.FC<ModalWithButtonProps> = ({
       {/* Customizable Button */}
       <button
         type="button"
-        className={twMerge('mt-[5px]', buttonStyle)}
+        className={twMerge('', buttonStyle)}
         onClick={openModal}
       >
         {buttonLabel}

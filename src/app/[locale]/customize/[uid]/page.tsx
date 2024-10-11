@@ -5,9 +5,6 @@ interface PageProps {
 }
 
 const page = ({ params }: PageProps) => {
-  console.log(params);
-  console.log(params.locale);
-
   return (
     <CompressPdf tool={'general'} staticCustomize={true} uid={params.uid} />
   );

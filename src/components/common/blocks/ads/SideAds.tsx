@@ -2,10 +2,8 @@ import Image from 'next/image';
 
 export const SideAd = () => {
   return (
-    <div
-      className={`hidden xl:flex min-h-[800px] overflow-x-clip justify-center z-40`}
-    >
-      <div className="sticky top-[88px] w-max h-[800px]">
+    <div className={`hidden xl:flex overflow-x-clip justify-center z-40`}>
+      <div className="sticky top-[88px] w-max">
         <Image
           alt="xyz"
           className="hidden"

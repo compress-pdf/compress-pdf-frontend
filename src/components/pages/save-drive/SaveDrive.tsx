@@ -89,7 +89,7 @@ const SaveDrive = ({ PDF_URL, children }: TypeSaveDrive) => {
 
   const findFolder = async (folderName: string, accessToken: string) => {
     const response = await fetch(
-      `https://www.googleapis.com/drive/v3/files?q=name='${folderName}' and mimeType='application/vnd.google-apps.folder'`,
+      `https://www.googleapis.com/drive/v3/files?q=name='${folderName}' and mimeType='application/vnd.google-apps.folder' and trashed=false`,
       {
         method: 'GET',
         headers: {
@@ -117,7 +117,7 @@ const SaveDrive = ({ PDF_URL, children }: TypeSaveDrive) => {
       document.body.appendChild(script);
 
       script.onload = () => {
-        console.log('Google script loaded');
+        // console.log('Google script loaded');
       };
 
       script.onerror = () => {
@@ -225,7 +225,7 @@ const SaveDrive = ({ PDF_URL, children }: TypeSaveDrive) => {
                 <div className="flex flex-col items-center  loader mt-[15%] mb-[10%]">
                   <div className="">
                     <div className="my-8">
-                      <div className="bg-[#fafafa] dark:bg-[#262626] shadow-xl dark:shadow-[#ffffff05] dark:border-slate-900 dark:border relative h-8 w-full rounded-2xl">
+                      <div className="bg-slate-400 dark:bg-slate-800 shadow-xl dark:shadow-[#ffffff05] dark:border-slate-900 dark:border relative h-8 w-full rounded-2xl">
                         <div
                           style={{ width: `${progress}%` }}
                           className="bg-orange-600 absolute top-0 left-0 flex h-full items-center justify-center rounded-2xl text-xs font-semibold text-slate-800 dark:text-slate-100 transition-all duration-500"
