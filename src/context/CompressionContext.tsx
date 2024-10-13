@@ -7,15 +7,19 @@ import React, {
   ReactNode,
 } from 'react';
 
+import { setItemInDB, getItemFromDB, clearDB } from '@/services/indexedDB';
+
 type CompressionType = 'by-level' | 'by-level-no-img' | 'by-img';
 
 interface CompressionState {
+  uid: string;
   compressType: CompressionType;
   compressLevel?: number;
   enhancementLevel?: string;
   dpi?: number;
   rotationParameters: { [index: number]: number };
-  rgb: boolean;
+  rgb: 'rgb' | 'grayscale';
+  files?: File[]; // To store files
 }
 
 interface CompressionContextType {
@@ -25,33 +29,49 @@ interface CompressionContextType {
   updateEnhancementLevel: (level: string) => void;
   updateDpi: (dpi: number) => void;
   updateRotationParameters: (params: { [index: number]: number }) => void;
-  updateRgb: (rgb: boolean) => void;
+  setFilesAndUid: (
+    files: File[],
+    uid: string,
+    updatedState: Partial<CompressionState>
+  ) => void;
+  updateRgb: (rgb: 'rgb' | 'grayscale') => void;
+  setFiles: (files: File[]) => void;
 }
 
-const LOCAL_STORAGE_KEY = 'compressionState';
 const CompressionContext = createContext<CompressionContextType | undefined>(
   undefined
 );
 
 export const CompressionProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<CompressionState>({
+    uid: '',
     compressType: 'by-level',
     compressLevel: 5,
     enhancementLevel: '0',
     dpi: 150,
     rotationParameters: {},
-    rgb: true,
+    rgb: 'rgb',
+    files: [], // Initialize as an empty array
   });
 
   useEffect(() => {
-    const storedState = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (storedState) {
-      setState(JSON.parse(storedState));
+    const loadStateFromDB = async () => {
+      const storedState = await getItemFromDB(state.uid);
+      if (storedState) {
+        setState(storedState);
+      }
+    };
+    // Only load from DB if there's a valid UID
+    if (state.uid) {
+      loadStateFromDB();
     }
-  }, []);
+  }, [state.uid]);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
+    // Only save to IndexedDB if the uid is set
+    if (state.uid) {
+      setItemInDB(state.uid, state);
+    }
   }, [state]);
 
   const updateCompressionType = (type: CompressionType) => {
@@ -77,8 +97,29 @@ export const CompressionProvider = ({ children }: { children: ReactNode }) => {
     }));
   };
 
-  const updateRgb = (rgb: boolean) => {
+  const updateRgb = (rgb: 'rgb' | 'grayscale') => {
     setState(prevState => ({ ...prevState, rgb }));
+  };
+
+  const setFilesAndUid = async (
+    files: File[],
+    uid: string,
+    updatedState: Partial<CompressionState>
+  ) => {
+    // Clear the current database entry
+    await clearDB();
+
+    // Update the state with new values
+    setState(prevState => ({
+      ...prevState,
+      ...updatedState,
+      files,
+      uid,
+    }));
+  };
+
+  const setFiles = (files: File[]) => {
+    setState(prevState => ({ ...prevState, files }));
   };
 
   return (
@@ -91,6 +132,8 @@ export const CompressionProvider = ({ children }: { children: ReactNode }) => {
         updateDpi,
         updateRotationParameters,
         updateRgb,
+        setFiles,
+        setFilesAndUid,
       }}
     >
       {children}

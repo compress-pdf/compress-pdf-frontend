@@ -16,6 +16,8 @@ import LinkComponent from '@/components/common/blocks/LinkComponent';
 import DropBox from '@/components/common/blocks/DropBox';
 import OneDrive from '@/components/common/blocks/OneDrive';
 import helpers, { fileListToFileArray } from '@/services/helpers';
+import { getItemFromDB } from '@/services/indexedDB';
+import { useRouter } from '@/i18n/routing';
 
 import arrowIcon from '@assets/icons/pngs/customize-page/arrow.png';
 
@@ -31,6 +33,8 @@ interface AfterUploadProps {
   rotateClockwise: (index: number) => void;
   rotateAnticlockwise: (index: number) => void;
   fileRotations: Record<number, number>;
+  staticCustomize: boolean;
+  uid: string;
 }
 
 const AfterUpload: React.FC<AfterUploadProps> = ({
@@ -45,10 +49,35 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   rotateAnticlockwise,
   rotateClockwise,
   fileRotations,
+  staticCustomize,
+  uid,
 }) => {
   const [files, setSortedFiles] = useState<File[]>(pdfFiles);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const t = useTranslations('common.custom');
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchFiles = async () => {
+      try {
+        if (staticCustomize && uid) {
+          const storedFiles = await getItemFromDB(uid);
+
+          if (storedFiles) {
+            setSortedFiles(storedFiles.files);
+            handleFileChange(storedFiles.files);
+          } else {
+            router.push('/');
+          }
+        }
+      } catch (error) {
+        // router.push('/');
+        // console.error('Error fetching files from IndexedDB:', error);
+      }
+    };
+
+    fetchFiles();
+  }, [staticCustomize, uid]);
 
   useEffect(() => {
     setSortedFiles(pdfFiles); // Set sorted files when pdfFiles changes
@@ -96,12 +125,12 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
             {/* For md+ devices, this will be the 2nd element. For md- devices, it will be the 1st element. */}
             <CustomXScrollbar
               divId={'pdf-scrollable'}
-              className="order-2 md:order-1 absolute left-1/2 transform -translate-x-1/2 w-[60%] -top-[20px] md:top-[8px]"
+              className="order-2 md:order-1 absolute left-1/2 transform -translate-x-1/2 w-[60%] -top-[10px] md:top-[8px]"
             />
 
             {/* Split button is always the 3rd element */}
             <SplitButton
-              className="py-1 px-1"
+              className=""
               label={
                 <>
                   <input
@@ -160,7 +189,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
             />
           </SectionContainer>
 
-          <CustomizeSection>
+          <CustomizeSection staticCustomize={staticCustomize} saved_uid={uid}>
             <Button
               type="submit"
               className="compress-btn w-full h-full text-[1.125rem] font-bold transition-all duration-300 ease-in"
@@ -170,7 +199,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                   <Image
                     src={arrowIcon}
                     alt="compress-now"
-                    className="w-[33.3px] h-[38px] arro-ico-anim"
+                    className="w-[30px] h-[35px] arro-ico-anim"
                   />
                 </div>
                 <p className="start-comp-anim flex-mt-0 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-2 3xl:mt-2">

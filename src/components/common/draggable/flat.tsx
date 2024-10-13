@@ -85,7 +85,8 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
           id="pdf-scrollable"
         >
           <div
-            className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[35px] pt-[41.42px] md:pt-[55px]`}
+            // className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[41.42px] md:pt-[55px]`}
+            className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[21.42px] md:pt-[25px]`}
             onDrop={handleNewFiles}
             onDragOver={handleDragOver}
           >
@@ -94,7 +95,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                 <div
                   className={`pdf-box ${
                     files.length > 1 ? 'cursor-grab' : 'cursor-default'
-                  } flex flex-col shadow-md shadow-[#0000003d] dark:shadow-[#ffffff3d] rounded-[10px]`}
+                  } flex flex-col shadow-md shadow-[#0000003d] dark:shadow-[#00000054] rounded-[10px]`}
                   key={index}
                   draggable={files.length > 1}
                   onDragStart={() => (dragItem.current = index)}

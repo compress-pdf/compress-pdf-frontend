@@ -1,3 +1,5 @@
+import { FileData } from '@/types/General';
+
 // Define types for the objects with 'name' property
 interface NamedObject {
   name: string;
@@ -279,6 +281,11 @@ const checkFileSizeWithLength = (
   return totalSize >= size || fileConcat.length > fileLength;
 };
 
+export const detectTheme = (): 'light' | 'dark' => {
+  // This could be improved by using a React Context or checking localStorage, Tailwind's dark mode class, etc.
+  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+};
+
 const validatePdfFiles = async (
   files: FileList,
   maxFiles: number,
@@ -286,7 +293,26 @@ const validatePdfFiles = async (
 ): Promise<{ valid: boolean; messages: string[] }> => {
   const messages: string[] = [];
 
-  // Step 1: Check for non-PDF files
+  // Step 1: Check for total file size and number of files first
+  const totalSizeMB = Array.from(files).reduce(
+    (total, file) => total + file.size / (1024 * 1024),
+    0
+  ); // Calculate total size in MB
+
+  if (files.length > maxFiles) {
+    messages.push(
+      `Maximum upload limit exceeded: Only ${maxFiles} files are allowed.`
+    );
+  }
+
+  if (totalSizeMB > maxSizeMB) {
+    messages.push(
+      `Maximum size limit exceeded: Total size must be under ${maxSizeMB}MB.`
+    );
+    return { valid: false, messages }; // Early exit if size exceeds the limit
+  }
+
+  // Step 2: Check for non-PDF files
   const nonPdfFiles = Array.from(files).filter(
     file => !file.type.startsWith('application/pdf')
   );
@@ -294,7 +320,7 @@ const validatePdfFiles = async (
     messages.push('Only PDF files are allowed.');
   }
 
-  // Step 2: Check for corrupted PDF files
+  // Step 3: Check for corrupted PDF files
   const corruptedFiles = await Promise.all(
     Array.from(files).map(async file => {
       if (file.type === 'application/pdf') {
@@ -309,8 +335,7 @@ const validatePdfFiles = async (
     messages.push('Corrupted PDFs cannot be compressed.');
   }
 
-  // Step 3: Check for password-protected PDFs (basic check)
-  // Note: This is a very basic check and might not work for all PDFs. To handle password-protected PDFs properly, you'd need a library that can parse and check the PDF encryption.
+  // Step 4: Check for password-protected PDFs (basic check)
   const passwordProtectedFiles = await Promise.all(
     Array.from(files).map(async file => {
       if (file.type === 'application/pdf') {
@@ -325,30 +350,9 @@ const validatePdfFiles = async (
     messages.push('Password-protected PDFs cannot be compressed.');
   }
 
-  // Step 4: Check for total file size and number of files
-  const totalSizeMB = Array.from(files).reduce(
-    (total, file) => total + file.size / (1024 * 1024),
-    0
-  ); // Calculate total size in MB
-  if (files.length > maxFiles) {
-    messages.push(
-      `Maximum upload limit exceeded: Only ${maxFiles} files are allowed.`
-    );
-  }
-  if (totalSizeMB > maxSizeMB) {
-    messages.push(
-      `Maximum size limit exceeded: Total size must be under ${maxSizeMB}MB.`
-    );
-  }
-
   // Step 5: Return validation result
   const valid = messages.length === 0;
   return { valid, messages };
-};
-
-export const detectTheme = (): 'light' | 'dark' => {
-  // This could be improved by using a React Context or checking localStorage, Tailwind's dark mode class, etc.
-  return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
 };
 
 export type ValidationResult = {
@@ -375,6 +379,7 @@ export const validatePdfLink = async (
     }
 
     // Step 2: Validate that the link is accessible
+    // Step 1: Make a HEAD request to check the file size before downloading
     const response = await fetch(link, { method: 'HEAD' });
     if (!response.ok) {
       validationResult.valid = false;
@@ -382,7 +387,7 @@ export const validatePdfLink = async (
       return validationResult;
     }
 
-    // Step 3: Check Content-Type header to ensure it's a PDF
+    // Step 2: Check Content-Type header to ensure it's a PDF
     const contentType = response.headers.get('content-type');
     if (!contentType || !contentType.startsWith('application/pdf')) {
       validationResult.valid = false;
@@ -390,7 +395,7 @@ export const validatePdfLink = async (
       return validationResult;
     }
 
-    // Step 4: Check file size
+    // Step 3: Check file size
     const contentLength = response.headers.get('content-length');
     if (contentLength) {
       const fileSizeMB = parseInt(contentLength, 10) / (1024 * 1024); // Convert bytes to MB
@@ -399,7 +404,7 @@ export const validatePdfLink = async (
         validationResult.messages.push(
           `Maximum file size exceeded (limit: ${maxSizeMB}MB).`
         );
-        return validationResult;
+        return validationResult; // Early return if file size exceeds the limit
       }
     } else {
       validationResult.valid = false;
@@ -407,7 +412,7 @@ export const validatePdfLink = async (
       return validationResult;
     }
 
-    // Step 5: Fetch the PDF content to check for password protection and corruption
+    // Step 4: Proceed with the full request if file size is within the limit
     const pdfResponse = await fetch(link);
     if (pdfResponse.ok) {
       const fileContent = await pdfResponse.arrayBuffer();
@@ -484,6 +489,35 @@ export const calculateTimeLeft = (expireTime: string) => {
     seconds: seconds,
   };
 };
+
+export const findEarliestExpireTime = (data: FileData[]) => {
+  if (!data || data.length === 0) return null;
+
+  return data.reduce((earliest, current) => {
+    return new Date(current.expire) < new Date(earliest.expire)
+      ? current
+      : earliest;
+  }).expire;
+};
+
+export const convertToTimeFormat = (seconds: number): string => {
+  // Round down to get the whole number of seconds
+  const totalSeconds = Math.floor(seconds);
+
+  // Get minutes and seconds
+  const minutes = Math.floor(totalSeconds / 60);
+  const remainingSeconds = totalSeconds % 60;
+
+  // Format minutes and seconds as two digits
+  const formattedMinutes = String(minutes).padStart(2, '0');
+  const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+
+  return `${formattedMinutes}:${formattedSeconds}`;
+};
+
+export function transformToArray(data: Record<string, unknown>): unknown[] {
+  return Object.keys(data).map(key => data[key]);
+}
 
 const helpers = {
   hexToRgb,

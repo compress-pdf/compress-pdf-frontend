@@ -256,36 +256,36 @@ body {
 
 .start-comp-anim {
   animation: scale-infinite 3s ease-in-out infinite;
-  transform: scale(1.1);
+  transform: scale(1);
   margin-left: -4px;
 }
 
 @keyframes scale-infinite {
   0% {
-    transform: scale(1.1);
+    transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   100% {
-    transform: scale(1.1);
+    transform: scale(1);
   }
 }
 
 @keyframes arrow-speed-forward {
   0% {
-    transform: translateX(0);
+    transform: translateX(-3px);
   }
   50% {
-    transform: translateX(10px);
+    transform: translateX(3px);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(-3px);
   }
 }
 
 .arro-ico-anim {
-  transform: scale(1);
+  transform: translateX(-3px);
   animation: arrow-speed-forward 3s ease-in-out infinite;
   animation-delay: 1.5s; /* Start the arrow animation halfway through the scale */
 }

@@ -18,30 +18,42 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
   const [isAlphabeticalAsc, setIsAlphabeticalAsc] = useState<boolean>(true);
   const [isSizeAsc, setIsSizeAsc] = useState<boolean>(true);
   const t = useTranslations('common.custom');
+  const [loadingAlphabetical, setLoadingAlphabetical] =
+    useState<boolean>(false);
+  const [loadingSize, setLoadingSize] = useState<boolean>(false);
 
   // Handle A-Z/Z-A sorting
   const handleAZClick = () => {
+    setLoadingAlphabetical(true); // Start loading for alphabetical
     setActiveSorting('alphabetical');
     setIsAlphabeticalAsc(!isAlphabeticalAsc); // Toggle between A-Z and Z-A
 
-    const sortedFiles = [...files].sort(
-      (a, b) =>
+    // Simulate a delay for sorting (optional, to demonstrate loading)
+    setTimeout(() => {
+      const sortedFiles = [...files].sort((a, b) =>
         isAlphabeticalAsc
-          ? a.name.localeCompare(b.name) // A-Z
-          : b.name.localeCompare(a.name) // Z-A
-    );
-    setSortedFiles(sortedFiles);
+          ? a.name.localeCompare(b.name)
+          : b.name.localeCompare(a.name)
+      );
+      setSortedFiles(sortedFiles);
+      setLoadingAlphabetical(false); // End loading for alphabetical
+    }, 500);
   };
 
   // Handle Min-Max/Max-Min sorting
   const handleMinMaxClick = () => {
+    setLoadingSize(true); // Start loading for size
     setActiveSorting('size');
     setIsSizeAsc(!isSizeAsc); // Toggle between Min-Max and Max-Min
 
-    const sortedFiles = [...files].sort((a, b) =>
-      isSizeAsc ? a.size - b.size : b.size - a.size
-    );
-    setSortedFiles(sortedFiles);
+    // Simulate a delay for sorting (optional, to demonstrate loading)
+    setTimeout(() => {
+      const sortedFiles = [...files].sort((a, b) =>
+        isSizeAsc ? a.size - b.size : b.size - a.size
+      );
+      setSortedFiles(sortedFiles);
+      setLoadingSize(false); // End loading for size
+    }, 500);
   };
 
   return (
@@ -50,30 +62,36 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
       <button
         type="button"
         onClick={handleAZClick}
-        // disabled={activeSorting === 'size'} // Disable if size sorting is active
+        disabled={loadingSize || loadingAlphabetical} // Disable if either is loading
         className={`px-3 py-[7px] rounded-md border text-nowrap ${
-          activeSorting === 'size'
+          loadingSize || activeSorting === 'size'
             ? 'bg-transparent border-[#E1DEDE] text-[#6b728050] dark:text-slate-100'
             : 'border-transparent bg-[#E1DEDE] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] transition-all duration-200 ease-in  shadow text-[#163b45] dark:text-white hover:bg-[#b1aeae]'
         }`}
       >
-        {isAlphabeticalAsc
-          ? t('sort.alphabeticallyOne')
-          : t('sort.alphabeticallyTwo')}
+        {loadingAlphabetical
+          ? '...'
+          : isAlphabeticalAsc
+            ? t('sort.alphabeticallyOne')
+            : t('sort.alphabeticallyTwo')}
       </button>
 
       {/* Min-Max/Max-Min Button */}
       <button
         type="button"
         onClick={handleMinMaxClick}
-        // disabled={activeSorting === 'alphabetical'} // Disable if alphabetical sorting is active
+        disabled={loadingAlphabetical || loadingSize} // Disable if either is loading
         className={`px-3 py-[7px] rounded-md border text-nowrap ${
-          activeSorting === 'alphabetical'
+          loadingAlphabetical || activeSorting === 'alphabetical'
             ? 'bg-transparent border-[#E1DEDE] text-[#6b728050] dark:text-slate-100'
             : 'border-transparent bg-[#E1DEDE] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] transition-all duration-200 ease-in shadow text-[#163b45] dark:text-white hover:bg-[#b1aeae] text-nowrap'
         }`}
       >
-        {isSizeAsc ? t('sort.sizeOne') : t('sort.sizeTwo')}
+        {loadingSize
+          ? '...'
+          : isSizeAsc
+            ? t('sort.sizeOne')
+            : t('sort.sizeTwo')}
       </button>
     </div>
   );

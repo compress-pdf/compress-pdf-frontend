@@ -20,13 +20,16 @@ const Preview = ({ url, children }: TypePreview) => {
 
   return (
     <>
-      <button
-        title="preview"
-        className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10"
+      <span
+        aria-label="preview"
+        role="button"
+        tabIndex={0}
+        onKeyDown={() => {}}
+        className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
         onClick={handleClick}
       >
         {children}
-      </button>
+      </span>
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}

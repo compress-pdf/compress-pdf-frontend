@@ -62,23 +62,26 @@ const SplitButton: React.FC<SplitButtonProps> = ({
     <div ref={dropdownRef} className="relative inline-block text-left">
       <div className="flex">
         {/* Main Action Button */}
-        <button
-          type="button"
+        <div
+          // type="button"
           onClick={handleMainClick}
           className={twMerge(
-            'bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-4 py-2 rounded-l-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent text-nowrap  transition-all duration-200 ease-in',
+            'dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-[20px] py-2 rounded-l-md hover:bg-[#dbdbdb] focus:outline-none border-[0.4px] border-[#E5E7EB] dark:border-transparent text-nowrap  transition-all duration-200 ease-in',
             className
           )}
+          onKeyDown={() => {}}
+          tabIndex={0}
+          role="button"
         >
           {label}
-        </button>
+        </div>
 
         {/* Dropdown Toggle Button */}
         <button
           title={t('dropDownOption')}
           type="button"
           className={twMerge(
-            'bg-[#FAFAFA] dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-3 py-2 rounded-r-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent  transition-all duration-200 ease-in ',
+            'dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-3 py-2 rounded-r-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent  transition-all duration-200 ease-in ',
             classNameDropdownIcon
           )}
           onClick={event => {
@@ -107,7 +110,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
       {isOpen && (
         <div
           className={twMerge(
-            'origin-top-right absolute right-0 mt-2 w-56 z-50 rounded-md shadow-lg bg-white dark:bg-[#2c2c2c] text-[#4B5563] dark:text-slate-100 ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in',
+            'origin-top-right absolute right-0 mt-2 w-full z-50 rounded-md shadow-lg bg-white dark:bg-[#2c2c2c] text-[#4B5563] dark:text-slate-100 ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in',
             classNameDropdown
           )}
         >
@@ -118,7 +121,9 @@ const SplitButton: React.FC<SplitButtonProps> = ({
                 title={t('dropDownOption')}
                 key={index}
                 className={twMerge(
-                  'block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-slate-200 dark:bg-[#2c2c2c] dark:text-slate-100 dark:hover:bg-[#1b1b1b] transition-all duration-300 ease-in',
+                  `block w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-slate-200 dark:bg-[#2c2c2c] dark:text-slate-100 dark:hover:bg-[#1b1b1b] transition-all duration-300 ease-in ${
+                    index !== dropdownActions.length - 1 && 'border-b-[1px]'
+                  }`,
                   classNameDropdown
                 )}
               >

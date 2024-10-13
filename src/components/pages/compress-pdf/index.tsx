@@ -4,11 +4,13 @@ import HomeStaticContent from './home-page/contents/HomeStaticContent';
 
 type Props = {
   tool: string;
+  staticCustomize?: boolean;
+  uid?: string;
 };
 
-const CompressPdf = ({ tool }: Props) => {
+const CompressPdf = ({ tool, staticCustomize = false, uid }: Props) => {
   return (
-    <HomePageContent tool={tool}>
+    <HomePageContent tool={tool} staticCustomize={staticCustomize} uid={uid}>
       <HeroContent tool={tool} />
       <HomeStaticContent tool={tool} />
     </HomePageContent>
