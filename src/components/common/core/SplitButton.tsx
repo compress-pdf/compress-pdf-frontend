@@ -16,6 +16,7 @@ interface SplitButtonProps {
   className?: string;
   classNameDropdownIcon?: string;
   classNameDropdown?: string;
+  modalRef: React.RefObject<HTMLDivElement>;
 }
 
 const SplitButton: React.FC<SplitButtonProps> = ({
@@ -25,10 +26,11 @@ const SplitButton: React.FC<SplitButtonProps> = ({
   className = '',
   classNameDropdownIcon = '',
   classNameDropdown = '',
+  modalRef,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null); // Reference to the dropdown element
-  const modalRef = useRef<HTMLDivElement>(null); // Reference to the modal element
+
   const t = useTranslations('common.custom.add');
 
   const toggleDropdown = () => {
@@ -42,13 +44,17 @@ const SplitButton: React.FC<SplitButtonProps> = ({
   // Close the dropdown when clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node) &&
-        modalRef.current &&
-        !modalRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
+      console.log('event', event.target);
+
+      const targetElement = event.target as HTMLElement;
+
+      // Prevent closing if the click is inside the modal or on a button
+      if (modalRef.current && modalRef.current.contains(targetElement)) {
+        return;
+      }
+
+      if (dropdownRef.current && !dropdownRef.current.contains(targetElement)) {
+        setIsOpen(false); // Close the dropdown
       }
     };
 
@@ -56,7 +62,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [setIsOpen]);
 
   return (
     <div ref={dropdownRef} className="relative inline-block text-left">
@@ -109,6 +115,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
       {/* Dropdown Menu */}
       {isOpen && (
         <div
+          ref={modalRef} // Added modalRef here
           className={twMerge(
             'origin-top-right absolute right-0 mt-2 w-full z-50 rounded-md shadow-lg bg-white dark:bg-[#2c2c2c] text-[#4B5563] dark:text-slate-100 ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in',
             classNameDropdown

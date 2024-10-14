@@ -70,7 +70,9 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
         }`}
       >
         {loadingAlphabetical
-          ? '...'
+          ? isAlphabeticalAsc
+            ? t('sort.alphabeticallyOne')
+            : t('sort.alphabeticallyTwo')
           : isAlphabeticalAsc
             ? t('sort.alphabeticallyOne')
             : t('sort.alphabeticallyTwo')}
@@ -88,7 +90,9 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
         }`}
       >
         {loadingSize
-          ? '...'
+          ? isSizeAsc
+            ? t('sort.sizeOne')
+            : t('sort.sizeTwo')
           : isSizeAsc
             ? t('sort.sizeOne')
             : t('sort.sizeTwo')}

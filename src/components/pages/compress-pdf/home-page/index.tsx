@@ -113,7 +113,7 @@ const HomePageContent = ({
 
     const apiLink =
       state.compressType === 'by-level'
-        ? `${API_URL}/v1.1/with-validation/general-compression`
+        ? `${API_URL}/v1.1/with-validation/level-based-with-image`
         : state.compressType === 'by-level-no-img'
           ? `${API_URL}/v1.1/with-validation/level-based-without-image`
           : `${API_URL}/v1/image-based`;

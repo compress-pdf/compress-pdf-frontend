@@ -41,6 +41,7 @@ interface FileItemProps {
   handleNameChange: (uid: string, name: string, index: number) => void;
   storedState: boolean;
   deleting: boolean;
+  modalRef: React.RefObject<HTMLDivElement>;
 }
 
 const FileItem: React.FC<FileItemProps> = ({
@@ -49,6 +50,7 @@ const FileItem: React.FC<FileItemProps> = ({
   handleNameChange,
   storedState,
   deleting,
+  modalRef,
 }) => {
   const deleteIcon = (
     <svg
@@ -251,7 +253,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 <ModalWithButton
                   buttonLabel={
                     <Tooltip content={t('body.deleteModal.deleteTooltip')}>
-                      <span className="delete text-red-500 -mt-[5.8px]">
+                      <span className="delete text-red-500 -mt-[3px]">
                         {deleteIcon}
                       </span>
                     </Tooltip>
@@ -305,7 +307,7 @@ const FileItem: React.FC<FileItemProps> = ({
               </>
             )}
           </span>
-          <p className="text-sm text-left mt-[7px]">
+          <p className="text-sm text-left mt-[9px]">
             <span className="rounded bg-[#FFD5B6] dark:bg-[#59402D] px-2 mr-2 text-slate-900 dark:text-white">
               PDF
             </span>
@@ -315,7 +317,7 @@ const FileItem: React.FC<FileItemProps> = ({
           </p>
         </div>
         <div className="ml-auto">
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-2">
             <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] text-[#163B45] dark:text-slate-50 font-[1.15rem] leading-6">
               {file?.compression_ratio?.toFixed(2)}%
             </p>
@@ -505,6 +507,7 @@ const FileItem: React.FC<FileItemProps> = ({
 
         <div className="text-end">
           <SplitButton
+            modalRef={modalRef}
             label={
               <button
                 onClick={handleDownload}

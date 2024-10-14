@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import QRCode from 'qrcode';
 import { useTranslations } from 'next-intl';
@@ -62,6 +62,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   const [timeLeft, setTimeLeft] = useState(
     calculateTimeLeft(findEarliestExpireTime(data) || '')
   );
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setUrl(window.location.href);
@@ -277,7 +278,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
         <DownloadSkeleton />
       ) : (
         <>
-          <div className="bg-[#163B45] dark:bg-[#3A3A3A] text-white rounded-lg w-full shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in">
+          <div className="bg-[#163B45] dark:bg-[#3A3A3A] text-white rounded-lg w-full shadow-2xl">
             {/* header  */}
             <div className="flex md:flex-row flex-col md:gap-[10px] justify-center md:justify-normal items-center md:items-start border-white dark:border-gray-800 border-b-4 w-full md:p-4 p-2">
               <div className="w-full md:w-[56%] flex flex-col md:flex-row items-center md:items-start justify-between">
@@ -313,6 +314,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
 
                 <div className="text-end mt-2 md:mt-0">
                   <SplitButton
+                    modalRef={modalRef}
                     label={
                       <button
                         className="flex items-center gap-2"
@@ -397,6 +399,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 handleNameChange={handleNameChange}
                 storedState={storedState}
                 deleting={deleting}
+                modalRef={modalRef}
               />
             ))}
 
@@ -529,7 +532,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
             </div>
           </div>
           {storedState && (
-            <p className="text-[#A8A4A4] dark:text-[#E1DEDE] font-light text-base md:text-lg w-fit flex items-center mx-auto gap-1 mt-[45px]">
+            <p className="text-[#A8A4A4] dark:text-[#E1DEDE] font-light text-base md:text-lg w-fit flex items-center mx-auto gap-1 my-[45px]">
               {t('footer.info')}
               <Link
                 href={`/customize/${uid}`}

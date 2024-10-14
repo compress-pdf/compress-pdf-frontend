@@ -13,9 +13,14 @@ import Tooltip from '../core/Tooltip';
 type Props = {
   handleNewFiles: (files: File[]) => void;
   onDropdown?: boolean;
+  modalRef?: React.Ref<HTMLDivElement>;
 };
 
-const LinkComponent = ({ handleNewFiles, onDropdown = false }: Props) => {
+const LinkComponent = ({
+  handleNewFiles,
+  onDropdown = false,
+  modalRef,
+}: Props) => {
   const t = useTranslations('common');
   const { setLoading } = useLoading();
   const [isOpen, setIsOpen] = useState(false);
@@ -92,40 +97,42 @@ const LinkComponent = ({ handleNewFiles, onDropdown = false }: Props) => {
       </Tooltip>
 
       <Modal isOpen={isOpen} closeModal={closeModal}>
-        <div className="flex flex-col items-center">
-          <label className="text-[#163b45] dark:text-[#ffffff] text-lg font-bold font-['Open Sans'] leading-snug">
-            {t('urlModal.title')}
-          </label>
-          <input
-            ref={UrlInputRef}
-            className="px-[17.28px] border border-[#e1dede] w-full rounded-[10px] pt-[21.5px] pb-[16.5px] mt-[29.5px]"
-            value={URL}
-            placeholder={t('urlModal.placeholder')}
-            required
-            onChange={e => setURL(e.target.value)}
-            type="text"
-          />
-          {validationMessages.length > 0 && (
-            <div className="text-red-500 mt-2 text-sm">
-              {validationMessages.map((message, index) => (
-                <p key={index} className="font-bold">
-                  {message}
-                </p>
-              ))}
-            </div>
-          )}
-        </div>
+        <section ref={modalRef}>
+          <div className="flex flex-col items-center">
+            <label className="text-[#163b45] dark:text-[#ffffff] text-lg font-bold font-['Open Sans'] leading-snug">
+              {t('urlModal.title')}
+            </label>
+            <input
+              ref={UrlInputRef}
+              className="px-[17.28px] border border-[#e1dede] w-full rounded-[10px] pt-[21.5px] pb-[16.5px] mt-[29.5px]"
+              value={URL}
+              placeholder={t('urlModal.placeholder')}
+              required
+              onChange={e => setURL(e.target.value)}
+              type="text"
+            />
+            {validationMessages.length > 0 && (
+              <div className="text-red-500 mt-2 text-sm">
+                {validationMessages.map((message, index) => (
+                  <p key={index} className="font-bold">
+                    {message}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
 
-        <div className="mt-4">
-          <Button
-            type="button"
-            onClick={handleURLSubmit}
-            className="w-full justify-center"
-            disabled={isPending}
-          >
-            {t('urlModal.buttonLabel')}
-          </Button>
-        </div>
+          <div className="mt-4">
+            <Button
+              type="button"
+              onClick={handleURLSubmit}
+              className="w-full justify-center"
+              disabled={isPending}
+            >
+              {t('urlModal.buttonLabel')}
+            </Button>
+          </div>
+        </section>
       </Modal>
     </>
   );

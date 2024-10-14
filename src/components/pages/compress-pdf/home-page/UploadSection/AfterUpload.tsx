@@ -54,6 +54,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
 }) => {
   const [files, setSortedFiles] = useState<File[]>(pdfFiles);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const modalRef = useRef<HTMLDivElement | null>(null);
   const t = useTranslations('common.custom');
   const router = useRouter();
 
@@ -131,6 +132,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
             {/* Split button is always the 3rd element */}
             <SplitButton
               className=""
+              modalRef={modalRef}
               label={
                 <>
                   <input
@@ -182,6 +184,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                     <LinkComponent
                       handleNewFiles={handleNewFiles}
                       onDropdown={true}
+                      modalRef={modalRef}
                     />
                   ),
                 },
@@ -194,7 +197,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
               type="submit"
               className="compress-btn w-full h-full text-[1.125rem] font-bold transition-all duration-300 ease-in"
             >
-              <div className="w-full flex flex-row-reverse md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse 2xl:flex-col 3xl:flex-col text-center items-center justify-between md:justify-between lg:justify-between xl:justify-between 2xl:justify-center 3xl:justify-center gap-[0.625rem]">
+              <div className="w-full flex flex-row-reverse md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse 2xl:flex-col 3xl:flex-col text-center items-center justify-center gap-[0.625rem]">
                 <div className="w-[33.3px] h-[38px]">
                   <Image
                     src={arrowIcon}

@@ -215,7 +215,7 @@
         "rangeTooltip": "Adjust the brightness, contrast, and sharpness of images to enhance their quality.",
         "buttonLabel": "Image Color Scope",
         "buttonTooltip": "Sets the color mode: 'None' for original color and 'Grayscale' for black & white only.",
-        "btnLabelOne": "original",
+        "btnLabelOne": "Original",
         "btnLabelTwo": "Grayscale"
       },
       "imageResolution": {

@@ -194,13 +194,13 @@ const CustomizeSection = ({
   useEffect(() => {
     switch (selectedCompression) {
       case t('compression.extreme'):
-        setCompressionLevel(3);
+        setCompressionLevel(9);
         break;
       case t('compression.medium'):
         setCompressionLevel(6);
         break;
       case t('compression.low'):
-        setCompressionLevel(9);
+        setCompressionLevel(3);
         break;
       default:
         setCompressionLevel(5);
