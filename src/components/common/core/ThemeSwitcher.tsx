@@ -2,9 +2,10 @@
 
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import SunIcon from '@/assets/icons/svgs/SunIcon';
-import MoonIcon from '@/assets/icons/svgs/MoonIcon';
+import lightIcon from '@assets/icons/pngs/header/light-icon.png';
+import darkIcon from '@assets/icons/pngs/header/dark-icon.png';
 
 export default function ThemeSwitcher() {
   const { setTheme, theme } = useTheme();
@@ -20,9 +21,13 @@ export default function ThemeSwitcher() {
     <button
       type="button"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="text-gray-800 dark:text-white rounded-md text-sm font-medium"
+      className="flex items-center justify-center"
     >
-      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+      {theme === 'dark' ? (
+        <Image src={lightIcon} alt="light" className="w-4 h-4" />
+      ) : (
+        <Image src={darkIcon} alt="dark" className="w-4 h-4" />
+      )}
     </button>
   );
 }
