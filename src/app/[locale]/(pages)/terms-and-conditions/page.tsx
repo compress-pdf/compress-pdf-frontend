@@ -4,11 +4,24 @@ import { useTranslations } from 'next-intl';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 import SectionContainer from '@/components/common/containers/SectionContainer';
 import GradientTwo from '@/components/pages/compress-pdf/home-page/backgrounds/gradient-two';
+import { generatePageMetadata } from '@/services/metadata';
+
+export async function generateMetadata() {
+  return generatePageMetadata('termsAndConditions.metaData');
+}
 
 const TermsAndConditionsPage = () => {
   const t = useTranslations('termsAndConditions');
+  const softwareSchema = t('schema.softwareApplication');
   return (
     <div>
+      <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
+        />
+      </section>
+
       <FullwidthContainer
         className="pt-[40px] md:pt-[60px] md:pb-[100px] 2xl:pt-[58px] 2xl:pb-[110px] 3xl:pt-[63px] 3xl:pb-[136px]"
         as={'div'}

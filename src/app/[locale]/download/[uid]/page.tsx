@@ -4,17 +4,19 @@ import FullwidthContainer from '@/components/common/containers/FullwidthContaine
 import SectionContainer from '@/components/common/containers/SectionContainer';
 import GradientOne from '@/components/pages/compress-pdf/home-page/backgrounds/gradient-one';
 import DownloadMain from '@/components/pages/download';
+import { generatePageMetadata } from '@/services/metadata';
 
 type Props = {
   params: {
     uid: string;
   };
 };
+
+export async function generateMetadata() {
+  return generatePageMetadata('general.metaData');
+}
+
 const DownloadPage = ({ params }: Props) => {
-  // console.log('Parameters: ', params.uid);
-
-  // const response = fetch('/');
-
   return (
     <FullwidthContainer className="min-h-[80vh]" as={'div'}>
       <GradientOne />

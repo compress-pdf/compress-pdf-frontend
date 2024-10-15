@@ -414,57 +414,25 @@
       "title": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
       "description": "Komprimieren Sie Ihre PDFs online und bewahren Sie die Originalqualität. Reduzieren Sie die Dateigröße einfach und ohne Einbußen bei Klarheit & Inhalt. Kostenlos & einfach zu verwenden!",
       "alternates": {
-        "canonical": "https://compresspdf.to",
+        "canonical": "https://compresspdf.to/de",
         "hreflangs": [
           {
             "href": "https://compresspdf.to",
             "hreflang": "en"
           },
           {
-            "href": "https://compresspdf.to/es",
-            "hreflang": "es"
-          },
-          {
-            "href": "https://compresspdf.to/fr",
-            "hreflang": "fr"
-          },
-          {
-            "href": "https://compresspdf.to/id",
-            "hreflang": "id"
-          },
-          {
-            "href": "https://compresspdf.to/tr",
-            "hreflang": "tr"
-          },
-          {
-            "href": "https://compresspdf.to/ru",
-            "hreflang": "ru"
-          },
-          {
-            "href": "https://compresspdf.to/it",
-            "hreflang": "it"
-          },
-          {
-            "href": "https://compresspdf.to/pt",
-            "hreflang": "pt"
-          },
-          {
             "href": "https://compresspdf.to/de",
             "hreflang": "de"
-          },
-          {
-            "href": "https://compresspdf.to/vi",
-            "hreflang": "vi"
           }
         ]
       },
       "openGraph": {
         "title": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
         "description": "Komprimieren Sie Ihre PDFs online und bewahren Sie die Originalqualität. Reduzieren Sie die Dateigröße einfach und ohne Einbußen bei Klarheit & Inhalt. Kostenlos & einfach zu verwenden!",
-        "url": "https://compresspdf.to",
+        "url": "https://compresspdf.to/de",
         "images": [
           {
-            "url": "https://compresspdf.to/image1",
+            "url": "https://cdn.compresspdf.to/images/general-de.png",
             "alt": "PDF-Dateien online komprimieren ohne Qualitätsverlust"
           }
         ]
@@ -474,7 +442,7 @@
         "description": "Komprimieren Sie Ihre PDFs online und bewahren Sie die Originalqualität. Reduzieren Sie die Dateigröße einfach und ohne Einbußen bei Klarheit & Inhalt. Kostenlos & einfach zu verwenden!",
         "images": [
           {
-            "url": "https://compresspdf.to/images1",
+            "url": "https://cdn.compresspdf.to/images/general-de.png",
             "alt": "PDF-Dateien online komprimieren ohne Qualitätsverlust"
           }
         ]
@@ -496,7 +464,7 @@
             "description": "Erfahren Sie mehr über compresspdf.to, Ihr schnelles und sicheres PDF-Komprimierungstool. Entdecken Sie unsere Mission, Dokumentenmanagement mit benutzerfreundlichen Funktionen zu vereinfachen."
           },
           "datePublished": "2024-06-10",
-          "url": "https://compresspdf.to",
+          "url": "https://compresspdf.to/de",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
@@ -507,7 +475,7 @@
             "price": "0",
             "priceCurrency": "USD"
           },
-          "screenshot": "https://yourwebsite.com/path/to/screenshot.jpg",
+          "screenshot": "https://cdn.compresspdf.to/images/general-de.png",
           "featureList": [
             "PDF-Dateien ohne Qualitätsverlust komprimieren.",
             "Unterstützt Drag-and-Drop, Google Drive und Dropbox-Uploads.",
@@ -528,7 +496,7 @@
           "name": "CompressPDF",
           "inLanguage": "de",
           "description": "Die Plattform, die es super einfach macht, alle Ihre PDF-Dateien zu konvertieren und zu bearbeiten. Lösen Sie alle Ihre PDF-Probleme an einem Ort - und das kostenlos.",
-          "url": "https://compresspdf.to"
+          "url": "https://compresspdf.to/de"
         }
       },
       {
@@ -537,10 +505,10 @@
           "@type": "BlogPosting",
           "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://compresspdf.to"
+            "@id": "https://compresspdf.to/de"
           },
           "headline": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
-          "image": "https://compresspdf.to/image1/",
+          "image": "https://cdn.compresspdf.to/images/general-de.png",
           "author": {
             "@type": "Person",
             "name": "Borhan Uddin",
@@ -551,7 +519,7 @@
             "name": "CompressPDF",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://compresspdf.to/log/"
+              "url": "https://cdn.compresspdf.to/images/logo.png"
             }
           },
           "datePublished": "2024-08-05T10:30:00+06:00"
@@ -1036,40 +1004,95 @@
       "description": "Unser Team besteht aus einer vielfältigen Gruppe engagierter Fachleute, die sich für Technologie und Benutzererfahrung begeistern. Von Softwareentwicklern und Designern bis hin zu Kundendienstspezialisten bringt jedes Mitglied Fachwissen und Begeisterung mit. Wir setzen uns dafür ein, unser Tool kontinuierlich zu verbessern und sicherzustellen, dass es Ihren Anforderungen mit höchster Leistung und Zuverlässigkeit entspricht.",
       "teams": [
         {
-          "name": "John Doe",
-          "role": "Softwareentwickler",
-          "facebook": "",
-          "linkedin": ""
+          "name": "Amit Chowdhury",
+          "role": "CTO",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Amit Chowdhury.png",
+          "facebook": "#",
+          "linkedin": "https://www.linkedin.com/in/amit-chowdhury-867045ba"
         },
         {
-          "name": "Jane Smith",
+          "name": "Mrinmoy Roy",
+          "role": "Leiter Produkt",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Mrinmoy-Roy.png",
+          "facebook": "https://www.facebook.com/mrinmoyroy97?_rdc=1&_rdr",
+          "linkedin": "https://onlinegradecalculator.io/www.linkedin.com/in/mrin-moy-roy/?originalSubdomain=bd"
+        },
+        {
+          "name": "Borhan Uddin",
+          "role": "Produktanalyst",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Borhan-Uddin.png",
+          "facebook": "https://www.facebook.com/profile.php?id=100006072040955",
+          "linkedin": "https://www.linkedin.com/in/borhanuddin65/"
+        },
+        {
+          "name": "A.N.M. Mohaimen Shanto",
+          "role": "Produktanalyst",
+          "image": "https://cdn.compresspdf.to/person/A.N.M.-MOHAIMEN-SHANTO.png",
+          "facebook": "https://www.facebook.com/anm.shanto",
+          "linkedin": "https://www.linkedin.com/in/shanto7622/"
+        },
+        {
+          "name": "Mehrab Imtiaz",
+          "role": "Produktanalyst",
+          "image": "https://cdn.compresspdf.to/person/Mehrab-Imtiaz.png",
+          "facebook": "https://www.facebook.com/mehrab.imtiaz/",
+          "linkedin": "www.linkedin.com/in/mehrab-imtiaz-4a716413b"
+        },
+        {
+          "name": "Al Arafat Siddique",
+          "role": "Kundensupport-Spezialist",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Al-Arafat-Siddique.png",
+          "facebook": "https://www.facebook.com/arafatdipto",
+          "linkedin": "https://www.linkedin.com/in/al-arafat-siddique/"
+        },
+        {
+          "name": "Md.Sajib Ahmed",
+          "role": "Software Ingenieur",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Md.-Sajib-Ahmed.png",
+          "facebook": "https://www.facebook.com/asajib45",
+          "linkedin": "https://www.linkedin.com/in/sajib-ahmed-root/"
+        },
+        {
+          "name": "MD.Ayat Rahman",
+          "role": "Kundensupport-Spezialist",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/MD.-Al-Ayat-Ibna-Rahman.png",
+          "facebook": "https://www.facebook.com/ayat.jkr/",
+          "linkedin": "https://www.linkedin.com/in/thisisayat/"
+        },
+        {
+          "name": "Atik Ullah Khan",
+          "role": "Software Ingenieur",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Md.-Atik-Ullah-Khan-Murad.png",
+          "facebook": "https://web.facebook.com/mrinmoyroy97/",
+          "linkedin": "https://www.linkedin.com/in/proatik/"
+        },
+        {
+          "name": "Anonnya Ghosh",
+          "role": "Software Ingenieurin",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Anonnya-Ghosh.png",
+          "facebook": "https://www.facebook.com/profile.php?id=100005994046772",
+          "linkedin": "www.linkedin.com/in/anonnya-ghosh-6a934b211"
+        },
+        {
+          "name": "Zahid Hassan",
+          "role": "Software Ingenieur",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Zahid-Hassan.png",
+          "facebook": "https://www.facebook.com/zahid.2499?mibextid=ZbWKwL",
+          "linkedin": "https://www.linkedin.com/in/zahid-hassan-041177143"
+        },
+        {
+          "name": "Rabeya Islam",
+          "role": "SQA",
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Rabeya-Islam.png",
+          "facebook": "https://www.facebook.com/rabeyaislamm/",
+          "linkedin": "https://www.linkedin.com/in/rabeya-islam/"
+        },
+        {
+          "name": "Sadia Hossain",
           "role": "UI/UX Designerin",
-          "facebook": "",
-          "linkedin": ""
-        },
-        {
-          "name": "Alex Johnson",
-          "role": "Kundendienstspezialist",
-          "facebook": "",
-          "linkedin": ""
-        },
-        {
-          "name": "Alex Johnson",
-          "role": "Kundendienstspezialist",
-          "facebook": "",
-          "linkedin": ""
-        },
-        {
-          "name": "Alex Johnson",
-          "role": "Kundendienstspezialist",
-          "facebook": "",
-          "linkedin": ""
-        },
-        {
-          "name": "Alex Johnson",
-          "role": "Kundendienstspezialist",
-          "facebook": "",
-          "linkedin": ""
+          "image": "https://cdn.onlinegradecalculator.io/team-members/Sadia-Hossain.png",
+          "facebook": "https://www.facebook.com/sadiahossain.091738?mibextid=ZbWKwL",
+          "linkedin": "https://www.linkedin.com/in/sadia-hossain-368b501a9"
         }
       ]
     },
@@ -1094,6 +1117,28 @@
           "description": "Ihre Dateien werden mit größter Sorgfalt behandelt, um Ihre Daten sicher und privat zu halten."
         }
       ]
+    },
+    "schema": {
+      "organization": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Compress PDF",
+        "url": "https://www.compresspdf.to/de",
+        "logo": "Logo-URL",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+88 01327403953",
+          "contactType": "Kundendienst"
+        },
+        "email": "info@compresspdf.to",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Navana Newbury Place, Shobhanbag",
+          "addressLocality": "Dhanmondi",
+          "postalCode": "1207",
+          "addressCountry": "BD"
+        }
+      }
     }
   },
 
@@ -1147,6 +1192,83 @@
       "phone": "Telefon",
       "phoneInfo": "+88 01327403953",
       "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
+    },
+
+    "metaData": {
+      "title": "Cookie-Richtlinie | CompressPDF",
+      "description": "Verstehen Sie CompressPDF's Cookie-Nutzung. Erfahren Sie mehr über notwendige Cookies, potenzielle zukünftige Anwendungen und wie Sie Ihre Präferenzen für ein transparentes Surferlebnis verwalten können.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/de/cookie-policy",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/cookie-policy",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/cookie-policy",
+            "hreflang": "de"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "Cookie-Richtlinie | CompressPDF",
+        "description": "Verstehen Sie CompressPDF's Cookie-Nutzung. Erfahren Sie mehr über notwendige Cookies, potenzielle zukünftige Anwendungen und wie Sie Ihre Präferenzen für ein transparentes Surferlebnis verwalten können.",
+        "url": "https://compresspdf.to/de/cookie-policy",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/cookie-policy-de.png",
+            "alt": "PDF-Dateien online komprimieren, ohne Qualität zu verlieren"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "Cookie-Richtlinie | CompressPDF",
+        "description": "Verstehen Sie CompressPDF's Cookie-Nutzung. Erfahren Sie mehr über notwendige Cookies, potenzielle zukünftige Anwendungen und wie Sie Ihre Präferenzen für ein transparentes Surferlebnis verwalten können.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/cookie-policy-de.png",
+            "alt": "PDF-Dateien online komprimieren, ohne Qualität zu verlieren"
+          }
+        ]
+      }
+    },
+    "schema": {
+      "softwareApplication": {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Cookie-Richtlinie von CompressPDF",
+        "description": "Verstehen Sie CompressPDF's Cookie-Nutzung. Erfahren Sie mehr über notwendige Cookies, potenzielle zukünftige Anwendungen und wie Sie Ihre Präferenzen für ein transparentes Surferlebnis verwalten können.",
+        "applicationCategory": "Dienstprogramme",
+        "operatingSystem": "Alle",
+        "author": {
+          "@type": "Organization",
+          "name": "CompressPDF",
+          "url": "https://compresspdf.to/de/about",
+          "description": "Erfahren Sie mehr über compresspdf.to, Ihr schnelles und sicheres Tool zur PDF-Komprimierung. Entdecken Sie unsere Mission, das Dokumentenmanagement mit benutzerfreundlichen Funktionen zu vereinfachen."
+        },
+        "datePublished": "2024-02-20",
+        "url": "https://compresspdf.to/de/cookie-policy",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1237"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "screenshot": "https://cdn.compresspdf.to/images/cookie-policy-de.png",
+        "featureList": [
+          "Erläutert die aktuelle begrenzte Verwendung von notwendigen Cookies",
+          "Definiert verschiedene Cookie-Typen und deren Zwecke",
+          "Skizziert mögliche zukünftige Cookie-Nutzung für zusätzliche Funktionen",
+          "Bietet Informationen zur Verwaltung von Cookie-Einstellungen",
+          "Beschreibt den Prozess der Aktualisierung der Cookie-Richtlinie",
+          "Bietet Kontaktinformationen für Fragen oder Bedenken",
+          "Sichert Transparenz über aktuelle und potenzielle Cookie-Praktiken"
+        ]
+      }
     }
   },
 
@@ -1208,6 +1330,84 @@
       "phone": "Telefon",
       "phoneInfo": "+88 01327403953",
       "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
+    },
+
+    "metaData": {
+      "title": "Nutzungsbedingungen | CompressPDF",
+      "description": "Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung von CompressPDF. Erfahren Sie mehr über Dateiverarbeitung, Datenschutz, geistiges Eigentum und Haftungsbeschränkungen.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/de/terms-and-conditions",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/terms-and-conditions",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/terms-and-conditions",
+            "hreflang": "de"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "Nutzungsbedingungen | CompressPDF",
+        "description": "Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung von CompressPDF. Erfahren Sie mehr über Dateiverarbeitung, Datenschutz, geistiges Eigentum und Haftungsbeschränkungen.",
+        "url": "https://compresspdf.to/de/terms-and-conditions",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/terms-and-conditions-de.png",
+            "alt": "PDF-Dateien online komprimieren, ohne Qualität zu verlieren"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "Nutzungsbedingungen | CompressPDF",
+        "description": "Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung von CompressPDF. Erfahren Sie mehr über Dateiverarbeitung, Datenschutz, geistiges Eigentum und Haftungsbeschränkungen.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/terms-and-conditions-de.png",
+            "alt": "PDF-Dateien online komprimieren, ohne Qualität zu verlieren"
+          }
+        ]
+      }
+    },
+    "schema": {
+      "softwareApplication": {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Nutzungsbedingungen von CompressPDF",
+        "description": "Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung von CompressPDF. Erfahren Sie mehr über Dateiverarbeitung, Datenschutz, geistiges Eigentum und Haftungsbeschränkungen.",
+        "applicationCategory": "Dienstprogramme",
+        "operatingSystem": "Alle",
+        "author": {
+          "@type": "Organization",
+          "name": "CompressPDF",
+          "url": "https://compresspdf.to/de/about",
+          "description": "Erfahren Sie mehr über compresspdf.to, Ihr schnelles und sicheres Tool zur PDF-Komprimierung. Entdecken Sie unsere Mission, das Dokumentenmanagement mit benutzerfreundlichen Funktionen zu vereinfachen."
+        },
+        "datePublished": "2024-02-20",
+        "url": "https://compresspdf.to/de/terms-and-conditions",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1237"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "screenshot": "https://cdn.compresspdf.to/images/terms-and-conditions-de.png",
+        "featureList": [
+          "Beschreibt Benutzerverantwortlichkeiten und verbotene Inhalte",
+          "Erläutert Dateispeicherung und Datenschutzrichtlinien",
+          "Klären geistige Eigentumsrechte und Nutzungsbeschränkungen",
+          "Details zu Haftungsausschlüssen und -beschränkungen",
+          "Beschreibt Bedingungen zur Beendigung des Zugriffs",
+          "Informiert über mögliche Aktualisierungen der Bedingungen",
+          "Bietet Kontaktinformationen für Anfragen",
+          "Spezifiziert das Mindestalter für die Nutzung der Website"
+        ]
+      }
     }
   },
 
@@ -1262,6 +1462,84 @@
       "phone": "Telefon",
       "phoneInfo": "+88 01327403953",
       "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
+    },
+    "metaData": {
+      "title": "Datenschutzerklärung | CompressPDF",
+      "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/de/privacy-policy",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/privacy-policy",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/privacy-policy",
+            "hreflang": "de"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "Datenschutzerklärung | CompressPDF",
+        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
+        "url": "https://compresspdf.to/de/privacy-policy",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-de.png",
+            "alt": "PDF-Dateien online komprimieren, ohne Qualität zu verlieren"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "Datenschutzerklärung | CompressPDF",
+        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-de.png",
+            "alt": "PDF-Dateien online komprimieren, ohne Qualität zu verlieren"
+          }
+        ]
+      }
+    },
+    "schema": {
+      "softwareApplication": {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Datenschutzerklärung von CompressPDF",
+        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
+        "applicationCategory": "Dienstprogramme",
+        "operatingSystem": "Alle",
+        "author": {
+          "@type": "Organization",
+          "name": "CompressPDF",
+          "url": "https://compresspdf.to/de/about",
+          "description": "Erfahren Sie mehr über compresspdf.to, Ihr schnelles und sicheres Tool zur PDF-Komprimierung. Entdecken Sie unsere Mission, das Dokumentenmanagement mit benutzerfreundlichen Funktionen zu vereinfachen."
+        },
+        "datePublished": "2024-02-20",
+        "url": "https://compresspdf.to/de/privacy-policy",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1237"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "screenshot": "https://cdn.compresspdf.to/images/privacy-policy-de.png",
+        "featureList": [
+          "Komprimieren Sie PDF-Dateien bis zu 100MB ohne Qualitätsverlust.",
+          "Online-Komprimierung – keine Softwareinstallation erforderlich.",
+          "Behalten Sie das ursprüngliche Dokumentenformat und Layout bei.",
+          "Schneller und effizienter Komprimierungsalgorithmus.",
+          "Sichere Dateiverarbeitung mit automatischer Löschung nach Abschluss.",
+          "Kompatibel mit verschiedenen PDF-Versionen und -Formaten.",
+          "Kostenlos nutzbar ohne Registrierung.",
+          "Unterstützt die Stapelverarbeitung mehrerer Dateien.",
+          "Laden Sie die komprimierte PDF-Datei sofort nach der Verarbeitung herunter."
+        ]
+      }
     }
   }
 }

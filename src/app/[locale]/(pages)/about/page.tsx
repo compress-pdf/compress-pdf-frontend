@@ -1,19 +1,76 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 import SectionOne from '@/assets/icons/svgs/about/SectionOne';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 import SectionContainer from '@/components/common/containers/SectionContainer';
 import GradientTwo from '@/components/pages/compress-pdf/home-page/backgrounds/gradient-two';
+
+type PersonSchema = {
+  '@context': string;
+  '@type': string;
+  name: string;
+  image: string;
+  sameAs: string[];
+  jobTitle: string;
+  worksFor: {
+    '@type': string;
+    name: string;
+  };
+};
+
+type ITeams = {
+  name: string;
+  role: string;
+  image: string;
+  facebook: string;
+  linkedin: string;
+};
+
 const AboutPage = () => {
   const t = useTranslations('about');
 
   const sectionTwoItems = t.raw('sectionTwo.items');
   const sectionFourItems = t.raw('sectionFour.items');
   const teams = t.raw('sectionThree.teams');
+  const organizationSchema = t('schema.organization');
+
+  const personSchema: PersonSchema[] = teams.map((team: ITeams) => ({
+    '@context': 'https://schema.org/',
+    '@type': 'Person',
+    name: team.name,
+    image: team.image,
+    sameAs: [team.facebook, team.linkedin],
+    jobTitle: team.role,
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Softeko',
+    },
+  }));
 
   return (
     <div>
+      <section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
+        {personSchema.map((person, index: number) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(person),
+            }}
+          />
+        ))}
+      </section>
+
       {/* heading and description */}
       <FullwidthContainer
         className="pt-[40px] md:pt-[60px] md:pb-[100px] 2xl:pt-[58px] 2xl:pb-[110px] 3xl:pt-[63px] 3xl:pb-[136px]"
@@ -117,28 +174,28 @@ const AboutPage = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-[22px]">
-              {teams.map(
-                (
-                  team: {
-                    name: string;
-                    role: string;
-                    facebook: string;
-                    link: string;
-                  },
-                  index: number
-                ) => (
-                  <div
-                    key={index}
-                    className="flex pb-6 flex-col items-center gap-6 rounded-md border border-[#E1E4ED] dark:border-[#444 bg-[var(--Base-Base-White,#FAFAFA)] dark:bg-[var(--Neutrals-Neutrals700,#2F2F2F)] shadow-[0px_1px_4px_rgba(25,33,61,0.08)]"
-                  >
-                    <div>{/* image here  */}</div>
-                    <h3 className="text-[#163B45] dark:text-[#FAFAFA] 3xl:text-[18px] md:text:md text-[7px]">
-                      {team.name}
-                    </h3>
-                    <p className="text-[#163B45] dark:text-[#FAFAFA] 3xl:text-[14px] md:text-[10px] text-[6px]">
-                      {team.role}
-                    </p>
-                    <div className="flex justify-center items-center gap-4">
+              {teams.map((team: ITeams, index: number) => (
+                <div
+                  key={index}
+                  className="flex pb-6 flex-col items-center gap-6 rounded-md border border-[#E1E4ED] dark:border-[#444 bg-[var(--Base-Base-White,#FAFAFA)] dark:bg-[var(--Neutrals-Neutrals700,#2F2F2F)] shadow-[0px_1px_4px_rgba(25,33,61,0.08)]"
+                >
+                  <Image
+                    alt={team.name}
+                    src={team.image}
+                    width={0}
+                    unoptimized
+                    height={0}
+                    className="h-auto w-full"
+                  />
+
+                  <h3 className="text-[#163B45] dark:text-[#FAFAFA] 3xl:text-[18px] md:text:md text-[7px] leading-5 font-semibold">
+                    {team.name}
+                  </h3>
+                  <p className="text-[#163B45] dark:text-[#FAFAFA] 3xl:text-[14px] md:text-[10px] text-[6px]">
+                    {team.role}
+                  </p>
+                  <div className="flex justify-center items-center gap-4">
+                    <Link href={team.facebook}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -171,6 +228,8 @@ const AboutPage = () => {
                           </linearGradient>
                         </defs>
                       </svg>
+                    </Link>
+                    <Link href={team.linkedin}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -203,10 +262,10 @@ const AboutPage = () => {
                           </linearGradient>
                         </defs>
                       </svg>
-                    </div>
+                    </Link>
                   </div>
-                )
-              )}
+                </div>
+              ))}
             </div>
           </section>
         </SectionContainer>
