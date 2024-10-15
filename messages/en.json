@@ -110,7 +110,6 @@
           "label": "6MB",
           "path": "/6mb"
         },
-
         {
           "label": "10MB",
           "path": "/10mb"
@@ -147,7 +146,6 @@
           "label": "Cookie Policy",
           "link": "/cookie-policy"
         },
-
         {
           "label": "Terms and Conditions",
           "link": "/terms-and-conditions"
@@ -230,7 +228,10 @@
     },
     "download": {
       "header": {
-        "title": "Download Compressed Files",
+        "title": {
+          "singular": "Download Compressed File",
+          "plural": "Download Compressed Files"
+        },
         "filesTitle": "pdfs optimized",
         "total": "Total",
         "timeLabel": "Compression Time",
@@ -341,7 +342,6 @@
           }
         ]
       },
-
       "sectionThree": {
         "title": "How to Reduce PDF File Size Online?",
         "stepOne": {
@@ -382,7 +382,6 @@
           "rangeValue": "65%"
         }
       },
-
       "faqSection": {
         "title": "Frequently Asked Questions (FAQs)",
         "questions": [
@@ -586,7 +585,6 @@
       }
     ]
   },
-
   "100kb": {
     "content": {
       "heroSection": {

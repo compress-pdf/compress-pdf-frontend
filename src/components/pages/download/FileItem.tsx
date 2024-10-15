@@ -569,19 +569,19 @@ const FileItem: React.FC<FileItemProps> = ({
                   </SaveDropBox>
                 ),
               },
-              {
-                label: (
-                  <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
-                    <Image
-                      src={oneDriveIcon}
-                      height={14}
-                      width={14}
-                      alt={t('body.downloadModal.onedrive')}
-                    />
-                    {t('body.downloadModal.onedrive')}
-                  </span>
-                ),
-              },
+              // {
+              //   label: (
+              //     <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
+              //       <Image
+              //         src={oneDriveIcon}
+              //         height={14}
+              //         width={14}
+              //         alt={t('body.downloadModal.onedrive')}
+              //       />
+              //       {t('body.downloadModal.onedrive')}
+              //     </span>
+              //   ),
+              // },
               {
                 label: (
                   <SaveDrive PDF_URL={url}>

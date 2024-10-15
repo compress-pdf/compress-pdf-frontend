@@ -228,7 +228,10 @@
     },
     "download": {
       "header": {
-        "title": "Komprimierte Dateien herunterladen",
+        "title": {
+          "singular": "Herunterladen Komprimierte Datei",
+          "plural": "Herunterladen Komprimierte Dateien"
+        },
         "filesTitle": "optimierte PDFs",
         "total": "Gesamt",
         "timeLabel": "Komprimierungszeit",
@@ -309,7 +312,6 @@
         "imageAlt": "Illustration, was ein PDF-Kompressor ist.",
         "imageTitle": "PDF"
       },
-
       "sectionTwo": {
         "title": "Warum Unser PDF-Komprimierungstool Verwenden?",
         "description": "Unser PDF-Komprimierungstool zeichnet sich durch seine Effizienz und benutzerfreundliches Design aus. Hier sind einige Gründe, warum Sie sich für unser Tool entscheiden sollten:",
@@ -969,7 +971,6 @@
       }
     ]
   },
-
   "about": {
     "heading": "Über PDF Komprimieren",
     "description": "Willkommen bei Online PDF Komprimieren, Ihrer ersten Wahl für effiziente und hochwertige PDF-Komprimierung. Egal, ob Sie ein Profi sind, der große Berichte bearbeitet, ein Student, der Aufgaben einreicht, oder ein Kleinunternehmer, der Dokumente archiviert, wir erleichtern Ihren PDF-Management-Prozess.",
@@ -1141,7 +1142,6 @@
       }
     }
   },
-
   "cookiePolicy": {
     "heading": "Cookie-Richtlinie",
     "description": "Bei CompressPDF.to, betrieben von Softeko, verwenden wir derzeit keine Cookies für Werbezwecke oder ähnliche Zwecke. Diese Cookie-Richtlinie erklärt, was Cookies sind, wie wir sie in unserem aktuellen Setup verwenden und wie wir sie möglicherweise in Zukunft verwenden, wenn wir Werbung oder andere Funktionen implementieren, die Cookies erfordern.",
@@ -1193,7 +1193,6 @@
       "phoneInfo": "+88 01327403953",
       "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
     },
-
     "metaData": {
       "title": "Cookie-Richtlinie | CompressPDF",
       "description": "Verstehen Sie CompressPDF's Cookie-Nutzung. Erfahren Sie mehr über notwendige Cookies, potenzielle zukünftige Anwendungen und wie Sie Ihre Präferenzen für ein transparentes Surferlebnis verwalten können.",
@@ -1271,7 +1270,6 @@
       }
     }
   },
-
   "termsAndConditions": {
     "heading": "Nutzungsbedingungen",
     "description": "Willkommen bei CompressPDF.to, betrieben von Softeko. Diese Nutzungsbedingungen (Bedingungen) regeln Ihre Nutzung unserer Website unter https://compresspdf.to/ (die Seite). Durch den Zugriff auf oder die Nutzung unserer Seite stimmen Sie zu, diese Bedingungen einzuhalten. Wenn Sie diesen Bedingungen nicht zustimmen, verwenden Sie unsere Seite bitte nicht.",
@@ -1331,7 +1329,6 @@
       "phoneInfo": "+88 01327403953",
       "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
     },
-
     "metaData": {
       "title": "Nutzungsbedingungen | CompressPDF",
       "description": "Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung von CompressPDF. Erfahren Sie mehr über Dateiverarbeitung, Datenschutz, geistiges Eigentum und Haftungsbeschränkungen.",
@@ -1410,7 +1407,6 @@
       }
     }
   },
-
   "privacyPolicy": {
     "heading": "Datenschutzrichtlinie",
     "description": "Willkommen bei CompressPDF.to, betrieben von Softeko. Diese Datenschutzrichtlinie erläutert, wie wir Ihre Daten erfassen, verwenden und schützen, wenn Sie unsere Website unter https://compresspdf.to/ (die Seite) nutzen. Durch die Nutzung unserer Seite stimmen Sie den in dieser Datenschutzrichtlinie beschriebenen Bedingungen zu.",

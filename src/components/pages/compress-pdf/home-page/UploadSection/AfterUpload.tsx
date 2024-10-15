@@ -14,7 +14,6 @@ import { Button } from '@/components/common/core/Button';
 import GoogleDrive from '@/components/common/blocks/GoogleDrive';
 import LinkComponent from '@/components/common/blocks/LinkComponent';
 import DropBox from '@/components/common/blocks/DropBox';
-import OneDrive from '@/components/common/blocks/OneDrive';
 import helpers, { fileListToFileArray } from '@/services/helpers';
 import { getItemFromDB } from '@/services/indexedDB';
 import { useRouter } from '@/i18n/routing';
@@ -171,14 +170,14 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                     />
                   ),
                 },
-                {
-                  label: (
-                    <OneDrive
-                      handleNewFiles={handleNewFiles}
-                      onDropdown={true}
-                    />
-                  ),
-                },
+                // {
+                //   label: (
+                //     <OneDrive
+                //       handleNewFiles={handleNewFiles}
+                //       onDropdown={true}
+                //     />
+                //   ),
+                // },
                 {
                   label: (
                     <LinkComponent

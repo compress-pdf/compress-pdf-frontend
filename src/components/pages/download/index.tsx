@@ -302,7 +302,9 @@ const DownloadMain = ({ uid }: { uid: string }) => {
               <div className="w-full md:w-[56%] flex flex-col md:flex-row items-center md:items-start justify-between">
                 <div className="max-w-full flex flex-col gap-2 md:gap-4 justify-start text-center md:text-start">
                   <h1 className="max-w-full text-[#FF8224] text-md font-bold md:text-base lg:text-lg xl:text-base 2xl:text-lg 3xl:text-xl leading-4 text-wrap">
-                    {t('header.title')}
+                    {data.length > 1
+                      ? t('header.title.plural')
+                      : t('header.title.singular')}
                   </h1>
                   <p className="text-xs md:text-sm lg:text-md xl:text-sm 2xl:text-[0.875rem] text-center md:text-left">
                     {totalPdf} {t('header.filesTitle')} |{' '}
@@ -387,19 +389,19 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                           </SaveDropBox>
                         ),
                       },
-                      {
-                        label: (
-                          <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
-                            <Image
-                              src={oneDriveIcon}
-                              height={14}
-                              width={14}
-                              alt={t('header.buttonModal.onedrive')}
-                            />
-                            {t('header.buttonModal.onedrive')}
-                          </span>
-                        ),
-                      },
+                      // {
+                      //   label: (
+                      //     <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
+                      //       <Image
+                      //         src={oneDriveIcon}
+                      //         height={14}
+                      //         width={14}
+                      //         alt={t('header.buttonModal.onedrive')}
+                      //       />
+                      //       {t('header.buttonModal.onedrive')}
+                      //     </span>
+                      //   ),
+                      // },
                       {
                         label: (
                           <SaveDrive PDF_URL={data[0]?.zip_download_link}>

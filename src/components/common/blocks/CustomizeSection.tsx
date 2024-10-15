@@ -320,9 +320,7 @@ const CustomizeSection = ({
 
         {/* By Image Container */}
         <div
-          className={`by-image flex items-center flex-wrap md:flex-nowrap gap-[5px] w-full md:w-[61.25%] lg:w-[47.58%] xl:w-[61.34%] 2xl:w-[47.58%] 3xl:w-[50.5%] self-stretch p-[14px] px-0 ${
-            !isByImageActive ? 'opacity-30' : ''
-          }`}
+          className={`by-image flex items-center flex-wrap md:flex-nowrap gap-[5px] w-full md:w-[61.25%] lg:w-[47.58%] xl:w-[61.34%] 2xl:w-[47.58%] 3xl:w-[50.5%] self-stretch p-[14px] px-0`}
           onClick={isByImageActive ? undefined : toggleByImage}
           onKeyDown={
             isByImageActive
@@ -333,7 +331,11 @@ const CustomizeSection = ({
           role="button"
         >
           <div className="flex flex-col justify-between w-full md:w-1/2 self-stretch gap-[20px] flex-1">
-            <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1">
+            <div
+              className={`px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1 ${
+                !isByImageActive ? 'opacity-30' : ''
+              }`}
+            >
               <Label
                 text={t('imageEnhancement.rangeLabel')}
                 tooltipContent={t('imageEnhancement.rangeTooltip')}
@@ -346,7 +348,11 @@ const CustomizeSection = ({
                 type="red"
               />
             </div>
-            <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1 flex flex-col">
+            <div
+              className={`px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1 flex flex-col ${
+                !isByImageActive ? 'opacity-30' : ''
+              }`}
+            >
               <Label
                 text={t('imageEnhancement.buttonLabel')}
                 tooltipContent={t('imageEnhancement.buttonTooltip')}
@@ -363,7 +369,11 @@ const CustomizeSection = ({
           </div>
 
           <div className="flex flex-col justify-between w-full md:w-1/2 self-stretch gap-[20px] flex-1">
-            <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1">
+            <div
+              className={`px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1  ${
+                !isByImageActive ? 'opacity-30' : ''
+              }`}
+            >
               <Label
                 text={t('imageResolution.rangeLabel')}
                 tooltipContent={t('imageResolution.rangeTooltip')}
@@ -377,7 +387,11 @@ const CustomizeSection = ({
                 type="red"
               />
             </div>
-            <div className="px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1 flex flex-col">
+            <div
+              className={`px-[14px] py-[10px] bg-white dark:bg-[#3a3a3a] rounded-[5px] flex-1 flex flex-col  ${
+                !isByImageActive && imageFiles ? 'opacity-30' : ''
+              }`}
+            >
               <Label
                 text={t('imageResolution.buttonLabel')}
                 tooltipContent={t('imageResolution.buttonTooltip')}

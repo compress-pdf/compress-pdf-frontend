@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import Tooltip from '../core/Tooltip';
 
-import OneDrive from './OneDrive';
+// import OneDrive from './OneDrive';
 import DropBox from './DropBox';
 import LinkComponent from './LinkComponent';
 
@@ -23,9 +23,9 @@ const Cloud = ({ handleNewFiles }: Props) => {
       <Tooltip content={t('heroSectionTooltip.drive')}>
         <GoogleDrive handleNewFiles={handleNewFiles} />
       </Tooltip>
-      <Tooltip content={t('heroSectionTooltip.onedrive')}>
+      {/* <Tooltip content={t('heroSectionTooltip.onedrive')}>
         <OneDrive handleNewFiles={handleNewFiles} />
-      </Tooltip>
+      </Tooltip> */}
       <Tooltip content={t('heroSectionTooltip.dropbox')}>
         <DropBox handleNewFiles={handleNewFiles} />
       </Tooltip>
