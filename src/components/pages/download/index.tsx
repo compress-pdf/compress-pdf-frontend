@@ -26,6 +26,9 @@ import {
   findEarliestExpireTime,
   transformToArray,
 } from '@/services/helpers';
+import SaveDropBox from '@/components/common/blocks/SaveDropBox';
+import { useRatingContext } from '@/context/RatingContext';
+import StarRating from '@/components/common/core/StarRating';
 
 import SaveDrive from '../save-drive/SaveDrive';
 
@@ -63,10 +66,19 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     calculateTimeLeft(findEarliestExpireTime(data) || '')
   );
   const modalRef = useRef<HTMLDivElement>(null);
+  const toolId = 1;
+  const { isRated, addRating } = useRatingContext();
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setUrl(window.location.href);
   }, [router]);
+
+  useEffect(() => {
+    if (!isRated(toolId)) {
+      setShowModal(true);
+    }
+  }, [toolId, isRated]);
 
   useEffect(
     () => {
@@ -146,6 +158,12 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     );
     setTimeLeft(calculateTimeLeft(findEarliestExpireTime(data) || ''));
   }, [data]);
+
+  const handleRatingSubmit = async (rating: number) => {
+    // Submit rating and close the modal
+    await addRating(toolId, rating);
+    setShowModal(false);
+  };
 
   const generateQR = async (link: string): Promise<string | null> => {
     if (link !== '') {
@@ -316,41 +334,57 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                   <SplitButton
                     modalRef={modalRef}
                     label={
-                      <button
-                        className="flex items-center gap-2"
-                        onClick={handleDownloadZip}
+                      <ModalWithButton
+                        disabled={!showModal}
+                        // disabled={false}
+                        buttonLabel={
+                          <button
+                            className="flex items-center gap-2"
+                            onClick={handleDownloadZip}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="17"
+                              height="22"
+                              viewBox="0 0 17 22"
+                              fill="none"
+                            >
+                              <path
+                                d="M8.97296 12.5366V11.3193H7.67522V12.5366C7.67521 12.6429 7.66213 12.7488 7.63628 12.852L7.11719 14.9258L8.32409 15.7304L9.53099 14.9258L9.01189 12.852C8.98605 12.7488 8.97297 12.6429 8.97296 12.5366Z"
+                                fill="#FAFAFA"
+                              />
+                              <path
+                                d="M3.1326 0.289062H13.5145C14.2029 0.289063 14.8631 0.562515 15.3498 1.04926C15.8366 1.53601 16.11 2.19618 16.11 2.88455V18.4575C16.11 19.1458 15.8366 19.806 15.3498 20.2928C14.8631 20.7795 14.2029 21.053 13.5145 21.053H3.1326C2.44423 21.053 1.78406 20.7795 1.29731 20.2928C0.810561 19.806 0.537109 19.1458 0.537109 18.4575V2.88455C0.537109 2.19618 0.810561 1.53601 1.29731 1.04926C1.78406 0.562515 2.44423 0.289063 3.1326 0.289062ZM6.37695 11.3199V12.5372L5.85786 14.6123C5.79318 14.8719 5.81034 15.1452 5.90698 15.3947C6.00362 15.6442 6.17502 15.8577 6.39772 16.006L7.60462 16.8106C7.81774 16.9526 8.06812 17.0284 8.32422 17.0284C8.58032 17.0284 8.83069 16.9526 9.04382 16.8106L10.2507 16.006C10.4732 15.8575 10.6443 15.6439 10.7407 15.3944C10.8371 15.1449 10.8541 14.8718 10.7893 14.6123L10.2702 12.5372V11.3199C10.2702 10.9757 10.1335 10.6456 9.89008 10.4022C9.64671 10.1589 9.31662 10.0221 8.97244 10.0221H7.6747C7.33051 10.0221 7.00043 10.1589 6.75705 10.4022C6.51368 10.6456 6.37695 10.9757 6.37695 11.3199ZM7.6747 4.18229H6.37695V5.48003H7.6747V6.77778H6.37695V8.07552H7.6747V9.37326H9.62131V8.07552H8.32357V6.77778H9.62131V5.48003H8.32357V4.18229H9.62131V2.88455H8.32357V1.58681H6.37695V2.88455H7.6747V4.18229Z"
+                                fill="#FAFAFA"
+                              />
+                            </svg>
+                            {t('header.buttonModal.label')}
+                          </button>
+                        }
                       >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="17"
-                          height="22"
-                          viewBox="0 0 17 22"
-                          fill="none"
-                        >
-                          <path
-                            d="M8.97296 12.5366V11.3193H7.67522V12.5366C7.67521 12.6429 7.66213 12.7488 7.63628 12.852L7.11719 14.9258L8.32409 15.7304L9.53099 14.9258L9.01189 12.852C8.98605 12.7488 8.97297 12.6429 8.97296 12.5366Z"
-                            fill="#FAFAFA"
-                          />
-                          <path
-                            d="M3.1326 0.289062H13.5145C14.2029 0.289063 14.8631 0.562515 15.3498 1.04926C15.8366 1.53601 16.11 2.19618 16.11 2.88455V18.4575C16.11 19.1458 15.8366 19.806 15.3498 20.2928C14.8631 20.7795 14.2029 21.053 13.5145 21.053H3.1326C2.44423 21.053 1.78406 20.7795 1.29731 20.2928C0.810561 19.806 0.537109 19.1458 0.537109 18.4575V2.88455C0.537109 2.19618 0.810561 1.53601 1.29731 1.04926C1.78406 0.562515 2.44423 0.289063 3.1326 0.289062ZM6.37695 11.3199V12.5372L5.85786 14.6123C5.79318 14.8719 5.81034 15.1452 5.90698 15.3947C6.00362 15.6442 6.17502 15.8577 6.39772 16.006L7.60462 16.8106C7.81774 16.9526 8.06812 17.0284 8.32422 17.0284C8.58032 17.0284 8.83069 16.9526 9.04382 16.8106L10.2507 16.006C10.4732 15.8575 10.6443 15.6439 10.7407 15.3944C10.8371 15.1449 10.8541 14.8718 10.7893 14.6123L10.2702 12.5372V11.3199C10.2702 10.9757 10.1335 10.6456 9.89008 10.4022C9.64671 10.1589 9.31662 10.0221 8.97244 10.0221H7.6747C7.33051 10.0221 7.00043 10.1589 6.75705 10.4022C6.51368 10.6456 6.37695 10.9757 6.37695 11.3199ZM7.6747 4.18229H6.37695V5.48003H7.6747V6.77778H6.37695V8.07552H7.6747V9.37326H9.62131V8.07552H8.32357V6.77778H9.62131V5.48003H8.32357V4.18229H9.62131V2.88455H8.32357V1.58681H6.37695V2.88455H7.6747V4.18229Z"
-                            fill="#FAFAFA"
-                          />
-                        </svg>
-                        {t('header.buttonModal.label')}
-                      </button>
+                        <p className="text-[1.125rem] font-bold text-[#163B45] text-center">
+                          Rate this!
+                        </p>
+                        <StarRating onRate={handleRatingSubmit} toolId={1} />
+                      </ModalWithButton>
                     }
                     dropdownActions={[
                       {
                         label: (
-                          <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
-                            <Image
-                              src={dropBoxIcon}
-                              height={14}
-                              width={14}
-                              alt={'download to dropbox'}
-                            />
-                            {t('header.buttonModal.dropbox')}
-                          </span>
+                          <SaveDropBox
+                            url={data[0]?.zip_download_link}
+                            filename="compressed"
+                          >
+                            <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
+                              <Image
+                                src={dropBoxIcon}
+                                height={14}
+                                width={14}
+                                alt={'download to dropbox'}
+                              />
+                              {t('header.buttonModal.dropbox')}
+                            </span>
+                          </SaveDropBox>
                         ),
                       },
                       {
@@ -382,7 +416,9 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                         ),
                       },
                     ]}
-                    onMainClick={() => console.log('aa')}
+                    onMainClick={() => {
+                      //console.log('')
+                    }}
                     className="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white focus:outline-none md:py-3 md:px-3 px-10  w-full text-sm md:text-[0.875rem] border-0 border-e-[1px] dark:border-0 dark:border-e-[1px] dark:border-[#dbdbdbe0]"
                     classNameDropdownIcon="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white border-0 dark:border-s-transparent"
                     classNameDropdown="bg-[#FF8224] dark:bg-[#FF8224] dark:hover:bg-[#ff7044] hover:bg-[#ff7044] text-white"
@@ -400,6 +436,11 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 storedState={storedState}
                 deleting={deleting}
                 modalRef={modalRef}
+                toolId={toolId}
+                addRating={addRating}
+                showModal={showModal}
+                setShowModal={setShowModal}
+                handleRatingSubmit={handleRatingSubmit}
               />
             ))}
 

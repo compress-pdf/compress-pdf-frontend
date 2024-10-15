@@ -20,57 +20,18 @@ export default function LanguageSwitcher() {
   ];
 
   return (
-    // <div className="flex items-center space-x-2 rounded-sm bg-transparent border border-slate-900 dark:border-slate-400 py-2 px-1">
-    //   {/* Global Icon */}
-    //   <Image src={GlobalIcon} alt="global-icon" height={20} width={20} />
-
-    //   {/* Custom Select Element */}
-    //   <div className="relative w-full">
-    //     <select
-    //       value={locale}
-    //       onChange={changeLocale}
-    //       className="w-full appearance-none bg-transparent border-none focus:outline-none px-4"
-    //       title="Locale Switcher"
-    //     >
-    //       {data.map(loc => (
-    //         <option key={loc.id} value={loc.value}>
-    //           {loc.title}
-    //         </option>
-    //       ))}
-    //     </select>
-
-    //     {/* Dropdown Arrow */}
-    //     <div className="absolute right-0 top-1/2 transform -translate-y-1/2 pointer-events-none">
-    //       <svg
-    //         className="w-4 h-4 text-slate-600"
-    //         fill="none"
-    //         stroke="currentColor"
-    //         viewBox="0 0 24 24"
-    //         xmlns="http://www.w3.org/2000/svg"
-    //       >
-    //         <path
-    //           strokeLinecap="round"
-    //           strokeLinejoin="round"
-    //           strokeWidth={2}
-    //           d="M19 9l-7 7-7-7"
-    //         />
-    //       </svg>
-    //     </div>
-    //   </div>
-    // </div>
-
-    <div className="relative inline-block">
+    <div className="relative hidden lg:inline-block">
       <select
         value={locale}
         onChange={changeLocale}
-        className="appearance-none border rounded-md pl-10 pr-8 py-2 text-sm font-semibold text-[#163B45] dark:text-[#FAFAFA] focus:outline-none dark:border-[#424242] border-[#163B45] dark:bg-[#424242]"
+        className="appearance-none border rounded-md pl-10 pr-8 py-2 text-[0.875rem] font-bold text-[#163B45] dark:text-[#FAFAFA] focus:outline-none dark:border-[#424242] border-[#163B45] dark:bg-[#424242]"
         title="Language Selector"
       >
         {data.map(loc => (
           <option
             key={loc.id}
             value={loc.value}
-            className="hover:bg-[#FDE9D4] bg-[#FAFAFA] py-4 text-[#163B45] font-serif"
+            className="hover:bg-[#FDE9D4] bg-[#FAFAFA] py-4 text-[#163B45]"
           >
             {loc.title}
           </option>
@@ -78,22 +39,57 @@ export default function LanguageSwitcher() {
       </select>
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <svg
-          className="h-5 w-5 text-gray-400"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
+          width="25"
+          height="24"
+          viewBox="0 0 25 24"
+          fill="none"
+          className="stroke-[#163B45] dark:stroke-slate-50"
         >
-          <path
-            fillRule="evenodd"
-            d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z"
-            clipRule="evenodd"
-          />
+          <g id="iconoir:language">
+            <g id="Group">
+              <path
+                id="Vector"
+                d="M2.98047 12C2.98047 17.523 7.45747 22 12.9805 22C18.5035 22 22.9805 17.523 22.9805 12C22.9805 6.477 18.5035 2 12.9805 2C7.45747 2 2.98047 6.477 2.98047 12Z"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                id="Vector_2"
+                d="M13.9805 2.0498C13.9805 2.0498 16.9805 5.9998 16.9805 11.9998C16.9805 17.9998 13.9805 21.9498 13.9805 21.9498"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                id="Vector_3"
+                d="M11.9805 21.9498C11.9805 21.9498 8.98047 17.9998 8.98047 11.9998C8.98047 5.9998 11.9805 2.0498 11.9805 2.0498"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                id="Vector_4"
+                d="M3.61035 15.5H22.3504"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                id="Vector_5"
+                d="M3.61035 8.5H22.3504"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </g>
+          </g>
         </svg>
       </div>
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
         <svg
-          className="h-5 w-5 text-gray-400"
+          className="h-5 w-5 text-[#16384B] dark:text-slate-50"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
           fill="currentColor"

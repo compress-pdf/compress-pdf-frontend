@@ -27,16 +27,16 @@ export default function Navbar() {
               </Link>
             </div>
 
-            <div className="flex gap-2 items-center">
-              <div className="hidden md:block">
-                <div className="flex items-center gap-[6px]">
+            <div className="flex gap-[19px] items-center text-base">
+              <div className="hidden lg:block">
+                <div className="flex items-center gap-[19px]">
                   {menus
                     .slice(0, 2)
                     .map((menu: { label: string; path: string }) => (
                       <Link
                         key={menu.label}
                         href={menu.path}
-                        className="text-gray-800 dark:text-white rounded-md font-medium py-2 px-3 text-sm leading-7"
+                        className="text-gray-800 dark:text-white rounded-md font-medium leading-7"
                       >
                         {menu.label}
                       </Link>

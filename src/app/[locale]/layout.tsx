@@ -15,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { UploadingProvider } from '@/context/UploadingContext';
 import { CompressionProvider } from '@/context/CompressionContext';
 import { FooterProvider } from '@/context/FooterContext';
+import { RatingProvider } from '@/context/RatingContext';
 
 import ReduxProvider from '../../../providers/redux';
 
@@ -42,25 +43,27 @@ export default async function RootLayout({
       <body
         className={`${poppins.variable} ${openSans.variable} ${'flex flex-col items-center justify-center w-full bg-[#FBFBFB] dark:bg-[#232323]'}`}
       >
-        <CompressionProvider>
-          <UploadingProvider>
-            <FooterProvider>
-              <ReduxProvider>
-                <ThemeProvider attribute="class" defaultTheme="system">
-                  <NextIntlClientProvider messages={messages}>
-                    <Header />
-                    <div className="w-full grid grid-cols-1 xl:grid-cols-[324px_1fr_324px] 2xl:grid-cols-[320px_1fr_320px] 3xl:grid-cols-[340px_1fr_340px] xl:max-w-[1920px]">
-                      <SideAd />
-                      <main className="w-full mx-auto px-0">{children}</main>
-                      <SideAd />
-                    </div>
-                    <Footer />
-                  </NextIntlClientProvider>
-                </ThemeProvider>
-              </ReduxProvider>
-            </FooterProvider>
-          </UploadingProvider>
-        </CompressionProvider>
+        <RatingProvider>
+          <CompressionProvider>
+            <UploadingProvider>
+              <FooterProvider>
+                <ReduxProvider>
+                  <ThemeProvider attribute="class" defaultTheme="system">
+                    <NextIntlClientProvider messages={messages}>
+                      <Header />
+                      <div className="w-full grid grid-cols-1 xl:grid-cols-[324px_1fr_324px] 2xl:grid-cols-[320px_1fr_320px] 3xl:grid-cols-[340px_1fr_340px] xl:max-w-[1920px]">
+                        <SideAd />
+                        <main className="w-full mx-auto px-0">{children}</main>
+                        <SideAd />
+                      </div>
+                      <Footer />
+                    </NextIntlClientProvider>
+                  </ThemeProvider>
+                </ReduxProvider>
+              </FooterProvider>
+            </UploadingProvider>
+          </CompressionProvider>
+        </RatingProvider>
         <ToastContainer />
       </body>
     </html>

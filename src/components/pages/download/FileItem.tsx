@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 import React, { useState, ChangeEvent, useEffect, useRef } from 'react';
 import Image from 'next/image';
@@ -19,6 +21,9 @@ import CustomToast from '@/components/common/core/ToastMessage';
 import { FileData } from '@/types/General';
 import { API_URL } from '@/constants/credentials/const';
 import PdfThumbnail from '@/components/common/core/PdfThumbnail';
+import SaveDropBox from '@/components/common/blocks/SaveDropBox';
+import StarRating from '@/components/common/core/StarRating';
+import { useRatingContext } from '@/context/RatingContext';
 
 import Preview from '../preview/Preview';
 import SaveDrive from '../save-drive/SaveDrive';
@@ -42,6 +47,11 @@ interface FileItemProps {
   storedState: boolean;
   deleting: boolean;
   modalRef: React.RefObject<HTMLDivElement>;
+  toolId: number;
+  addRating: (toolID: number, rating: number) => void;
+  showModal: boolean;
+  setShowModal: any;
+  handleRatingSubmit: any;
 }
 
 const FileItem: React.FC<FileItemProps> = ({
@@ -51,6 +61,11 @@ const FileItem: React.FC<FileItemProps> = ({
   storedState,
   deleting,
   modalRef,
+  toolId,
+  handleRatingSubmit,
+  addRating,
+  showModal,
+  setShowModal,
 }) => {
   const deleteIcon = (
     <svg
@@ -107,6 +122,8 @@ const FileItem: React.FC<FileItemProps> = ({
   const t = useTranslations('common.download');
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(file?.expire));
   const url = `${API_URL}/${file?.file_path}`;
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+  const [triggerPrint, setTriggerPrint] = useState(false);
 
   useEffect(
     () => {
@@ -128,7 +145,7 @@ const FileItem: React.FC<FileItemProps> = ({
   // const handleNameChange = () => {
   //   setIsEditing(false); // Exit editing mode on blur
   // };
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  // const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handlePrint = async () => {
     try {
@@ -146,20 +163,23 @@ const FileItem: React.FC<FileItemProps> = ({
       if (iframeRef.current) {
         iframeRef.current.src = blobUrl;
       }
+
+      // Set triggerPrint to true to initiate printing after the iframe loads
+      setTriggerPrint(true);
     } catch (error) {
       console.error('Error fetching PDF for printing:', error);
     }
   };
 
   useEffect(() => {
-    // Trigger print when the iframe is loaded
-    if (iframeRef.current) {
+    if (triggerPrint && iframeRef.current) {
       iframeRef.current.onload = () => {
         iframeRef.current?.contentWindow?.focus();
         iframeRef.current?.contentWindow?.print();
+        setTriggerPrint(false); // Reset after printing to avoid repeated triggers
       };
     }
-  }, []);
+  }, [triggerPrint]);
 
   const handleCopyURL = () => {
     navigator.clipboard
@@ -483,7 +503,7 @@ const FileItem: React.FC<FileItemProps> = ({
             tabIndex={0}
             onKeyDown={() => {}}
             className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
-            onClick={() => handlePrint()}
+            onClick={handlePrint}
           >
             <Image
               width={0}
@@ -509,31 +529,44 @@ const FileItem: React.FC<FileItemProps> = ({
           <SplitButton
             modalRef={modalRef}
             label={
-              <button
-                onClick={handleDownload}
-                className="flex items-center gap-2"
+              <ModalWithButton
+                disabled={!showModal}
+                // disabled={false}
+                buttonLabel={
+                  <button
+                    onClick={handleDownload}
+                    className="flex items-center gap-2"
+                  >
+                    <Image
+                      width={18}
+                      height={18}
+                      src={downloadIcon}
+                      alt="download icon"
+                    />
+                    {t('body.downloadModal.label')}
+                  </button>
+                }
               >
-                <Image
-                  width={18}
-                  height={18}
-                  src={downloadIcon}
-                  alt="download icon"
-                />
-                {t('body.downloadModal.label')}
-              </button>
+                <p className="text-[1.125rem] font-bold text-[#163B45] text-center">
+                  Rate this!
+                </p>
+                <StarRating onRate={handleRatingSubmit} toolId={1} />
+              </ModalWithButton>
             }
             dropdownActions={[
               {
                 label: (
-                  <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
-                    <Image
-                      src={dropBoxIcon}
-                      height={14}
-                      width={14}
-                      alt={t('body.downloadModal.drive')}
-                    />
-                    {t('body.downloadModal.drive')}
-                  </span>
+                  <SaveDropBox url={url} filename={fileName}>
+                    <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
+                      <Image
+                        src={dropBoxIcon}
+                        height={14}
+                        width={14}
+                        alt={t('body.downloadModal.dropbox')}
+                      />
+                      {t('body.downloadModal.dropbox')}
+                    </span>
+                  </SaveDropBox>
                 ),
               },
               {
@@ -557,9 +590,9 @@ const FileItem: React.FC<FileItemProps> = ({
                         src={googleDriveIcon}
                         height={14}
                         width={14}
-                        alt={t('body.downloadModal.dropbox')}
+                        alt={t('body.downloadModal.drive')}
                       />
-                      {t('body.downloadModal.dropbox')}
+                      {t('body.downloadModal.drive')}
                     </span>
                   </SaveDrive>
                 ),

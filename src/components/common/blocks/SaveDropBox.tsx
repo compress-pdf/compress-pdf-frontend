@@ -2,6 +2,8 @@
 
 import { useEffect } from 'react';
 
+import CustomToast from '../core/ToastMessage';
+
 // Define the types for the Dropbox save function options
 interface DropboxSaveOptions {
   files: Array<{
@@ -47,16 +49,27 @@ const SaveDropBox = ({ filename, url, children }: Props) => {
         },
       ],
       success: () => {
-        alert('File saved successfully to Dropbox!');
+        CustomToast({
+          type: 'success',
+          message: 'File saved successfully to Dropbox!',
+        });
       },
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       progress: progress => {
-        console.log('Progress:', progress);
+        // console.log('Progress:', progress);
       },
       cancel: () => {
-        console.log('User canceled saving the file.');
+        // console.log('User canceled saving the file.');
+        CustomToast({
+          type: 'error',
+          message: 'Process Cancelled',
+        });
       },
       error: errorMessage => {
-        console.error('Error saving the file:', errorMessage);
+        CustomToast({
+          type: 'error',
+          message: errorMessage,
+        });
       },
     };
 

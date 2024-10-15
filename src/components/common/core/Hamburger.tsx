@@ -40,7 +40,7 @@ const Hamburger = () => {
   }, []);
 
   return (
-    <div className="block md:hidden">
+    <div className="block lg:hidden">
       {/* Hamburger Open Button */}
       <button
         title="hamburger"
@@ -57,7 +57,7 @@ const Hamburger = () => {
       <div
         ref={sidebarRef}
         className={twMerge(
-          'fixed top-0 right-0 h-full w-64 bg-white dark:bg-slate-900 shadow-lg transition-transform duration-300 ease-in-out transform',
+          'fixed top-0 right-0 h-full w-64 bg-[#FBFBFB] dark:bg-[#232323] shadow-lg transition-transform duration-300 ease-in-out transform',
           isOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
@@ -66,7 +66,7 @@ const Hamburger = () => {
           <button
             title="hamburger-close"
             onClick={toggleMenu}
-            className="text-black focus:outline-none bg-transparent shadow-none p-2"
+            className="text-orange-600 focus:outline-none bg-transparent shadow-none p-2"
           >
             <HamburgerClose />
           </button>

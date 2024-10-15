@@ -7,12 +7,14 @@ type ModalWithButtonProps = {
   buttonLabel: ReactNode; // Text for the button
   buttonStyle?: string; // Classes for button styling
   children: ReactNode; // Content for the modal
+  disabled?: boolean;
 };
 
 const ModalWithButton: React.FC<ModalWithButtonProps> = ({
   buttonLabel,
   buttonStyle,
   children,
+  disabled = false,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -25,7 +27,7 @@ const ModalWithButton: React.FC<ModalWithButtonProps> = ({
       <button
         type="button"
         className={twMerge('', buttonStyle)}
-        onClick={openModal}
+        onClick={disabled ? () => {} : openModal}
       >
         {buttonLabel}
       </button>

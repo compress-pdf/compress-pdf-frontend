@@ -44,7 +44,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
   // Close the dropdown when clicking outside of it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      console.log('event', event.target);
+      // console.log('event', event.target);
 
       const targetElement = event.target as HTMLElement;
 
