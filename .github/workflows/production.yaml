@@ -1,9 +1,9 @@
-name: Build and Deploy Docker Image
+name: Automated Build and Deployment with Docker (Production)
 
 on:
   push:
     branches:
-      - master
+      - production
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/compress-pdf/compress-next:latest
+          tags: ghcr.io/compress-pdf/compress-pdf:latest
 
   deploy:
     runs-on: ubuntu-22.04
@@ -53,25 +53,25 @@ jobs:
             echo -e "\n Logging in to GitHub Container Registry 🗝️ \n"
             docker login ghcr.io -u ${{ github.actor }} --password ${{ vars.GHCR_PAT }}
 
-            if [ "$(docker ps -q -f name=compress-next)" ]; then
-                echo -e "\n Stopping running container: compress-next 🛑 \n"
-                docker container stop compress-next
+            if [ "$(docker ps -q -f name=compress-pdf)" ]; then
+                echo -e "\n Stopping running container: compress-pdf 🛑 \n"
+                docker container stop compress-pdf
             else
-                echo -e "\n No running container named 'compress-next' to stop ⚠️ \n"
+                echo -e "\n No running container named 'compress-pdf' to stop ⚠️ \n"
             fi
 
-            if [ "$(docker container ls -a -q -f name=compress-next)" ]; then
-                echo -e "\n Removing stopped container: compress-next 🚧 \n"
-                docker container rm compress-next
+            if [ "$(docker container ls -a -q -f name=compress-pdf)" ]; then
+                echo -e "\n Removing stopped container: compress-pdf 🚧 \n"
+                docker container rm compress-pdf
             else
-                echo -e "\n No container named 'compress-next' to remove ⚠️ \n"
+                echo -e "\n No container named 'compress-pdf' to remove ⚠️ \n"
             fi
 
             echo -e "\n Pulling the latest image from GHCR 📥 \n"
-            docker image pull ghcr.io/compress-pdf/compress-next
+            docker image pull ghcr.io/compress-pdf/compress-pdf
 
-            echo -e "\n Running the new container: compress-next 🛩️ \n"
-            docker run -d --name compress-next -p 5000:5000 ghcr.io/compress-pdf/compress-next
+            echo -e "\n Running the new container: compress-pdf 🛩️ \n"
+            docker run -d --name compress-pdf -p 3000:3000 ghcr.io/compress-pdf/compress-pdf
 
             echo -e "\n Pruning unused Docker images 🧹 \n"
             docker image prune -f
