@@ -130,6 +130,16 @@
           "label": "100MB",
           "path": "/100mb"
         }
+      ],
+      "language": [
+        {
+          "label": "English",
+          "value": "en"
+        },
+        {
+          "label": "Deutsch",
+          "value": "de"
+        }
       ]
     },
     "footer": {
