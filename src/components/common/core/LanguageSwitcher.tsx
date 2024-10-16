@@ -1,11 +1,13 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { usePathname, useRouter } from '@/i18n/routing';
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
+  const t = useTranslations('common.header');
+  const languages = t.raw('language');
   const router = useRouter();
   const locale = useLocale();
 
@@ -13,11 +15,6 @@ export default function LanguageSwitcher() {
     const newLocale = event.target.value;
     router.replace(pathname, { locale: newLocale as 'en' | 'de' | undefined });
   };
-
-  const data = [
-    { id: 1, title: 'English', value: 'en' },
-    { id: 2, title: 'German', value: 'de' },
-  ];
 
   return (
     <div className="relative hidden lg:inline-block">
@@ -27,15 +24,17 @@ export default function LanguageSwitcher() {
         className="appearance-none border rounded-md pl-10 pr-8 py-2 text-[0.875rem] font-bold text-[#163B45] dark:text-[#FAFAFA] focus:outline-none dark:border-[#424242] border-[#163B45] dark:bg-[#424242]"
         title="Language Selector"
       >
-        {data.map(loc => (
-          <option
-            key={loc.id}
-            value={loc.value}
-            className="hover:bg-[#FDE9D4] bg-[#FAFAFA] py-4 text-[#163B45]"
-          >
-            {loc.title}
-          </option>
-        ))}
+        {languages.map(
+          (loc: { label: string; value: string }, index: number) => (
+            <option
+              key={index}
+              value={loc.value}
+              className="hover:bg-[#FDE9D4] bg-[#FAFAFA] py-4 text-[#163B45]"
+            >
+              {loc.label}
+            </option>
+          )
+        )}
       </select>
       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
         <svg
