@@ -17,6 +17,7 @@ import LoadingUpload from '@/components/common/blocks/Loading';
 import { API_URL } from '@/constants/credentials/const';
 import { useFooterContext } from '@/context/FooterContext';
 import { clearDB, getItemFromDB } from '@/services/indexedDB';
+import { useLoading } from '@/context/UploadingContext';
 
 import GradientOne from './backgrounds/gradient-one';
 import BeforeUpload from './UploadSection/BeforeUpload';
@@ -49,6 +50,7 @@ const HomePageContent = ({
   const router = useRouter();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { showScreen, setShowScreen } = useFooterContext();
+  const { loading, progress } = useLoading();
 
   useEffect(() => {
     if (compressing) {
@@ -229,6 +231,14 @@ const HomePageContent = ({
   // useEffect(() => {
   //   console.log(fileRotations);
   // }, [fileRotations])
+  const UploadingBlock = (
+    <LoadingUpload
+      title="Loading"
+      description="Please wait while your files are being loaded."
+      imageAlt="Loading"
+      progress={progress}
+    />
+  );
 
   const LoadingBlock = (
     <LoadingUpload
@@ -259,9 +269,13 @@ const HomePageContent = ({
   const HomeBlock = (
     <>
       <FullwidthContainer
-        className="mb-[33.92px] md:mb-[84.92px] lg:mb-[75.65px] xl:mb-[114.92px] 2xl:mb-[127.35] 3xl:mb-[160px]"
+        className="mb-[33.92px] md:mb-[84.92px] lg:mb-[75.65px] xl:mb-[114.92px] 2xl:mb-[127.35] 3xl:mb-[160px] relative"
         as={'div'}
       >
+        <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
+          <div className="inline-block w-[20%] h-auto aspect-square opacity-40 absolute bg-[radial-gradient(74.81%_74.81%_at_77.01%_30.21%,_#B33F4000_0%,_#FF822400_100%)] dark:bg-[radial-gradient(74.81%_74.81%_at_77.01%_30.21%,_#B33F40_0%,_#FF8224_100%)] -bottom-80 left-1/2 transform -translate-x-1/2 blur-[190px]" />
+        </div>
+
         <GradientOne />
         <SectionContainer className="hero-section text-center flex flex-col md:flex-row gap-[30px] md:gap-[51px] lg:gap-[39px] xl:gap-[51px] 2xl:gap-[39px] 3xl:gap-[134px] pt-[35px] md:pt-[85px] xl:pt-[115px] 2xl:pt-[130px] 3xl:pt-[160px]">
           {children[0]}
@@ -295,19 +309,25 @@ const HomePageContent = ({
 
   return (
     <>
-      {compressing && LoadingBlock}
-      {!compressing &&
+      {loading && UploadingBlock}
+      {!loading && compressing && LoadingBlock}
+      {!loading &&
+        !compressing &&
         (pdfFiles?.length !== 0 || staticCustomize) &&
         CustomizeBlock}
-      {!compressing &&
+      {!loading &&
+        !compressing &&
         !staticCustomize &&
-        !(!compressing && (pdfFiles?.length !== 0 || staticCustomize)) &&
+        pdfFiles?.length === 0 &&
         HomeBlock}
-      {/* {showScreen === 'loading' && LoadingBlock}
-      {showScreen === 'customize' && CustomizeBlock}
-      {showScreen === 'home' && HomeBlock} */}
     </>
   );
 };
 
 export default HomePageContent;
+
+{
+  /* {showScreen === 'loading' && LoadingBlock}
+{showScreen === 'customize' && CustomizeBlock}
+{showScreen === 'home' && HomeBlock} */
+}

@@ -40,7 +40,12 @@ const SectionTwo = ({ tool }: { tool: string }) => {
   ];
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 shadow rounded-[10px] p-9">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 shadow rounded-[10px] p-9 relative overflow-clip">
+      <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
+        <div className="compress-tool-gradient inline-block w-[40%] h-auto aspect-square bg-[#FFDCDC85] dark:bg-[#73181885] blur-[103px] absolute -left-16 -top-14" />
+        <div className="compress-tool-gradient inline-block w-[40%] h-auto aspect-square bg-[#FFE8CCCC] dark:bg-[#6F4514CC] blur-[143px] absolute -right-12 -top-8" />
+        <div className="compress-tool-gradient inline-block w-[35%] h-auto aspect-square bg-[#DCE6FF85] dark:bg-[#20366D85] blur-[103px] absolute -bottom-16 left-1/2 transform -translate-x-1/2" />
+      </div>
       <div className="flex flex-col justify-center items-center gap-y-5">
         <h2 className="text-lg leading-6 md:text-xl md:leading-7 lg:text-xl lg:leading-8 xl:text-xl  2xl:text-[28px] 2xl:leading-8 3xl:text-[34px] 3xl:leading-10 font-bold text-[#163B45] dark:text-[#FAFAFA] ">
           {t('content.sectionTwo.title')}

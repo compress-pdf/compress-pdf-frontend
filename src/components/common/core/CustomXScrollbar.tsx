@@ -1,5 +1,8 @@
+'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+
+import { useOverflow } from '@/context/OverflowContext';
 
 interface CustomXScrollbarProps {
   divId: string;
@@ -17,8 +20,8 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [startX, setStartX] = useState<number>(0);
   const [scrollStartLeft, setScrollStartLeft] = useState<number>(0);
-  const [, setIsScrollbarVisible] = useState<boolean>(true);
-  const [zoomLevel, setZoomLevel] = useState<number>(window?.devicePixelRatio); // Track zoom level
+  // const [zoomLevel, setZoomLevel] = useState<number>(window?.devicePixelRatio); // Track zoom level
+  const { isOverflowing } = useOverflow();
 
   const sensitivity = 2; // Sensitivity for scroll dragging
 
@@ -76,15 +79,6 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({
 
       setScrollThumbWidth(calculatedThumbWidth);
 
-      // If thumb width is almost the same as the container width, hide the scrollbar
-      if (
-        Math.abs(scrollbarRef.current.offsetWidth - calculatedThumbWidth) <= 0.5
-      ) {
-        setIsScrollbarVisible(false); // Hide scrollbar
-      } else {
-        setIsScrollbarVisible(true); // Show scrollbar
-      }
-
       // Calculate the thumb position
       const thumbPosition =
         (container.scrollLeft / container.scrollWidth) *
@@ -95,28 +89,25 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({
 
   const handleResizeOrZoom = () => {
     handleScroll(); // Recalculate the scrollbar when the window is resized or zoomed
-    setZoomLevel(window.devicePixelRatio); // Track changes in zoom level
+    // setZoomLevel(window.devicePixelRatio); // Track changes in zoom level
   };
 
   useEffect(() => {
     const container = document.getElementById(divId);
     if (container) {
       handleScroll();
-
       container.addEventListener('scroll', handleScroll);
     }
 
     window.addEventListener('resize', handleResizeOrZoom);
-    window.addEventListener('resize', handleScroll); // Recalculate on window resize
 
     return () => {
       if (container) {
         container.removeEventListener('scroll', handleScroll);
       }
       window.removeEventListener('resize', handleResizeOrZoom);
-      window.removeEventListener('resize', handleScroll);
     };
-  }, [divId, zoomLevel]);
+  }, [divId]); // Removed zoomLevel as it causes unnecessary re-renders
 
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMoveOrTouchMove);
@@ -130,28 +121,33 @@ const CustomXScrollbar: React.FC<CustomXScrollbarProps> = ({
       document.removeEventListener('touchmove', handleMouseMoveOrTouchMove);
       document.removeEventListener('touchend', handleMouseUpOrTouchEnd);
     };
-  }, [isDragging, startX, scrollStartLeft]);
+  }, [isDragging, startX, scrollStartLeft]); // Correct dependencies
 
-  return (
-    <div className={twMerge('w-full', className)}>
-      <div
-        ref={scrollbarRef}
-        className={`relative w-[60%] h-[10px] bg-[#e4e4e4] rounded-lg mt-2 block mx-auto`}
-      >
-        <button
-          ref={thumbRef}
-          type="button"
-          className="absolute h-full bg-[#8b8b8b] rounded-lg cursor-pointer"
-          style={{
-            width: `${scrollThumbWidth}px`,
-            left: `${scrollLeft}px`,
-          }}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-        />
+  if (isOverflowing) {
+    return (
+      <div className={twMerge('w-full', className)}>
+        <div
+          ref={scrollbarRef}
+          className={`relative w-[60%] h-[10px] bg-[#e4e4e4] rounded-lg mt-2 block mx-auto`}
+        >
+          <button
+            title="scroll-thumb"
+            ref={thumbRef}
+            type="button"
+            className="absolute h-full bg-[#8b8b8b] rounded-lg cursor-pointer"
+            style={{
+              width: `${scrollThumbWidth}px`,
+              left: `${scrollLeft}px`,
+            }}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
+          />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return null;
 };
 
 export default CustomXScrollbar;

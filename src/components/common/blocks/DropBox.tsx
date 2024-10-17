@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
+import { useLoading } from '@/context/UploadingContext'; // Import loading context
+
 import dropboxIcon from '@assets/icons/pngs/dropboxIcon.png';
 
 type Props = {
@@ -10,7 +12,6 @@ type Props = {
   onDropdown?: boolean;
 };
 
-// Define the types for the Dropbox Chooser
 interface DropboxFile {
   link: string;
   name: string;
@@ -22,7 +23,7 @@ interface DropboxChooserOptions {
   multiselect: boolean;
   extensions: string[];
 }
-// Define the types for the Dropbox choose function options (optional in case you use it later)
+
 interface DropboxSaveOptions {
   files: Array<{
     url: string;
@@ -34,7 +35,6 @@ interface DropboxSaveOptions {
   error?: (errorMessage: string) => void;
 }
 
-// Extend window type to include Dropbox Chooser
 declare global {
   interface Window {
     Dropbox: {
@@ -44,14 +44,11 @@ declare global {
   }
 }
 
-const DropBox: React.FC<Props> = ({
-  handleNewFiles,
-  onDropdown = false,
-}: Props) => {
+const DropBox: React.FC<Props> = ({ handleNewFiles, onDropdown = false }) => {
   const t = useTranslations('common.custom.add');
+  const { setLoading, setProgress } = useLoading(); // Get loading and progress handlers
 
   useEffect(() => {
-    // Load Dropbox Chooser SDK dynamically
     const script = document.createElement('script');
     script.src = 'https://www.dropbox.com/static/api/2/dropins.js';
     script.id = 'dropboxjs';
@@ -70,35 +67,42 @@ const DropBox: React.FC<Props> = ({
   const handleFilePicked = async (files: DropboxFile[]) => {
     const newFiles: File[] = [];
 
-    for (const file of files) {
+    setLoading(true); // Start loading
+    setProgress(0); // Reset progress
+
+    for (let index = 0; index < files.length; index++) {
+      const file = files[index];
       try {
-        const response = await fetch(file.link); // Fetch the file using the direct link
-        const blob = await response.blob(); // Convert the response to a blob
+        const response = await fetch(file.link);
+        const blob = await response.blob();
         const realFile = new File([blob], `${file.name}.pdf`, {
           type: 'application/pdf',
         });
 
-        // Push each file into the newFiles array
         newFiles.push(realFile);
         console.log('File processed:', realFile);
+
+        // Update progress for each file
+        setProgress(prev => prev + (100 / files.length) * (index + 1));
       } catch (error) {
         console.error('Error fetching file:', error);
       }
     }
 
-    // Pass all the newly created File objects to the parent handler
     handleNewFiles(newFiles);
+    setLoading(false); // Stop loading
   };
 
   const handleDropboxChooser = () => {
     window.Dropbox.choose({
       success: function (files: DropboxFile[]) {
-        // Pass the selected file information to the parent component or handle it here
+        // console.log(files);
+
         handleFilePicked(files);
       },
-      linkType: 'direct', // 'preview' or 'direct'
-      multiselect: false, // Set to true if you want to allow multiple file selections
-      extensions: ['.pdf'], // Optional, specify file types
+      linkType: 'direct',
+      multiselect: false,
+      extensions: ['.pdf'],
     });
   };
 

@@ -1,12 +1,12 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import useDrivePicker from 'react-google-drive-picker';
-import { CallbackDoc } from 'react-google-drive-picker/dist/typeDefs';
 import { useTranslations } from 'next-intl';
+import { CallbackDoc } from 'react-google-drive-picker/dist/typeDefs';
 
+import { useLoading } from '@/context/UploadingContext'; // Import loading context
 import helpers, { fileArrayToFileList } from '@/services/helpers';
 import GoogledriveIcon from '@/assets/icons/svgs/upload-client/googledriveIcon';
-import { useLoading } from '@/context/UploadingContext';
 
 import CustomToast from '../core/ToastMessage';
 
@@ -18,7 +18,7 @@ interface IProps {
 }
 
 const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
-  const { setLoading } = useLoading();
+  const { setLoading, setProgress } = useLoading(); // Get loading and progress handlers
   const { validatePdfFiles } = helpers;
   const [authToken, setAuthToken] = useState<string | undefined>('');
   const [filesPicked, setFilesPicked] = useState<CallbackDoc[]>([]);
@@ -45,6 +45,11 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
       viewMimeTypes: 'application/pdf',
       callbackFunction: async data => {
         if (data.action === 'picked') {
+          console.log(data.docs);
+          // if (data.docs.sizeBytes > 400000) {
+          //   CustomToast('Error', message: "");
+          // }
+          //TODO: size validation
           setFilesPicked(data.docs);
         }
       },
@@ -53,11 +58,15 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
 
   const fetchFiles = async (docs: CallbackDoc[]) => {
     try {
-      setLoading(true);
+      setLoading(true); // Start loading
+      setProgress(0); // Reset progress
+
       const fetchedFiles: File[] = [];
 
-      for (const doc of docs) {
+      for (let index = 0; index < docs.length; index++) {
+        const doc = docs[index];
         const url = `https://www.googleapis.com/drive/v3/files/${doc.id}?alt=media`;
+
         const response = await fetch(url, {
           method: 'GET',
           headers: {
@@ -79,6 +88,9 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
         });
 
         fetchedFiles.push(file);
+
+        // Update progress as files are fetched
+        setProgress(prev => prev + (100 / docs.length) * (index + 1));
       }
 
       const fileListLike = fileArrayToFileList(fetchedFiles);
@@ -89,10 +101,7 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
         handleNewFiles(fetchedFiles);
       } else {
         validationResult.messages.forEach(message => {
-          CustomToast({
-            type: 'error',
-            message,
-          });
+          CustomToast({ type: 'error', message });
         });
       }
     } catch (error) {
@@ -103,7 +112,7 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
           'An error occurred while fetching the files',
       });
     } finally {
-      setLoading(false);
+      setLoading(false); // Stop loading
     }
   };
 

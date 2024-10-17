@@ -354,13 +354,13 @@ const FileItem: React.FC<FileItemProps> = ({
             buttonLabel={
               <span
                 aria-label="share"
-                className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
+                className="bg-orange-200 dark:bg-[#A6BFD2] dark:invert rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
               >
                 <Image
                   width={0}
                   height={0}
                   src={ShareIcon}
-                  className="dark:mix-blend-multiply dark:brightness-150 dark:contrast-200"
+                  className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
                   alt="share-logo"
                 />
               </span>
@@ -502,14 +502,14 @@ const FileItem: React.FC<FileItemProps> = ({
             role="button"
             tabIndex={0}
             onKeyDown={() => {}}
-            className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
+            className="bg-orange-200 dark:bg-[#A6BFD2] dark:invert rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
             onClick={handlePrint}
           >
             <Image
               width={0}
               height={0}
               src={PrinterIcon}
-              className="dark:mix-blend-multiply dark:brightness-150 dark:contrast-200"
+              className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
               alt="print-logo"
             />
           </span>
@@ -519,7 +519,7 @@ const FileItem: React.FC<FileItemProps> = ({
               width={0}
               height={0}
               src={ViewIcon}
-              className="dark:mix-blend-multiply dark:brightness-150 dark:contrast-200"
+              className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
               alt="view-logo"
             />
           </Preview>
@@ -547,7 +547,7 @@ const FileItem: React.FC<FileItemProps> = ({
                   </button>
                 }
               >
-                <p className="text-[1.125rem] font-bold text-[#163B45] text-center">
+                <p className="text-[1.125rem] font-bold text-[#163B45] dark:text-slate-50 text-center">
                   Rate this!
                 </p>
                 <StarRating onRate={handleRatingSubmit} toolId={1} />

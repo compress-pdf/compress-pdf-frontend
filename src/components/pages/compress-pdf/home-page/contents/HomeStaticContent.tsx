@@ -43,10 +43,14 @@ const HomeStaticContent = ({ tool }: { tool: string }) => {
       </FullwidthContainer>
 
       <FullwidthContainer
-        className="children-two-server mb-[33.92px] md:mb-[84.92px] lg:mb-[75.65px] xl:mb-[114.92px] 2xl:mb-[127.35] 3xl:mb-[160px] "
+        className="children-two-server pb-[33.92px] md:pb-[84.92px] lg:pb-[75.65px] xl:pb-[114.92px] 2xl:pb-[127.35] 3xl:pb-[160px] relative overflow-clip"
         as={'div'}
       >
-        <SectionContainer className="text-center flex flex-col md:flex-row gap-9 text-[1.65rem]">
+        <div className="absolute inset-0 -z-10  hidden md:block">
+          <div className="compress-tool-gradient inline-block w-[10%] h-auto aspect-square bg-[#FCFA5D40] blur-[96.5px] absolute right-36 top-36" />
+          <div className="compress-tool-gradient inline-block w-[10%] h-auto aspect-square bg-[#FCCA5D40] blur-[96.5px] absolute -bottom-4 left-36" />
+        </div>
+        <SectionContainer className="text-center flex flex-col md:flex-row gap-9 text-[1.65rem] relative">
           <FaqSection data={faqsData} title={t('content.faqSection.title')} />
         </SectionContainer>
       </FullwidthContainer>

@@ -312,7 +312,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                   </p>
                 </div>
 
-                <div className="flex md:flex-col flex-row items-center gap-3">
+                <div className="flex md:flex-col flex-row items-center gap-3 self-center">
                   <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] 3xl:text-[1.125rem] text-[#FF8224] leading-4 md:leading-6">
                     {compressionRatio.toFixed(2)}%
                   </p>
@@ -322,7 +322,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 </div>
               </div>
 
-              <div className="w-full md:w-[44%] flex flex-col md:flex-row items-center flex-wrap md:items-start justify-end md:gap-4">
+              <div className="w-full md:w-[44%] flex flex-col md:flex-row items-center flex-wrap md:items-start justify-end md:gap-4 self-center">
                 <div className="flex md:flex-col flex-row items-center gap-3">
                   <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] 3xl:text-[1.125rem] text-[#FF8224] leading-4 md:leading-6">
                     {t('header.timeLabel')}
@@ -364,7 +364,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                           </button>
                         }
                       >
-                        <p className="text-[1.125rem] font-bold text-[#163B45] text-center">
+                        <p className="text-[1.125rem] font-bold text-[#163B45] dark:text-slate-50 text-center">
                           Rate this!
                         </p>
                         <StarRating onRate={handleRatingSubmit} toolId={1} />

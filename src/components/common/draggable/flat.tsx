@@ -1,5 +1,5 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
@@ -8,6 +8,8 @@ import { useTranslations } from 'next-intl';
 
 import helpers from '@/services/helpers';
 import { useLoading } from '@/context/UploadingContext';
+import { useOverflow } from '@/context/OverflowContext';
+import useWindowSize from '@/hooks/useWindowSize';
 
 import LoadingUpload from '../blocks/Loading';
 import SectionContainer from '../containers/SectionContainer';
@@ -41,6 +43,13 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
   const { loading } = useLoading();
   const dragItem = useRef<number | null>(null);
   const dragOverItem = useRef<number | null>(null);
+  const { checkOverflow } = useOverflow();
+  const { width, height } = useWindowSize();
+  const containerId = 'pdf-scrollable';
+
+  useEffect(() => {
+    checkOverflow(containerId);
+  }, [files, height, width]);
 
   const handleNewFiles = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
