@@ -6,6 +6,25 @@ export const routing = defineRouting({
   locales: ['en', 'de'],
   localePrefix: 'as-needed',
   defaultLocale: 'en',
+
+  pathnames: {
+    '/about': {
+      en: '/about/',
+      de: '/ueber/',
+    },
+    '/cookie-policy': {
+      en: '/cookie-policy/',
+      de: '/cookie-richtlinie/',
+    },
+    '/privacy-policy': {
+      en: '/privacy-policy/',
+      de: '/datenschutzrichtlinie/',
+    },
+    'terms-and-conditions': {
+      en: '/terms-and-conditions/',
+      de: '/geschaftsbedingungen/',
+    },
+  },
 });
 
 // Lightweight wrappers around Next.js' navigation APIs

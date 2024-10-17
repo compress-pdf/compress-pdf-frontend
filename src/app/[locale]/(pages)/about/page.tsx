@@ -80,9 +80,9 @@ const AboutPage = () => {
         <SectionContainer className="text-center flex flex-col md:flex-row gap-9 ">
           <section>
             <div className="flex flex-col items-center gap-[14px] justify-center 3xl:mb-[54px]">
-              <h2 className="text-[#163B45] dark:text-[#FAFAFA] 3xl:text-[40px] 2xl:text-3xl xl:text-2xl xl:leading-8 lg:text-3xl lg:leading-10 md:text-2xl md:leading-7 text-[18px] leading-5 font-bold">
+              <h1 className="text-[#163B45] dark:text-[#FAFAFA] 3xl:text-[40px] 2xl:text-3xl xl:text-2xl xl:leading-8 lg:text-3xl lg:leading-10 md:text-2xl md:leading-7 text-[18px] leading-5 font-bold">
                 {t('heading')}
-              </h2>
+              </h1>
               <p className="text-[#6B7280] dark:text-[#E1DEDE] 3xl:text-base 2xl:leading-7 2xl:text-md xl:text-sm lg:text-md text-sm w-[74%] md:w-[85%] text-center">
                 {t('description')}
               </p>

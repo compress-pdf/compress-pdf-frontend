@@ -1,3 +1,6 @@
+import { DropboxFile } from 'react-dropbox-chooser';
+
+import CustomToast from '@/components/common/core/ToastMessage';
 import { FileData } from '@/types/General';
 
 // Define types for the objects with 'name' property
@@ -525,6 +528,59 @@ export const apiTracker = async () => {
 
   return data;
 };
+
+export function isAnyLarge(files: { sizeBytes?: number; bytes?: number }[]) {
+  // Calculate the total size of all picked files in bytes, accounting for both Google Drive and Dropbox file size fields
+  const totalSize = files.reduce((acc, file) => {
+    return acc + (file.sizeBytes || file.bytes || 0); // Add sizeBytes for Google Drive or bytes for Dropbox
+  }, 0);
+
+  // Define the 50MB limit in bytes
+  const limit = 50 * 1024 * 1024;
+
+  // Check if total size exceeds 50MB
+  if (totalSize > limit) {
+    // Display a message or handle error
+    CustomToast({
+      type: 'error',
+      message: `Maximum size limit exceeded: Total size must be under 50 MB.`,
+    });
+    // You can replace the console.error with a custom toast or error handler
+    return true;
+  } else {
+    // console.log('Total file size is within the limit.');
+    return false;
+  }
+}
+
+export const isAnyLargeDropbox = (files: DropboxFile[]): boolean => {
+  const limit = 50 * 1024 * 1024; // 50MB in bytes
+  const largeFile = files.some(file => file.bytes > limit);
+
+  if (largeFile) {
+    CustomToast({
+      type: 'error',
+      message: `Maximum size limit exceeded: Total size must be under 50 MB.`,
+    });
+    return true; // File is too large
+  }
+
+  return false; // All files are within size limit
+};
+
+export async function fetchDropboxFileSize(file: DropboxFile): Promise<number> {
+  try {
+    const response = await fetch(file.link, {
+      method: 'HEAD', // Use HEAD to only fetch headers, not the entire file
+    });
+
+    const fileSize = response.headers.get('content-length');
+    return fileSize ? parseInt(fileSize, 10) : 0;
+  } catch (error) {
+    console.error('Error fetching file size:', error);
+    return 0; // Return 0 if there's an error fetching the file size
+  }
+}
 
 const helpers = {
   hexToRgb,

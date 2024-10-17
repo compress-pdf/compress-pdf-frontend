@@ -2,8 +2,10 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { DropboxFile } from 'react-dropbox-chooser';
 
 import { useLoading } from '@/context/UploadingContext'; // Import loading context
+import { isAnyLargeDropbox } from '@/services/helpers'; // Ensure this function checks the file size using 'bytes'
 
 import dropboxIcon from '@assets/icons/pngs/dropboxIcon.png';
 
@@ -11,11 +13,6 @@ type Props = {
   handleNewFiles: (files: File[]) => void;
   onDropdown?: boolean;
 };
-
-interface DropboxFile {
-  link: string;
-  name: string;
-}
 
 interface DropboxChooserOptions {
   success: (files: DropboxFile[]) => void;
@@ -80,7 +77,6 @@ const DropBox: React.FC<Props> = ({ handleNewFiles, onDropdown = false }) => {
         });
 
         newFiles.push(realFile);
-        console.log('File processed:', realFile);
 
         // Update progress for each file
         setProgress(prev => prev + (100 / files.length) * (index + 1));
@@ -95,10 +91,13 @@ const DropBox: React.FC<Props> = ({ handleNewFiles, onDropdown = false }) => {
 
   const handleDropboxChooser = () => {
     window.Dropbox.choose({
-      success: function (files: DropboxFile[]) {
-        // console.log(files);
+      success: async function (files: DropboxFile[]) {
+        // Validate file sizes using 'bytes' property before downloading
+        if (isAnyLargeDropbox(files)) {
+          return; // Stop further processing if any file is too large
+        }
 
-        handleFilePicked(files);
+        handleFilePicked(files); // Process the valid files
       },
       linkType: 'direct',
       multiselect: false,
