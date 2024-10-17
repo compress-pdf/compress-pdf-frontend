@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { CallbackDoc } from 'react-google-drive-picker/dist/typeDefs';
 
 import { useLoading } from '@/context/UploadingContext'; // Import loading context
-import helpers, { fileArrayToFileList } from '@/services/helpers';
+import helpers, { fileArrayToFileList, isAnyLarge } from '@/services/helpers';
 import GoogledriveIcon from '@/assets/icons/svgs/upload-client/googledriveIcon';
 
 import CustomToast from '../core/ToastMessage';
@@ -45,11 +45,9 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
       viewMimeTypes: 'application/pdf',
       callbackFunction: async data => {
         if (data.action === 'picked') {
-          console.log(data.docs);
-          // if (data.docs.sizeBytes > 400000) {
-          //   CustomToast('Error', message: "");
-          // }
-          //TODO: size validation
+          if (isAnyLarge(data.docs)) {
+            return; // Exit the function to prevent further processing
+          }
           setFilesPicked(data.docs);
         }
       },

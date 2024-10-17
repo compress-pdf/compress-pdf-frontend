@@ -2,8 +2,10 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { DropboxFile } from 'react-dropbox-chooser';
 
 import { useLoading } from '@/context/UploadingContext'; // Import loading context
+import { isAnyLargeDropbox } from '@/services/helpers';
 
 import dropboxIcon from '@assets/icons/pngs/dropboxIcon.png';
 
@@ -12,10 +14,10 @@ type Props = {
   onDropdown?: boolean;
 };
 
-interface DropboxFile {
-  link: string;
-  name: string;
-}
+// interface DropboxFile {
+//   link: string;
+//   name: string;
+// }
 
 interface DropboxChooserOptions {
   success: (files: DropboxFile[]) => void;
@@ -80,7 +82,7 @@ const DropBox: React.FC<Props> = ({ handleNewFiles, onDropdown = false }) => {
         });
 
         newFiles.push(realFile);
-        console.log('File processed:', realFile);
+        // console.log('File processed:', realFile);
 
         // Update progress for each file
         setProgress(prev => prev + (100 / files.length) * (index + 1));
@@ -95,9 +97,10 @@ const DropBox: React.FC<Props> = ({ handleNewFiles, onDropdown = false }) => {
 
   const handleDropboxChooser = () => {
     window.Dropbox.choose({
-      success: function (files: DropboxFile[]) {
-        // console.log(files);
-
+      success: async function (files: DropboxFile[]) {
+        if (await isAnyLargeDropbox(files)) {
+          return; // Stop further processing
+        }
         handleFilePicked(files);
       },
       linkType: 'direct',
