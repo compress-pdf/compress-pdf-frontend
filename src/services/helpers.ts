@@ -553,26 +553,20 @@ export function isAnyLarge(files: { sizeBytes?: number; bytes?: number }[]) {
   }
 }
 
-export async function isAnyLargeDropbox(
-  files: DropboxFile[]
-): Promise<boolean> {
-  const totalSize = await Promise.all(
-    files.map(file => fetchDropboxFileSize(file)) // Fetch size for each file
-  ).then(sizes => sizes.reduce((acc, size) => acc + size, 0));
-
+export const isAnyLargeDropbox = (files: DropboxFile[]): boolean => {
   const limit = 50 * 1024 * 1024; // 50MB in bytes
+  const largeFile = files.some(file => file.bytes > limit);
 
-  if (totalSize > limit) {
+  if (largeFile) {
     CustomToast({
       type: 'error',
       message: `Maximum size limit exceeded: Total size must be under 50 MB.`,
     });
-    return true;
+    return true; // File is too large
   }
 
-  // console.log('Total file size is within the limit.');
-  return false;
-}
+  return false; // All files are within size limit
+};
 
 export async function fetchDropboxFileSize(file: DropboxFile): Promise<number> {
   try {
