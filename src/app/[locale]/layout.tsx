@@ -3,8 +3,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from 'next-themes';
 import { ToastContainer } from 'react-toastify';
-// import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
-// import { Metadata } from 'next';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import { Metadata } from 'next';
 
 import Header from '@/components/common/blocks/Header';
 import Footer from '@/components/common/blocks/Footer';
@@ -33,13 +33,13 @@ import ReduxProvider from '../../../providers/redux';
 //   variable: '--font-open-sans',
 // });
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   return {
-//     verification: {
-//       google: 'dxE8MFXwc-dN-w_M-r5BBbkL2rBho9fRKl1xwu_g0iM',
-//     },
-//   };
-// }
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    verification: {
+      google: 'dxE8MFXwc-dN-w_M-r5BBbkL2rBho9fRKl1xwu_g0iM',
+    },
+  };
+}
 
 export default async function RootLayout({
   children,
@@ -48,8 +48,8 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* <GoogleTagManager gtmId="GTM-53MD585D" />
-      <GoogleAnalytics gaId="G-HSMFDWT6WR" /> */}
+      <GoogleTagManager gtmId="GTM-53MD585D" />
+      <GoogleAnalytics gaId="G-HSMFDWT6WR" />
 
       <body
         className={`flex flex-col items-center justify-center w-full bg-[#FBFBFB] dark:bg-[#232323]`}
