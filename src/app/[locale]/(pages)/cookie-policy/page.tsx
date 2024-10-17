@@ -12,7 +12,7 @@ export async function generateMetadata() {
 
 const CookiePolicyPage = () => {
   const t = useTranslations('cookiePolicy');
-  const softwareApplication = t('schema.softwareApplication');
+  const softwareApplication = t.raw('schema.softwareApplication');
   return (
     <div>
       <section>

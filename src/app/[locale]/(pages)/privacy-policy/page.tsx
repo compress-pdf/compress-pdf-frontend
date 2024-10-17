@@ -12,7 +12,7 @@ export async function generateMetadata() {
 
 const PrivacyPolicyPage = () => {
   const t = useTranslations('privacyPolicy');
-  const softwareApplication = t('schema.softwareApplication');
+  const softwareApplication = t.raw('schema.softwareApplication');
   return (
     <div>
       <section>

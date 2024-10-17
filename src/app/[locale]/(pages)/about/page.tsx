@@ -7,6 +7,7 @@ import SectionOne from '@/assets/icons/svgs/about/SectionOne';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 import SectionContainer from '@/components/common/containers/SectionContainer';
 import GradientTwo from '@/components/pages/compress-pdf/home-page/backgrounds/gradient-two';
+import { generatePageMetadata } from '@/services/metadata';
 
 type PersonSchema = {
   '@context': string;
@@ -29,13 +30,17 @@ type ITeams = {
   linkedin: string;
 };
 
+export async function generateMetadata() {
+  return generatePageMetadata('about.metaData');
+}
+
 const AboutPage = () => {
   const t = useTranslations('about');
 
   const sectionTwoItems = t.raw('sectionTwo.items');
   const sectionFourItems = t.raw('sectionFour.items');
   const teams = t.raw('sectionThree.teams');
-  const organizationSchema = t('schema.organization');
+  const organizationSchema = t.raw('schema.organization');
 
   const personSchema: PersonSchema[] = teams.map((team: ITeams) => ({
     '@context': 'https://schema.org/',

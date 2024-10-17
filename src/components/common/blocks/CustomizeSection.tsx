@@ -110,7 +110,7 @@ const CustomizeSection = ({
 
   // State for the buttons: Extreme Compression, Medium Compression, etc.
   const [selectedCompression, setSelectedCompression] = useState(
-    t('compression.extreme')
+    t('compression.medium')
   );
   const [compressionLevel, setCompressionLevel] = useState(compressLevel);
   const [imageEnhancement, setImageEnhancement] = useState(

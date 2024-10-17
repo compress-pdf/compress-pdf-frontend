@@ -12,7 +12,7 @@ export async function generateMetadata() {
 
 const TermsAndConditionsPage = () => {
   const t = useTranslations('termsAndConditions');
-  const softwareSchema = t('schema.softwareApplication');
+  const softwareSchema = t.raw('schema.softwareApplication');
   return (
     <div>
       <section>
