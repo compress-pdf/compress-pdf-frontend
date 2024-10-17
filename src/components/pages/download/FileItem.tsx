@@ -142,11 +142,6 @@ const FileItem: React.FC<FileItemProps> = ({
     setFileName(e.target.value);
   };
 
-  // const handleNameChange = () => {
-  //   setIsEditing(false); // Exit editing mode on blur
-  // };
-  // const iframeRef = useRef<HTMLIFrameElement>(null);
-
   const handlePrint = async () => {
     try {
       // Fetch the PDF as a blob
@@ -213,6 +208,8 @@ const FileItem: React.FC<FileItemProps> = ({
         a.href = url;
         a.download = `${fileName}.pdf`;
 
+        // console.log(`${fileName}.pdf`);
+
         // Append the anchor to the body (required for Firefox)
         document.body.appendChild(a);
         a.click();
@@ -243,6 +240,16 @@ const FileItem: React.FC<FileItemProps> = ({
                   type="text"
                   value={fileName}
                   onChange={handleInputChange}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter') {
+                      handleNameChange(
+                        file?.uid_fk,
+                        fileName,
+                        file?.file_index
+                      );
+                      setIsEditing(false);
+                    }
+                  }}
                   // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
                   onBlur={() => {
@@ -254,8 +261,14 @@ const FileItem: React.FC<FileItemProps> = ({
                 <p className="ml-2">.pdf</p>
               </span>
             ) : (
-              <p className="text-[#163B45] dark:text-white font-bold text-start text-sm md:text-xs lg:text-sm xl:text-xs 2xl:text-sm 3xl:text-[0.875rem] break-words whitespace-normal max-w-full">
-                {fileName}.pdf
+              <p
+                className="text-[#163B45] dark:text-white font-bold text-start text-sm md:text-xs lg:text-sm xl:text-xs 2xl:text-sm 3xl:text-[0.875rem] break-words whitespace-normal max-w-full"
+                title={fileName}
+              >
+                {fileName.length > 30
+                  ? `${fileName.slice(0, 30)}...`
+                  : fileName}
+                .pdf
               </p>
             )}
 
