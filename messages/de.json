@@ -423,8 +423,8 @@
       }
     },
     "metaData": {
-      "title": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
-      "description": "Komprimieren Sie Ihre PDFs online und bewahren Sie die Originalqualität. Reduzieren Sie die Dateigröße einfach und ohne Einbußen bei Klarheit & Inhalt. Kostenlos & einfach zu verwenden!",
+      "title": "PDF-Dateien Online Komprimieren Ohne Qualitätsverlust",
+      "description": "Komprimieren Sie Ihre PDF-Dateien online, ohne die Qualität zu verlieren. Reduzieren Sie die Dateigröße einfach, schnell und kostenlos!",
       "alternates": {
         "canonical": "https://compresspdf.to/de/",
         "hreflangs": [
@@ -440,7 +440,7 @@
       },
       "openGraph": {
         "title": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
-        "description": "Komprimieren Sie Ihre PDFs online und bewahren Sie die Originalqualität. Reduzieren Sie die Dateigröße einfach und ohne Einbußen bei Klarheit & Inhalt. Kostenlos & einfach zu verwenden!",
+        "description": "Komprimieren Sie Ihre PDF-Dateien online, ohne die Qualität zu verlieren. Reduzieren Sie die Dateigröße einfach, schnell und kostenlos!",
         "url": "https://compresspdf.to/de/",
         "images": [
           {
@@ -451,7 +451,7 @@
       },
       "twitter": {
         "title": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
-        "description": "Komprimieren Sie Ihre PDFs online und bewahren Sie die Originalqualität. Reduzieren Sie die Dateigröße einfach und ohne Einbußen bei Klarheit & Inhalt. Kostenlos & einfach zu verwenden!",
+        "description": "Komprimieren Sie Ihre PDF-Dateien online, ohne die Qualität zu verlieren. Reduzieren Sie die Dateigröße einfach, schnell und kostenlos!",
         "images": [
           {
             "url": "https://cdn.compresspdf.to/images/general-de.png",
@@ -982,11 +982,11 @@
     ]
   },
   "about": {
-    "heading": "Über PDF Komprimieren",
-    "description": "Willkommen bei Online PDF Komprimieren, Ihrer ersten Wahl für effiziente und hochwertige PDF-Komprimierung. Egal, ob Sie ein Profi sind, der große Berichte bearbeitet, ein Student, der Aufgaben einreicht, oder ein Kleinunternehmer, der Dokumente archiviert, wir erleichtern Ihren PDF-Management-Prozess.",
+    "heading": "Über Compresspdf.to",
+    "description": "Willkommen bei Online Compress PDF, Ihrer Lösung für effiziente und hochwertige PDF-Komprimierung. Ob Sie ein Profi sind, der große Berichte bearbeitet, ein Student, der Aufgaben einreicht, oder ein Kleinunternehmer, der Dokumente archiviert - wir sind hier, um Ihren PDF-Verwaltungsprozess zu vereinfachen.",
     "sectionOne": {
-      "title": "Was ist unsere Mission?",
-      "description": "Bei PDF Komprimieren ist es unsere Mission, die Verwaltung von PDF-Dateien zu vereinfachen, indem wir ein benutzerfreundliches und effizientes Tool zur Komprimierung anbieten. Wir verstehen, dass große PDF-Dateien mühsam sein können, egal ob Sie Dokumente per E-Mail teilen, auf Websites hochladen oder einfach Speicherplatz sparen möchten. Unser Ziel ist es, eine nahtlose, zugängliche Lösung zu bieten, die Ihre Produktivität und Ihren Komfort verbessert und es Ihnen ermöglicht, Ihre PDF-Dateien mühelos zu handhaben."
+      "title": "Unsere Mission",
+      "description": "Bei Compress PDF ist es unsere Mission, die Verwaltung von PDF-Dateien durch ein benutzerfreundliches und effizientes Tool zur PDF-Komprimierung zu vereinfachen. Wir verstehen, dass große PDF-Dateien umständlich sein können, sei es beim Teilen von Dokumenten per E-Mail, beim Hochladen auf Websites oder einfach beim Versuch, Speicherplatz zu sparen. Unser Ziel ist es, eine nahtlose, zugängliche Lösung anzubieten, die Ihre Produktivität und Bequemlichkeit erhöht und es Ihnen ermöglicht, Ihre PDF-Dateien mühelos zu handhaben."
     },
     "sectionTwo": {
       "title": "Was bieten wir an?",
@@ -1419,15 +1419,15 @@
       "softwareApplication": {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Nutzungsbedingungen von CompressPDF",
-        "description": "Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung von CompressPDF. Erfahren Sie mehr über Dateiverarbeitung, Datenschutz, geistiges Eigentum und Haftungsbeschränkungen.",
-        "applicationCategory": "Dienstprogramme",
-        "operatingSystem": "Alle",
+        "name": "Allgemeine Geschäftsbedingungen von CompressPDF",
+        "description": "Verstehen Sie Ihre Rechte und Pflichten bei der Nutzung von CompressPDF. Erfahren Sie mehr über Dateiverwaltung, Datenschutz und Haftungsbeschränkungen.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "All",
         "author": {
           "@type": "Organization",
           "name": "CompressPDF",
           "url": "https://compresspdf.to/de/ueber/",
-          "description": "Erfahren Sie mehr über compresspdf.to, Ihr schnelles und sicheres Tool zur PDF-Komprimierung. Entdecken Sie unsere Mission, das Dokumentenmanagement mit benutzerfreundlichen Funktionen zu vereinfachen."
+          "description": "Entdecken Sie compresspdf.to, Ihr schnelles und sicheres PDF-Komprimierungstool. Erfahren Sie mehr über unsere benutzerfreundlichen Funktionen."
         },
         "datePublished": "2024-02-20",
         "url": "https://compresspdf.to/de/geschaftsbedingungen/",
@@ -1443,14 +1443,14 @@
         },
         "screenshot": "https://cdn.compresspdf.to/images/terms-and-conditions-de.png",
         "featureList": [
-          "Beschreibt Benutzerverantwortlichkeiten und verbotene Inhalte",
-          "Erläutert Dateispeicherung und Datenschutzrichtlinien",
-          "Klären geistige Eigentumsrechte und Nutzungsbeschränkungen",
-          "Details zu Haftungsausschlüssen und -beschränkungen",
-          "Beschreibt Bedingungen zur Beendigung des Zugriffs",
+          "Beschreibt Nutzerverantwortlichkeiten und verbotene Inhalte",
+          "Erläutert Praktiken zur Dateispeicherung und zum Datenschutz",
+          "Klärt geistige Eigentumsrechte und Nutzungsbeschränkungen",
+          "Detailliert Haftungsausschlüsse und -beschränkungen",
+          "Beschreibt Bedingungen für die Beendigung des Zugangs zur Website",
           "Informiert über mögliche Aktualisierungen der Bedingungen",
           "Bietet Kontaktinformationen für Anfragen",
-          "Spezifiziert das Mindestalter für die Nutzung der Website"
+          "Gibt das Mindestalter für die Nutzung der Website an"
         ]
       }
     }
@@ -1508,8 +1508,8 @@
       "thankyou": "Vielen Dank für die Nutzung von CompressPDF.to!"
     },
     "metaData": {
-      "title": "Datenschutzerklärung | CompressPDF",
-      "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
+      "title": "Datenschutzrichtlinie | CompressPDF",
+      "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Richtlinie erläutert Dateihandhabung, Datennutzung und unser Engagement für Ihre Privatsphäre.",
       "alternates": {
         "canonical": "https://compresspdf.to/de/datenschutzrichtlinie/",
         "hreflangs": [
@@ -1525,7 +1525,7 @@
       },
       "openGraph": {
         "title": "Datenschutzerklärung | CompressPDF",
-        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
+        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Richtlinie erläutert Dateihandhabung, Datennutzung und unser Engagement für Ihre Privatsphäre.",
         "url": "https://compresspdf.to/de/datenschutzrichtlinie/",
         "images": [
           {
@@ -1536,7 +1536,7 @@
       },
       "twitter": {
         "title": "Datenschutzerklärung | CompressPDF",
-        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
+        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Richtlinie erläutert Dateihandhabung, Datennutzung und unser Engagement für Ihre Privatsphäre.",
         "images": [
           {
             "url": "https://cdn.compresspdf.to/images/privacy-policy-de.png",
@@ -1550,14 +1550,14 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Datenschutzerklärung von CompressPDF",
-        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Datenschutzerklärung erläutert den Umgang mit Dateien, Datennutzung, Sicherheitsmaßnahmen und unser Engagement für Ihre Privatsphäre.",
-        "applicationCategory": "Dienstprogramme",
-        "operatingSystem": "Alle",
+        "description": "Erfahren Sie, wie CompressPDF Ihre Daten schützt. Unsere Richtlinie erläutert Dateihandhabung, Datennutzung und unser Engagement für Ihre Privatsphäre.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "All",
         "author": {
           "@type": "Organization",
           "name": "CompressPDF",
           "url": "https://compresspdf.to/de/ueber/",
-          "description": "Erfahren Sie mehr über compresspdf.to, Ihr schnelles und sicheres Tool zur PDF-Komprimierung. Entdecken Sie unsere Mission, das Dokumentenmanagement mit benutzerfreundlichen Funktionen zu vereinfachen."
+          "description": "Entdecken Sie compresspdf.to, Ihr schnelles und sicheres PDF-Komprimierungstool. Erfahren Sie mehr über unsere benutzerfreundlichen Funktionen"
         },
         "datePublished": "2024-02-20",
         "url": "https://compresspdf.to/de/datenschutzrichtlinie/",
@@ -1573,15 +1573,13 @@
         },
         "screenshot": "https://cdn.compresspdf.to/images/privacy-policy-de.png",
         "featureList": [
-          "Komprimieren Sie PDF-Dateien bis zu 100MB ohne Qualitätsverlust.",
-          "Online-Komprimierung – keine Softwareinstallation erforderlich.",
-          "Behalten Sie das ursprüngliche Dokumentenformat und Layout bei.",
-          "Schneller und effizienter Komprimierungsalgorithmus.",
-          "Sichere Dateiverarbeitung mit automatischer Löschung nach Abschluss.",
-          "Kompatibel mit verschiedenen PDF-Versionen und -Formaten.",
-          "Kostenlos nutzbar ohne Registrierung.",
-          "Unterstützt die Stapelverarbeitung mehrerer Dateien.",
-          "Laden Sie die komprimierte PDF-Datei sofort nach der Verarbeitung herunter."
+          "Beschreibt Datenerfassungs- und Nutzungspraktiken",
+          "Erläutert temporäre Dateispeicherung (2 Stunden) und Löschung",
+          "Detailliert die Erfassung von Nutzungsdaten zur Verbesserung der Website",
+          "Beschreibt Sicherheitsmaßnahmen zum Datenschutz",
+          "Klärt die Richtlinie zur Nichtweiterleitung von Daten an Dritte",
+          "Informiert über mögliche Aktualisierungen der Datenschutzrichtlinie",
+          "Bietet Kontaktinformationen für Anfragen"
         ]
       }
     }
