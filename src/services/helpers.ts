@@ -519,6 +519,13 @@ export function transformToArray(data: Record<string, unknown>): unknown[] {
   return Object.keys(data).map(key => data[key]);
 }
 
+export const apiTracker = async () => {
+  const res = await fetch('https://freeipapi.com/api/json');
+  const data = await res.json();
+
+  return data;
+};
+
 const helpers = {
   hexToRgb,
   sortAsc,

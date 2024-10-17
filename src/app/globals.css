@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');
+
 :root {
   --background: white;
   --foreground: black;
@@ -15,7 +17,7 @@
 
 html,
 body {
-  font-family: var(--font-open-sans);
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1,
@@ -24,7 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-poppins);
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -32,6 +34,26 @@ body {
 }
 .Toastify__toast-icon {
   display: none !important;
+}
+.react-stars {
+  display: flex !important;
+  gap: 10px;
+  padding: 6px;
+}
+.react-stars span {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  transition:
+    background-color 300ms ease-in,
+    transform 200ms ease-in;
+}
+
+.react-stars span:hover {
+  background-color: #fde9d430;
 }
 
 .fullwidth-container {

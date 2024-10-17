@@ -25,7 +25,7 @@ const Preview = ({ url, children }: TypePreview) => {
         role="button"
         tabIndex={0}
         onKeyDown={() => {}}
-        className="bg-orange-200 dark:bg-[#59402D] rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
+        className="bg-orange-200 dark:bg-[#A6BFD2] dark:invert rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
         onClick={handleClick}
       >
         {children}
