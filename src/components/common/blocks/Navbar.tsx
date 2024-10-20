@@ -1,10 +1,8 @@
-import { Link } from '@/i18n/routing'; // Alias imports
-import Logo from '@/assets/icons/svgs/Logo';
-
 import LanguageSwitcher from '../core/LanguageSwitcher';
 import Hamburger from '../core/Hamburger';
 import ThemeSwitcher from '../core/ThemeSwitcher'; // Relative imports
 import SectionContainer from '../containers/SectionContainer';
+import LogoButton from '../core/LogoButton';
 
 export default function Navbar() {
   // const t = useTranslations('common.header');
@@ -17,12 +15,7 @@ export default function Navbar() {
         <SectionContainer className="my-0 md:my-0">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
-              <Link
-                href="/"
-                className="text-xl font-semibold text-blue-600 dark:text-white leading-none"
-              >
-                <Logo />
-              </Link>
+              <LogoButton />
             </div>
 
             <div className="flex gap-[19px] items-center text-base">

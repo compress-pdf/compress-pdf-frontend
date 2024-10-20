@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { Document, Page } from 'react-pdf';
@@ -72,17 +73,29 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
     event.preventDefault();
   };
 
-  const handleDragSorting = (
-    dragItemIndex: number | null,
-    dragOverItemIndex: number | null
-  ) => {
-    if (dragItemIndex !== null && dragOverItemIndex !== null) {
-      const sortedFiles = [...files];
-      const draggedItemContent = sortedFiles.splice(dragItemIndex, 1)[0];
-      sortedFiles.splice(dragOverItemIndex, 0, draggedItemContent);
-      onUpdateFiles(sortedFiles);
-    }
+  //introduce a debouncing mechanism for the handleDragSorting function.
+  const debounce = (func: Function, wait: number) => {
+    let timeout: ReturnType<typeof setTimeout>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return (...args: any[]) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        func.apply(this, args);
+      }, wait);
+    };
   };
+
+  const handleDragSorting = debounce(
+    (dragItemIndex: number | null, dragOverItemIndex: number | null) => {
+      if (dragItemIndex !== null && dragOverItemIndex !== null) {
+        const sortedFiles = [...files];
+        const draggedItemContent = sortedFiles.splice(dragItemIndex, 1)[0];
+        sortedFiles.splice(dragOverItemIndex, 0, draggedItemContent);
+        onUpdateFiles(sortedFiles);
+      }
+    },
+    300 // Adjust the delay as needed, 300ms is a reasonable debounce time.
+  );
 
   return (
     <>
