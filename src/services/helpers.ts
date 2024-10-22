@@ -1,4 +1,5 @@
 import { DropboxFile } from 'react-dropbox-chooser';
+import * as pdfjsLib from 'pdfjs-dist';
 
 import CustomToast from '@/components/common/core/ToastMessage';
 import { FileData } from '@/types/General';
@@ -296,6 +297,8 @@ const validatePdfFiles = async (
 ): Promise<{ valid: boolean; messages: string[] }> => {
   const messages: string[] = [];
 
+  console.log('files', files);
+
   // Step 1: Check for total file size and number of files first
   const totalSizeMB = Array.from(files).reduce(
     (total, file) => total + file.size / (1024 * 1024),
@@ -353,7 +356,30 @@ const validatePdfFiles = async (
     messages.push('Password-protected PDFs cannot be compressed.');
   }
 
-  // Step 5: Return validation result
+  // Step 5: Check for total page count across all PDFs using pdfjs-dist
+  let totalPages = 0;
+
+  await Promise.all(
+    Array.from(files).map(async file => {
+      if (file.type === 'application/pdf') {
+        const arrayBuffer = await file.arrayBuffer();
+
+        // Use pdfjs-dist to load the PDF and get the page count
+        const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer })
+          .promise;
+        const numPages = pdfDoc.numPages;
+        totalPages += numPages;
+      }
+    })
+  );
+
+  if (totalPages > 200) {
+    messages.push(
+      `Maximum page limit exceeded: Total pages must be under ${200}.`
+    );
+  }
+
+  // Step 6: Return validation result
   const valid = messages.length === 0;
   return { valid, messages };
 };

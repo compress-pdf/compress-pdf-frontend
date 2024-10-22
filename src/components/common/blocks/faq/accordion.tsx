@@ -30,7 +30,7 @@ const Accordion = ({
     >
       <div
         className={twMerge(
-          'px-4 pl-0 flex flex-col border dark:border-x-transparent border-t-transparent border-b-[#EFE5FF] dark:border-b-[#e1dede] border-t-0 first:border-t',
+          'px-4 pl-0 flex flex-col border :border-x-transparent border-t-transparent border-l-transparent border-r-transparent border-b-[#EFE5FF] dark:border-b-[#e1dede] border-t-0 first:border-t',
           isOpen ? 'border-transparent border-b-transparent py-[30px]' : 'py-6',
           'transition-all duration-300 ease-in',
           className
@@ -43,7 +43,7 @@ const Accordion = ({
             className
           )}
         >
-          <h3 className="text-[#20103C] dark:text-[#fafafa] font-semibold text-sm md:text-lg border-l-4 border-[#ff8224] pl-4">
+          <h3 className="text-[#20103C] dark:text-[#fafafa] font-semibold text-sm md:text-lg border-l-4 border-[#ff8224] pl-4 2xl:mb-2">
             {title}
           </h3>
 

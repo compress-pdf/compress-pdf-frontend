@@ -21,13 +21,7 @@ interface FaqSectionProps {
 
 const FaqSection: React.FC<FaqSectionProps> = ({ data, title, className }) => {
   return (
-    <SectionContainer
-      className={twMerge(
-        className,
-        'mt-[20px] md:mt-[40px]',
-        data ? 'block' : 'hidden'
-      )}
-    >
+    <SectionContainer className={twMerge(className, data ? 'block' : 'hidden')}>
       <section>
         <ContentTitle title={title} />
         <FaqAccordionClient data={data} />

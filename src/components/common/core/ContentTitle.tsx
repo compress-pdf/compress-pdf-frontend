@@ -11,7 +11,7 @@ const ContentTitle = ({
   return (
     <h2
       className={twMerge(
-        'text-[#163B45] dark:text-[#FAFAFA] text-lg md:text-3xl leading-[26.4px] md:leading-[36.86px] lg:leading-[48px] md:font-medium font-bold mb-[8px] md:mb-[18px]',
+        'text-[#163B45] dark:text-[#FAFAFA] mb-[8px] md:mb-[18px]  3xl:text-[34px] 3xl:leading-10  2xl:text-[28px]  2xl:leading-8 xl:text-[24px] xl:leading-7 lg:text-[28px] md:text-[24px] lg:leading-8 text-[20px] font-bold leading-6',
         className
       )}
     >

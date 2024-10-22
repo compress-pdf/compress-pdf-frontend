@@ -15,7 +15,9 @@ interface FaqAccordionClientProps {
 }
 
 const FaqAccordionClient: React.FC<FaqAccordionClientProps> = ({ data }) => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null); // Track which accordion is open
+  const [openIndex, setOpenIndex] = useState<number | null>(
+    data?.length ? 0 : null
+  );
 
   const handleAccordionClick = (index: number) => {
     setOpenIndex(openIndex === index ? null : index); // Toggle accordion open or closed

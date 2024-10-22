@@ -63,7 +63,7 @@ const FileUploaderButton: React.FC<FileUploaderButtonProps> = ({
         className={`p-0 flex h-14 w-[80%] items-center justify-center mb-3 custom-button-class`}
       >
         <label
-          className="hover:brightness-75 h-full w-full flex items-center gap-4 justify-center text-[1.125rem] md:text-[1.25rem] lg:text-[1.5rem] xl:text-[1.25rem] 2xl:text-[1.5rem] leading-[120%] font-bold cursor-pointer"
+          className="h-full w-full flex items-center gap-4 justify-center text-[1.125rem] md:text-[1.25rem] lg:text-[1.5rem] xl:text-[1.25rem] 2xl:text-[1.5rem] leading-[120%] font-bold cursor-pointer"
           htmlFor={inputId}
         >
           <Image
