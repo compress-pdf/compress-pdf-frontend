@@ -50,7 +50,7 @@ const HomeStaticContent = ({ tool }: { tool: string }) => {
           <div className="compress-tool-gradient inline-block w-[10%] h-auto aspect-square bg-[#FCFA5D40] blur-[96.5px] absolute right-36 top-36" />
           <div className="compress-tool-gradient inline-block w-[10%] h-auto aspect-square bg-[#FCCA5D40] blur-[96.5px] absolute -bottom-4 left-36" />
         </div>
-        <SectionContainer className="text-center flex flex-col md:flex-row gap-9 text-[1.65rem] relative">
+        <SectionContainer className="text-center flex flex-col md:flex-row gap-9 text-[1.65rem] relative justify-start">
           <FaqSection data={faqsData} title={t('content.faqSection.title')} />
         </SectionContainer>
       </FullwidthContainer>

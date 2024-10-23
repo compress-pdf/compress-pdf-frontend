@@ -303,9 +303,9 @@ const CustomizeSection = ({
           ].map(label => (
             <Button
               key={label}
-              className={`w-full px-0 py-[5.5px] rounded-[3.49px] justify-center ${
+              className={`w-full px-0 py-[5.5px] rounded-[3.49px] justify-center transition-none ${
                 selectedCompression !== label
-                  ? 'bg-gradient-to-tl from-[#b33f400d] to-[#b33f400d] text-[#B33F40] dark:from-[#545454] dark:to-[#545454] dark:text-white'
+                  ? 'text-[#B33F40] bg-gradient-to-tl from-[#b33f400d] to-[#b33f400d]  dark:from-[#545454] dark:to-[#545454] dark:text-white '
                   : 'dark:dark:bg-gradient-to-tl dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] dark:text-white'
               } `}
               onClick={() => handleButtonSelection(label)}
@@ -413,7 +413,7 @@ const CustomizeSection = ({
           </div>
         </div>
 
-        <div className="button w-full md:w-[100%] lg:w-[100%] xl:w-[100%] 2xl:w-[17.39%] 3xl:w-[17.2%] self-stretch pl-[20px] flex-1 py-[14px]">
+        <div className="button w-full md:w-[100%] lg:w-[17.39%] xl:w-[100%] 2xl:w-[17.39%] 3xl:w-[17.2%] self-stretch pl-[20px] flex-1 py-[14px]">
           {children}
         </div>
       </SectionContainer>

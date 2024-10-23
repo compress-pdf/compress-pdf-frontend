@@ -102,10 +102,10 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
 
   return (
     <FullwidthContainer className="relative">
-      <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
+      {/* <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
         <div className="inline-block w-[20%] h-auto aspect-square opacity-50 absolute bg-orange-300 dark:bg-[#731818ee] -top-10 -right-10 blur-[190px]" />
         <div className="inline-block w-[20%] h-auto aspect-square opacity-40 absolute bg-blue-500 dark:bg-[#B33F40] -top-10 -left-10 blur-[190px]" />
-      </div>
+      </div> */}
       <SectionContainer className="overflow-x-clip">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <DraggableFlat
@@ -200,7 +200,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
               type="submit"
               className="compress-btn w-full h-full text-[1.125rem] font-bold transition-all duration-300 ease-in"
             >
-              <div className="w-full flex flex-row-reverse md:flex-row-reverse lg:flex-row-reverse xl:flex-row-reverse 2xl:flex-col 3xl:flex-col text-center items-center justify-center gap-[0.625rem]">
+              <div className="w-full flex flex-row-reverse md:flex-row-reverse lg:flex-col xl:flex-row-reverse 2xl:flex-col 3xl:flex-col text-center items-center justify-center gap-[0.625rem]">
                 <div className="w-[33.3px] h-[38px]">
                   <Image
                     src={arrowIcon}

@@ -72,7 +72,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
           // type="button"
           onClick={handleMainClick}
           className={twMerge(
-            'dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-[20px] py-2 rounded-l-md hover:bg-[#dbdbdb] focus:outline-none border-[0.4px] border-[#E5E7EB] dark:border-transparent text-nowrap  transition-all duration-200 ease-in',
+            'dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-[20px] py-2 rounded-l-md hover:bg-[#dbdbdb] focus:outline-none border-[0.4px] border-[#E5E7EB] dark:border-transparent text-nowrap  transition-all duration-200 ease-in cursor-default',
             className
           )}
           onKeyDown={() => {}}
@@ -87,7 +87,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
           title={t('dropDownOption')}
           type="button"
           className={twMerge(
-            'dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-3 py-2 rounded-r-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent  transition-all duration-200 ease-in ',
+            'dark:bg-[#2c2c2c] dark:hover:bg-[#1b1b1b] text-[#4B5563] dark:text-slate-100 px-3 py-2 rounded-r-md hover:bg-[#dbdbdb] focus:outline-none border border-[#E5E7EB] dark:border-transparent  transition-all duration-200 ease-in cursor-default ',
             classNameDropdownIcon
           )}
           onClick={event => {
@@ -117,7 +117,7 @@ const SplitButton: React.FC<SplitButtonProps> = ({
         <div
           ref={modalRef} // Added modalRef here
           className={twMerge(
-            'origin-top-right absolute right-0 mt-2 w-full z-50 rounded-md shadow-lg bg-white dark:bg-[#2c2c2c] text-[#4B5563] dark:text-slate-100 ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in',
+            'origin-top-right absolute right-0 mt-2 w-full z-50 border rounded-md shadow-lg bg-white dark:bg-[#2c2c2c] text-[#4B5563] dark:text-slate-100 ring-1 ring-black ring-opacity-5 transition-all duration-200 ease-in',
             classNameDropdown
           )}
         >
