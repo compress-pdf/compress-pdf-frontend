@@ -42,7 +42,7 @@ const Footer = () => {
         <SectionContainer className="flex 2xl:flex-row flex-col gap-y-2 justify-between items-center text-sm font-normal md:font-semibold">
           <div className="flex gap-2 items-center text-xs md:text-[0.875rem] text-[#949494] dark:text-[#FAFAFA]">
             <p>A Product of</p>
-            <Link href={url || ''}>
+            <Link href={url || ''} target="_blank">
               <Image
                 src={SoftekoLogo}
                 className="w-[90px] h-auto"

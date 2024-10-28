@@ -178,11 +178,11 @@ const AboutPage = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-3 gap-[22px]">
+            <div className="grid grid-cols-3 lg:gap-[22px] gap-3">
               {teams.map((team: ITeams, index: number) => (
                 <div
                   key={index}
-                  className="flex pb-6 flex-col items-center gap-6 rounded-md border border-[#E1E4ED] dark:border-[#444 bg-[var(--Base-Base-White,#FAFAFA)] dark:bg-[var(--Neutrals-Neutrals700,#2F2F2F)] shadow-[0px_1px_4px_rgba(25,33,61,0.08)]"
+                  className="flex lg:pb-6 pb-3 flex-col items-center lg:gap-6 gap-1 rounded-md border border-[#E1E4ED] dark:border-[#444 bg-[var(--Base-Base-White,#FAFAFA)] dark:bg-[var(--Neutrals-Neutrals700,#2F2F2F)] shadow-[0px_1px_4px_rgba(25,33,61,0.08)]"
                 >
                   <Image
                     alt={team.name}
@@ -203,10 +203,11 @@ const AboutPage = () => {
                     <Link href={team.facebook}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="25"
+                        width=""
+                        height=""
                         viewBox="0 0 24 25"
                         fill="none"
+                        className="lg:w-[24px] lg:h-[25px] w-4 h-4"
                       >
                         <rect
                           y="0.206055"
@@ -237,10 +238,11 @@ const AboutPage = () => {
                     <Link href={team.linkedin}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="25"
+                        width=""
+                        height=""
                         viewBox="0 0 24 25"
                         fill="none"
+                        className="lg:w-[24px] lg:h-[25px] w-4 h-4"
                       >
                         <rect
                           y="0.206055"

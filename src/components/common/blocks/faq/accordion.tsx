@@ -43,7 +43,7 @@ const Accordion = ({
             className
           )}
         >
-          <h3 className="text-[#20103C] dark:text-[#fafafa] font-semibold text-sm md:text-lg border-l-4 border-[#ff8224] pl-4 2xl:mb-2">
+          <h3 className="text-[#20103C] dark:text-[#fafafa] font-semibold text-sm md:text-lg border-l-4 border-[#ff8224] pl-4 2xl:mb-2 text-left">
             {title}
           </h3>
 

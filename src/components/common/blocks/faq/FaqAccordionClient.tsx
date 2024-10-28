@@ -32,7 +32,9 @@ const FaqAccordionClient: React.FC<FaqAccordionClientProps> = ({ data }) => {
           isOpen={openIndex === index} // Control whether the accordion is open
           onClick={() => handleAccordionClick(index)} // Handle when accordion is clicked
         >
-          <p className="rounded pt-2 text-left text-base">{each.answer}</p>
+          <p className="rounded pt-2 text-left md:text-base text-sm">
+            {each.answer}
+          </p>
         </Accordion>
       ))}
     </div>
