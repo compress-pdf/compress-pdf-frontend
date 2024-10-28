@@ -297,13 +297,11 @@ const validatePdfFiles = async (
 ): Promise<{ valid: boolean; messages: string[] }> => {
   const messages: string[] = [];
 
-  console.log('files', files);
-
-  // Step 1: Check for total file size and number of files first
+  // Step 1: Check for total file size and number of files
   const totalSizeMB = Array.from(files).reduce(
     (total, file) => total + file.size / (1024 * 1024),
     0
-  ); // Calculate total size in MB
+  );
 
   if (files.length > maxFiles) {
     messages.push(
@@ -318,61 +316,38 @@ const validatePdfFiles = async (
     return { valid: false, messages }; // Early exit if size exceeds the limit
   }
 
-  // Step 2: Check for non-PDF files
-  const nonPdfFiles = Array.from(files).filter(
-    file => !file.type.startsWith('application/pdf')
-  );
-  if (nonPdfFiles.length > 0) {
-    messages.push('Only PDF files are allowed.');
-  }
-
-  // Step 3: Check for corrupted PDF files
-  const corruptedFiles = await Promise.all(
-    Array.from(files).map(async file => {
-      if (file.type === 'application/pdf') {
-        const fileContent = await file.text();
-        return !fileContent.startsWith('%PDF-');
-      }
-      return false;
-    })
-  );
-
-  if (corruptedFiles.some(isCorrupted => isCorrupted)) {
-    messages.push('Corrupted PDFs cannot be compressed.');
-  }
-
-  // Step 4: Check for password-protected PDFs (basic check)
-  const passwordProtectedFiles = await Promise.all(
-    Array.from(files).map(async file => {
-      if (file.type === 'application/pdf') {
-        const fileContent = await file.text();
-        return fileContent.includes('/Encrypt'); // Basic check for password protection
-      }
-      return false;
-    })
-  );
-
-  if (passwordProtectedFiles.some(isProtected => isProtected)) {
-    messages.push('Password-protected PDFs cannot be compressed.');
-  }
-
-  // Step 5: Check for total page count across all PDFs using pdfjs-dist
+  // Step 2: Validate each PDF file for type, corruption, and password protection
   let totalPages = 0;
 
   await Promise.all(
     Array.from(files).map(async file => {
-      if (file.type === 'application/pdf') {
-        const arrayBuffer = await file.arrayBuffer();
+      if (!file.type.startsWith('application/pdf')) {
+        messages.push('Only PDF files are allowed.');
+        return;
+      }
 
-        // Use pdfjs-dist to load the PDF and get the page count
+      try {
+        const arrayBuffer = await file.arrayBuffer();
         const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer })
           .promise;
-        const numPages = pdfDoc.numPages;
-        totalPages += numPages;
+
+        // Step 3: Check for corrupted files (by accessing the first page)
+        await pdfDoc.getPage(1);
+
+        // Step 4: Count pages if the file is valid
+        totalPages += pdfDoc.numPages;
+      } catch (error) {
+        if (error instanceof Error && error.name === 'PasswordException') {
+          messages.push('Password-protected PDFs cannot be compressed.');
+        } else {
+          console.error('Error reading PDF:', error);
+          messages.push('An error occurred while processing one of the PDFs.');
+        }
       }
     })
   );
 
+  // Step 5: Check total page count limit
   if (totalPages > 200) {
     messages.push(
       `Maximum page limit exceeded: Total pages must be under ${200}.`
