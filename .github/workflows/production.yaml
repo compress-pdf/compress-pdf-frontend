@@ -1,9 +1,9 @@
-name: Automated Build and Deployment with Docker (Development)
+name: Automated Build and Deployment with Docker (Production)
 
 on:
   push:
     branches:
-      - dev
+      - production
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ghcr.io/compress-pdf/compress-dev:latest
+          tags: ghcr.io/compress-pdf/compress-pdf:latest
 
   deploy:
     runs-on: ubuntu-22.04
@@ -53,21 +53,21 @@ jobs:
             echo -e "\n Logging in to GitHub Container Registry 🗝️ \n"
             docker login ghcr.io -u ${{ github.actor }} --password ${{ vars.GHCR_PAT }}
 
-            if [ "$(docker ps -q -f name=compress-dev)" ]; then
-                echo -e "\n Stopping running container: compress-dev 🛑 \n"
-                docker container stop compress-dev
+            if [ "$(docker ps -q -f name=compress-pdf)" ]; then
+                echo -e "\n Stopping running container: compress-pdf 🛑 \n"
+                docker container stop compress-pdf
             fi
 
-            if [ "$(docker container ls -a -q -f name=compress-dev)" ]; then
-                echo -e "\n Removing stopped container: compress-dev 🚧 \n"
-                docker container rm compress-dev
+            if [ "$(docker container ls -a -q -f name=compress-pdf)" ]; then
+                echo -e "\n Removing stopped container: compress-pdf 🚧 \n"
+                docker container rm compress-pdf
             fi
 
             echo -e "\n Pulling the latest image from GHCR 📥 \n"
-            docker image pull ghcr.io/compress-pdf/compress-dev
+            docker image pull ghcr.io/compress-pdf/compress-pdf
 
-            echo -e "\n Running the new container: compress-dev 🛩️ \n"
-            docker run -d --name compress-dev -p 5000:3000 ghcr.io/compress-pdf/compress-dev
+            echo -e "\n Running the new container: compress-pdf 🛩️ \n"
+            docker run -d --name compress-pdf -p 3000:3000 ghcr.io/compress-pdf/compress-pdf
 
             echo -e "\n Pruning unused Docker images 🧹 \n"
             docker image prune -f
