@@ -3,7 +3,7 @@ import { createSharedPathnamesNavigation } from 'next-intl/navigation';
 
 export const routing = defineRouting({
   // A list of all locales that are supported
-  locales: ['en', 'de'],
+  locales: ['en', 'de', 'fr'],
   localePrefix: 'as-needed',
   defaultLocale: 'en',
 
@@ -11,18 +11,22 @@ export const routing = defineRouting({
     '/about': {
       en: '/about/',
       de: '/ueber/',
+      fr: '/a-propos/',
     },
     '/cookie-policy': {
       en: '/cookie-policy/',
       de: '/cookie-richtlinie/',
+      fr: '/politique-de-cookies/',
     },
     '/privacy-policy': {
       en: '/privacy-policy/',
       de: '/datenschutzrichtlinie/',
+      fr: '/politique-de-confidentialite/',
     },
-    'terms-and-conditions': {
+    '/terms-and-conditions': {
       en: '/terms-and-conditions/',
       de: '/geschaftsbedingungen/',
+      fr: '/termes-et-conditions/',
     },
   },
 });

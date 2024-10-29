@@ -139,6 +139,10 @@
         {
           "label": "Deutsch",
           "value": "de"
+        },
+        {
+          "label": "Français",
+          "value": "fr"
         }
       ]
     },
@@ -1180,7 +1184,7 @@
         "@type": "Organization",
         "name": "Compress PDF",
         "url": "https://www.compresspdf.to/",
-        "logo": "Logo-URL",
+        "logo": "https://cdn.compresspdf.to/images/logo.png",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+88 01327403953",

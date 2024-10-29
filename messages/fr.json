@@ -1,0 +1,1615 @@
+{
+  "common": {
+    "header": {
+      "menu": [
+        {
+          "label": "100 Ko",
+          "path": "/100kb/"
+        },
+        {
+          "label": "200 Ko",
+          "path": "/200kb/"
+        },
+        {
+          "label": "Plus",
+          "path": "null"
+        },
+        {
+          "label": "10 Ko",
+          "path": "/10kb/"
+        },
+        {
+          "label": "20 Ko",
+          "path": "/20kb/"
+        },
+        {
+          "label": "30 Ko",
+          "path": "/30kb/"
+        },
+        {
+          "label": "40 Ko",
+          "path": "/40kb/"
+        },
+        {
+          "label": "50 Ko",
+          "path": "/50kb/"
+        },
+        {
+          "label": "60 Ko",
+          "path": "/60kb/"
+        },
+        {
+          "label": "70 Ko",
+          "path": "/70kb/"
+        },
+        {
+          "label": "80 Ko",
+          "path": "/80kb/"
+        },
+        {
+          "label": "90 Ko",
+          "path": "/90kb/"
+        },
+        {
+          "label": "150 Ko",
+          "path": "/150kb/"
+        },
+        {
+          "label": "200 Ko",
+          "path": "/200kb/"
+        },
+        {
+          "label": "250 Ko",
+          "path": "/250kb/"
+        },
+        {
+          "label": "300 Ko",
+          "path": "/300kb/"
+        },
+        {
+          "label": "400 Ko",
+          "path": "/400kb/"
+        },
+        {
+          "label": "500 Ko",
+          "path": "/500kb/"
+        },
+        {
+          "label": "600 Ko",
+          "path": "/600kb/"
+        },
+        {
+          "label": "700 Ko",
+          "path": "/700kb/"
+        },
+        {
+          "label": "900 Ko",
+          "path": "/900kb/"
+        },
+        {
+          "label": "1 Mo",
+          "path": "/1mb/"
+        },
+        {
+          "label": "2 Mo",
+          "path": "/2mb/"
+        },
+        {
+          "label": "3 Mo",
+          "path": "/3mb/"
+        },
+        {
+          "label": "4 Mo",
+          "path": "/4mb/"
+        },
+        {
+          "label": "5 Mo",
+          "path": "/5mb/"
+        },
+        {
+          "label": "6 Mo",
+          "path": "/6mb/"
+        },
+        {
+          "label": "10 Mo",
+          "path": "/10mb/"
+        },
+        {
+          "label": "20 Mo",
+          "path": "/20mb/"
+        },
+        {
+          "label": "25 Mo",
+          "path": "/25mb/"
+        },
+        {
+          "label": "50 Mo",
+          "path": "/50mb/"
+        },
+        {
+          "label": "100 Mo",
+          "path": "/100mb/"
+        }
+      ],
+      "language": [
+        {
+          "label": "Anglais",
+          "value": "en"
+        },
+        {
+          "label": "Allemand",
+          "value": "de"
+        },
+        {
+          "label": "Français",
+          "value": "fr"
+        }
+      ]
+    },
+    "footer": {
+      "links": [
+        {
+          "label": "À propos",
+          "link": "/a-propos/"
+        },
+        {
+          "label": "Politique de confidentialité",
+          "link": "/politique-de-confidentialite/"
+        },
+        {
+          "label": "Politique de cookies",
+          "link": "/politique-de-cookies/"
+        },
+        {
+          "label": "Conditions générales",
+          "link": "/termes-et-conditions/"
+        }
+      ],
+      "copyright": "Droits d'auteur © 2024 compresspdf.to | Tous droits réservés."
+    },
+    "heroSectionTooltip": {
+      "cloudInfo": "ou, déposez les fichiers ici",
+      "drive": "Télécharger depuis Google Drive",
+      "onedrive": "Télécharger depuis OneDrive",
+      "buttonLabel": "Parcourir les fichiers",
+      "dropbox": "Télécharger depuis Dropbox",
+      "url": "Coller l'URL"
+    },
+    "urlModal": {
+      "title": "Coller l'URL",
+      "placeholder": "https://exemple.com/exemple.pdf/",
+      "buttonLabel": "Continuer",
+      "errorMessage": "Veuillez fournir un lien PDF valide !"
+    },
+    "uploading": {
+      "title": "Téléchargement de {file}",
+      "description": "Veuillez ne pas fermer votre navigateur. Attendez que vos fichiers soient téléchargés et traités ! Cela peut prendre quelques minutes. :)",
+      "imageAlt": "Télécharger des fichiers PDF"
+    },
+    "processing": {
+      "title": "Traitement de {file}",
+      "description": "Veuillez ne pas fermer votre navigateur. Attendez que vos fichiers soient téléchargés et traités ! Cela peut prendre quelques minutes. :)",
+      "imageAlt": "Traitement des fichiers PDF"
+    },
+    "custom": {
+      "viewPage": {
+        "rotateLeft": "Tourner à gauche",
+        "rotateRight": "Tourner à droite",
+        "delete": "Supprimer",
+        "pages": "pages",
+        "page": "page",
+        "mb": "Mo"
+      },
+      "sort": {
+        "title": "Trier",
+        "alphabeticallyOne": "A-Z",
+        "alphabeticallyTwo": "Z-A",
+        "sizeOne": "Min-Max",
+        "sizeTwo": "Max-Min"
+      },
+      "add": {
+        "dropDownTitle": "ouvrir menu",
+        "buttonLabel": "Ajouter plus",
+        "drive": "Depuis Drive",
+        "dropbox": "Depuis Dropbox",
+        "onedrive": "Depuis OneDrive",
+        "url": "Depuis URL",
+        "dropDownOption": "option menu"
+      },
+      "compression": {
+        "title": "Niveau de Compression",
+        "extreme": "Compression Extrême",
+        "medium": "Compression Moyenne",
+        "low": "Compression Faible"
+      },
+      "imageEnhancement": {
+        "rangeLabel": "Amélioration de l'image",
+        "rangeTooltip": "Ajustez la luminosité, le contraste et la netteté des images pour améliorer leur qualité.",
+        "buttonLabel": "Portée des couleurs",
+        "buttonTooltip": "Définit le mode couleur : 'Aucun' pour la couleur d'origine et 'Gris' pour noir et blanc uniquement.",
+        "btnLabelOne": "Original",
+        "btnLabelTwo": "Gris"
+      },
+      "imageResolution": {
+        "rangeLabel": "Résolution de l'image",
+        "rangeTooltip": "Contrôle les détails en pixels : plus haut signifie plus net, plus bas signifie plus pixelisé.",
+        "buttonLabel": "Fichiers Image",
+        "buttonTooltip": "Supprime les images du document pour une taille plus petite ou les garde telles quelles dans le PDF.",
+        "btnLabelOne": "Garder",
+        "btnLabelTwo": "Supprimer"
+      },
+      "compressButtonLabel": "COMMENCER LA COMPRESSION"
+    },
+    "download": {
+      "header": {
+        "title": {
+          "singular": "Télécharger le fichier compressé",
+          "plural": "Télécharger les fichiers compressés"
+        },
+        "filesTitle": "PDFs optimisés",
+        "total": "Total",
+        "timeLabel": "Temps de compression",
+        "time": "sec",
+        "buttonModal": {
+          "label": "Télécharger le Zip",
+          "drive": "Enregistrer sur Google Drive",
+          "dropbox": "Enregistrer sur Dropbox",
+          "onedrive": "Enregistrer sur OneDrive"
+        }
+      },
+      "body": {
+        "editTooltip": "Modifier le nom du fichier",
+        "deleteModal": {
+          "deleteTooltip": "Supprimer le fichier",
+          "title": "Temps de disponibilité du fichier",
+          "description": "Tous vos fichiers seront automatiquement supprimés après",
+          "hours": "heures",
+          "min": "Minutes",
+          "sec": "Secondes",
+          "btnLabel": "Supprimer maintenant"
+        },
+        "shareModal": {
+          "title": "Partager",
+          "btn": "Copier",
+          "alert": "Vos fichiers seront automatiquement supprimés après {hour} h {min} min {sec} sec",
+          "hour": "heure",
+          "min": "min",
+          "sec": "sec",
+          "successMessage": "URL copiée avec succès"
+        },
+        "downloadModal": {
+          "label": "Télécharger",
+          "drive": "Enregistrer sur Google Drive",
+          "dropbox": "Enregistrer sur Dropbox",
+          "onedrive": "Enregistrer sur OneDrive"
+        }
+      },
+      "footer": {
+        "share": "Partager",
+        "qrModal": {
+          "title": "Partager le QR",
+          "description": "Scannez le QR pour télécharger instantanément",
+          "placeholder": "https://compresspdf.to/adtadflke3",
+          "buttonLabel": "Copier",
+          "alert": "Vos fichiers seront automatiquement supprimés après {hour} h {min} min {sec} sec",
+          "hour": "heure",
+          "min": "min",
+          "sec": "sec"
+        },
+        "info": "Besoin de plus de personnalisation ?",
+        "buttonLabel": "Retour"
+      },
+      "rating": {
+        "title": "Notez cet outil !",
+        "subTitle": "Évaluation"
+      },
+      "copyMessage": "URL copiée avec succès"
+    },
+    "toast": {
+      "success": "Réussi.",
+      "error": "Une erreur est survenue",
+      "required": "Action requise",
+      "notification": "Notification"
+    }
+  },
+  "general": {
+    "content": {
+      "heroSection": {
+        "title": "Compresser Des Fichiers PDF Sans Perdre De Qualité",
+        "subtitle": "Réduisez La Taille, Pas La Qualité",
+        "imageAlt": "Télécharger des fichiers PDF",
+        "fileInfo": "Fichiers {file} maximum, jusqu'à {size} Mo et 200 pages"
+      },
+      "sectionOne": {
+        "title": "Qu'est-ce Qu'un Compresseur De PDF ?",
+        "description": "Un outil de compression PDF est un logiciel qui réduit la taille des fichiers PDF. Cela se fait en optimisant le contenu, comme les images et les polices, pour diminuer le poids tout en conservant la qualité. Ces outils sont essentiels pour gérer de gros fichiers, améliorer les vitesses d'upload/download et économiser de l'espace de stockage.",
+        "imageAlt": "Illustration de ce qu'est un compresseur PDF.",
+        "imageTitle": "PDF"
+      },
+      "sectionTwo": {
+        "title": "Pourquoi Utiliser Notre Outil De Compression PDF ?",
+        "description": "Notre outil de compression PDF se distingue par son efficacité et sa convivialité. Voici quelques raisons de choisir notre outil :",
+        "features": [
+          {
+            "featureTitle": "Personnalisation Étendue",
+            "featureDescription": "Adaptez les paramètres de compression selon vos besoins spécifiques."
+          },
+          {
+            "featureTitle": "Réduction De La Taille Des Fichiers",
+            "featureDescription": "Diminuez efficacement la taille de vos fichiers sans compromettre leur qualité."
+          },
+          {
+            "featureTitle": "Traitement En Lot",
+            "featureDescription": "Compressez plusieurs fichiers PDF à la fois pour gagner du temps."
+          },
+          {
+            "featureTitle": "Traitement Rapide",
+            "featureDescription": "Profitez d'une compression rapide, vos fichiers seront prêts en quelques secondes."
+          },
+          {
+            "featureTitle": "Téléchargement Et Téléversement Multiples",
+            "featureDescription": "Téléchargez et téléversez plusieurs fichiers simultanément en toute sécurité."
+          },
+          {
+            "featureTitle": "Impression Et Prévisualisation Des Fichiers",
+            "featureDescription": "Prévisualisez vos fichiers PDF avant de les imprimer ou de les partager."
+          }
+        ]
+      },
+      "sectionThree": {
+        "title": "Comment Réduire La Taille Des Fichiers PDF En Ligne ?",
+        "stepOne": {
+          "stepNumber": "Étape 1",
+          "stepTitle": "Téléchargez Vos Fichiers Directement Sur Le Web",
+          "stepDescription": "Chargez vos fichiers PDF depuis votre appareil directement sur notre plateforme.",
+          "imageAlt": "Options de téléchargement de fichiers, y compris le collage d'URL et le glisser-déposer, avec une interface utilisateur mise en évidence pour le téléchargement de documents.",
+          "imageUploadTitle": "Téléchargez votre document",
+          "inputLabel": "Collez votre URL",
+          "placeholder": "https://www.figma.com/design"
+        },
+        "stepTwo": {
+          "stepNumber": "Étape 2 ",
+          "stepTitle": "Personnalisez Selon Vos Préférences",
+          "stepDescription": "Ajustez les paramètres de compression selon vos besoins : niveaux de compression, qualité d'image, résolution, etc.",
+          "imageAlt": "Options de personnalisation de PDF, y compris la résolution d'image, les ajustements de fichier et les niveaux de compression, avec une comparaison 'avant et après' des tailles de fichiers.",
+          "before": "Avant",
+          "size": "10 Ko",
+          "after": "Après",
+          "afterSize": "1,1 Mo",
+          "rangeLabel": "Résolution de l'Image",
+          "rangeValue": "40%",
+          "buttonLabel": "Fichiers Image",
+          "keep": "Garder",
+          "remove": "Supprimer",
+          "compressionLevel": "Niveau de Compression",
+          "compressionValue": "40%"
+        },
+        "stepThree": {
+          "stepNumber": "Étape 3",
+          "stepTitle": "Téléchargez, Partagez et Gérez les Fichiers Compressés",
+          "stepDescription": "Téléchargez les fichiers individuellement ou en tant que fichier zip, et sauvegardez-les sur Dropbox, OneDrive ou Google Drive. Partagez via Facebook, LinkedIn, Gmail, Twitter ou par QR code/lien URL. Modifiez les noms, supprimez des fichiers, imprimez avec paramètres (copies, format papier, orientation) et prévisualisez pour vérifier la qualité.",
+          "imageAlt": "Interface de téléchargement de fichiers montrant un PDF titré et sa barre de progression.",
+          "firstImageTitle": "Nom de Votre PDF",
+          "percentOne": "10%",
+          "size": "90 Ko",
+          "rangeLevel": "Téléchargement de Votre Zip",
+          "rangeValue": "65%"
+        }
+      },
+      "faqSection": {
+        "title": "Questions Fréquemment Posées (FAQ)",
+        "questions": [
+          {
+            "question": "La compression de mon PDF affectera-t-elle sa qualité ?",
+            "answer": "Notre outil minimise la perte de qualité tout en réduisant la taille du fichier. Vous pouvez choisir le niveau de compression qui convient le mieux à vos besoins."
+          },
+          {
+            "question": "Mes données sont-elles en sécurité après compression des fichiers PDF ?",
+            "answer": "Oui, vos fichiers sont supprimés de nos serveurs après traitement. Nous priorisons votre confidentialité et la sécurité de vos données."
+          },
+          {
+            "question": "Puis-je compresser des PDF sur mon appareil mobile ?",
+            "answer": "Absolument ! Notre outil est entièrement réactif et fonctionne parfaitement sur mobiles et tablettes."
+          },
+          {
+            "question": "Puis-je compresser un PDF protégé par mot de passe ?",
+            "answer": "Pour compresser un PDF protégé, retirez d’abord la protection par mot de passe. Ensuite, vous pourrez facilement le télécharger et le compresser."
+          },
+          {
+            "question": "Comment personnaliser mes fichiers PDF avant compression ?",
+            "answer": "Personnalisez vos PDF en tournant les pages, ajustant la résolution, changeant les couleurs, gardant ou supprimant des images et en réglant le niveau de compression."
+          },
+          {
+            "question": "Quelles sont les options après compression ?",
+            "answer": "Après compression, vous pouvez télécharger les fichiers en zip, les sauvegarder sur Dropbox, OneDrive ou Google Drive, supprimer des fichiers, les prévisualiser, les imprimer ou revenir à la personnalisation."
+          }
+        ]
+      }
+    },
+    "metaData": {
+      "title": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale",
+      "description": "Compressez vos fichiers PDF en ligne sans perte de qualité. Réduisez la taille tout en conservant la qualité originale. Rapide et gratuit.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/fr/",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/",
+            "hreflang": "de"
+          },
+          {
+            "href": "https://compresspdf.to/fr/",
+            "hreflang": "fr"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale",
+        "description": "Compressez vos fichiers PDF en ligne sans perte de qualité. Réduisez la taille tout en conservant la qualité originale. Rapide et gratuit.",
+        "url": "https://compresspdf.to/fr/",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/general-fr.png",
+            "alt": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale",
+        "description": "Compressez vos fichiers PDF en ligne sans perte de qualité. Réduisez la taille tout en conservant la qualité originale. Rapide et gratuit.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/general-fr.png",
+            "alt": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale"
+          }
+        ]
+      }
+    },
+    "schema": [
+      {
+        "softwareApplication": {
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "CompressPDF",
+          "description": "Compressez vos fichiers PDF en ligne sans perte de qualité. Réduisez la taille tout en conservant la qualité originale. Rapide et gratuit.",
+          "applicationCategory": "Utilities",
+          "operatingSystem": "All",
+          "author": {
+            "@type": "Organization",
+            "name": "CompressPDF",
+            "url": "https://compresspdf.to/fr/a-propos/",
+            "description": "Découvrez compresspdf.to, outil rapide et sûr de compression PDF. Notre mission : simplifier la gestion documentaire avec des fonctions conviviales."
+          },
+          "datePublished": "2024-06-10",
+          "url": "https://compresspdf.to/fr/",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "1237"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "screenshot": "https://cdn.compresspdf.to/images/general-fr.png",
+          "featureList": [
+            "Compression de fichiers PDF sans perte de qualité.",
+            "Téléchargement par glisser-déposer, Google Drive et Dropbox.",
+            "Niveaux de compression faible, moyen et élevé.",
+            "Compression par lots pour plusieurs fichiers.",
+            "Préserve les images et la mise en forme du texte.",
+            "Prévisualisation des PDF compressés avant téléchargement.",
+            "Suppression automatique des fichiers après traitement.",
+            "Partage des PDF par e-mail ou sur les réseaux sociaux.",
+            "Traitement rapide pour les fichiers volumineux.",
+            "Interface conviviale et facile à utiliser."
+          ]
+        }
+      },
+      {
+        "website": {
+          "@context": "https://schema.org/",
+          "@type": "WebSite",
+          "name": "CompressPDF",
+          "inLanguage": "fr",
+          "description": "La plateforme qui simplifie la conversion et l'édition de vos PDF. Résolvez tous vos problèmes PDF en un seul endroit - gratuitement.",
+          "url": "https://compresspdf.to/fr/"
+        }
+      },
+      {
+        "article": {
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://compresspdf.to/fr/"
+          },
+          "headline": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale",
+          "image": "https://cdn.compresspdf.to/images/general-fr.png",
+          "author": {
+            "@type": "Person",
+            "name": "Borhan Uddin",
+            "url": "https://www.linkedin.com/in/borhan-uddin-7167991b0/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "CompressPDF",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://cdn.compresspdf.to/images/logo.png"
+            }
+          },
+          "datePublished": "2024-08-05T10:30:00+06:00"
+        }
+      },
+      {
+        "faq": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "La Compression De Mon PDF Va-T-Elle Affecter Sa Qualité ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Notre outil est conçu pour minimiser la perte de qualité tout en réduisant la taille des fichiers. Vous pouvez choisir parmi différents niveaux de compression en fonction de vos besoins."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mes Données Sont-Elles Sécurisées Après La Compression Des Fichiers PDF ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Oui, vos fichiers sont supprimés de nos serveurs après le traitement. Nous accordons la priorité à la confidentialité et à la sécurité de vos données."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Puis-Je Compresser Des PDF Depuis Mon Appareil Mobile ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolument ! Notre outil est entièrement responsive et fonctionne parfaitement sur les appareils mobiles et tablettes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Puis-Je Compresser Un Fichier PDF Protégé Par Un Mot De Passe ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Pour compresser un PDF protégé par un mot de passe, vous devez d'abord supprimer cette protection. Une fois le fichier déverrouillé, vous pourrez le télécharger et le compresser facilement."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Comment Personnaliser Mes Fichiers PDF Avant La Compression ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Vous pouvez personnaliser vos fichiers PDF en tournant les pages, ajustant l'amélioration des images et la résolution, modifiant les couleurs, ou en choisissant de conserver ou non les images, tout en réglant le niveau de compression."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quelles Sont Les Options De Sortie Après La Compression ?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Après la compression, vous pouvez télécharger les fichiers au format ZIP, les enregistrer sur Dropbox, OneDrive ou Google Drive, supprimer des fichiers, les prévisualiser, les imprimer, les partager ou revenir à la page de personnalisation."
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "100kb": {
+    "content": {
+      "heroSection": {
+        "title": "",
+        "subtitle": "",
+        "imageAlt": "",
+        "fileInfo": ""
+      },
+      "sectionOne": {
+        "title": "",
+        "description": "",
+        "imageAlt": "",
+        "imageTitle": ""
+      },
+      "sectionTwo": {
+        "title": "",
+        "description": "",
+        "features": [
+          {
+            "featureTitle": "",
+            "featureDescription": ""
+          }
+        ]
+      },
+      "sectionThree": {
+        "title": "",
+        "stepOne": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "imageUploadTitle": "",
+          "inputLabel": "",
+          "placeholder": ""
+        },
+        "stepTwo": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "before": "",
+          "size": "",
+          "after": "",
+          "afterSize": "",
+          "rangeLabel": "",
+          "rangeValue": "",
+          "buttonLabel": "",
+          "keep": "",
+          "remove": "",
+          "compressionLevel": "",
+          "compressionValue": ""
+        },
+        "stepThree": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "firstImageTitle": "",
+          "percentOne": "",
+          "size": "",
+          "rangeLevel": "",
+          "rangeValue": ""
+        }
+      },
+      "faqSection": {
+        "title": "",
+        "questions": [
+          {
+            "question": "",
+            "answer": ""
+          }
+        ]
+      }
+    },
+    "metaData": {
+      "title": "",
+      "description": "",
+      "alternates": {
+        "canonical": "",
+        "hreflangs": [
+          {
+            "href": "",
+            "hreflang": ""
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "",
+        "description": "",
+        "url": "",
+        "images": [
+          {
+            "url": "",
+            "alt": ""
+          }
+        ]
+      },
+      "twitter": {
+        "title": "",
+        "description": "",
+        "images": [
+          {
+            "url": "",
+            "alt": ""
+          }
+        ]
+      }
+    },
+    "schema": [
+      {
+        "softwareApplication": {
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "description": "",
+          "applicationCategory": "",
+          "operatingSystem": "",
+          "author": {
+            "@type": "",
+            "name": "",
+            "url": "",
+            "description": ""
+          },
+          "datePublished": "",
+          "url": "",
+          "aggregateRating": {
+            "@type": "",
+            "ratingValue": "",
+            "reviewCount": ""
+          },
+          "offers": {
+            "@type": "",
+            "price": "",
+            "priceCurrency": ""
+          },
+          "screenshot": "",
+          "featureList": [""]
+        }
+      },
+      {
+        "website": {
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "inLanguage": "",
+          "description": "",
+          "url": ""
+        }
+      },
+      {
+        "article": {
+          "@context": "",
+          "@type": "",
+          "mainEntityOfPage": {
+            "@type": "",
+            "@id": ""
+          },
+          "headline": "",
+          "image": "",
+          "author": {
+            "@type": "",
+            "name": "",
+            "url": ""
+          },
+          "publisher": {
+            "@type": "",
+            "name": "",
+            "logo": {
+              "@type": "",
+              "url": ""
+            }
+          },
+          "datePublished": ""
+        }
+      },
+      {
+        "faq": {
+          "@context": "",
+          "@type": "",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "200kb": {
+    "content": {
+      "heroSection": {
+        "title": "",
+        "subtitle": "",
+        "imageAlt": "",
+        "fileInfo": ""
+      },
+      "sectionOne": {
+        "title": "",
+        "description": "",
+        "imageAlt": "",
+        "imageTitle": ""
+      },
+      "sectionTwo": {
+        "title": "",
+        "description": "",
+        "features": [
+          {
+            "featureTitle": "",
+            "featureDescription": ""
+          }
+        ]
+      },
+      "sectionThree": {
+        "title": "",
+        "stepOne": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "imageUploadTitle": "",
+          "inputLabel": "",
+          "placeholder": ""
+        },
+        "stepTwo": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "before": "",
+          "size": "",
+          "after": "",
+          "afterSize": "",
+          "rangeLabel": "",
+          "rangeValue": "",
+          "buttonLabel": "",
+          "keep": "",
+          "remove": "",
+          "compressionLevel": "",
+          "compressionValue": ""
+        },
+        "stepThree": {
+          "stepNumber": "",
+          "stepTitle": "",
+          "stepDescription": "",
+          "imageAlt": "",
+          "firstImageTitle": "",
+          "percentOne": "",
+          "size": "",
+          "rangeLevel": "",
+          "rangeValue": ""
+        }
+      },
+      "faqSection": {
+        "title": "",
+        "questions": [
+          {
+            "question": "",
+            "answer": ""
+          }
+        ]
+      }
+    },
+    "metaData": {
+      "title": "",
+      "description": "",
+      "alternates": {
+        "canonical": "",
+        "hreflangs": [
+          {
+            "href": "",
+            "hreflang": ""
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "",
+        "description": "",
+        "url": "",
+        "images": [
+          {
+            "url": "",
+            "alt": ""
+          }
+        ]
+      },
+      "twitter": {
+        "title": "",
+        "description": "",
+        "images": [
+          {
+            "url": "",
+            "alt": ""
+          }
+        ]
+      }
+    },
+    "schema": [
+      {
+        "softwareApplication": {
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "description": "",
+          "applicationCategory": "",
+          "operatingSystem": "",
+          "author": {
+            "@type": "",
+            "name": "",
+            "url": "",
+            "description": ""
+          },
+          "datePublished": "",
+          "url": "",
+          "aggregateRating": {
+            "@type": "",
+            "ratingValue": "",
+            "reviewCount": ""
+          },
+          "offers": {
+            "@type": "",
+            "price": "",
+            "priceCurrency": ""
+          },
+          "screenshot": "",
+          "featureList": [""]
+        }
+      },
+      {
+        "website": {
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "inLanguage": "",
+          "description": "",
+          "url": ""
+        }
+      },
+      {
+        "article": {
+          "@context": "",
+          "@type": "",
+          "mainEntityOfPage": {
+            "@type": "",
+            "@id": ""
+          },
+          "headline": "",
+          "image": "",
+          "author": {
+            "@type": "",
+            "name": "",
+            "url": ""
+          },
+          "publisher": {
+            "@type": "",
+            "name": "",
+            "logo": {
+              "@type": "",
+              "url": ""
+            }
+          },
+          "datePublished": ""
+        }
+      },
+      {
+        "faq": {
+          "@context": "",
+          "@type": "",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "about": {
+    "heading": "À Propos de Compresspdf.toF",
+    "description": "Bienvenue sur Online Compress PDF, votre solution incontournable pour une compression PDF efficace et de haute qualité. Que vous soyez un professionnel gérant de grands rapports, un étudiant soumettant des devoirs ou un propriétaire de petite entreprise archivant des documents, nous sommes là pour simplifier votre processus de gestion des PDF.",
+    "sectionOne": {
+      "title": "Quelle est notre mission?",
+      "description": "Chez Compress PDF, notre mission est de simplifier la gestion des fichiers PDF en fournissant un outil convivial et efficace pour la compression des PDF. Nous comprenons que les fichiers PDF volumineux peuvent être encombrants, que vous partagiez des documents par e-mail, les téléchargiez sur des sites Web ou essayiez simplement d'économiser de l'espace de stockage. Notre objectif est d'offrir une solution fluide et accessible qui améliore votre productivité et votre confort, vous permettant de gérer vos fichiers PDF en toute simplicité."
+    },
+    "sectionTwo": {
+      "title": "Ce Que Nous Offrons?",
+      "description": "Nous offrons une suite complète de fonctionnalités conçues pour répondre à tous vos besoins en matière de compression PDF :",
+      "items": [
+        {
+          "title": "Systèmes de Téléchargement Multiples",
+          "description": "Téléchargez facilement vos fichiers depuis votre appareil, votre stockage cloud ou par glisser-déposer directement sur notre plateforme."
+        },
+        {
+          "title": "Méthodes de Téléchargement Flexibles",
+          "description": "Une fois votre PDF compressé, téléchargez-le via diverses options adaptées à vos préférences."
+        },
+        {
+          "title": "Partage en Ligne et Impression",
+          "description": "Partagez vos PDF compressés directement par e-mail ou sur les réseaux sociaux et imprimez-les en quelques clics."
+        },
+        {
+          "title": "Fonctionnalités de Personnalisation",
+          "description": "Ajustez les paramètres de compression pour équilibrer la qualité et la taille du fichier selon vos besoins spécifiques."
+        }
+      ]
+    },
+    "sectionThree": {
+      "title": "Nos Membres de l'Équipe",
+      "description": "Notre équipe est un groupe diversifié de professionnels dévoués et passionnés par la technologie et l'expérience utilisateur. Des développeurs de logiciels et des designers aux spécialistes du support client, chaque membre apporte son expertise et son enthousiasme. Nous nous engageons à améliorer continuellement notre outil et à nous assurer qu'il répond à vos besoins avec les plus hauts standards de performance et de fiabilité.",
+      "teams": [
+        {
+          "name": "Amit Chowdhury",
+          "role": "CTO",
+          "image": "https://cdn.compresspdf.to/person/amit.png",
+          "facebook": "#",
+          "linkedin": "https://www.linkedin.com/in/amit-chowdhury-867045ba"
+        },
+        {
+          "name": "Mrinmoy Roy",
+          "role": "Head of Product",
+          "image": "https://cdn.compresspdf.to/person/Mrinmoy-Roy.png",
+          "facebook": "https://www.facebook.com/mrinmoyroy97?_rdc=1&_rdr",
+          "linkedin": "https://onlinegradecalculator.io/www.linkedin.com/in/mrin-moy-roy/?originalSubdomain=bd"
+        },
+        {
+          "name": "Borhan Uddin",
+          "role": "Product Analyst",
+          "image": "https://cdn.compresspdf.to/person/Borhan-Uddin.png",
+          "facebook": "https://www.facebook.com/profile.php?id=100006072040955",
+          "linkedin": "https://www.linkedin.com/in/borhanuddin65/"
+        },
+        {
+          "name": "A.N.M. Mohaimen Shanto",
+          "role": "Product Analyst",
+          "image": "https://cdn.compresspdf.to/person/A.N.M.-MOHAIMEN-SHANTO.png",
+          "facebook": "https://www.facebook.com/anm.shanto",
+          "linkedin": "https://www.linkedin.com/in/shanto7622/"
+        },
+        {
+          "name": "Mehrab Imtiaz",
+          "role": "Product analyst",
+          "image": "https://cdn.compresspdf.to/person/Mehrab-Imtiaz.png",
+          "facebook": "https://www.facebook.com/mehrab.imtiaz/",
+          "linkedin": "www.linkedin.com/in/mehrab-imtiaz-4a716413b"
+        },
+        {
+          "name": "Al Arafat Siddique",
+          "role": "Technical Lead",
+          "image": "https://cdn.compresspdf.to/person/Al-Arafat-Siddique.png",
+          "facebook": "https://www.facebook.com/arafatdipto",
+          "linkedin": "https://www.linkedin.com/in/al-arafat-siddique/"
+        },
+        {
+          "name": "Md.Sajib Ahmed",
+          "role": "Software Engineer",
+          "image": "https://cdn.compresspdf.to/person/Md.-Sajib-Ahmed.png",
+          "facebook": "https://www.facebook.com/asajib45",
+          "linkedin": "https://www.linkedin.com/in/sajib-ahmed-root/"
+        },
+        {
+          "name": "MD.Ayat Rahman",
+          "role": "Software Engineer",
+          "image": "https://cdn.compresspdf.to/person/MD.-Al-Ayat-Ibna-Rahman.png",
+          "facebook": "https://www.facebook.com/ayat.jkr/",
+          "linkedin": "https://www.linkedin.com/in/thisisayat/"
+        },
+        {
+          "name": "Atik Ullah Khan",
+          "role": "Software Engineer",
+          "image": "https://cdn.compresspdf.to/person/Md.-Atik-Ullah-Khan-Murad.png",
+          "facebook": "#",
+          "linkedin": "https://www.linkedin.com/in/proatik/"
+        },
+        {
+          "name": "Anonnya Ghosh",
+          "role": "Software Engineer",
+          "image": "https://cdn.compresspdf.to/person/Anonnya-Ghosh.png",
+          "facebook": "https://www.facebook.com/profile.php?id=100005994046772",
+          "linkedin": "www.linkedin.com/in/anonnya-ghosh-6a934b211"
+        },
+        {
+          "name": "Zahid Hassan",
+          "role": "Software Engineer",
+          "image": "https://cdn.compresspdf.to/person/Zahid-Hassan.png",
+          "facebook": "https://www.facebook.com/zahid.2499?mibextid=ZbWKwL",
+          "linkedin": "https://www.linkedin.com/in/zahid-hassan-041177143"
+        },
+        {
+          "name": "Rabeya Islam",
+          "role": "SQA",
+          "image": "https://cdn.compresspdf.to/person/Rabeya-Islam.png",
+          "facebook": "https://www.facebook.com/rabeyaislamm/",
+          "linkedin": "https://www.linkedin.com/in/rabeya-islam/"
+        },
+        {
+          "name": "Farhan-Nafiz",
+          "role": "SQA",
+          "image": "https://cdn.compresspdf.to/person/Farhan-Nafiz.png",
+          "facebook": "https://www.facebook.com/farhnnafiz.fahim",
+          "linkedin": "https://www.linkedin.com/in/farhan-nafiz/"
+        },
+        {
+          "name": "Sadia Hossain",
+          "role": "UI/UX Designer",
+          "image": "https://cdn.compresspdf.to/person/Sadia-Hossain-1.png",
+          "facebook": "https://www.facebook.com/sadiahossain.091738?mibextid=ZbWKwL",
+          "linkedin": "https://www.linkedin.com/in/sadia-hossain-368b501a9"
+        }
+      ]
+    },
+    "sectionFour": {
+      "title": "Pourquoi Nous Choisir ?",
+      "description": "Choisir Compress PDF signifie opter pour une solution fiable, intuitive et gratuite pour vos besoins de compression PDF. Voici pourquoi nous nous démarquons :",
+      "items": [
+        {
+          "title": "Facilité d'Utilisation",
+          "description": "Notre plateforme est conçue dans un souci de simplicité, la rendant accessible à tous, quel que soit le niveau de compétence technique."
+        },
+        {
+          "title": "Rapide et Efficace",
+          "description": "Bénéficiez de temps de traitement rapides et de résultats de haute qualité grâce à notre technologie de compression avancée."
+        },
+        {
+          "title": "Options Personnalisables",
+          "description": "Adaptez les paramètres de compression à vos préférences pour maintenir la qualité de vos documents tout en réduisant leur taille"
+        },
+        {
+          "title": "Sûr et Fiable",
+          "description": "Vos fichiers sont traités avec le plus grand soin, garantissant que vos données restent privées et sécurisées."
+        }
+      ]
+    },
+    "metaData": {
+      "title": "À Propos | CompressPDF",
+      "description": "CompressPDF : Réduisez rapidement les PDF sans perte de qualité. Rapide, fiable et convivial pour tous vos besoins documentaires.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/fr/a-propos/",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/about/",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/ueber/",
+            "hreflang": "de"
+          },
+          {
+            "href": "https://compresspdf.to/fr/ueber/",
+            "hreflang": "fr"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "À Propos | CompressPDF",
+        "description": "CompressPDF : Réduisez rapidement les PDF sans perte de qualité. Rapide, fiable et convivial pour tous vos besoins documentaires.",
+        "url": "https://compresspdf.to/fr/a-propos/",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/about-fr.png",
+            "alt": "Compresser des fichiers PDF en ligne sans perte de qualité"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "À Propos | CompressPDF",
+        "description": "CompressPDF : Réduisez rapidement les PDF sans perte de qualité. Rapide, fiable et convivial pour tous vos besoins documentaires.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/about-fr.png",
+            "alt": "Compresser des fichiers PDF en ligne sans perte de qualité"
+          }
+        ]
+      }
+    },
+    "schema": {
+      "organization": {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Compress PDF",
+        "url": "https://compresspdf.to/fr/a-propos/",
+        "logo": "Logo-URL",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+88 01327403953",
+          "contactType": "Customer Service"
+        },
+        "email": "info@compresspdf.to/",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Navana Newbury Place, Shobhanbag",
+          "addressLocality": "Dhanmondi",
+          "postalCode": "1207",
+          "addressCountry": "BD"
+        }
+      }
+    }
+  },
+  "cookiePolicy": {
+    "heading": "Politique de Cookies",
+    "description": "Chez CompressPDF.to, exploité par Softeko, nous n'utilisons actuellement pas de cookies à des fins publicitaires ou similaires. Cependant, cette Politique de Cookies explique ce que sont les cookies, comment nous les utilisons dans notre configuration actuelle, et comment nous pourrions les utiliser à l'avenir si nous mettons en place de la publicité ou d'autres fonctionnalités nécessitant des cookies.",
+    "sectionOne": {
+      "heading": "1. Que Sont Les Cookies ?",
+      "subHeadingOne": "1.1 Définition",
+      "descriptionOne": "Les cookies sont de petits fichiers texte placés sur votre appareil (ordinateur, smartphone, tablette) par les sites web que vous visitez. Ils aident les sites web à mémoriser vos préférences et à améliorer votre expérience de navigation.",
+      "subHeadingTwo": "1.2 Types de Cookies",
+      "descriptionTwo": "Il existe plusieurs types de cookies, notamment :",
+      "list": [
+        "Cookies de Session : Cookies temporaires qui sont effacés lorsque vous fermez votre navigateur. Ils aident à suivre votre session pendant que vous naviguez sur notre Site",
+        "Cookies Persistants : Ceux-ci restent sur votre appareil pendant une période définie ou jusqu'à ce que vous les supprimiez. Ils vous aident à mémoriser vos préférences et paramètres pour les visites futures."
+      ]
+    },
+    "sectionTwo": {
+      "heading": "2. Utilisation Actuelle des Cookies",
+      "subHeadingOne": "2.1 Cookies Essentiels",
+      "descriptionOne": "Nous utilisons actuellement des cookies essentiels qui sont nécessaires pour le fonctionnement de base de notre Site. Ces cookies vous permettent de naviguer sur le Site et d'utiliser ses fonctionnalités, telles que le téléchargement et le téléversement de fichiers.",
+      "subHeadingTwo": "2.2 Cookies de Performance et Fonctionnels",
+      "descriptionTwo": "À l'heure actuelle, nous n'utilisons pas de cookies pour collecter des données de performance ou fonctionnelles. Nous ne suivons pas votre comportement de navigation ni ne mémorisons les préférences au-delà de ce qui est nécessaire pour les fonctionnalités essentielles."
+    },
+    "sectionThree": {
+      "heading": "3. Utilisation Future des Cookies",
+      "subHeadingOne": "3.1 Changements Potentiels",
+      "descriptionOne": "À l'avenir, nous pourrions introduire de la publicité ou d'autres fonctionnalités qui pourraient nécessiter l'utilisation de cookies supplémentaires. Si nous le faisons, nous mettrons à jour cette Politique de Cookies pour refléter les changements et fournir des informations sur la façon dont ces cookies seront utilisés.",
+      "subHeadingTwo": "3.2 Updates to This Policy",
+      "descriptionTwo": "If we begin using cookies for purposes beyond the current essential functionality, we will revise this Cookie Policy to include details on the types of cookies used, their purposes, and how you can manage your preferences."
+    },
+    "sectionFour": {
+      "heading": "4. Managing Cookies",
+      "subHeadingOne": "4.1 Browser Settings",
+      "descriptionOne": "You can manage your cookie preferences through your browser settings. Most browsers allow you to refuse or delete cookies. However, please note that blocking cookies may impact the functionality of our Site and your overall experience.",
+      "subHeadingTwo": "4.2 Opt-Out Links",
+      "descriptionTwo": "In the event that we start using third-party analytics or advertising services in the future, you will have the option to opt out of these cookies through the respective opt-out pages provided by those services."
+    },
+    "sectionFive": {
+      "heading": "5. Changes to This Cookie Policy",
+      "subHeadingOne": "5.1 Updates",
+      "descriptionOne": "We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page with an updated effective date."
+    },
+    "sectionSix": {
+      "heading": "6. Contact Us",
+      "description": "If you have any questions or concerns about this Cookie Policy or our use of cookies, please contact us at:",
+      "email": "Email",
+      "emailInfo": "support@compresspdf.to",
+      "address": "Address",
+      "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesh",
+      "phone": "Phone",
+      "phoneInfo": "+88 01327403953",
+      "thankyou": "Thank you for using CompressPDF.to!"
+    },
+    "metaData": {
+      "title": "Cookie Policy | CompressPDF",
+      "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/cookie-policy/",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/cookie-policy/",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/cookie-richtlinie/",
+            "hreflang": "de"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "Cookie Policy | CompressPDF",
+        "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
+        "url": "https://compresspdf.to/cookie-policy/",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/cookie-policy-en.png",
+            "alt": "Compress PDF Files Online Without Losing Quality"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "Cookie Policy | CompressPDFF",
+        "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/cookie-policy-en.png",
+            "alt": "Compress PDF Files Online Without Losing Quality"
+          }
+        ]
+      }
+    },
+    "schema": {
+      "softwareApplication": {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Cookie Policy of CompressPDF",
+        "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "All",
+        "author": {
+          "@type": "Organization",
+          "name": "CompressPDF",
+          "url": "https://compresspdf.to/about/",
+          "description": "Learn about compresspdf.to, your fast and secure PDF compression tool. Discover our mission to simplify document management with user-friendly features."
+        },
+        "datePublished": "2024-020-20",
+        "url": "https://compresspdf.to/cookie-policy/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1237"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "screenshot": "https://cdn.compresspdf.to/images/cookie-policy-en.png",
+        "featureList": [
+          "Explains the current limited use of essential cookies",
+          "Defines different types of cookies and their purposes",
+          "Outlines potential future use of cookies for additional features",
+          "Provides information on managing cookie preferences",
+          "Describes the process for updating the Cookie Policy",
+          "Offers contact details for questions or concerns",
+          "Ensures transparency about current and potential cookie practices"
+        ]
+      }
+    }
+  },
+  "termsAndConditions": {
+    "heading": "Conditions Générales d'Utilisation",
+    "description": "Bienvenue sur CompressPDF.to, exploité par Softeko. Ces Conditions Générales d'Utilisation ('Conditions') régissent votre utilisation de notre site web situé à https://compresspdf.to/ (le 'Site'). En accédant ou en utilisant notre Site, vous acceptez de vous conformer à ces Conditions et d'être lié par elles. Si vous n'êtes pas d'accord avec ces Conditions, veuillez ne pas utiliser notre Site.",
+    "sectionOne": {
+      "heading": "1. Utilisation du Site",
+      "subHeadingOne": "1.1 Description du Service",
+      "descriptionOne": "CompressPDF.to fournit un service de compression de fichiers PDF. En téléchargeant des fichiers PDF sur notre Site, vous acceptez d'utiliser le service uniquement à des fins personnelles ou professionnelles et non à des fins illégales ou non autorisées.",
+      "subHeadingTwo": "1.2 Exigences de Compte",
+      "descriptionTwo": "Vous n'avez pas besoin de créer un compte pour utiliser notre service de compression de fichiers. Cependant, vous devez avoir au moins 13 ans pour utiliser notre Site."
+    },
+    "sectionTwo": {
+      "heading": "2. Responsabilités de l'Utilisateur",
+      "subHeadingOne": "2.1 Téléchargements de Fichiers",
+      "descriptionOne": "Vous êtes seul responsable du contenu des fichiers que vous téléchargez sur notre Site. En téléchargeant des fichiers, vous déclarez et garantissez que vous avez le droit de le faire et que les fichiers ne violent aucune loi ou droit de tiers",
+      "subHeadingTwo": "2.2 Contenu Interdit",
+      "descriptionTwo": "Vous ne devez pas télécharger des fichiers contenant du contenu illégal, y compris, mais sans s'y limiter, des virus, des logiciels malveillants, ou du contenu diffamatoire, obscène ou autrement répréhensible."
+    },
+    "sectionThree": {
+      "heading": "3. Stockage des Données et Confidentialité",
+      "subHeadingOne": "3.1 Conservation des Fichiers",
+      "descriptionOne": "Les fichiers téléchargés sur notre Site sont stockés pendant un maximum de 2 heures pour le traitement. Après cette période, les fichiers sont automatiquement supprimés de nos serveurs. Nous ne conservons aucune donnée personnelle ou fichier au-delà de cette période.",
+      "subHeadingTwo": "3.2 Politique de Confidentialité",
+      "descriptionTwo": "Le traitement de vos données est régi par notre Politique de Confidentialité, qui peut être consultée ici. En utilisant notre Site, vous acceptez les termes de notre Politique de Confidentialité."
+    },
+    "sectionFour": {
+      "heading": "4. Propriété Intellectuelle",
+      "subHeadingOne": "4.1 Propriété",
+      "descriptionOne": "Tout le contenu, les marques de commerce et autres propriétés intellectuelles sur notre Site, y compris, mais sans s'y limiter, le texte, les graphiques et les logos, sont la propriété de ou sous licence de Softeko et sont protégés par les lois applicables sur la propriété intellectuelle.",
+      "subHeadingTwo": "4.2 Licence Limitée",
+      "descriptionTwo": "Vous bénéficiez d'une licence limitée, non exclusive et non transférable pour accéder et utiliser le Site dans son but prévu. Vous ne pouvez pas copier, modifier, distribuer ou créer des œuvres dérivées basées sur le Site ou son contenu sans notre autorisation écrite expresse."
+    },
+    "sectionFive": {
+      "heading": "5. Limitation de Responsabilité",
+      "subHeadingOne": "5.1 Clause de Non-Responsabilité",
+      "descriptionOne": "Notre Site est fourni 'tel quel' et 'tel que disponible'. Nous ne faisons aucune garantie ou représentation quant à l'exactitude, la fiabilité ou la disponibilité du Site. Dans la mesure permise par la loi, nous déclinons toutes les garanties, expresses ou implicites, y compris, mais sans s'y limiter, les garanties implicites de qualité marchande et d'adéquation à un usage particulier.",
+      "subHeadingTwo": "5.2 Limitation de Responsabilité",
+      "descriptionTwo": "En aucun cas Softeko ou ses affiliés ne seront responsables des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs découlant de ou liés à votre utilisation du Site, même si nous avons été informés de la possibilité de tels dommages. Notre responsabilité totale pour toute réclamation découlant de votre utilisation du Site ne dépassera pas le montant que vous avez payé, le cas échéant, pour accéder au Site."
+    },
+    "sectionSix": {
+      "heading": "6. Résiliation",
+      "subHeadingOne": "6.1 Résiliation de l'Accès",
+      "descriptionOne": "Nous nous réservons le droit de résilier ou de suspendre votre accès à notre Site à notre seule discrétion, sans préavis, si nous estimons que vous avez violé ces Conditions ou que vous vous êtes engagé dans un comportement qui pourrait nuire à notre Site ou à d'autres utilisateurs."
+    },
+    "sectionSeven": {
+      "heading": "7. Modifications des Conditions",
+      "subHeadingOne": "7.1 Mises à Jour",
+      "descriptionOne": "Nous pouvons mettre à jour ces Conditions de temps à autre. Toute modification sera publiée sur cette page avec une date d'entrée en vigueur mise à jour. Votre utilisation continue du Site après la publication des modifications constitue votre acceptation de ces modifications."
+    },
+    "sectionEight": {
+      "heading": "8. Contactez-Nous",
+      "description": "Si vous avez des questions ou des préoccupations concernant ces Conditions, veuillez nous contacter à : ",
+      "email": "Email",
+      "emailInfo": "support@compresspdf.to",
+      "address": "Address",
+      "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesh",
+      "phone": "Phone",
+      "phoneInfo": "+88 01327403953",
+      "thankyou": "Thank you for using CompressPDF.to!"
+    },
+    "metaData": {
+      "title": "Termes et Conditions | CompressPDF",
+      "description": "Comprenez vos droits et responsabilités en utilisant CompressPDF. Informez-vous sur la gestion des fichiers, la confidentialité et les limites de responsabilité.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/fr/termes-et-conditions/",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/terms-and-conditions/",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/geschaftsbedingungen/",
+            "hreflang": "de"
+          },
+          {
+            "href": "https://compresspdf.to/fr/termes-et-conditions/",
+            "hreflang": "fr"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "Termes et Conditions | CompressPDF",
+        "description": "Comprenez vos droits et responsabilités en utilisant CompressPDF. Informez-vous sur la gestion des fichiers, la confidentialité et les limites de responsabilité.",
+        "url": "https://compresspdf.to/fr/termes-et-conditions/",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/terms-and-conditions-fr.png",
+            "alt": "Compresser des fichiers PDF en ligne sans perte de qualité"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "Termes et Conditions | CompressPDF",
+        "description": "Comprenez vos droits et responsabilités en utilisant CompressPDF. Informez-vous sur la gestion des fichiers, la confidentialité et les limites de responsabilité.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/terms-and-conditions-fr.png",
+            "alt": "Compresser des fichiers PDF en ligne sans perte de qualité"
+          }
+        ]
+      }
+    },
+    "schema": {
+      "softwareApplication": {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Termes et Conditions de CompressPDF",
+        "description": "Comprenez vos droits et responsabilités en utilisant CompressPDF. Informez-vous sur la gestion des fichiers, la confidentialité et les limites de responsabilité.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "All",
+        "author": {
+          "@type": "Organization",
+          "name": "CompressPDF",
+          "url": "https://compresspdf.to/fr/a-propos/",
+          "description": "Découvrez compresspdf.to, votre outil sécurisé de compression PDF. Notre mission : simplifier la gestion documentaire avec des fonctionnalités intuitives."
+        },
+        "datePublished": "2024-020-20",
+        "url": "https://compresspdf.to/terms-and-conditions/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1237"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "screenshot": "https://cdn.compresspdf.to/images/terms-and-conditions-r.png",
+        "featureList": [
+          "Décrit les responsabilités de l'utilisateur et le contenu interdit",
+          "Explique les pratiques de stockage des fichiers et de confidentialité",
+          "Clarifie les droits de propriété intellectuelle et les limitations d'utilisation",
+          "Détaille les clauses de non-responsabilité et les limitations",
+          "Décrit les conditions de résiliation de l'accès au site",
+          "Informe des mises à jour potentielles des conditions",
+          "Fournit les coordonnées pour les demandes de renseignements",
+          "Spécifie l'âge minimum requis pour l'utilisation du site"
+        ]
+      }
+    }
+  },
+  "privacyPolicy": {
+    "heading": "Politique de Confidentialité",
+    "description": "Bienvenue sur CompressPDF.to, exploité par Softeko. Cette Politique de Confidentialité décrit comment nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site web, situé à https://compresspdf.to/ (le 'Site'). En utilisant notre Site, vous acceptez les conditions décrites dans cette Politique de Confidentialité.",
+    "sectionOne": {
+      "heading": "1. Informations Que Nous Collectons",
+      "subHeadingOne": "1.1 Fichiers Téléchargés",
+      "descriptionOne": "Lorsque vous utilisez CompressPDF.to pour compresser des fichiers PDF, nous collectons les fichiers que vous téléchargez. Ces fichiers sont traités sur nos serveurs pour effectuer le service de compression.",
+      "subHeadingTwo": "1.2 Données d'Utilisation",
+      "descriptionTwo": "Nous pouvons collecter des données sur la façon dont vous interagissez avec notre Site, y compris votre adresse IP, le type de navigateur et les heures d'accès. Ces informations nous aident à améliorer nos services et à assurer le bon fonctionnement du Site."
+    },
+    "sectionTwo": {
+      "heading": "2. Comment Nous Utilisons Vos Informations",
+      "subHeadingOne": "2.1 Traitement des Fichiers",
+      "descriptionOne": "Les fichiers que vous téléchargez sont principalement utilisés pour vous fournir le service de compression demandé.",
+      "subHeadingTwo": "2.2 Données d'Utilisation",
+      "descriptionTwo": "Nous utilisons ces informations pour analyser et améliorer la fonctionnalité et la performance de notre Site. Ces données sont utilisées sous forme agrégée et n'identifient pas les utilisateurs individuels.."
+    },
+    "sectionThree": {
+      "heading": "3. Stockage et Conservation des Données",
+      "subHeadingOne": "3.1 Stockage Temporaire",
+      "descriptionOne": "Les fichiers que vous téléchargez sont temporairement stockés sur nos serveurs pendant 2 heures. Après cette période, les fichiers sont automatiquement supprimés de nos serveurs.",
+      "subHeadingTwo": "3.2 Pas de Stockage Permanent",
+      "descriptionTwo": "Nous ne conservons aucune donnée personnelle ou fichier au-delà de la période de traitement de 2 heures. Une fois supprimés, les fichiers sont irrévocablement retirés de nos serveurs."
+    },
+    "sectionFour": {
+      "heading": "4. Sécurité des Données",
+      "subHeadingOne": "4.1 Mesures de Sécurité",
+      "descriptionOne": "Nous mettons en œuvre des mesures de sécurité standard de l'industrie pour protéger vos données pendant la transmission et pendant leur stockage sur nos serveurs. Cependant, aucune méthode de transmission sur Internet ou de stockage électronique n'est totalement sécurisée. Bien que nous nous efforcions de protéger vos données, nous ne pouvons garantir une sécurité absolue."
+    },
+    "sectionFive": {
+      "heading": "5. Services Tiers",
+      "subHeadingOne": "5.1 Pas de Partage de Données avec des Tiers",
+      "descriptionOne": "Nous ne partageons, ne vendons ni ne divulguons vos fichiers ou informations personnelles à des tiers, sauf si la loi l'exige ou pour nous conformer à des procédures légales.",
+      "subHeadingTwo": "5.2 Liens Externes",
+      "descriptionTwo": "Notre Site peut contenir des liens vers d'autres sites web. Nous ne sommes pas responsables des pratiques de confidentialité ou du contenu de ces sites externes. Nous vous encourageons à consulter les politiques de confidentialité de tout site tiers que vous visitez."
+    },
+    "sectionSix": {
+      "heading": "6. Modifications de Cette Politique de Confidentialité",
+      "subHeadingOne": "6.1 Mises à Jour",
+      "descriptionOne": "Nous pouvons mettre à jour cette Politique de Confidentialité de temps en temps. Tout changement sera publié sur cette page avec une date d'effet mise à jour. Votre utilisation continue du Site après la publication des modifications constitue votre acceptation de ces modifications."
+    },
+    "sectionSeven": {
+      "heading": "7. Contactez-Nous",
+      "description": "Si vous avez des questions ou des préoccupations concernant cette Politique de Confidentialité ou nos pratiques en matière de données, veuillez nous contacter à :",
+      "email": "Email",
+      "emailInfo": "support@compresspdf.to",
+      "address": "Address",
+      "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesh",
+      "phone": "Phone",
+      "phoneInfo": "+88 01327403953",
+      "thankyou": "Merci d'utiliser CompressPDF.to !"
+    },
+    "metaData": {
+      "title": "Politique de Confidentialité | CompressPDF",
+      "description": "Découvrez comment CompressPDF protège vos données. Notre politique détaille la gestion des fichiers, l'utilisation des données et notre engagement envers votre vie privée.",
+      "alternates": {
+        "canonical": "https://compresspdf.to/fr/politique-de-confidentialite/",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/privacy-policy/",
+            "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/de/datenschutzrichtlinie/",
+            "hreflang": "de"
+          },
+          {
+            "href": "https://compresspdf.to/fr/politique-de-confidentialite/",
+            "hreflang": "fr"
+          }
+        ]
+      },
+      "openGraph": {
+        "title": "Politique de Confidentialité | CompressPDF",
+        "description": "Découvrez comment CompressPDF protège vos données. Notre politique détaille la gestion des fichiers, l'utilisation des données et notre engagement envers votre vie privée.",
+        "url": "https://compresspdf.to/fr/politique-de-confidentialite/",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-fr.png",
+            "alt": "Compress PDF Files Online Without Losing Quality"
+          }
+        ]
+      },
+      "twitter": {
+        "title": "Politique de Confidentialité | CompressPDF",
+        "description": "Découvrez comment CompressPDF protège vos données. Notre politique détaille la gestion des fichiers, l'utilisation des données et notre engagement envers votre vie privée.",
+        "images": [
+          {
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-fr.png",
+            "alt": "Compress PDF Files Online Without Losing Quality"
+          }
+        ]
+      }
+    },
+    "schema": {
+      "softwareApplication": {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Politique de Confidentialité de CompressPDF",
+        "description": "Découvrez comment CompressPDF protège vos données. Notre politique détaille la gestion des fichiers, l'utilisation des données et notre engagement envers votre vie privée.",
+        "applicationCategory": "Utilities",
+        "operatingSystem": "All",
+        "author": {
+          "@type": "Organization",
+          "name": "CompressPDF",
+          "url": "https://compresspdf.to/fr/a-propos/",
+          "description": "Découvrez compresspdf.to, votre outil sécurisé de compression PDF. Notre mission : simplifier la gestion documentaire avec des fonctionnalités intuitives."
+        },
+        "datePublished": "2024-020-20",
+        "url": "https://compresspdf.to/fr/politique-de-confidentialite/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1237"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "screenshot": "https://cdn.compresspdf.to/images/privacy-policy-fr.png",
+        "featureList": [
+          "Décrit les pratiques de collecte et d'utilisation des données",
+          "Explique le stockage temporaire des fichiers (2 heures) et leur suppression",
+          "Détaille la collecte de données d'utilisation pour l'amélioration du site",
+          "Décrit les mesures de sécurité pour la protection des données",
+          "Clarifie la politique de non-partage des données avec des tiers",
+          "Informe sur les mises à jour potentielles de la politique de confidentialité",
+          "Fournit des informations de contact pour les questions"
+        ]
+      }
+    }
+  }
+}

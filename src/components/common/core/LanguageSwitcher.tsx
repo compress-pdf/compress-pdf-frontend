@@ -7,6 +7,7 @@ import { Fragment, useState } from 'react';
 import { usePathname, useRouter } from '@/i18n/routing';
 import English from '@/assets/icons/svgs/lang/English';
 import German from '@/assets/icons/svgs/lang/German';
+import Franch from '@/assets/icons/svgs/lang/Franch';
 
 export default function LanguageSwitcher() {
   const pathname = usePathname();
@@ -23,11 +24,15 @@ export default function LanguageSwitcher() {
   const changeLocale = (newLocale: { label: string; value: string }) => {
     setSelectedLocale(newLocale);
     router.replace(pathname, {
-      locale: newLocale.value as 'en' | 'de' | undefined,
+      locale: newLocale.value as 'en' | 'de' | 'fr' | undefined,
     });
   };
 
-  const icons = [<English key="en" />, <German key="de" />];
+  const icons = [
+    <English key="en" />,
+    <German key="de" />,
+    <Franch key="fr" />,
+  ];
 
   return (
     <div className="relative hidden lg:inline-block ">
