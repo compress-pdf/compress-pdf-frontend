@@ -30,6 +30,7 @@ export async function generatePageMetadata(
       title: t('openGraph.title'),
       description: t('openGraph.description'),
       type: 'website',
+      siteName: 'CompressPDF',
       url: t('openGraph.url'),
       images: t.raw('openGraph.images'),
     },
