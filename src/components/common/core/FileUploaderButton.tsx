@@ -34,7 +34,8 @@ const FileUploaderButton: React.FC<FileUploaderButtonProps> = ({
     const isCorrupted = await helpers.validatePdfFiles(
       event.target.files as FileList,
       4,
-      50
+      50,
+      200
     );
     if (fileInputRef.current && !isCorrupted.valid) {
       fileInputRef.current.value = ''; // Clear the input

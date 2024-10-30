@@ -293,7 +293,8 @@ export const detectTheme = (): 'light' | 'dark' => {
 const validatePdfFiles = async (
   files: FileList,
   maxFiles: number,
-  maxSizeMB: number
+  maxSizeMB: number,
+  pageSize: number
 ): Promise<{ valid: boolean; messages: string[] }> => {
   const messages: string[] = [];
 
@@ -348,9 +349,9 @@ const validatePdfFiles = async (
   );
 
   // Step 5: Check total page count limit
-  if (totalPages > 200) {
+  if (totalPages > pageSize) {
     messages.push(
-      `Maximum page limit exceeded: Total pages must be under ${200}.`
+      `Maximum page limit exceeded: Total pages must be under ${pageSize}.`
     );
   }
 

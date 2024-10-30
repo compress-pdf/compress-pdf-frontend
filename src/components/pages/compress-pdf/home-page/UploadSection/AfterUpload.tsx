@@ -92,7 +92,8 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
       const isCorrupted = await helpers.validatePdfFiles(
         e.target.files as FileList,
         4,
-        50
+        50,
+        200
       );
       if (fileInputRef.current) {
         fileInputRef.current.value = ''; // Clear the input

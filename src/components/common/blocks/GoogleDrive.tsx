@@ -93,7 +93,7 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
 
       const fileListLike = fileArrayToFileList(fetchedFiles);
 
-      const validationResult = await validatePdfFiles(fileListLike, 4, 50);
+      const validationResult = await validatePdfFiles(fileListLike, 4, 50, 200);
 
       if (validationResult.valid) {
         handleNewFiles(fetchedFiles);
