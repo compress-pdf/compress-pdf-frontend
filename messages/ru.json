@@ -985,38 +985,39 @@
       }
     ]
   },
+
   "about": {
-    "heading": "About Compress PDF",
-    "description": "Welcome to Online Compress PDF, your go-to solution for efficient and high-quality PDF compression. Whether you're a professional handling large reports, a student submitting assignments, or a small business owner archiving documents, we are here to simplify your PDF management process.",
+    "heading": "О Compresspdf.to",
+    "description": "Добро пожаловать в Online Compress PDF, ваше надежное решение для эффективного и высококачественного сжатия PDF. Независимо от того, являетесь ли вы профессионалом, работающим с большими отчетами, студентом, отправляющим задания, или владельцем малого бизнеса, архивирующим документы, мы здесь, чтобы упростить ваш процесс управления PDF.",
     "sectionOne": {
-      "title": "What is Our Mission?",
-      "description": "At Compress PDF, our mission is to simplify the management of PDF files by providing a user-friendly and efficient tool for compressing PDFs. We understand that large PDF files can be cumbersome, whether you're sharing documents via email, uploading to websites, or simply trying to save storage space. Our goal is to offer a seamless, accessible solution that enhances your productivity and convenience, allowing you to handle your PDF files with ease."
+      "title": "Наша Миссия",
+      "description": "В Compress PDF наша миссия - упростить управление PDF-файлами, предоставляя удобный и эффективный инструмент для сжатия PDF. Мы понимаем, что большие PDF-файлы могут быть обременительными, будь то при обмене документами по электронной почте, загрузке на веб-сайты или просто при попытке сэкономить место для хранения. Наша цель - предложить плавное и доступное решение, которое повысит вашу продуктивность и удобство, позволяя вам легко управлять вашими PDF-файлами."
     },
     "sectionTwo": {
-      "title": "What Do We Offer?",
-      "description": "We offer a comprehensive suite of features designed to meet all your PDF compression needs:",
+      "title": "Что Мы Предлагаем",
+      "description": "Мы предлагаем комплексный набор функций, разработанных для удовлетворения всех ваших потребностей в сжатии PDF:",
       "items": [
         {
-          "title": "Multiple Upload Systems",
-          "description": "Easily upload your files from your device, cloud storage, or drag-and-drop directly onto our platform."
+          "title": "Множественные Системы Загрузки",
+          "description": "Легко загружайте ваши файлы с вашего устройства, облачного хранилища или перетаскивайте их прямо на нашу платформу."
         },
         {
-          "title": "Flexible Download Methods",
-          "description": "Once your PDF is compressed, download it through various options tailored to your preferences."
+          "title": "Гибкие Методы Скачивания",
+          "description": "После сжатия вашего PDF, скачивайте его через различные варианты, адаптированные под ваши предпочтения."
         },
         {
-          "title": "Online Sharing and Printing",
-          "description": "Share your compressed PDFs directly through email or social media and print them with just a few clicks."
+          "title": "Онлайн-Обмен и Печать",
+          "description": "Делитесь вашими сжатыми PDF напрямую по электронной почте или в социальных сетях и печатайте их всего несколькими кликами."
         },
         {
-          "title": "Customization Features",
-          "description": "Adjust compression settings to balance quality and file size according to your specific requirements."
+          "title": "Функции Настройки",
+          "description": "Настраивайте параметры сжатия для баланса качества и размера файла в соответствии с вашими конкретными требованиями."
         }
       ]
     },
     "sectionThree": {
-      "title": "Our Team Members",
-      "description": "Our team is a diverse group of dedicated professionals passionate about technology and user experience. From software developers and designers to customer support specialists, each member brings expertise and enthusiasm to the table. We are committed to continually improving our tool and ensuring it meets your needs with the highest standards of performance and reliability.",
+      "title": "Наши Члены Команды",
+      "description": "Наша команда - это разнообразная группа преданных профессионалов, увлеченных технологиями и пользовательским опытом. От разработчиков программного обеспечения и дизайнеров до специалистов по поддержке клиентов, каждый член привносит опыт и энтузиазм. Мы стремимся постоянно улучшать наш инструмент и обеспечивать его соответствие вашим потребностям с самыми высокими стандартами производительности и надежности.",
       "teams": [
         {
           "name": "Amit Chowdhury",
@@ -1119,47 +1120,83 @@
       ]
     },
     "sectionFour": {
-      "title": "Why Choose Us?",
-      "description": "Choosing Compress PDF means opting for a reliable, intuitive, and cost-free solution to your PDF compression needs. Here’s why we stand out:",
+      "title": "Почему Выбирают Нас?",
+      "description": "Выбор Compress PDF означает выбор надежного, интуитивно понятного и бесплатного решения для ваших потребностей в сжатии PDF. Вот почему мы выделяемся:",
       "items": [
         {
-          "title": "Ease of Use",
-          "description": "Our platform is designed with simplicity in mind, making it accessible to everyone, regardless of technical skill."
+          "title": "Простота Использования",
+          "description": "Наша платформа разработана с учетом простоты, делая ее доступной для всех, независимо от технических навыков."
         },
         {
-          "title": "Customizable Options",
-          "description": "Tailor the compression settings to your preferences to maintain the quality of your documents while reducing their size."
+          "title": "Быстро и Эффективно",
+          "description": "Испытайте быстрое время обработки и высококачественные результаты с нашей передовой технологией сжатия."
         },
         {
-          "title": "Fast and Efficient",
-          "description": "Experience quick processing times and high-quality results with our advanced compression technology."
+          "title": "Настраиваемые Опции",
+          "description": "Адаптируйте настройки сжатия под ваши предпочтения, чтобы сохранить качество ваших документов при уменьшении их размера."
         },
         {
-          "title": "Secure and Reliable",
-          "description": "Your files are handled with the utmost care, ensuring your data remains private and secure."
+          "title": "Безопасно и Надежно",
+          "description": "Ваши файлы обрабатываются с максимальной осторожностью, обеспечивая конфиденциальность и безопасность ваших данных."
         }
       ]
     },
     "metaData": {
-      "title": "About | CompressPDF",
-      "description": "CompressPDF: Quickly and easily reduce PDF file sizes without losing quality. Fast, reliable, and user-friendly for all your document needs.",
+      "title": "О нас | CompressPDF",
+      "description": "CompressPDF: Быстро уменьшайте размер PDF без потери качества. Быстро, надёжно и удобно для всех документов.",
       "alternates": {
-        "canonical": "https://compresspdf.to/about/",
+        "canonical": "https://compresspdf.to/ru/o/",
         "hreflangs": [
+          {
+            "href": "https://compresspdf.to/about/",
+            "hreflang": "x-default"
+          },
           {
             "href": "https://compresspdf.to/about/",
             "hreflang": "en"
           },
           {
-            "href": "https://compresspdf.to/de/ueber/",
+            "href": "https://compresspdf.to/es/acerca-de/",
+            "hreflang": "es"
+          },
+          {
+            "href": "https://compresspdf.to/fr/a-propos/",
+            "hreflang": "fr"
+          },
+          {
+            "href": "https://compresspdf.to/id/tentang/",
+            "hreflang": "id"
+          },
+          {
+            "href": "https://compresspdf.to/tr/hakkinda/",
+            "hreflang": "tr"
+          },
+          {
+            "href": "https://compresspdf.to/ru/o/",
+            "hreflang": "ru"
+          },
+          {
+            "href": "https://compresspdf.to/it/informazioni-su/",
+            "hreflang": "it"
+          },
+          {
+            "href": "https://compresspdf.to/pt/sobre/",
+            "hreflang": "pt"
+          },
+          {
+            "href": "https://compresspdf.to/de/uber/",
             "hreflang": "de"
+          },
+          {
+            "href": "https://compresspdf.to/vi/ve/",
+            "hreflang": "vi"
           }
         ]
       },
       "openGraph": {
-        "title": "About | CompressPDF",
-        "description": "CompressPDF: Quickly and easily reduce PDF file sizes without losing quality. Fast, reliable, and user-friendly for all your document needs.",
-        "url": "https://compresspdf.to/about/",
+        "title": "О нас | CompressPDF",
+        "description": "CompressPDF: Быстро уменьшайте размер PDF без потери качества. Быстро, надёжно и удобно для всех документов.",
+        "url": "https://compresspdf.to/ru/o/",
         "images": [
           {
             "url": "https://cdn.compresspdf.to/images/about-en.png",
@@ -1168,8 +1205,8 @@
         ]
       },
       "twitter": {
-        "title": "About | CompressPDF",
-        "description": "CompressPDF: Quickly and easily reduce PDF file sizes without losing quality. Fast, reliable, and user-friendly for all your document needs.",
+        "title": "О нас | CompressPDF",
+        "description": "CompressPDF: Быстро уменьшайте размер PDF без потери качества. Быстро, надёжно и удобно для всех документов.",
         "images": [
           {
             "url": "https://cdn.compresspdf.to/images/about-en.png",
@@ -1183,14 +1220,14 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Compress PDF",
-        "url": "https://www.compresspdf.to/",
+        "url": "https://compresspdf.to/ru/o/",
         "logo": "https://cdn.compresspdf.to/images/logo.png",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+88 01327403953",
           "contactType": "Customer Service"
         },
-        "email": "info@compresspdf.to/",
+        "email": "info@compresspdf.to",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Navana Newbury Place, Shobhanbag",
@@ -1201,66 +1238,79 @@
       }
     }
   },
+
   "cookiePolicy": {
-    "heading": "Cookie Policy",
-    "description": "At CompressPDF.to, operated by Softeko, we currently do not use cookies for advertising or similar purposes. However, this Cookie Policy explains what cookies are, how we use them in our current setup, and how we might use them in the future if we implement advertising or other features that require cookies.",
+    "heading": "Политика Использования Файлов Cookie",
+    "description": "На CompressPDF.to, управляемом Softeko, в настоящее время мы не используем файлы cookie для рекламных или подобных целей. Однако эта Политика использования файлов cookie объясняет, что такое файлы cookie, как мы используем их в нашей текущей настройке и как мы могли бы использовать их в будущем, если мы внедрим рекламу или другие функции, требующие использования файлов cookie.",
     "sectionOne": {
-      "heading": "1. What Are Cookies?",
-      "subHeadingOne": "1.1. Definition",
-      "descriptionOne": "Cookies are small text files placed on your device (computer, smartphone, tablet) by websites you visit. They help websites remember your preferences and improve your browsing experience.",
-      "subHeadingTwo": "1.2 Types of Cookies",
-      "descriptionTwo": "There are several types of cookies, including:",
+      "heading": "1. Что Такое Файлы Cookie?",
+      "subHeadingOne": "1.1 Определение",
+      "descriptionOne": "Файлы cookie - это небольшие текстовые файлы, размещаемые на вашем устройстве (компьютере, смартфоне, планшете) веб-сайтами, которые вы посещаете. Они помогают веб-сайтам запоминать ваши предпочтения и улучшать ваш опыт просмотра.",
+      "subHeadingTwo": "1.2 Типы Файлов Cookie",
+      "descriptionTwo": "Существует несколько типов файлов cookie, включая:",
       "list": [
-        "Session Cookies: Temporary cookies that are erased when you close your browser. They help track your session while you navigate through our Site.",
-        "Persistent Cookies: These remain on your device for a set period or until you delete them. They help remember your preferences and settings for future visits."
+        "Сессионные Файлы Cookie: Временные файлы cookie, которые удаляются при закрытии браузера. Они помогают отслеживать вашу сессию при навигации по нашему Сайту.",
+        "Постоянные Файлы Cookie: Эти файлы остаются на вашем устройстве в течение определенного периода или до тех пор, пока вы их не удалите. Они помогают вам запоминать ваши предпочтения и настройки для будущих посещений."
       ]
     },
     "sectionTwo": {
-      "heading": "2. Current Use of Cookies",
-      "subHeadingOne": "2.1 Essential Cookies",
-      "descriptionOne": "We currently use essential cookies that are necessary for the basic functionality of our Site. These cookies enable you to navigate the Site and use its features, such as file uploading and downloading.",
-      "subHeadingTwo": "2.2 Performance and Functional Cookies",
-      "descriptionTwo": "As of now, we do not use cookies to collect performance or functional data. We do not track your browsing behavior or remember preferences beyond what is required for essential functionality."
+      "heading": "2. Текущее Использование Файлов Cookie",
+      "subHeadingOne": "2.1 Необходимые Файлы Cookie",
+      "descriptionOne": "В настоящее время мы используем необходимые файлы cookie, которые нужны для базовой функциональности нашего Сайта. Эти файлы cookie позволяют вам перемещаться по Сайту и использовать его функции, такие как загрузка и скачивание файлов.",
+      "subHeadingTwo": "2.2 Файлы Cookie для Производительности и Функциональности",
+      "descriptionTwo": "На данный момент мы не используем файлы cookie для сбора данных о производительности или функциональности. Мы не отслеживаем ваше поведение при просмотре и не запоминаем предпочтения сверх того, что необходимо для основной функциональности."
     },
     "sectionThree": {
-      "heading": "3. Future Use of Cookies",
-      "subHeadingOne": "3.1 Potential Changes",
-      "descriptionOne": "In the future, we may introduce advertising or other features that might require the use of additional cookies. If we do, we will update this Cookie Policy to reflect the changes and provide information on how these cookies will be used.",
-      "subHeadingTwo": "3.2 Updates to This Policy",
-      "descriptionTwo": "If we begin using cookies for purposes beyond the current essential functionality, we will revise this Cookie Policy to include details on the types of cookies used, their purposes, and how you can manage your preferences."
+      "heading": "3. Будущее Использование Файлов Cookie",
+      "subHeadingOne": "3.1 Потенциальные Изменения",
+      "descriptionOne": "В будущем мы можем внедрить рекламу или другие функции, которые могут потребовать использования дополнительных файлов cookie. Если мы это сделаем, мы обновим эту Политику использования файлов cookie, чтобы отразить изменения и предоставить информацию о том, как будут использоваться эти файлы cookie.",
+      "subHeadingTwo": "3.2 Обновления Этой Политики",
+      "descriptionTwo": "Если мы начнем использовать файлы cookie для целей, выходящих за рамки текущей основной функциональности, мы пересмотрим эту Политику использования файлов cookie, чтобы включить подробную информацию о типах используемых файлов cookie, их целях и о том, как вы можете управлять своими предпочтениями."
     },
     "sectionFour": {
-      "heading": "4. Managing Cookies",
-      "subHeadingOne": "4.1 Browser Settings",
-      "descriptionOne": "You can manage your cookie preferences through your browser settings. Most browsers allow you to refuse or delete cookies. However, please note that blocking cookies may impact the functionality of our Site and your overall experience.",
-      "subHeadingTwo": "4.2 Opt-Out Links",
-      "descriptionTwo": "In the event that we start using third-party analytics or advertising services in the future, you will have the option to opt out of these cookies through the respective opt-out pages provided by those services."
+      "heading": "4. Управление Файлами Cookie",
+      "subHeadingOne": "4.1 Настройки Браузера",
+      "descriptionOne": "Вы можете управлять своими предпочтениями в отношении файлов cookie через настройки вашего браузера. Большинство браузеров позволяют вам отказаться от файлов cookie или удалить их. Однако обратите внимание, что блокировка файлов cookie может повлиять на функциональность нашего Сайта и ваш общий опыт.",
+      "subHeadingTwo": "4.2 Ссылки для Отказа",
+      "descriptionTwo": "В случае, если мы начнем использовать сторонние аналитические или рекламные сервисы в будущем, у вас будет возможность отказаться от этих файлов cookie через соответствующие страницы отказа, предоставляемые этими сервисами."
     },
     "sectionFive": {
-      "heading": "5. Changes to This Cookie Policy",
-      "subHeadingOne": "5.1 Updates",
-      "descriptionOne": "We may update this Cookie Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page with an updated effective date."
+      "heading": "5. Изменения в Этой Политике Использования Файлов Cookie",
+      "subHeadingOne": "5.1 Обновления",
+      "descriptionOne": "Мы можем время от времени обновлять эту Политику использования файлов cookie, чтобы отразить изменения в наших практиках или по другим операционным, юридическим или нормативным причинам. Любые обновления будут опубликованы на этой странице с обновленной датой вступления в силу."
     },
     "sectionSix": {
-      "heading": "6. Contact Us",
-      "description": "If you have any questions or concerns about this Cookie Policy or our use of cookies, please contact us at:",
+      "heading": "6. Свяжитесь с Нами",
+      "description": "Если у вас есть какие-либо вопросы или concerns о данной Политике использования файлов cookie или нашем использовании файлов cookie, пожалуйста, свяжитесь с нами:",
       "email": "Email",
       "emailInfo": "support@compresspdf.to",
-      "address": "Address",
+      "address": "Адрес",
       "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesh",
-      "phone": "Phone",
+      "phone": "Телефон",
       "phoneInfo": "+88 01327403953",
-      "thankyou": "Thank you for using CompressPDF.to!"
+      "thankyou": "Спасибо за использование CompressPDF.to!"
     },
     "metaData": {
-      "title": "Cookie Policy | CompressPDF",
-      "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
+      "title": "Политика использования файлов Cookie | CompressPDF",
+      "description": "Узнайте об использовании файлов cookie CompressPDF. Информация о необходимых файлах cookie, потенциальном использовании и управлении настройками.",
       "alternates": {
-        "canonical": "https://compresspdf.to/cookie-policy/",
+        "canonical": "https://compresspdf.to/ru/cookie-policy/",
         "hreflangs": [
           {
             "href": "https://compresspdf.to/cookie-policy/",
+            "hreflang": "x-default"
+          },
+          {
+            "href": "https://compresspdf.to/cookie-policy/",
             "hreflang": "en"
+          },
+          {
+            "href": "https://compresspdf.to/fr/politique-de-cookies/",
+            "hreflang": "fr"
+          },
+          {
+            "href": "https://compresspdf.to/ru/cookie-policy/",
+            "hreflang": "ru"
           },
           {
             "href": "https://compresspdf.to/de/cookie-richtlinie/",
@@ -1269,97 +1319,113 @@
         ]
       },
       "openGraph": {
-        "title": "Cookie Policy | CompressPDF",
-        "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
-        "url": "https://compresspdf.to/cookie-policy/",
+        "title": "Политика использования файлов Cookie | CompressPDF",
+        "description": "Узнайте об использовании файлов cookie CompressPDF. Информация о необходимых файлах cookie, потенциальном использовании и управлении настройками.",
+        "url": "https://compresspdf.to/ru/cookie-policy/",
         "images": [
           {
-            "url": "https://cdn.compresspdf.to/images/cookie-policy-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-ru.png",
+            "alt": "Политика использования файлов Cookie | CompressPDF"
           }
         ]
       },
       "twitter": {
-        "title": "Cookie Policy | CompressPDFF",
-        "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
+        "title": "Политика использования файлов Cookie | CompressPDF",
+        "description": "Узнайте об использовании файлов cookie CompressPDF. Информация о необходимых файлах cookie, потенциальном использовании и управлении настройками.",
         "images": [
           {
-            "url": "https://cdn.compresspdf.to/images/cookie-policy-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-ru.png",
+            "alt": "Политика использования файлов Cookie | CompressPDF"
           }
         ]
       }
     }
   },
+
   "termsAndConditions": {
-    "heading": "Terms and Conditions",
-    "description": "Welcome to CompressPDF.to, operated by Softeko. These Terms and Conditions (Terms) govern your use of our website located at https://compresspdf.to/ (the Site). By accessing or using our Site, you agree to comply with and be bound by these Terms. If you do not agree with these Terms, please do not use our Site.",
+    "heading": "Условия Использования",
+    "description": "Добро пожаловать на CompressPDF.to, управляемый компанией Softeko. Настоящие Условия использования (\"Условия\") регулируют использование вами нашего веб-сайта, расположенного по адресу https://compresspdf.to/ (\"Сайт\"). Получая доступ или используя наш Сайт, вы соглашаетесь соблюдать эти Условия и быть связанными ими. Если вы не согласны с этими Условиями, пожалуйста, не используйте наш Сайт.",
     "sectionOne": {
-      "heading": "1. Use of the Site",
-      "subHeadingOne": "1.1 Service Description",
-      "descriptionOne": "CompressPDF.to provides a service to compress PDF files. By uploading PDF files to our Site, you agree to use the service solely for personal or business purposes and not for any illegal or unauthorized purpose.",
-      "subHeadingTwo": "1.2 Account Requirements",
-      "descriptionTwo": "You do not need to create an account to use our file compression service. However, you must be at least 13 years old to use our Site."
+      "heading": "1. Использование Сайта",
+      "subHeadingOne": "1.1 Описание Услуги",
+      "descriptionOne": "CompressPDF.to предоставляет услугу по сжатию PDF-файлов. Загружая PDF-файлы на наш Сайт, вы соглашаетесь использовать услугу исключительно в личных или деловых целях и не для каких-либо незаконных или несанкционированных целей.",
+      "subHeadingTwo": "1.2 Требования к Аккаунту",
+      "descriptionTwo": "Вам не нужно создавать аккаунт для использования нашей услуги сжатия файлов. Однако вам должно быть не менее 13 лет для использования нашего Сайта."
     },
     "sectionTwo": {
-      "heading": "2. User Responsibilities",
-      "subHeadingOne": "2.1 File Uploads",
-      "descriptionOne": "You are solely responsible for the content of the files you upload to our Site. By uploading files, you represent and warrant that you have the right to do so and that the files do not violate any laws or third-party rights.",
-      "subHeadingTwo": "2.2 Prohibited Content",
-      "descriptionTwo": "You must not upload files that contain illegal content, including but not limited to, viruses, malware, or content that is defamatory, obscene, or otherwise objectionable."
+      "heading": "2. Ответственность Пользователя",
+      "subHeadingOne": "2.1 Загрузка Файлов",
+      "descriptionOne": "Вы несете полную ответственность за содержание файлов, которые вы загружаете на наш Сайт. Загружая файлы, вы заявляете и гарантируете, что имеете право на это, и что файлы не нарушают никаких законов или прав третьих лиц.",
+      "subHeadingTwo": "2.2 Запрещенный Контент",
+      "descriptionTwo": "Вы не должны загружать файлы, содержащие незаконный контент, включая, но не ограничиваясь, вирусы, вредоносное программное обеспечение или контент, который является клеветническим, непристойным или иным образом неприемлемым."
     },
     "sectionThree": {
-      "heading": "3. Data Storage and Privacy",
-      "subHeadingOne": "3.1 File Retention",
-      "descriptionOne": "Files uploaded to our Site are stored for a maximum of 2 hours for processing. After this period, files are automatically deleted from our servers. We do not retain any personal data or files beyond this period.",
-      "subHeadingTwo": "3.2 Privacy Policy",
-      "descriptionTwo": "Our handling of your data is governed by our Privacy Policy, which can be reviewed here. By using our Site, you agree to the terms of our Privacy Policy."
+      "heading": "3. Хранение Данных и Конфиденциальность",
+      "subHeadingOne": "3.1 Хранение Файлов",
+      "descriptionOne": "Файлы, загруженные на наш Сайт, хранятся максимум 2 часа для обработки. После этого периода файлы автоматически удаляются с наших серверов. Мы не храним никаких личных данных или файлов дольше этого периода.",
+      "subHeadingTwo": "3.2 Политика Конфиденциальности",
+      "descriptionTwo": "Обработка ваших данных регулируется нашей Политикой конфиденциальности, которую можно просмотреть здесь. Используя наш Сайт, вы соглашаетесь с условиями нашей Политики конфиденциальности."
     },
     "sectionFour": {
-      "heading": "4. Intellectual Property",
-      "subHeadingOne": "4.1 Ownership",
-      "descriptionOne": "All content, trademarks, and other intellectual property on our Site, including but not limited to text, graphics, and logos, are owned by or licensed to Softeko and are protected by applicable intellectual property laws.",
-      "subHeadingTwo": "4.2 Limited License",
-      "descriptionTwo": "You are granted a limited, non-exclusive, non-transferable license to access and use the Site for its intended purpose. You may not copy, modify, distribute, or create derivative works based on the Site or its content without our express written permission."
+      "heading": "4. Интеллектуальная Собственность",
+      "subHeadingOne": "4.1 Собственность",
+      "descriptionOne": "Весь контент, товарные знаки и другая интеллектуальная собственность на нашем Сайте, включая, но не ограничиваясь текстом, графикой и логотипами, принадлежат или лицензированы Softeko и защищены применимыми законами об интеллектуальной собственности.",
+      "subHeadingTwo": "4.2 Ограниченная Лицензия",
+      "descriptionTwo": "Вам предоставляется ограниченная, неисключительная, непередаваемая лицензия на доступ и использование Сайта по его предназначению. Вы не можете копировать, изменять, распространять или создавать производные работы на основе Сайта или его содержимого без нашего явного письменного разрешения."
     },
     "sectionFive": {
-      "heading": "5. Limitation of Liability",
-      "subHeadingOne": "5.1 Disclaimer of Warranties",
-      "descriptionOne": "Our Site is provided on an as is and as available basis. We make no warranties or representations about the accuracy, reliability, or availability of the Site. To the extent permitted by law, we disclaim all warranties, express or implied, including but not limited to, implied warranties of merchantability and fitness for a particular purpose.",
-      "subHeadingTwo": "5.2 Limitation of Liability",
-      "descriptionTwo": "In no event shall Softeko or its affiliates be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the Site, even if we have been advised of the possibility of such damages. Our total liability for any claim arising out of your use of the Site shall not exceed the amount paid by you, if any, for accessing the Site."
+      "heading": "5. Ограничение Ответственности",
+      "subHeadingOne": "5.1 Отказ от Гарантий",
+      "descriptionOne": "Наш Сайт предоставляется \"как есть\" и \"как доступно\". Мы не даем никаких гарантий или заверений относительно точности, надежности или доступности Сайта. В пределах, допустимых законом, мы отказываемся от всех гарантий, явных или подразумеваемых, включая, но не ограничиваясь, подразумеваемыми гарантиями товарной пригодности и пригодности для определенной цели.",
+      "subHeadingTwo": "5.2 Ограничение Ответственности",
+      "descriptionTwo": "Ни при каких обстоятельствах Softeko или ее аффилированные лица не несут ответственности за любые косвенные, случайные, специальные, последующие или штрафные убытки, возникающие из или связанные с вашим использованием Сайта, даже если нам было известно о возможности таких убытков. Наша общая ответственность по любым претензиям, возникающим в связи с вашим использованием Сайта, не превысит сумму, уплаченную вами, если таковая имеется, за доступ к Сайту."
     },
     "sectionSix": {
-      "heading": "6. Termination",
-      "subHeadingOne": "6.1 Termination of Access",
-      "descriptionOne": "We reserve the right to terminate or suspend your access to our Site at our sole discretion, without notice, if we believe you have violated these Terms or engaged in any behavior that could harm our Site or other users."
+      "heading": "6. Прекращение Доступа",
+      "subHeadingOne": "6.1 Прекращение Доступа",
+      "descriptionOne": "Мы оставляем за собой право прекратить или приостановить ваш доступ к нашему Сайту по нашему собственному усмотрению, без предварительного уведомления, если мы считаем, что вы нарушили эти Условия или участвовали в поведении, которое может нанести вред нашему Сайту или другим пользователям."
     },
     "sectionSeven": {
-      "heading": "7. Changes to Terms",
-      "subHeadingOne": "7.1 Updates",
-      "descriptionOne": "We may update these Terms from time to time. Any changes will be posted on this page with an updated effective date. Your continued use of the Site following the posting of changes constitutes your acceptance of such changes."
+      "heading": "7. Изменения в Условиях",
+      "subHeadingOne": "7.1 Обновления",
+      "descriptionOne": "Мы можем время от времени обновлять эти Условия. Любые изменения будут опубликованы на этой странице с обновленной датой вступления в силу. Ваше продолжение использования Сайта после публикации изменений означает ваше принятие таких изменений."
     },
     "sectionEight": {
-      "heading": "8. Contact Us",
-      "description": "If you have any questions or concerns about this Cookie Policy or our use of cookies, please contact us at: ",
+      "heading": "8. Свяжитесь с Нами",
+      "description": "Если у вас есть какие-либо вопросы или concerns относительно этих Условий, пожалуйста, свяжитесь с нами:",
       "email": "Email",
       "emailInfo": "support@compresspdf.to",
-      "address": "Address",
+      "address": "Адрес",
       "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesh",
-      "phone": "Phone",
+      "phone": "Телефон",
       "phoneInfo": "+88 01327403953",
-      "thankyou": "Thank you for using CompressPDF.to!"
+      "thankyou": "Спасибо за использование CompressPDF.to!"
     },
     "metaData": {
-      "title": "Terms and Conditions | CompressPDF",
-      "description": "Understand your rights and responsibilities when using CompressPDF. Learn about file handling, privacy, intellectual property, and liability limitations.",
+      "title": "Условия и Положения | CompressPDF",
+      "description": "Узнайте о правах и обязанностях при использовании CompressPDF. Информация об обработке файлов, конфиденциальности и ограничениях ответственности.",
       "alternates": {
-        "canonical": "https://compresspdf.to/terms-and-conditions/",
+        "canonical": "https://compresspdf.to/ru/terms-and-conditions/",
         "hreflangs": [
+          {
+            "href": "https://compresspdf.to/terms-and-conditions/",
+            "hreflang": "x-default"
+          },
           {
             "href": "https://compresspdf.to/terms-and-conditions/",
             "hreflang": "en"
           },
+
+          {
+            "href": "https://compresspdf.to/fr/termes-et-conditions/",
+            "hreflang": "fr"
+          },
+
+          {
+            "href": "https://compresspdf.to/ru/terms-and-conditions/",
+            "hreflang": "ru"
+          },
+
           {
             "href": "https://compresspdf.to/de/geschaftsbedingungen/",
             "hreflang": "de"
@@ -1367,114 +1433,122 @@
         ]
       },
       "openGraph": {
-        "title": "Terms and Conditions | CompressPDF",
-        "description": "Understand your rights and responsibilities when using CompressPDF. Learn about file handling, privacy, intellectual property, and liability limitations.",
-        "url": "https://compresspdf.to/terms-and-conditions/",
+        "title": "Условия и Положения | CompressPDF",
+        "description": "Узнайте о правах и обязанностях при использовании CompressPDF. Информация об обработке файлов, конфиденциальности и ограничениях ответственности.",
+        "url": "https://cdn.compresspdf.to/images/privacy-policy-ru.png",
         "images": [
           {
-            "url": "https://cdn.compresspdf.to/images/terms-and-conditions-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "https://compresspdf.to/image1/",
+            "alt": "Условия и Положения | CompressPDF"
           }
         ]
       },
       "twitter": {
-        "title": "Terms and Conditions | CompressPDF",
-        "description": "Understand your rights and responsibilities when using CompressPDF. Learn about file handling, privacy, intellectual property, and liability limitations.",
+        "title": "Условия и Положения | CompressPDF",
+        "description": "Узнайте о правах и обязанностях при использовании CompressPDF. Информация об обработке файлов, конфиденциальности и ограничениях ответственности.",
         "images": [
           {
-            "url": "https://cdn.compresspdf.to/images/terms-and-conditions-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-ru.png",
+            "alt": "Условия и Положения | CompressPDF"
           }
         ]
       }
     }
   },
   "privacyPolicy": {
-    "heading": "Privacy Policy",
-    "description": "Welcome to CompressPDF.to, operated by Softeko. This Privacy Policy outlines how we collect, use, and protect your information when you use our website, located at https://compresspdf.to/ (the Site). Using our Site, you agree to the terms outlined in this Privacy Policy.",
+    "heading": "Политика Конфиденциальности",
+    "description": "Добро пожаловать на CompressPDF.to, управляемый компанией Softeko. Эта Политика конфиденциальности описывает, как мы собираем, используем и защищаем вашу информацию при использовании нашего веб-сайта, расположенного по адресу https://compresspdf.to/ (\"Сайт\"). Используя наш Сайт, вы соглашаетесь с условиями, изложенными в этой Политике конфиденциальности.",
     "sectionOne": {
-      "heading": "1. Information We Collect",
-      "subHeadingOne": "1.1 Uploaded Files",
-      "descriptionOne": "When you use CompressPDF.to to compress PDF files, we collect the files you upload. These files are processed on our servers to perform the compression service.",
-      "subHeadingTwo": "1.2 Usage Data",
-      "descriptionTwo": "We may collect data on how you interact with our Site, including your IP address, browser type, and access times. This information helps us improve our services and ensure the Site operates correctly."
+      "heading": "1. Информация, Которую Мы Собираем",
+      "subHeadingOne": "1.1 Загруженные Файлы",
+      "descriptionOne": "Когда вы используете CompressPDF.to для сжатия PDF-файлов, мы собираем файлы, которые вы загружаете. Эти файлы обрабатываются на наших серверах для выполнения услуги сжатия.",
+      "subHeadingTwo": "1.2 Данные Об Использовании",
+      "descriptionTwo": "Мы можем собирать данные о том, как вы взаимодействуете с нашим Сайтом, включая ваш IP-адрес, тип браузера и время доступа. Эта информация помогает нам улучшать наши услуги и обеспечивать правильную работу Сайта."
     },
     "sectionTwo": {
-      "heading": "2. How We Use Your Information",
-      "subHeadingOne": "2.1 File Processing",
-      "descriptionOne": "The files you upload are primarily used to provide you with the requested compression service.",
-      "subHeadingTwo": "2.2 Usage Data",
-      "descriptionTwo": "We use this information to analyze and improve the functionality and performance of our Site. This data is used in aggregate form and does not identify individual users."
+      "heading": "2. Как Мы Используем Вашу Информацию",
+      "subHeadingOne": "2.1 Обработка Файлов",
+      "descriptionOne": "Загруженные вами файлы в основном используются для предоставления запрошенной услуги сжатия.",
+      "subHeadingTwo": "2.2 Данные Об Использовании",
+      "descriptionTwo": "Мы используем эту информацию для анализа и улучшения функциональности и производительности нашего Сайта. Эти данные используются в агрегированной форме и не идентифицируют отдельных пользователей."
     },
     "sectionThree": {
-      "heading": "3. Data Storage and Retention",
-      "subHeadingOne": "3.1 Temporary Storage",
-      "descriptionOne": "Files you upload are temporarily stored on our servers for 2 hours. After this period, the files are automatically deleted from our servers.",
-      "subHeadingTwo": "3.2 No Permanent Storage",
-      "descriptionTwo": "We do not retain any personal data or files beyond the 2-hour processing period. Once deleted, the files are irretrievably removed from our servers."
+      "heading": "3. Хранение и Удержание Данных",
+      "subHeadingOne": "3.1 Временное Хранение",
+      "descriptionOne": "Загруженные вами файлы временно хранятся на наших серверах в течение 2 часов. По истечении этого периода файлы автоматически удаляются с наших серверов.",
+      "subHeadingTwo": "3.2 Отсутствие Постоянного Хранения",
+      "descriptionTwo": "Мы не храним никаких личных данных или файлов за пределами 2-часового периода обработки. После удаления файлы безвозвратно удаляются с наших серверов."
     },
     "sectionFour": {
-      "heading": "4. Data Security",
-      "subHeadingOne": "4.1 Security Measures",
-      "descriptionOne": "We implement industry-standard security measures to protect your data during transmission and while stored on our servers. However, no method of transmission over the Internet or electronic storage is completely secure. While we strive to protect your data, we cannot guarantee absolute security."
+      "heading": "4. Безопасность Данных",
+      "subHeadingOne": "4.1 Меры Безопасности",
+      "descriptionOne": "Мы применяем стандартные отраслевые меры безопасности для защиты ваших данных во время передачи и хранения на наших серверах. Однако ни один метод передачи через Интернет или электронного хранения не является полностью безопасным. Хотя мы стремимся защитить ваши данные, мы не можем гарантировать абсолютную безопасность."
     },
     "sectionFive": {
-      "heading": "5. Third-Party Services",
-      "subHeadingOne": "5.1 No Third-Party Data Sharing",
-      "descriptionOne": "We do not share, sell, or disclose your files or personal information to third parties, except as required by law or to comply with legal processes.",
-      "subHeadingTwo": "5.2 External Links",
-      "descriptionTwo": "Our Site may contain links to other websites. We are not responsible for the privacy practices or content of these external sites. We encourage you to review the privacy policies of any third-party sites you visit."
+      "heading": "5. Сторонние Сервисы",
+      "subHeadingOne": "5.1 Отсутствие Передачи Данных Третьим Лицам",
+      "descriptionOne": "Мы не передаем, не продаем и не раскрываем ваши файлы или личную информацию третьим лицам, за исключением случаев, предусмотренных законом или для соблюдения юридических процедур.",
+      "subHeadingTwo": "5.2 Внешние Ссылки",
+      "descriptionTwo": "Наш Сайт может содержать ссылки на другие веб-сайты. Мы не несем ответственности за политику конфиденциальности или содержание этих внешних сайтов. Мы рекомендуем вам ознакомиться с политикой конфиденциальности любых сторонних сайтов, которые вы посещаете."
     },
     "sectionSix": {
-      "heading": "6. Changes to This Privacy Policy",
-      "subHeadingOne": "6.1 Updates",
-      "descriptionOne": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. Your continued use of the Site following the posting of changes constitutes your acceptance of such changes."
+      "heading": "6. Изменения в Этой Политике Конфиденциальности",
+      "subHeadingOne": "6.1 Обновления",
+      "descriptionOne": "Мы можем время от времени обновлять эту Политику конфиденциальности. Любые изменения будут опубликованы на этой странице с обновленной датой вступления в силу. Ваше дальнейшее использование Сайта после публикации изменений означает ваше согласие с такими изменениями."
     },
     "sectionSeven": {
-      "heading": "7. Contact Us",
-      "description": "If you have any questions or concerns about this Cookie Policy or our use of cookies, please contact us at:",
-      "email": "Email",
+      "heading": "7. Свяжитесь с Нами",
+      "description": "Если у вас есть какие-либо вопросы или concerns о этой Политике конфиденциальности или наших практиках обращения с данными, пожалуйста, свяжитесь с нами по адресу:",
+      "email": "support@compresspdf.to",
       "emailInfo": "support@compresspdf.to",
-      "address": "Address",
+      "address": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesh",
       "addressInfo": "Softeko, Navana Newbury Place, Shobhanbag, Dhanmondi, Dhaka, Bangladesh",
-      "phone": "Phone",
+      "phone": "+88 01327403953",
       "phoneInfo": "+88 01327403953",
-      "thankyou": "Thank you for using CompressPDF.to!"
+      "thankyou": "Спасибо за использование CompressPDF.to!"
     },
     "metaData": {
-      "title": "Privacy Policy | CompressPDF",
-      "description": "Learn how CompressPDF protects your data. Our privacy policy outlines file handling, data usage, security measures, and our commitment to your privacy.",
+      "title": "Политика конфиденциальности | CompressPDF",
+      "description": "Узнайте, как CompressPDF защищает ваши данные. Наша политика описывает обработку файлов, использование данных и нашу заботу о вашей приватности.",
       "alternates": {
-        "canonical": "https://compresspdf.to/privacy-policy/",
+        "canonical": "https://compresspdf.to/ru/privacy-policy/",
         "hreflangs": [
+          {
+            "href": "https://compresspdf.to/privacy-policy/",
+            "hreflang": "x-default"
+          },
           {
             "href": "https://compresspdf.to/privacy-policy/",
             "hreflang": "en"
           },
           {
-            "href": "https://compresspdf.to/de/datenschutzrichtlinie/",
-            "hreflang": "de"
+            "href": "https://compresspdf.to/fr/politique-de-confidentialite/",
+            "hreflang": "fr"
+          },
+          {
+            "href": "https://compresspdf.to/ru/privacy-policy/",
+            "hreflang": "ru"
           }
         ]
       },
       "openGraph": {
-        "title": "Privacy Policy | CompressPDF",
-        "description": "Learn how CompressPDF protects your data. Our privacy policy outlines file handling, data usage, security measures, and our commitment to your privacy.",
-        "url": "https://compresspdf.to/privacy-policy/",
+        "title": "Политика конфиденциальности | CompressPDF",
+        "description": "Узнайте, как CompressPDF защищает ваши данные. Наша политика описывает обработку файлов, использование данных и нашу заботу о вашей приватности.",
+        "url": "https://compresspdf.to/ru/privacy-policy/",
         "images": [
           {
-            "url": "https://cdn.compresspdf.to/images/privacy-policy-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-ru.png",
+            "alt": "Политика конфиденциальности | CompressPD"
           }
         ]
       },
       "twitter": {
-        "title": "Privacy Policy | CompressPDF",
-        "description": "Learn how CompressPDF protects your data. Our privacy policy outlines file handling, data usage, security measures, and our commitment to your privacy.",
+        "title": "Политика конфиденциальности | CompressPDF",
+        "description": "Узнайте, как CompressPDF защищает ваши данные. Наша политика описывает обработку файлов, использование данных и нашу заботу о вашей приватности.",
         "images": [
           {
-            "url": "https://cdn.compresspdf.to/images/privacy-policy-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
+            "url": "https://cdn.compresspdf.to/images/privacy-policy-ru.png",
+            "alt": "Политика конфиденциальности | CompressPD"
           }
         ]
       }

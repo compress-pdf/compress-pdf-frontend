@@ -1298,44 +1298,6 @@
           }
         ]
       }
-    },
-    "schema": {
-      "softwareApplication": {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Cookie Policy of CompressPDF",
-        "description": "Understand CompressPDF's cookie usage. Learn about essential cookies, potential future uses, and how to manage your preferences for a transparent browsing experience.",
-        "applicationCategory": "Utilities",
-        "operatingSystem": "All",
-        "author": {
-          "@type": "Organization",
-          "name": "CompressPDF",
-          "url": "https://compresspdf.to/about/",
-          "description": "Learn about compresspdf.to, your fast and secure PDF compression tool. Discover our mission to simplify document management with user-friendly features."
-        },
-        "datePublished": "2024-020-20",
-        "url": "https://compresspdf.to/cookie-policy/",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "1237"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "screenshot": "https://cdn.compresspdf.to/images/cookie-policy-en.png",
-        "featureList": [
-          "Explains the current limited use of essential cookies",
-          "Defines different types of cookies and their purposes",
-          "Outlines potential future use of cookies for additional features",
-          "Provides information on managing cookie preferences",
-          "Describes the process for updating the Cookie Policy",
-          "Offers contact details for questions or concerns",
-          "Ensures transparency about current and potential cookie practices"
-        ]
-      }
     }
   },
   "termsAndConditions": {
@@ -1438,45 +1400,6 @@
           }
         ]
       }
-    },
-    "schema": {
-      "softwareApplication": {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Termes et Conditions de CompressPDF",
-        "description": "Comprenez vos droits et responsabilités en utilisant CompressPDF. Informez-vous sur la gestion des fichiers, la confidentialité et les limites de responsabilité.",
-        "applicationCategory": "Utilities",
-        "operatingSystem": "All",
-        "author": {
-          "@type": "Organization",
-          "name": "CompressPDF",
-          "url": "https://compresspdf.to/fr/a-propos/",
-          "description": "Découvrez compresspdf.to, votre outil sécurisé de compression PDF. Notre mission : simplifier la gestion documentaire avec des fonctionnalités intuitives."
-        },
-        "datePublished": "2024-020-20",
-        "url": "https://compresspdf.to/terms-and-conditions/",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "1237"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "screenshot": "https://cdn.compresspdf.to/images/terms-and-conditions-r.png",
-        "featureList": [
-          "Décrit les responsabilités de l'utilisateur et le contenu interdit",
-          "Explique les pratiques de stockage des fichiers et de confidentialité",
-          "Clarifie les droits de propriété intellectuelle et les limitations d'utilisation",
-          "Détaille les clauses de non-responsabilité et les limitations",
-          "Décrit les conditions de résiliation de l'accès au site",
-          "Informe des mises à jour potentielles des conditions",
-          "Fournit les coordonnées pour les demandes de renseignements",
-          "Spécifie l'âge minimum requis pour l'utilisation du site"
-        ]
-      }
     }
   },
   "privacyPolicy": {
@@ -1570,44 +1493,6 @@
             "url": "https://cdn.compresspdf.to/images/privacy-policy-fr.png",
             "alt": "Compress PDF Files Online Without Losing Quality"
           }
-        ]
-      }
-    },
-    "schema": {
-      "softwareApplication": {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Politique de Confidentialité de CompressPDF",
-        "description": "Découvrez comment CompressPDF protège vos données. Notre politique détaille la gestion des fichiers, l'utilisation des données et notre engagement envers votre vie privée.",
-        "applicationCategory": "Utilities",
-        "operatingSystem": "All",
-        "author": {
-          "@type": "Organization",
-          "name": "CompressPDF",
-          "url": "https://compresspdf.to/fr/a-propos/",
-          "description": "Découvrez compresspdf.to, votre outil sécurisé de compression PDF. Notre mission : simplifier la gestion documentaire avec des fonctionnalités intuitives."
-        },
-        "datePublished": "2024-020-20",
-        "url": "https://compresspdf.to/fr/politique-de-confidentialite/",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "1237"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "screenshot": "https://cdn.compresspdf.to/images/privacy-policy-fr.png",
-        "featureList": [
-          "Décrit les pratiques de collecte et d'utilisation des données",
-          "Explique le stockage temporaire des fichiers (2 heures) et leur suppression",
-          "Détaille la collecte de données d'utilisation pour l'amélioration du site",
-          "Décrit les mesures de sécurité pour la protection des données",
-          "Clarifie la politique de non-partage des données avec des tiers",
-          "Informe sur les mises à jour potentielles de la politique de confidentialité",
-          "Fournit des informations de contact pour les questions"
         ]
       }
     }
