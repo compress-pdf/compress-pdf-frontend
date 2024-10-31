@@ -67,7 +67,11 @@ jobs:
             docker image pull ghcr.io/compress-pdf/compress-pdf
 
             echo -e "\n Running the new container: compress-pdf 🛩️ \n"
-            docker run -d --name compress-pdf -p 3000:3000 ghcr.io/compress-pdf/compress-pdf
+            docker container run -d \
+              --name compress-pdf \
+              -p 3000:3000 \
+              --restart always \
+              ghcr.io/compress-pdf/compress-pdf
 
             echo -e "\n Pruning unused Docker images 🧹 \n"
             docker image prune -f
