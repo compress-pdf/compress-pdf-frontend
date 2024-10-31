@@ -20,7 +20,7 @@ jobs:
         run: echo "${{ vars.ENV }}" > .env
 
       - name: Log in to GitHub Container Registry 🔑
-        run: echo "${{ vars.GHCR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ vars.GHCR_PAT }}" | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
 
       - name: Build and push Docker image 🐋
         uses: docker/build-push-action@v6
@@ -36,45 +36,38 @@ jobs:
     needs: build
 
     steps:
-      - name: Checkout Code from Repository ⤵️
-        uses: actions/checkout@v4
-
-      - name: Install sshpass 🪪
-        run: sudo apt-get install -y sshpass
-
       - name: Deploy Docker Container to VPS 🚀
-        env:
-          VPS_HOST: ${{ vars.VPS_HOST }}
-          VPS_USER: ${{ vars.VPS_USER }}
-          SSH_PORT: ${{ vars.SSH_PORT }}
-          SSH_PASSWORD: ${{ vars.VPS_PASSWORD }}
-        run: |
-          sshpass -p $SSH_PASSWORD ssh -o StrictHostKeyChecking=no $VPS_USER@$VPS_HOST << 'EOF'
-            echo -e "\n Logging in to GitHub Container Registry 🗝️ \n"
-            docker login ghcr.io -u ${{ github.actor }} --password ${{ vars.GHCR_PAT }}
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          port: ${{ vars.PORT }}
+          host: ${{ vars.HOST }}
+          key: ${{ vars.PRIVATE_KEY }}
+          username: ${{ vars.USERNAME }}
+          script: |
+            echo -e "Logging in to GitHub Container Registry 🗝️"
+            echo "${{ vars.GHCR_PAT }}" | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
 
             if [ "$(docker ps -q -f name=compress-pdf)" ]; then
-                echo -e "\n Stopping running container: compress-pdf 🛑 \n"
+                echo -e "Stopping running container: compress-pdf 🛑"
                 docker container stop compress-pdf
             fi
 
             if [ "$(docker container ls -a -q -f name=compress-pdf)" ]; then
-                echo -e "\n Removing stopped container: compress-pdf 🚧 \n"
+                echo -e "Removing stopped container: compress-pdf 🚧"
                 docker container rm compress-pdf
             fi
 
-            echo -e "\n Pulling the latest image from GHCR 📥 \n"
+            echo -e "Pulling the latest image from GHCR 📥"
             docker image pull ghcr.io/compress-pdf/compress-pdf
 
-            echo -e "\n Running the new container: compress-pdf 🛩️ \n"
+            echo -e "Running the new container: compress-pdf 🛩️"
             docker container run -d \
               --name compress-pdf \
               -p 3000:3000 \
               --restart always \
               ghcr.io/compress-pdf/compress-pdf
 
-            echo -e "\n Pruning unused Docker images 🧹 \n"
+            echo -e "Pruning unused Docker images 🧹"
             docker image prune -f
 
-            echo -e "\n Your application is live! 🎉 \n"
-          EOF
+            echo -e "Your application is live! 🎉"
