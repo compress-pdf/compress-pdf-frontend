@@ -63,7 +63,12 @@ const HomePageContent = ({
   }, [pdfFiles, staticCustomize, compressing]);
 
   const handleFileChange = async (selectedFiles: FileList) => {
-    const isCorrupted = await helpers.validatePdfFiles(selectedFiles, 4, 50);
+    const isCorrupted = await helpers.validatePdfFiles(
+      selectedFiles,
+      4,
+      50,
+      200
+    );
     if (isCorrupted.valid) {
       setPdfFiles(Array.from(selectedFiles));
     } else {
@@ -143,6 +148,9 @@ const HomePageContent = ({
     try {
       // Make the API request
       const response = await axios.post(apiLink, formData, config);
+
+      console.log(response);
+
       if (response.status === 200) {
         // Create a new object to ensure we're using the latest values
         const updatedState = {
@@ -172,7 +180,8 @@ const HomePageContent = ({
     const isCorrupted = await helpers.validatePdfFiles(
       fileArrayToFileList([...updatedFiles, ...newFiles]),
       4,
-      50
+      50,
+      200
     );
     if (isCorrupted.valid) {
       setPdfFiles([...updatedFiles, ...newFiles]);

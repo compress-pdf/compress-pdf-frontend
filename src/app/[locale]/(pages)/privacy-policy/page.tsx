@@ -12,18 +12,8 @@ export async function generateMetadata() {
 
 const PrivacyPolicyPage = () => {
   const t = useTranslations('privacyPolicy');
-  const softwareApplication = t.raw('schema.softwareApplication');
   return (
     <div>
-      <section>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(softwareApplication),
-          }}
-        />
-      </section>
-
       <FullwidthContainer
         className="pt-[40px] md:pt-[60px] md:pb-[100px] 2xl:pt-[58px] 2xl:pb-[110px] 3xl:pt-[63px] 3xl:pb-[136px]"
         as={'div'}
