@@ -294,13 +294,15 @@ const validatePdfFiles = async (
   files: FileList,
   maxFiles: number,
   maxSizeMB: number,
-  pageSize: number
+  maxSingleFilePages: number,
+  minSingleFileSizeKB: number,
+  maxSingleFileSizeKB: number
 ): Promise<{ valid: boolean; messages: string[] }> => {
   const messages: string[] = [];
 
   // Step 1: Check for total file size and number of files
   const totalSizeMB = Array.from(files).reduce(
-    (total, file) => total + file.size / (1024 * 1024),
+    (total, file) => total + file.size / (1024 * 1024), // Convert size from bytes to MB
     0
   );
 
@@ -312,18 +314,33 @@ const validatePdfFiles = async (
 
   if (totalSizeMB > maxSizeMB) {
     messages.push(
-      `Maximum size limit exceeded: Total size must be under ${maxSizeMB}MB.`
+      `Maximum size limit exceeded: Total size must be under ${maxSizeMB} MB.`
     );
     return { valid: false, messages }; // Early exit if size exceeds the limit
   }
 
-  // Step 2: Validate each PDF file for type, corruption, and password protection
-  let totalPages = 0;
-
+  // Step 2: Validate each PDF file for type, size, page count, corruption, and password protection
   await Promise.all(
     Array.from(files).map(async file => {
-      if (!file.type.startsWith('application/pdf')) {
+      // Validate file type
+      if (!file.type || !file.type.startsWith('application/pdf')) {
         messages.push('Only PDF files are allowed.');
+        return;
+      }
+
+      // Validate single file size in KB
+      const fileSizeKB = file.size / 1024; // Convert file size from bytes to KB
+      if (fileSizeKB < minSingleFileSizeKB) {
+        messages.push(`Each file must be at least ${minSingleFileSizeKB} KB.`);
+        return;
+      }
+      if (fileSizeKB > maxSingleFileSizeKB) {
+        // Determine whether to show size in KB or MB
+        const maxSizeMessage =
+          maxSingleFileSizeKB >= 1024
+            ? `${(maxSingleFileSizeKB / 1024).toFixed(2)} MB`
+            : `${maxSingleFileSizeKB} KB`;
+        messages.push(`Each file must not exceed ${maxSizeMessage}.`);
         return;
       }
 
@@ -335,25 +352,23 @@ const validatePdfFiles = async (
         // Step 3: Check for corrupted files (by accessing the first page)
         await pdfDoc.getPage(1);
 
-        // Step 4: Count pages if the file is valid
-        totalPages += pdfDoc.numPages;
+        // Step 4: Check individual file page count
+        if (pdfDoc.numPages > maxSingleFilePages) {
+          messages.push(
+            `File "${file.name}" exceeds the maximum allowed page count of ${maxSingleFilePages}.`
+          );
+          return;
+        }
       } catch (error) {
         if (error instanceof Error && error.name === 'PasswordException') {
           messages.push('Password-protected PDFs cannot be compressed.');
         } else {
           console.error('Error reading PDF:', error);
-          messages.push('An error occurred while processing one of the PDFs.');
+          messages.push(`An error occurred while processing "${file.name}".`);
         }
       }
     })
   );
-
-  // Step 5: Check total page count limit
-  if (totalPages > pageSize) {
-    messages.push(
-      `Maximum page limit exceeded: Total pages must be under ${pageSize}.`
-    );
-  }
 
   // Step 6: Return validation result
   const valid = messages.length === 0;
@@ -367,7 +382,7 @@ export type ValidationResult = {
 
 export const validatePdfLink = async (
   link: string,
-  maxSizeMB: number,
+  maxSizeKB: number,
   errorMessage: string
 ): Promise<ValidationResult> => {
   const validationResult: ValidationResult = {
@@ -403,11 +418,12 @@ export const validatePdfLink = async (
     // Step 3: Check file size
     const contentLength = response.headers.get('content-length');
     if (contentLength) {
-      const fileSizeMB = parseInt(contentLength, 10) / (1024 * 1024); // Convert bytes to MB
-      if (fileSizeMB > maxSizeMB) {
+      const fileSizeKB = parseInt(contentLength, 10) / 1024; // Convert bytes to KB
+
+      if (fileSizeKB > maxSizeKB) {
         validationResult.valid = false;
         validationResult.messages.push(
-          `Maximum file size exceeded (limit: ${maxSizeMB}MB).`
+          `Maximum file size exceeded (limit: ${maxSizeKB / 1024} MB).`
         );
         return validationResult; // Early return if file size exceeds the limit
       }

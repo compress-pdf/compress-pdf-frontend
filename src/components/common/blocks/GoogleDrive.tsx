@@ -7,6 +7,7 @@ import { CallbackDoc } from 'react-google-drive-picker/dist/typeDefs';
 import { useLoading } from '@/context/UploadingContext'; // Import loading context
 import helpers, { fileArrayToFileList, isAnyLarge } from '@/services/helpers';
 import GoogledriveIcon from '@/assets/icons/svgs/upload-client/googledriveIcon';
+import { ToolsDataType } from '@/constants/toolsData';
 
 import CustomToast from '../core/ToastMessage';
 
@@ -15,9 +16,14 @@ import { API_KEY, CLIENT_ID } from '@constants/credentials/const';
 interface IProps {
   handleNewFiles: (files: File[]) => void;
   onDropdown?: boolean;
+  toolInfo: ToolsDataType;
 }
 
-const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
+const GoogleDrive = ({
+  handleNewFiles,
+  onDropdown = false,
+  toolInfo,
+}: IProps) => {
   const { setLoading, setProgress } = useLoading(); // Get loading and progress handlers
   const { validatePdfFiles } = helpers;
   const [authToken, setAuthToken] = useState<string | undefined>('');
@@ -93,7 +99,14 @@ const GoogleDrive = ({ handleNewFiles, onDropdown = false }: IProps) => {
 
       const fileListLike = fileArrayToFileList(fetchedFiles);
 
-      const validationResult = await validatePdfFiles(fileListLike, 4, 50, 200);
+      const validationResult = await validatePdfFiles(
+        fileListLike,
+        toolInfo.totalFiles,
+        toolInfo.totalFileSize,
+        toolInfo.totalPages,
+        toolInfo.minSingleFileSize,
+        toolInfo.maxSingleFileSize
+      );
 
       if (validationResult.valid) {
         handleNewFiles(fetchedFiles);

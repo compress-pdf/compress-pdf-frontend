@@ -11,15 +11,15 @@ const SectionThree = ({ tool }: { tool: string }) => {
 
   return (
     <section>
-      <h2 className="text-lg leading-6 md:text-xl md:leading-7 md:full w-[80%] mx-auto lg:text-xl lg:leading-8 xl:text-xl  2xl:text-[28px] 2xl:leading-8 3xl:text-[34px] 3xl:leading-10 font-bold text-[#163B45] dark:text-[#FAFAFA] ">
+      <h2 className="text-lg leading-6 md:text-xl md:leading-7 md:full w-full mx-auto lg:text-xl lg:leading-8 xl:text-xl  2xl:text-[28px] 2xl:leading-8 3xl:text-[34px] 3xl:leading-10 font-bold text-[#163B45] dark:text-[#FAFAFA] ">
         {t('content.sectionThree.title')}
       </h2>
 
       <div className="mt-10 flex flex-col lg:gap-10 gap-5 ">
-        <div className="flex flex-col md:flex-row lg:gap-[14px] gap-1 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
-          <div className="flex flex-col items-start gap-y-5 lg:pl-10 px-5 lg:py-[37px]">
+        <div className="flex 3xl:flex-row flex-col lg:gap-[14px] gap-1 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
+          <div className="flex flex-col items-start gap-y-5 lg:pl-10 px-5 lg:py-[37px] 2xl:w-2/5">
             <h3 className="flex flex-col">
-              <p className="text-base mb-5 rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] py-1 dark:bg-[linear-gradient(to_bottom_right,_#FF8224,_transparent_50%,_transparent_70%,_#FF8224)] px-[1px] w-[92px]">
+              <p className="text-base mb-5 rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] py-1 dark:bg-[linear-gradient(to_bottom_right,_#FF8224,_transparent_50%,_transparent_70%,_#FF8224)] px-[1px] w-max">
                 <span className="px-5 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[22px] leading-none text-[#B23F40] dark:text-[#FF8224] py-[7px]">
                   {t('content.sectionThree.stepOne.stepNumber')}
                 </span>
@@ -35,7 +35,7 @@ const SectionThree = ({ tool }: { tool: string }) => {
               {t('content.sectionThree.stepOne.stepDescription')}
             </p>
           </div>
-          <div>
+          <div className="2xl:w-3/5">
             <Image
               src={ImageOne}
               width={0}
@@ -48,10 +48,10 @@ const SectionThree = ({ tool }: { tool: string }) => {
 
         <div className="flex 3xl:flex-row flex-col gap-2">
           {/* left side  */}
-          <div className="flex flex-col items-start px-10 py-[37px] bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
+          <div className="flex flex-col items-start px-10 py-[37px] bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px] 2xl:w-3/6">
             <div className="flex flex-col items-start gap-y-5">
               <h3 className="flex flex-col">
-                <p className="text-base mb-5 rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] py-1 dark:bg-[linear-gradient(to_bottom_right,_#FF8224,_transparent_50%,_transparent_70%,_#FF8224)] px-[1px] w-[92px]">
+                <p className="text-base mb-5 rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] py-1 dark:bg-[linear-gradient(to_bottom_right,_#FF8224,_transparent_50%,_transparent_70%,_#FF8224)] px-[1px] w-max">
                   <span className="px-5 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[22px] leading-none text-[#B23F40] dark:text-[#FF8224] py-[7px]">
                     {t('content.sectionThree.stepTwo.stepNumber')}
                   </span>
@@ -80,10 +80,10 @@ const SectionThree = ({ tool }: { tool: string }) => {
           </div>
 
           {/* right side  */}
-          <div className="flex flex-col items-start px-10 py-[37px] bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
+          <div className="flex flex-col items-start px-10 py-[37px] bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px] 2xl:w-3/6">
             <div className="flex flex-col items-start gap-y-5">
               <h3 className="flex flex-col">
-                <p className="text-base mb-5 rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] py-1 dark:bg-[linear-gradient(to_bottom_right,_#FF8224,_transparent_50%,_transparent_70%,_#FF8224)] px-[1px] w-[92px]">
+                <p className="text-base mb-5 rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] py-1 dark:bg-[linear-gradient(to_bottom_right,_#FF8224,_transparent_50%,_transparent_70%,_#FF8224)] px-[1px] w-max">
                   <span className="px-5 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[22px] leading-none text-[#B23F40] dark:text-[#FF8224] py-[7px]">
                     {t('content.sectionThree.stepThree.stepNumber')}
                   </span>

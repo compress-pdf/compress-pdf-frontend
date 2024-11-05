@@ -182,7 +182,7 @@
       "errorMessage": "Please provide a valid pdf link!"
     },
     "uploading": {
-      "title": "{file} Uploading",
+      "title": "file Uploading",
       "description": "Please do not close your browser. Wait until your files are uploading and processed! This might take a few minutes. :)",
       "imageAlt": "Upload PDF files"
     },
@@ -318,7 +318,7 @@
         "title": "Compress PDF Files Without Losing Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & 200 pages"
+        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -602,10 +602,10 @@
   "100kb": {
     "content": {
       "heroSection": {
-        "title": "",
-        "subtitle": "",
-        "imageAlt": "",
-        "fileInfo": ""
+        "title": "100 KB Compress PDF Files Without Losing Quality",
+        "subtitle": "Reduce Size, Not the Quality",
+        "imageAlt": "Upload PDF files",
+        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
       },
       "sectionOne": {
         "title": "",
@@ -795,10 +795,10 @@
   "200kb": {
     "content": {
       "heroSection": {
-        "title": "",
-        "subtitle": "",
-        "imageAlt": "",
-        "fileInfo": ""
+        "title": "200 KB Compress PDF Files Without Losing Quality",
+        "subtitle": "Reduce Size, Not the Quality",
+        "imageAlt": "Upload PDF files",
+        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
       },
       "sectionOne": {
         "title": "",

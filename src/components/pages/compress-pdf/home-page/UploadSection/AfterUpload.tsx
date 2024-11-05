@@ -17,6 +17,7 @@ import DropBox from '@/components/common/blocks/DropBox';
 import helpers, { fileListToFileArray } from '@/services/helpers';
 import { getItemFromDB } from '@/services/indexedDB';
 import { useRouter } from '@/i18n/routing';
+import { ToolsDataType } from '@/constants/toolsData';
 
 import arrowIcon from '@assets/icons/pngs/customize-page/arrow.png';
 
@@ -34,6 +35,7 @@ interface AfterUploadProps {
   fileRotations: Record<number, number>;
   staticCustomize: boolean;
   uid: string;
+  toolInfo: ToolsDataType;
 }
 
 const AfterUpload: React.FC<AfterUploadProps> = ({
@@ -50,6 +52,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   fileRotations,
   staticCustomize,
   uid,
+  toolInfo,
 }) => {
   const [files, setSortedFiles] = useState<File[]>(pdfFiles);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -88,12 +91,21 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   ) => {
     if (e.target.files) {
       handleNewFiles(fileListToFileArray(e.target.files));
+
+      const maxFiles = toolInfo.totalFiles;
+      const maxSizeMB = toolInfo.totalFileSize / 1024; // Convert total file size from KB to MB
+      const pageSize = toolInfo.totalPages;
+      const minSingleFileSizeKB = toolInfo.minSingleFileSize;
+      const maxSingleFileSizeKB = toolInfo.maxSingleFileSize;
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const isCorrupted = await helpers.validatePdfFiles(
         e.target.files as FileList,
-        4,
-        50,
-        200
+        maxFiles,
+        maxSizeMB,
+        pageSize,
+        minSingleFileSizeKB,
+        maxSingleFileSizeKB
       );
       if (fileInputRef.current) {
         fileInputRef.current.value = ''; // Clear the input
@@ -162,6 +174,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                 {
                   label: (
                     <GoogleDrive
+                      toolInfo={toolInfo}
                       handleNewFiles={handleNewFiles}
                       onDropdown={true}
                     />
@@ -170,6 +183,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                 {
                   label: (
                     <DropBox
+                      toolInfo={toolInfo}
                       handleNewFiles={handleNewFiles}
                       onDropdown={true}
                     />
@@ -186,6 +200,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
                 {
                   label: (
                     <LinkComponent
+                      toolInfo={toolInfo}
                       handleNewFiles={handleNewFiles}
                       onDropdown={true}
                       modalRef={modalRef}

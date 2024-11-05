@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { validatePdfLink } from '@/services/helpers';
 import UrlIcon from '@/assets/icons/svgs/upload-client/urlIcon';
 import { useLoading } from '@/context/UploadingContext';
+import { ToolsDataType } from '@/constants/toolsData';
 
 import Modal from '../core/Modal';
 import { Button } from '../core/Button';
@@ -14,12 +15,14 @@ type Props = {
   handleNewFiles: (files: File[]) => void;
   onDropdown?: boolean;
   modalRef?: React.Ref<HTMLDivElement>;
+  toolInfo: ToolsDataType;
 };
 
 const LinkComponent = ({
   handleNewFiles,
   onDropdown = false,
   modalRef,
+  toolInfo,
 }: Props) => {
   const t = useTranslations('common');
   const { setLoading } = useLoading();
@@ -44,7 +47,7 @@ const LinkComponent = ({
 
       const validationResult = await validatePdfLink(
         URL,
-        50,
+        toolInfo.totalFileSize,
         t('urlModal.errorMessage')
       );
 

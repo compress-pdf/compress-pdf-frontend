@@ -133,11 +133,11 @@
       ],
       "language": [
         {
-          "label": "Anglais",
+          "label": "English",
           "value": "en"
         },
         {
-          "label": "Allemand",
+          "label": "Deutsch",
           "value": "de"
         },
         {
@@ -327,7 +327,7 @@
         "imageTitle": "PDF"
       },
       "sectionTwo": {
-        "title": "Pourquoi Utiliser Notre Outil De Compression PDF ?",
+        "title": "Pourquoi Utiliser Notre Outil De Compression PDF?",
         "description": "Notre outil de compression PDF se distingue par son efficacité et sa convivialité. Voici quelques raisons de choisir notre outil :",
         "features": [
           {
@@ -357,7 +357,7 @@
         ]
       },
       "sectionThree": {
-        "title": "Comment Réduire La Taille Des Fichiers PDF En Ligne ?",
+        "title": "Comment Réduire La Taille Des Fichiers PDF En Ligne?",
         "stepOne": {
           "stepNumber": "Étape 1",
           "stepTitle": "Téléchargez Vos Fichiers Directement Sur Le Web",

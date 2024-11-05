@@ -65,7 +65,7 @@ const SectionTwo = ({ tool }: { tool: string }) => {
             ) => (
               <div
                 key={index}
-                className=" flex flex-col items-center gap-[10px]"
+                className="flex flex-col items-center gap-[10px]"
               >
                 <Image
                   src={images[index].image}
@@ -74,7 +74,7 @@ const SectionTwo = ({ tool }: { tool: string }) => {
                   alt="logo"
                   className="w-5 h-5 lg:w-[30px] lg:h-[30px] xl:w-[30px] xl:h-[30px]"
                 />
-                <h3 className="text-base font-semibold lg:text-[18px] 3xl:text-nowrap lg:leading-5 xl:text-base xl:leading-5 2xl:text-[18px] 3xl:text-lg leading-6 text-[#163B45] dark:text-[#FAFAFA]">
+                <h3 className="text-base font-semibold lg:text-[18px] 3xl:text-wrap lg:leading-5 xl:text-base xl:leading-5 2xl:text-[18px] 3xl:text-lg leading-6 text-[#163B45] dark:text-[#FAFAFA]">
                   {feature.featureTitle}
                 </h3>
                 <p className="text-sm leading-5 md:text-xs md:leading-4 lg:text-md lg:leading-6 xl:text-xs 2xl:text-md 2xl:leading-6 text-center text-[#6B7280] dark:text-[#E1DEDE]">

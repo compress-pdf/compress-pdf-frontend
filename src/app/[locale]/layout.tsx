@@ -37,7 +37,12 @@ export default async function RootLayout({
 }: RootLayoutType) {
   const messages = await getMessages();
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      translate="no"
+      className="notranslate"
+    >
       <body
         className={`flex flex-col items-center justify-center w-full bg-[#FBFBFB] dark:bg-[#232323]`}
       >

@@ -19,7 +19,7 @@ const SectionOne = ({ tool }: { tool: string }) => {
           />
         </div>
         <div className="md:w-[48%] w-full">
-          <h2 className="3xl:text-[34px] 3xl:leading-10 md:text-2xl md:text-left text-center md:leading-7 md:w-[80%] w-full text-lg leading-6 font-bold  text-[#163B45] dark:text-[#fafafa]">
+          <h2 className="3xl:text-[34px] 3xl:leading-10 md:text-2xl md:text-left text-center md:leading-7 md:w-[90%] w-full text-lg leading-6 font-bold  text-[#163B45] dark:text-[#fafafa]">
             {t('content.sectionOne.title')}
           </h2>
           <p className="3xl:mt-11 2xl:mt-9 xl:mt-7 lg:mt-9 mt-2 2xl:text-base 2xl:leading-7 xl:text-md xl:leading-6 lg:text-base lg:leading-7 text-md leading-6  text-justify text-[#6B7280] dark:text-[#E1DEDE]">
