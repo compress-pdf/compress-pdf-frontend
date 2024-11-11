@@ -321,7 +321,7 @@
         "fileInfo": "Fichiers {file} maximum, jusqu'à {size} Mo et 200 pages"
       },
       "sectionOne": {
-        "title": "Qu'est-ce Qu'un Compresseur De PDF ?",
+        "title": "Qu'est-ce Qu'un Compresseur De PDF?",
         "description": "Un outil de compression PDF est un logiciel qui réduit la taille des fichiers PDF. Cela se fait en optimisant le contenu, comme les images et les polices, pour diminuer le poids tout en conservant la qualité. Ces outils sont essentiels pour gérer de gros fichiers, améliorer les vitesses d'upload/download et économiser de l'espace de stockage.",
         "imageAlt": "Illustration de ce qu'est un compresseur PDF.",
         "imageTitle": "PDF"
@@ -361,7 +361,7 @@
         "stepOne": {
           "stepNumber": "Étape 1",
           "stepTitle": "Téléchargez Vos Fichiers Directement Sur Le Web",
-          "stepDescription": "Chargez vos fichiers PDF depuis votre appareil directement sur notre plateforme.",
+          "stepDescription": "Téléchargez vos fichiers par 6 méthodes : local, glisser-déposer, Google Drive, OneDrive, Dropbox, ou URL. Une fois téléchargés, vous serez redirigé vers la personnalisation.",
           "imageAlt": "Options de téléchargement de fichiers, y compris le collage d'URL et le glisser-déposer, avec une interface utilisateur mise en évidence pour le téléchargement de documents.",
           "imageUploadTitle": "Téléchargez votre document",
           "inputLabel": "Collez votre URL",
@@ -370,7 +370,7 @@
         "stepTwo": {
           "stepNumber": "Étape 2 ",
           "stepTitle": "Personnalisez Selon Vos Préférences",
-          "stepDescription": "Ajustez les paramètres de compression selon vos besoins : niveaux de compression, qualité d'image, résolution, etc.",
+          "stepDescription": "Personnalisez vos fichiers : compression (extrême, moyenne, légère), paramètres d'image, résolution, mode (couleur ou N&B). Supprimez des images, faites pivoter, ajoutez/supprimez des fichiers, triez par taille ou alphabet. Cliquez pour compresser.",
           "imageAlt": "Options de personnalisation de PDF, y compris la résolution d'image, les ajustements de fichier et les niveaux de compression, avec une comparaison 'avant et après' des tailles de fichiers.",
           "before": "Avant",
           "size": "10 Ko",
@@ -387,7 +387,7 @@
         "stepThree": {
           "stepNumber": "Étape 3",
           "stepTitle": "Téléchargez, Partagez et Gérez les Fichiers Compressés",
-          "stepDescription": "Téléchargez les fichiers individuellement ou en tant que fichier zip, et sauvegardez-les sur Dropbox, OneDrive ou Google Drive. Partagez via Facebook, LinkedIn, Gmail, Twitter ou par QR code/lien URL. Modifiez les noms, supprimez des fichiers, imprimez avec paramètres (copies, format papier, orientation) et prévisualisez pour vérifier la qualité.",
+          "stepDescription": "Téléchargez en individuel ou zip, et sauvegardez sur Dropbox, OneDrive ou Google Drive. Partagez sur Facebook, LinkedIn, Gmail, Twitter ou par QR/lien. Modifiez noms, supprimez, imprimez (copies, format, orientation) et prévisualisez.",
           "imageAlt": "Interface de téléchargement de fichiers montrant un PDF titré et sa barre de progression.",
           "firstImageTitle": "Nom de Votre PDF",
           "percentOne": "10%",

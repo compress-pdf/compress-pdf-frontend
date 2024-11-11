@@ -389,19 +389,6 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                           </SaveDropBox>
                         ),
                       },
-                      // {
-                      //   label: (
-                      //     <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
-                      //       <Image
-                      //         src={oneDriveIcon}
-                      //         height={14}
-                      //         width={14}
-                      //         alt={t('header.buttonModal.onedrive')}
-                      //       />
-                      //       {t('header.buttonModal.onedrive')}
-                      //     </span>
-                      //   ),
-                      // },
                       {
                         label: (
                           <SaveDrive PDF_URL={data[0]?.zip_download_link}>

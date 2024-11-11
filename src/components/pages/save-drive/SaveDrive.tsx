@@ -135,16 +135,28 @@ const SaveDrive = ({ PDF_URL, children }: TypeSaveDrive) => {
     try {
       setLoading(true);
 
-      // Fetch the PDF file as a blob
+      // Determine if the file is a ZIP or PDF based on the URL pattern
+      const isZipFile = PDF_URL.includes('download-zip');
+
+      // Extract UID for ZIP file or get the file name for a single PDF
+      const fileName = isZipFile
+        ? `${PDF_URL.match(/UID=([^&]+)/)?.[1] || 'compressed_files'}.zip`
+        : PDF_URL.split('/').pop();
+
+      const mimeType = isZipFile ? 'application/zip' : 'application/pdf';
+
+      // Fetch the file as a blob
       const response = await fetch(PDF_URL);
       if (!response.ok) {
-        throw new Error(`Error fetching PDF: ${response.statusText}`);
+        throw new Error(`Error fetching file: ${response.statusText}`);
       }
       const blob = await response.blob();
-      const file = new Blob([blob], { type: 'application/pdf' });
+
+      // Create a new Blob with the detected MIME type
+      const file = new Blob([blob], { type: mimeType });
 
       // Check for the folder or create one if not available
-      const folderName = 'compress-pdf';
+      const folderName = 'compress-files';
       let folderId = await findFolder(folderName, accessToken);
       if (!folderId) {
         folderId = await createFolder(folderName, accessToken);
@@ -152,8 +164,8 @@ const SaveDrive = ({ PDF_URL, children }: TypeSaveDrive) => {
 
       // Prepare metadata for the file upload
       const metadata = {
-        name: PDF_URL.split('/').pop(),
-        mimeType: 'application/pdf',
+        name: fileName, // Use UID as the file name for ZIP files
+        mimeType,
         parents: [folderId],
       };
 
@@ -198,12 +210,10 @@ const SaveDrive = ({ PDF_URL, children }: TypeSaveDrive) => {
         throw new Error('Error uploading file');
       }
     } catch (error) {
-      // Handle errors and show failure message
       CustomToast({
         type: 'error',
-        message: 'Failed to save ',
+        message: 'Failed to save file',
       });
-      // console.error('Error:', error.message);
       setLoading(false);
     }
   };

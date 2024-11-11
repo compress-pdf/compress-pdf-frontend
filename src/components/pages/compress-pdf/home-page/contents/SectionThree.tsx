@@ -24,7 +24,7 @@ const SectionThree = ({ tool }: { tool: string }) => {
                   {t('content.sectionThree.stepOne.stepNumber')}
                 </span>
               </p>
-              <span className="3xl:text-xl 3xl:leading-[1.8rem] 3xl:w-[80%] w-full  2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left  font-semibold">
+              <span className="3xl:text-xl 3xl:leading-[1.8rem] w-full 2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left  font-semibold">
                 {t('content.sectionThree.stepOne.stepTitle')}
               </span>
             </h3>
@@ -56,7 +56,7 @@ const SectionThree = ({ tool }: { tool: string }) => {
                     {t('content.sectionThree.stepTwo.stepNumber')}
                   </span>
                 </p>
-                <span className="3xl:text-xl 3xl:leading-[1.8rem] 3xl:w-[80%] w-full  2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left  font-semibold">
+                <span className="3xl:text-xl 3xl:leading-[1.8rem] w-full  2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left  font-semibold">
                   {t('content.sectionThree.stepTwo.stepTitle')}
                 </span>
               </h3>
@@ -88,7 +88,7 @@ const SectionThree = ({ tool }: { tool: string }) => {
                     {t('content.sectionThree.stepThree.stepNumber')}
                   </span>
                 </p>
-                <span className="3xl:text-xl 3xl:leading-[1.8rem] 3xl:w-[80%] w-full  2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left  font-semibold">
+                <span className="3xl:text-xl 3xl:leading-[1.8rem] w-full  2xl:text-[22px] 2xl:leading-[26.4px] xl:text-lg xl:leading-6 lg:text-[22px] lg:leading-[26.4px] md:text-lg md:leading-6 text-base leading-5 text-left  font-semibold">
                   {t('content.sectionThree.stepThree.stepTitle')}
                 </span>
               </h3>
