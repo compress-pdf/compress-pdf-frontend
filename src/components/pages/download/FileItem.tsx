@@ -124,6 +124,7 @@ const FileItem: React.FC<FileItemProps> = ({
   const url = `${API_URL}/${file?.file_path}`;
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [triggerPrint, setTriggerPrint] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(
     () => {
@@ -139,6 +140,19 @@ const FileItem: React.FC<FileItemProps> = ({
   );
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '') {
+      setErrorMessage('Please enter a valid name');
+      return;
+    }
+    if (e.target.value.length > 251) {
+      setErrorMessage('Filename should be less than 250 characters');
+      return;
+    }
+
+    if (fileName !== '') {
+      setErrorMessage('');
+    }
+
     setFileName(e.target.value);
   };
 
@@ -248,6 +262,7 @@ const FileItem: React.FC<FileItemProps> = ({
                         file?.file_index
                       );
                       setIsEditing(false);
+                      setErrorMessage('');
                     }
                   }}
                   // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -255,6 +270,7 @@ const FileItem: React.FC<FileItemProps> = ({
                   onBlur={() => {
                     handleNameChange(file?.uid_fk, fileName, file?.file_index);
                     setIsEditing(false);
+                    setErrorMessage('');
                   }}
                   className="text-[#163B45] dark:text-white font-normal text-sm md:text-xs lg:text-sm xl:text-xs 2xl:text-sm 3xl:text-[0.875rem] bg-white border-none outline-none w-full rounded-md dark:bg-[#2e150e50] px-1 py-2"
                 />
@@ -340,8 +356,17 @@ const FileItem: React.FC<FileItemProps> = ({
               </>
             )}
           </span>
-          <p className="text-sm text-left mt-[9px]">
-            <span className="rounded bg-[#FFD5B6] dark:bg-[#59402D] px-2 mr-2 text-slate-900 dark:text-white">
+          {errorMessage && (
+            <span className="text-[0.75rem] pt-1 flex text-red-500 font-normal">
+              {errorMessage}
+            </span>
+          )}
+          <p
+            className={`text-sm text-left ${
+              errorMessage ? 'mt-0' : 'mt-[9px]'
+            }`}
+          >
+            <span className="rounded bg-[#FFD5B6] dark:bg-[#59402D] px-2 mr-2 text-slate-900 dark:text-white text-left">
               PDF
             </span>
             <span className="text-md text-[#163B45] dark:text-white">
