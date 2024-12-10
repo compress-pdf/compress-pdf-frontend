@@ -16,7 +16,7 @@ const SectionThree = ({ tool }: { tool: string }) => {
       </h2>
 
       <div className="mt-10 flex flex-col lg:gap-10 gap-5 ">
-        <div className="flex 3xl:flex-row flex-col lg:gap-[14px] gap-1 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
+        <div className="flex 2xl:flex-row flex-col lg:gap-[14px] gap-1 bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px]">
           <div className="flex flex-col items-start gap-y-5 lg:pl-10 px-5 lg:py-[37px] 2xl:w-2/5">
             <h3 className="flex flex-col">
               <p className="text-base mb-5 rounded-3xl bg-[linear-gradient(to_bottom_right,_#8b0000,_transparent_50%,_transparent_70%,_#8b0000)] py-1 dark:bg-[linear-gradient(to_bottom_right,_#FF8224,_transparent_50%,_transparent_70%,_#FF8224)] px-[1px] w-max">
@@ -46,7 +46,7 @@ const SectionThree = ({ tool }: { tool: string }) => {
           </div>
         </div>
 
-        <div className="flex 3xl:flex-row flex-col gap-2">
+        <div className="flex 2xl:flex-row flex-col gap-2">
           {/* left side  */}
           <div className="flex flex-col items-start px-10 py-[37px] bg-[#F3F3F3] dark:bg-[#2F2F2F] rounded-[10px] 2xl:w-3/6">
             <div className="flex flex-col items-start gap-y-5">

@@ -141,7 +141,7 @@ const GoogleDrive = ({
       className={`${
         onDropdown
           ? 'flex items-center gap-2 text-sm md:text-base text-[#164B45] dark:text-[#f5f5f5] h-4'
-          : 'shadow-md p-2 bg-white dark:bg-[#484848] rounded-md hover:scale-105 transition-all duration-200 ease-in h-full'
+          : 'shadow-md p-2 bg-white dark:bg-[#484848] rounded-md hover:scale-105 transition-all duration-200 ease-in h-[32.4px] lg:h-[50px] xl:h-[32.4px] 2xl:h-[50px]'
       }`}
     >
       <GoogledriveIcon />

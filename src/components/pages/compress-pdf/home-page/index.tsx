@@ -134,17 +134,12 @@ const HomePageContent = ({
     //   console.log(`${key}: ${value}`);
     // });
 
-    const labelUrl =
-      toolInfo.tool === 0
-        ? `${API_URL}/v1.1/with-validation/level-based-with-image`
-        : `route specific url`;
-
     const apiLink =
       state.compressType === 'by-level'
-        ? labelUrl
+        ? `${API_URL}/v2/with-validation/level-based-with-image`
         : state.compressType === 'by-level-no-img'
-          ? `${API_URL}/v1.1//with-validation/level-based-without-image`
-          : `${API_URL}/v1//image-based`;
+          ? `${API_URL}/v2/with-validation/level-based-without-image`
+          : `${API_URL}/v2/image-based`;
 
     const config = {
       headers: {
