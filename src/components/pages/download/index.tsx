@@ -202,10 +202,14 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     }
   };
 
-  const handleNameChange = async (uid: string, name: string, index: number) => {
+  const handleNameChange = async (
+    file_token: string,
+    name: string,
+    index: number
+  ) => {
     try {
       const newFileName = `${name}.pdf`;
-      const url = `${API_URL}/v1/update-filename?UID=${uid}&new_file_name=${newFileName}&file_index=${index}`;
+      const url = `${API_URL}/v2/filename?file_token=${file_token}&new_file_name=${newFileName}&file_index=${index}`;
 
       await axios.patch(url);
       setIsEditing(false); // Exit editing mode on successful update
@@ -226,8 +230,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     }
   };
 
-  const handleDelete = async (id: string, index: number) => {
-    const url = `${API_URL}/v1/delete-file?UID=${id}&file_index=${index}`;
+  const handleDelete = async (file_token: string, index: number) => {
+    const url = `${API_URL}/v2/delete-file?file_token=${file_token}`;
     try {
       setDeleting(true);
       const response = await axios.delete(url);
@@ -281,7 +285,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   };
 
   const handleDownloadZip = async () => {
-    const url = `${API_URL}/v1/download-zip?UID=${uid}`;
+    const url = `${API_URL}/v2/download-as-zip?UID=${uid}`;
 
     try {
       const response = await axios.get(url, {
@@ -310,6 +314,19 @@ const DownloadMain = ({ uid }: { uid: string }) => {
       }
     } catch (error) {
       console.error('Error downloading the zip file:', error);
+    }
+  };
+
+  const handlePageExpired = async () => {
+    const url = `${API_URL}/v2/download-page-expiry?UID=${uid}`;
+
+    try {
+      const response = await axios.patch(url);
+      if (response.status === 200) {
+        console.log('Page expiry updated successfully');
+      }
+    } catch (error) {
+      console.error('Error updating page expiry:', error);
     }
   };
 
@@ -463,6 +480,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
               t={t}
               timeLeft={timeLeft}
               url={url}
+              handlePageExpired={handlePageExpired}
             />
           </div>
           {storedState && (

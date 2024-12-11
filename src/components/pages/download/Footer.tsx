@@ -27,9 +27,17 @@ type Props = {
     minutes: number;
     seconds: number;
   };
+  handlePageExpired: () => void;
 };
 
-const DownloadFooter = ({ t, url, qr, handleCopyURL, timeLeft }: Props) => {
+const DownloadFooter = ({
+  t,
+  url,
+  qr,
+  handleCopyURL,
+  timeLeft,
+  handlePageExpired,
+}: Props) => {
   return (
     <div className="md:mt-4 flex items-center justify-center md:p-4 p-2">
       <svg
@@ -47,7 +55,11 @@ const DownloadFooter = ({ t, url, qr, handleCopyURL, timeLeft }: Props) => {
       <p className="mr-4 font-bold">{t('footer.share')} :</p>
       <div className="flex space-x-2 items-center">
         <FacebookShareButton url={url}>
-          <button aria-label="Facebook-share" className="bg-transparent">
+          <button
+            aria-label="Facebook-share"
+            className="bg-transparent"
+            onClick={handlePageExpired}
+          >
             <Image
               width={0}
               height={0}
@@ -58,7 +70,11 @@ const DownloadFooter = ({ t, url, qr, handleCopyURL, timeLeft }: Props) => {
           </button>
         </FacebookShareButton>
         <LinkedinShareButton url={url}>
-          <button aria-label="Linkedin-share" className="bg-transparent ">
+          <button
+            aria-label="Linkedin-share"
+            className="bg-transparent "
+            onClick={handlePageExpired}
+          >
             <Image
               width={0}
               height={0}
@@ -69,7 +85,11 @@ const DownloadFooter = ({ t, url, qr, handleCopyURL, timeLeft }: Props) => {
           </button>
         </LinkedinShareButton>
         <TwitterShareButton url={url}>
-          <button aria-label="twitter-icon" className="bg-transparent ">
+          <button
+            aria-label="twitter-icon"
+            className="bg-transparent "
+            onClick={handlePageExpired}
+          >
             <Image
               width={0}
               height={0}
@@ -80,7 +100,11 @@ const DownloadFooter = ({ t, url, qr, handleCopyURL, timeLeft }: Props) => {
           </button>
         </TwitterShareButton>
         <EmailShareButton url={url}>
-          <button aria-label="mail-share" className="bg-transparent ">
+          <button
+            aria-label="mail-share"
+            className="bg-transparent "
+            onClick={handlePageExpired}
+          >
             <Image
               width={0}
               height={0}
@@ -133,7 +157,10 @@ const DownloadFooter = ({ t, url, qr, handleCopyURL, timeLeft }: Props) => {
                   readOnly
                 />
                 <Button
-                  onClick={handleCopyURL}
+                  onClick={() => {
+                    handlePageExpired();
+                    handleCopyURL();
+                  }}
                   className="rounded-[7px] my-1 me-1"
                 >
                   {t('footer.qrModal.buttonLabel')}

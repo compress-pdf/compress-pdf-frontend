@@ -42,8 +42,8 @@ import mailLogo from '@assets/icons/pngs/share-modal/mailLogo.png';
 
 interface FileItemProps {
   file: FileData; // Assuming FileData is already defined
-  handleDelete: (id: string, index: number) => void;
-  handleNameChange: (uid: string, name: string, index: number) => void;
+  handleDelete: (file_token: string, index: number) => void;
+  handleNameChange: (file_token: string, name: string, index: number) => void;
   storedState: boolean;
   deleting: boolean;
   modalRef: React.RefObject<HTMLDivElement>;
@@ -204,15 +204,18 @@ const FileItem: React.FC<FileItemProps> = ({
       });
   };
 
-  const handleDownload = async () => {
+  const handleDownload = async (file_token: string) => {
     try {
-      const response = await axios.get(url, {
-        responseType: 'blob',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/pdf',
-        },
-      });
+      const response = await axios.get(
+        `https://api.compresspdf.to/v2/download-as-file?file_token=${file_token}`,
+        {
+          responseType: 'blob',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/pdf',
+          },
+        }
+      );
 
       if (response.status === 200) {
         const blob = new Blob([response.data]);
@@ -237,6 +240,20 @@ const FileItem: React.FC<FileItemProps> = ({
     }
   };
 
+  const handleFileExpiryUpdate = async (file_token: string) => {
+    try {
+      const response = await axios.patch(
+        `https://api.compresspdf.to/v2/download-file-expiry?file_token=${file_token}`
+      );
+
+      if (response.status === 200) {
+        console.log('File expiry time updated successfully');
+      }
+    } catch (error) {
+      console.error('Error updating file expiry time:', error);
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row gap-[10px] justify-normal items-start bg-[#FDE9D4] dark:bg-[#2F2F2F] md:p-4 p-2 w-full border-b-4 border-white dark:border-gray-800">
       <div className="flex flex-row items-start gap-1 w-full md:w-[56%] lg:w-[56%] xl:w-[56%] 3xl:w-[56%]">
@@ -257,7 +274,7 @@ const FileItem: React.FC<FileItemProps> = ({
                   onKeyDown={e => {
                     if (e.key === 'Enter') {
                       handleNameChange(
-                        file?.uid_fk,
+                        file?.file_token,
                         fileName,
                         file?.file_index
                       );
@@ -268,7 +285,11 @@ const FileItem: React.FC<FileItemProps> = ({
                   // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
                   onBlur={() => {
-                    handleNameChange(file?.uid_fk, fileName, file?.file_index);
+                    handleNameChange(
+                      file?.file_token,
+                      fileName,
+                      file?.file_index
+                    );
                     setIsEditing(false);
                     setErrorMessage('');
                   }}
@@ -345,7 +366,7 @@ const FileItem: React.FC<FileItemProps> = ({
                     <Button
                       className="w-full justify-center"
                       onClick={() =>
-                        handleDelete(file?.uid_fk, file?.file_index)
+                        handleDelete(file?.file_token, file?.file_index)
                       }
                       disabled={deleting}
                     >
@@ -418,7 +439,9 @@ const FileItem: React.FC<FileItemProps> = ({
                         <button
                           type="button"
                           className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          // onClick={() => handleColorClick("")}
+                          onClick={() =>
+                            handleFileExpiryUpdate(file?.file_token)
+                          }
                           title="facebook share"
                         >
                           <Image
@@ -442,7 +465,9 @@ const FileItem: React.FC<FileItemProps> = ({
                         <button
                           type="button"
                           className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          // onClick={() => handleColorClick("")}
+                          onClick={() =>
+                            handleFileExpiryUpdate(file?.file_token)
+                          }
                           title="linkedin share"
                         >
                           <Image
@@ -466,7 +491,9 @@ const FileItem: React.FC<FileItemProps> = ({
                         <button
                           type="button"
                           className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          // onClick={() => handleColorClick("")}
+                          onClick={() =>
+                            handleFileExpiryUpdate(file?.file_token)
+                          }
                           title="x(twitter)"
                         >
                           <Image
@@ -490,7 +517,9 @@ const FileItem: React.FC<FileItemProps> = ({
                         <button
                           type="button"
                           className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          // onClick={() => handleColorClick("")}
+                          onClick={() =>
+                            handleFileExpiryUpdate(file?.file_token)
+                          }
                           title="mail share"
                         >
                           <Image
@@ -519,7 +548,10 @@ const FileItem: React.FC<FileItemProps> = ({
                     className="py-4 px-[18px] ps-4 w-full focus:outline-none h-8 bg-transparent rounded-[4px] font-light text-[#163B45] dark:text-[#ffffff] text-[0.875rem] pe-6"
                   />
                   <Button
-                    onClick={handleCopyURL}
+                    onClick={() => {
+                      handleFileExpiryUpdate(file?.file_token);
+                      handleCopyURL();
+                    }}
                     className="rounded-[7px] my-1 me-1"
                   >
                     {t('body.shareModal.btn')}
@@ -572,7 +604,7 @@ const FileItem: React.FC<FileItemProps> = ({
                 // disabled={false}
                 buttonLabel={
                   <button
-                    onClick={handleDownload}
+                    onClick={() => handleDownload(file?.file_token)}
                     className="flex items-center gap-2"
                   >
                     <Image
