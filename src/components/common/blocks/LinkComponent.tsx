@@ -46,9 +46,8 @@ const LinkComponent = ({
       setLoading(true);
 
       const validationResult = await validatePdfLink(
-        URL,
-        toolInfo.totalFileSize,
-        t('urlModal.errorMessage')
+        `/api/proxy?url=${URL}`,
+        toolInfo.totalFileSize
       );
 
       try {
@@ -56,7 +55,7 @@ const LinkComponent = ({
           setValidationMessages(validationResult.messages);
           return;
         }
-        const response = await fetch(URL);
+        const response = await fetch(`/api/proxy?url=${URL}`);
         const blob = await response.blob();
         const file = new File([blob], 'file.pdf', { type: 'application/pdf' });
         if (file) {

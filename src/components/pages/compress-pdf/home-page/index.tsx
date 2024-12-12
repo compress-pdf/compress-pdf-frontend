@@ -86,6 +86,15 @@ const HomePageContent = ({
 
     if (validationResults.valid) {
       setPdfFiles(Array.from(selectedFiles));
+      const initialRotations = Array.from(selectedFiles).reduce(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (acc: { [key: number]: number }, _, index) => {
+          acc[index] = 0;
+          return acc;
+        },
+        {}
+      );
+      setFileRotations(initialRotations);
     } else {
       validationResults.messages.forEach(message => {
         CustomToast({
@@ -159,6 +168,8 @@ const HomePageContent = ({
       // Make the API request
       const response = await axios.post(apiLink, formData, config);
 
+      console.log('Response:', response.data);
+
       if (response.status === 200) {
         // Create a new object to ensure we're using the latest values
         const updatedState = {
@@ -203,6 +214,15 @@ const HomePageContent = ({
     );
     if (isCorrupted.valid) {
       setPdfFiles([...updatedFiles, ...newFiles]);
+      const initialRotations = newFiles.reduce(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (acc: { [key: number]: number }, _, index) => {
+          acc[index] = 0;
+          return acc;
+        },
+        {}
+      );
+      setFileRotations(initialRotations);
     } else {
       isCorrupted.messages.map(each => {
         CustomToast({
@@ -215,18 +235,53 @@ const HomePageContent = ({
 
   const handleUpdatedFiles = (updatedFiles: File[]) => {
     setPdfFiles(updatedFiles);
+    const initialRotations = updatedFiles.reduce(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (acc: { [key: number]: number }, _, index) => {
+        acc[index] = 0;
+        return acc;
+      },
+      {}
+    );
+    setFileRotations(initialRotations);
   };
 
   const handleDeleteFile = async (index: number) => {
+    // Create a copy of files and rotations
     const updatedFiles = [...pdfFiles];
+    const updatedRotations = { ...fileRotations };
+
+    // Remove file at specific index
     updatedFiles.splice(index, 1);
+
+    // Remove rotation for that specific index
+    delete updatedRotations[index];
+
+    // Remap rotations to maintain correct indexing
+    const remappedRotations = Object.keys(updatedRotations).reduce(
+      (acc: { [key: number]: number }, key) => {
+        const currentIndex = Number(key);
+        const newIndex = currentIndex > index ? currentIndex - 1 : currentIndex;
+
+        acc[newIndex] = updatedRotations[currentIndex];
+        return acc;
+      },
+      {}
+    );
+
+    // Update both files and rotations states
     setPdfFiles(updatedFiles);
+    setFileRotations(remappedRotations);
+
+    // Reset file input
     const fileInput = document.getElementById(
       'file-upload'
     ) as HTMLInputElement | null;
     if (fileInput) {
       fileInput.value = '';
     }
+
+    // Check if no files remain
     if (updatedFiles.length === 0) {
       const isPresent = await getItemFromDB(uid || '');
       if (isPresent) {
@@ -236,23 +291,26 @@ const HomePageContent = ({
     }
   };
 
-  // Rotate file clockwise
-  const rotateClockwise = (index: number) => {
-    setFileRotations(prevRotations => ({
-      ...prevRotations,
-      [index]: ((prevRotations[index] || 0) + 90) % 360,
-    }));
+  const rotateAnticlockwise = (index: number) => {
+    setFileRotations(prevRotations => {
+      const currentRotation = prevRotations[index] || 0;
+      const newRotation = (currentRotation - 90 + 360) % 360;
+      return {
+        ...prevRotations,
+        [index]: newRotation,
+      };
+    });
   };
 
-  // Rotate file anticlockwise
-  const rotateAnticlockwise = (index: number) => {
-    setFileRotations(prevRotations => ({
-      ...prevRotations,
-      [index]:
-        (prevRotations[index] || 0) === 0
-          ? 270
-          : (prevRotations[index] - 90) % 360,
-    }));
+  const rotateClockwise = (index: number) => {
+    setFileRotations(prevRotations => {
+      const currentRotation = prevRotations[index] || 0;
+      const newRotation = (currentRotation + 90) % 360;
+      return {
+        ...prevRotations,
+        [index]: newRotation,
+      };
+    });
   };
 
   // useEffect(() => {
@@ -292,6 +350,7 @@ const HomePageContent = ({
       fileRotations={fileRotations}
       uid={uid || ''}
       toolInfo={toolInfo}
+      setFileRotations={setFileRotations}
     />
   );
 

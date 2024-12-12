@@ -382,8 +382,7 @@ export type ValidationResult = {
 
 export const validatePdfLink = async (
   link: string,
-  maxSizeKB: number,
-  errorMessage: string
+  maxSizeKB: number
 ): Promise<ValidationResult> => {
   const validationResult: ValidationResult = {
     valid: true,
@@ -392,75 +391,56 @@ export const validatePdfLink = async (
 
   try {
     // Step 1: Check if the link is a PDF by checking the extension
-    if (!link.toLowerCase().endsWith('.pdf')) {
-      validationResult.valid = false;
-      validationResult.messages.push(errorMessage);
-      return validationResult;
-    }
+    // if (!link.toLowerCase().endsWith('.pdf')) {
+    //   validationResult.valid = false;
+    //   validationResult.messages.push('The link does not point to a PDF file.');
+    //   return validationResult;
+    // }
 
-    // Step 2: Validate that the link is accessible
-    // Step 1: Make a HEAD request to check the file size before downloading
-    const response = await fetch(link, { method: 'HEAD' });
+    // Step 2: Make a HEAD request to check the file type and size before downloading
+    const response = await fetch(link, {
+      method: 'HEAD',
+      headers: {
+        'Content-Type': 'application/pdf',
+      },
+    });
+
     if (!response.ok) {
       validationResult.valid = false;
-      validationResult.messages.push(errorMessage);
+      validationResult.messages.push('Unable to access the PDF file.');
       return validationResult;
     }
 
-    // Step 2: Check Content-Type header to ensure it's a PDF
+    // Step 3: Check Content-Type to ensure it’s a PDF
     const contentType = response.headers.get('content-type');
     if (!contentType || !contentType.startsWith('application/pdf')) {
       validationResult.valid = false;
-      validationResult.messages.push(errorMessage);
+      validationResult.messages.push('The link is not a valid PDF.');
       return validationResult;
     }
 
-    // Step 3: Check file size
+    // Step 4: Check the Content-Length to ensure the file size is within the allowed limit
     const contentLength = response.headers.get('content-length');
     if (contentLength) {
-      const fileSizeKB = parseInt(contentLength, 10) / 1024; // Convert bytes to KB
-
+      const fileSizeKB = Number(contentLength) / 1024; // Convert to KB
       if (fileSizeKB > maxSizeKB) {
         validationResult.valid = false;
         validationResult.messages.push(
-          `Maximum file size exceeded (limit: ${maxSizeKB / 1024} MB).`
+          `The PDF file exceeds the maximum allowed size of ${maxSizeKB} KB.`
         );
-        return validationResult; // Early return if file size exceeds the limit
+        return validationResult;
       }
-    } else {
-      validationResult.valid = false;
-      validationResult.messages.push('Could not determine the file size.');
-      return validationResult;
     }
 
-    // Step 4: Proceed with the full request if file size is within the limit
-    const pdfResponse = await fetch(link);
-    if (pdfResponse.ok) {
-      const fileContent = await pdfResponse.arrayBuffer();
-      const uint8Array = new Uint8Array(fileContent);
-      const decoder = new TextDecoder('utf-8');
-      const textContent = decoder.decode(uint8Array);
-
-      // Basic check for corruption
-      if (!textContent.startsWith('%PDF-')) {
-        validationResult.valid = false;
-        validationResult.messages.push('Corrupted PDFs cannot be compressed.');
-      }
-
-      // Basic check for password protection
-      if (textContent.includes('/Encrypt')) {
-        validationResult.valid = false;
-        validationResult.messages.push(
-          'Password-protected PDFs cannot be compressed.'
-        );
-      }
-    }
+    // If everything passes, return a valid result
+    return validationResult;
   } catch (error) {
     validationResult.valid = false;
-    validationResult.messages.push(errorMessage);
+    validationResult.messages.push(
+      'An error occurred while validating the PDF link.'
+    );
+    return validationResult;
   }
-
-  return validationResult;
 };
 
 export function fileArrayToFileList(filesArray: File[]) {

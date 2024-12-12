@@ -36,6 +36,9 @@ interface AfterUploadProps {
   staticCustomize: boolean;
   uid: string;
   toolInfo: ToolsDataType;
+  setFileRotations: React.Dispatch<
+    React.SetStateAction<Record<number, number>>
+  >;
 }
 
 const AfterUpload: React.FC<AfterUploadProps> = ({
@@ -53,6 +56,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   staticCustomize,
   uid,
   toolInfo,
+  setFileRotations,
 }) => {
   const [files, setSortedFiles] = useState<File[]>(pdfFiles);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -128,6 +132,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
             rotateClockwise={rotateClockwise}
             rotateAnticlockwise={rotateAnticlockwise}
             fileRotations={fileRotations}
+            setFileRotations={setFileRotations}
           />
           <SectionContainer className="relative flex flex-col-reverse gap-4 md:gap-0 md:flex-row-reverse items-center justify-between w-full text-sm md:text-[0.875rem] 3xl:text-base pt-4 md:pt-0">
             {/* For md+ devices, this will be the 1st element. For md- devices, it will be the 2nd element. */}
