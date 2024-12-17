@@ -14,6 +14,6 @@ export const config = {
     // However, match all pathnames within `/users`, optionally with a locale prefix
     '/([\\w-]+)?/users/(.+)',
     '/',
-    '/(de|en|fr)/:path*',
+    '/(de)/:path*',
   ],
 };

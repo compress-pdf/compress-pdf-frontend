@@ -2,11 +2,13 @@ import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/routing';
 
-import LanguageSwitcher from '../core/LanguageSwitcher';
+// import LanguageSwitcher from '../core/LanguageSwitcher';
 import Hamburger from '../core/Hamburger';
 import ThemeSwitcher from '../core/ThemeSwitcher'; // Relative imports
 import SectionContainer from '../containers/SectionContainer';
 import LogoButton from '../core/LogoButton';
+
+import MenuModal from './MenuModal';
 
 export default function Navbar() {
   const t = useTranslations('common.header');
@@ -36,10 +38,11 @@ export default function Navbar() {
                         {menu.label}
                       </Link>
                     ))}
+                  <MenuModal menus={menus} />
                 </div>
               </div>
               <ThemeSwitcher />
-              <LanguageSwitcher />
+              {/* <LanguageSwitcher /> */}
               <Hamburger />
             </div>
           </div>

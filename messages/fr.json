@@ -429,6 +429,7 @@
     "metaData": {
       "title": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale",
       "description": "Compressez vos fichiers PDF en ligne sans perte de qualité. Réduisez la taille tout en conservant la qualité originale. Rapide et gratuit.",
+      "thumbnail": "",
       "alternates": {
         "canonical": "https://compresspdf.to/fr/",
         "hreflangs": [
@@ -443,27 +444,6 @@
           {
             "href": "https://compresspdf.to/fr/",
             "hreflang": "fr"
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale",
-        "description": "Compressez vos fichiers PDF en ligne sans perte de qualité. Réduisez la taille tout en conservant la qualité originale. Rapide et gratuit.",
-        "url": "https://compresspdf.to/fr/",
-        "images": [
-          {
-            "url": "https://cdn.compresspdf.to/images/general-fr.png",
-            "alt": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale"
-          }
-        ]
-      },
-      "twitter": {
-        "title": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale",
-        "description": "Compressez vos fichiers PDF en ligne sans perte de qualité. Réduisez la taille tout en conservant la qualité originale. Rapide et gratuit.",
-        "images": [
-          {
-            "url": "https://cdn.compresspdf.to/images/general-fr.png",
-            "alt": "Compresser Fichier PDF en ligne Avec Qualité PDF Originale"
           }
         ]
       }
@@ -681,33 +661,13 @@
     "metaData": {
       "title": "",
       "description": "",
+      "thumbnail":"",
       "alternates": {
         "canonical": "",
         "hreflangs": [
           {
             "href": "",
             "hreflang": ""
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "",
-        "description": "",
-        "url": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
-          }
-        ]
-      },
-      "twitter": {
-        "title": "",
-        "description": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
           }
         ]
       }
@@ -874,33 +834,13 @@
     "metaData": {
       "title": "",
       "description": "",
+      "thumbnail":"",
       "alternates": {
         "canonical": "",
         "hreflangs": [
           {
             "href": "",
             "hreflang": ""
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "",
-        "description": "",
-        "url": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
-          }
-        ]
-      },
-      "twitter": {
-        "title": "",
-        "description": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
           }
         ]
       }

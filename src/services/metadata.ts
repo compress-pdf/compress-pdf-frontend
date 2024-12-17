@@ -27,19 +27,28 @@ export async function generatePageMetadata(
       languages: languages,
     },
     openGraph: {
-      title: t('openGraph.title'),
-      description: t('openGraph.description'),
+      title: t('title'),
+      description: t('description'),
       type: 'website',
       siteName: 'CompressPDF',
-      url: t('openGraph.url'),
-      images: t.raw('openGraph.images'),
+      url: t('alternates.canonical'),
+      images: [
+        {
+          url: t('thumbnail'),
+          alt: t('title'),
+        },
+      ],
     },
     twitter: {
-      title: t('twitter.title'),
-      description: t('twitter.description'),
+      title: t('title'),
+      description: t('description'),
       card: 'summary_large_image',
-      creator: t('twitter.title'),
-      images: t.raw('twitter.images'),
+      images: [
+        {
+          url: t('thumbnail'),
+          alt: t('title'),
+        },
+      ],
     },
   };
 }

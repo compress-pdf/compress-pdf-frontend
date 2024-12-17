@@ -429,6 +429,7 @@
     "metaData": {
       "title": "Compress PDF Files Online Without Losing Quality",
       "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
+      "thumbnail": "",
       "alternates": {
         "canonical": "https://compresspdf.to/",
         "hreflangs": [
@@ -439,27 +440,6 @@
           {
             "href": "https://compresspdf.to/de/",
             "hreflang": "de"
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-        "url": "https://compresspdf.to/",
-        "images": [
-          {
-            "url": "https://cdn.compresspdf.to/images/general-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
-          }
-        ]
-      },
-      "twitter": {
-        "title": "Compress PDF Files Online Without Losing Quality",
-        "description": "Compress your PDF files online while maintaining original quality. Easily reduce file size without compromising on clarity & content. Free & simple to use!",
-        "images": [
-          {
-            "url": "https://cdn.compresspdf.to/images/general-en.png",
-            "alt": "Compress PDF Files Online Without Losing Quality"
           }
         ]
       }
@@ -676,33 +656,13 @@
     "metaData": {
       "title": "",
       "description": "",
+      "thumbnail": "",
       "alternates": {
         "canonical": "",
         "hreflangs": [
           {
             "href": "",
             "hreflang": ""
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "",
-        "description": "",
-        "url": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
-          }
-        ]
-      },
-      "twitter": {
-        "title": "",
-        "description": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
           }
         ]
       }
@@ -869,33 +829,13 @@
     "metaData": {
       "title": "",
       "description": "",
+      "thumbnail": "",
       "alternates": {
         "canonical": "",
         "hreflangs": [
           {
             "href": "",
             "hreflang": ""
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "",
-        "description": "",
-        "url": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
-          }
-        ]
-      },
-      "twitter": {
-        "title": "",
-        "description": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
           }
         ]
       }
@@ -939,6 +879,169 @@
           "inLanguage": "",
           "description": "",
           "url": ""
+        }
+      },
+      {
+        "article": {
+          "@context": "",
+          "@type": "",
+          "mainEntityOfPage": {
+            "@type": "",
+            "@id": ""
+          },
+          "headline": "",
+          "image": "",
+          "author": {
+            "@type": "",
+            "name": "",
+            "url": ""
+          },
+          "publisher": {
+            "@type": "",
+            "name": "",
+            "logo": {
+              "@type": "",
+              "url": ""
+            }
+          },
+          "datePublished": ""
+        }
+      },
+      {
+        "faq": {
+          "@context": "",
+          "@type": "",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": ""
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "format": {
+    "content": {
+      "heroSection": {
+        "title": "Compress PDF to 20MB With Superior Quality",
+        "subtitle": "Reduce Size, Not the Quality",
+        "imageAlt": "Upload PDF files",
+        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+      },
+      "sectionOne": {
+        "title": "What is a PDF Compressor?",
+        "description": "",
+        "imageAlt": "Illustration of what a PDF compressor is.",
+        "imageTitle": "Illustration of what a PDF compressor is."
+      },
+      "sectionTwo": {
+        "title": "Why Use Our 5MB PDF Compression Tool?",
+        "description": "Our PDF compression tool stands out for its efficiency and user-friendly design. Here are a few reasons to choose our tool:",
+        "features": [
+          {
+            "featureTitle": "",
+            "featureDescription": ""
+          }
+        ]
+      },
+      "sectionThree": {
+        "title": "How to Reduce PDF File Size to MB Online?",
+        "stepOne": {
+          "stepNumber": "Step 1:",
+          "stepTitle": "Upload Your Files Directly to the Web",
+          "stepDescription": "",
+          "imageAlt": "File upload options, including URL pasting and drag-and-drop, with a highlighted user interface for uploading documents.",
+          "imageUploadTitle": "",
+          "inputLabel": "",
+          "placeholder": ""
+        },
+        "stepTwo": {
+          "stepNumber": "Step 2:",
+          "stepTitle": "Customize According to Your Preferences",
+          "stepDescription": "",
+          "imageAlt": "PDF customization options for 2MB, including image resolution, file adjustments, and compression levels, with a 'before and after' comparison of file sizes.",
+          "before": "",
+          "size": "",
+          "after": "",
+          "afterSize": "",
+          "rangeLabel": "",
+          "rangeValue": "",
+          "buttonLabel": "",
+          "keep": "",
+          "remove": "",
+          "compressionLevel": "",
+          "compressionValue": ""
+        },
+        "stepThree": {
+          "stepNumber": "Step 3:",
+          "stepTitle": "Download, Share, and Manage Compressed Files",
+          "stepDescription": "",
+          "imageAlt": "File download interface showing a titled PDF and its progress bar.",
+          "firstImageTitle": "",
+          "percentOne": "",
+          "size": "",
+          "rangeLevel": "",
+          "rangeValue": ""
+        }
+      },
+      "faqSection": {
+        "title": "Frequently Asked Questions",
+        "questions": [
+          {
+            "question": "",
+            "answer": ""
+          }
+        ]
+      }
+    },
+    "metaData": {
+      "title": "",
+      "description": "",
+      "thumbnail": "https://cdn.compresspdf.to/images/10kb-en.png",
+      "alternates": {
+        "canonical": "https://compresspdf.to/kb/",
+        "hreflangs": [
+          {
+            "href": "https://compresspdf.to/kb/",
+            "hreflang": "en"
+          }
+        ]
+      }
+    },
+    "schema": [
+      {
+        "softwareApplication": {
+          "@context": "",
+          "@type": "",
+          "name": "",
+          "description": "",
+          "applicationCategory": "",
+          "operatingSystem": "",
+          "author": {
+            "@type": "",
+            "name": "",
+            "url": "",
+            "description": ""
+          },
+          "datePublished": "",
+          "url": "",
+          "aggregateRating": {
+            "@type": "",
+            "ratingValue": "",
+            "reviewCount": ""
+          },
+          "offers": {
+            "@type": "",
+            "price": "",
+            "priceCurrency": ""
+          },
+          "screenshot": "",
+          "featureList": [""]
         }
       },
       {
