@@ -6,12 +6,14 @@ import { DropboxFile } from 'react-dropbox-chooser';
 
 import { useLoading } from '@/context/UploadingContext'; // Import loading context
 import { isAnyLargeDropbox } from '@/services/helpers'; // Ensure this function checks the file size using 'bytes'
+import { ToolsDataType } from '@/constants/toolsData';
 
 import dropboxIcon from '@assets/icons/pngs/dropboxIcon.png';
 
 type Props = {
   handleNewFiles: (files: File[]) => void;
   onDropdown?: boolean;
+  toolInfo: ToolsDataType;
 };
 
 interface DropboxChooserOptions {

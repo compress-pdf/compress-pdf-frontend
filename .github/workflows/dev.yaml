@@ -1,0 +1,73 @@
+name: Automated Build and Deployment with Docker (Development)
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Code from Repository ⤵️
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx 🏗️
+        uses: docker/setup-buildx-action@v3
+
+      - name: Create .env file 📄
+        run: echo "${{ vars.ENV }}" > .env
+
+      - name: Log in to GitHub Container Registry 🔑
+        run: echo "${{ vars.GHCR_PAT }}" | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
+
+      - name: Build and push Docker image 🐋
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ghcr.io/compress-pdf/compress-dev:latest
+
+  deploy:
+    runs-on: ubuntu-22.04
+
+    needs: build
+
+    steps:
+      - name: Deploy Docker Container to VPS 🚀
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          port: ${{ vars.PORT }}
+          host: ${{ vars.HOST }}
+          key: ${{ vars.PRIVATE_KEY }}
+          username: ${{ vars.USERNAME }}
+          script: |
+            echo -e "Logging in to GitHub Container Registry 🗝️"
+            echo "${{ vars.GHCR_PAT }}" | docker login ghcr.io --username "${{ github.actor }}" --password-stdin
+
+            if [ "$(docker ps -q -f name=compress-dev)" ]; then
+                echo -e "Stopping running container: compress-dev 🛑"
+                docker container stop compress-dev
+            fi
+
+            if [ "$(docker container ls -a -q -f name=compress-dev)" ]; then
+                echo -e "Removing stopped container: compress-dev 🚧"
+                docker container rm compress-dev
+            fi
+
+            echo -e "Pulling the latest image from GHCR 📥"
+            docker image pull ghcr.io/compress-pdf/compress-dev
+
+            echo -e "Running the new container: compress-dev 🛩️"
+            docker container run -d \
+              --name compress-dev \
+              -p 5000:3000 \
+              --restart always \
+              ghcr.io/compress-pdf/compress-dev
+
+            echo -e "Pruning unused Docker images 🧹"
+            docker image prune -f
+
+            echo -e "Your application is live! 🎉"

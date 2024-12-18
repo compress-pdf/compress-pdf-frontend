@@ -1,13 +1,19 @@
-import LanguageSwitcher from '../core/LanguageSwitcher';
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/routing';
+
+// import LanguageSwitcher from '../core/LanguageSwitcher';
 import Hamburger from '../core/Hamburger';
 import ThemeSwitcher from '../core/ThemeSwitcher'; // Relative imports
 import SectionContainer from '../containers/SectionContainer';
 import LogoButton from '../core/LogoButton';
 
-export default function Navbar() {
-  // const t = useTranslations('common.header');
+import MenuModal from './MenuModal';
 
-  // const menus = t.raw('menu');
+export default function Navbar() {
+  const t = useTranslations('common.header');
+
+  const menus = t.raw('menu');
 
   return (
     <div className="relative w-full">
@@ -21,7 +27,7 @@ export default function Navbar() {
             <div className="flex gap-[19px] items-center text-base">
               <div className="hidden lg:block">
                 <div className="flex items-center gap-[19px]">
-                  {/* {menus
+                  {menus
                     .slice(0, 2)
                     .map((menu: { label: string; path: string }) => (
                       <Link
@@ -31,11 +37,12 @@ export default function Navbar() {
                       >
                         {menu.label}
                       </Link>
-                    ))} */}
+                    ))}
+                  <MenuModal menus={menus} />
                 </div>
               </div>
               <ThemeSwitcher />
-              <LanguageSwitcher />
+              {/* <LanguageSwitcher /> */}
               <Hamburger />
             </div>
           </div>

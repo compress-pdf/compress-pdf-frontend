@@ -4,6 +4,7 @@ export interface FileData {
   file_name: string;
   file_path: string;
   compression_ratio: number;
+  file_token: string;
   input_file_size: number;
   output_file_size: number;
   processing_time: number;

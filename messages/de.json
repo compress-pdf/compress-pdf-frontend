@@ -429,6 +429,7 @@
     "metaData": {
       "title": "PDF-Dateien Online Komprimieren Ohne Qualitätsverlust",
       "description": "Komprimieren Sie Ihre PDF-Dateien online, ohne die Qualität zu verlieren. Reduzieren Sie die Dateigröße einfach, schnell und kostenlos!",
+      "thumbnail": "https://cdn.compresspdf.to/images/general-de.png",
       "alternates": {
         "canonical": "https://compresspdf.to/de/",
         "hreflangs": [
@@ -439,27 +440,6 @@
           {
             "href": "https://compresspdf.to/de/",
             "hreflang": "de"
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
-        "description": "Komprimieren Sie Ihre PDF-Dateien online, ohne die Qualität zu verlieren. Reduzieren Sie die Dateigröße einfach, schnell und kostenlos!",
-        "url": "https://compresspdf.to/de/",
-        "images": [
-          {
-            "url": "https://cdn.compresspdf.to/images/general-de.png",
-            "alt": "PDF-Dateien online komprimieren ohne Qualitätsverlust"
-          }
-        ]
-      },
-      "twitter": {
-        "title": "PDF-Dateien online komprimieren ohne Qualitätsverlust",
-        "description": "Komprimieren Sie Ihre PDF-Dateien online, ohne die Qualität zu verlieren. Reduzieren Sie die Dateigröße einfach, schnell und kostenlos!",
-        "images": [
-          {
-            "url": "https://cdn.compresspdf.to/images/general-de.png",
-            "alt": "PDF-Dateien online komprimieren ohne Qualitätsverlust"
           }
         ]
       }
@@ -676,33 +656,13 @@
     "metaData": {
       "title": "",
       "description": "",
+      "thumbnail": "",
       "alternates": {
         "canonical": "",
         "hreflangs": [
           {
             "href": "",
             "hreflang": ""
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "",
-        "description": "",
-        "url": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
-          }
-        ]
-      },
-      "twitter": {
-        "title": "",
-        "description": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
           }
         ]
       }
@@ -869,33 +829,13 @@
     "metaData": {
       "title": "",
       "description": "",
+      "thumbnail": "",
       "alternates": {
         "canonical": "",
         "hreflangs": [
           {
             "href": "",
             "hreflang": ""
-          }
-        ]
-      },
-      "openGraph": {
-        "title": "",
-        "description": "",
-        "url": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
-          }
-        ]
-      },
-      "twitter": {
-        "title": "",
-        "description": "",
-        "images": [
-          {
-            "url": "",
-            "alt": ""
           }
         ]
       }

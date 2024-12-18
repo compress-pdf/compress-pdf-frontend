@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { pdfjs } from 'react-pdf';
 import axios, { AxiosProgressEvent } from 'axios';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import helpers, { fileArrayToFileList } from '@/services/helpers';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
@@ -18,6 +19,7 @@ import { API_URL } from '@/constants/credentials/const';
 import { useFooterContext } from '@/context/FooterContext';
 import { clearDB, getItemFromDB } from '@/services/indexedDB';
 import { useLoading } from '@/context/UploadingContext';
+import { ToolsDataType } from '@/constants/toolsData';
 
 import GradientOne from './backgrounds/gradient-one';
 import BeforeUpload from './UploadSection/BeforeUpload';
@@ -30,14 +32,17 @@ const HomePageContent = ({
   tool,
   staticCustomize,
   uid,
+  toolInfo,
 }: {
   children: ReactNode[];
   tool: string;
   staticCustomize: boolean;
   uid?: string;
+  toolInfo: ToolsDataType;
 }) => {
   const { updateRotationParameters, setFilesAndUid } = useCompressionContext();
   const [pdfFiles, setPdfFiles] = useState<File[]>([]);
+  const t = useTranslations('common');
   // const { loading } = useLoading();
   const [compressing, setCompressing] = useState(false);
   const [progressValue, setProgressValue] = useState<number>(0);
@@ -63,19 +68,38 @@ const HomePageContent = ({
   }, [pdfFiles, staticCustomize, compressing]);
 
   const handleFileChange = async (selectedFiles: FileList) => {
-    const isCorrupted = await helpers.validatePdfFiles(
+    // Convert sizes from KB to MB for validation
+    const maxFiles = toolInfo.totalFiles;
+    const maxSizeMB = toolInfo.totalFileSize / 1024; // Convert total file size from KB to MB
+    const pageSize = toolInfo.totalPages;
+    const minSingleFileSizeKB = toolInfo.minSingleFileSize;
+    const maxSingleFileSizeKB = toolInfo.maxSingleFileSize;
+
+    const validationResults = await helpers.validatePdfFiles(
       selectedFiles,
-      4,
-      50,
-      200
+      maxFiles,
+      maxSizeMB,
+      pageSize,
+      minSingleFileSizeKB,
+      maxSingleFileSizeKB
     );
-    if (isCorrupted.valid) {
+
+    if (validationResults.valid) {
       setPdfFiles(Array.from(selectedFiles));
+      const initialRotations = Array.from(selectedFiles).reduce(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (acc: { [key: number]: number }, _, index) => {
+          acc[index] = 0;
+          return acc;
+        },
+        {}
+      );
+      setFileRotations(initialRotations);
     } else {
-      isCorrupted.messages.map(each => {
+      validationResults.messages.forEach(message => {
         CustomToast({
           type: 'error',
-          message: each,
+          message: message,
         });
       });
     }
@@ -95,6 +119,7 @@ const HomePageContent = ({
 
     // Append rotation parameters as a single JSON string
     formData.append('rotation_parameter', JSON.stringify(fileRotations));
+    formData.append('route_in_kb', toolInfo.tool.toString());
 
     // Append other customization options from the state
     if (state.compressLevel !== undefined && state.compressType !== 'by-img') {
@@ -120,10 +145,10 @@ const HomePageContent = ({
 
     const apiLink =
       state.compressType === 'by-level'
-        ? `${API_URL}/v1.1/with-validation/level-based-with-image`
+        ? `${API_URL}/v2/with-validation/level-based-with-image`
         : state.compressType === 'by-level-no-img'
-          ? `${API_URL}/v1.1/with-validation/level-based-without-image`
-          : `${API_URL}/v1/image-based`;
+          ? `${API_URL}/v2/with-validation/level-based-without-image`
+          : `${API_URL}/v2/image-based`;
 
     const config = {
       headers: {
@@ -139,17 +164,11 @@ const HomePageContent = ({
       },
     };
 
-    // console.log(apiLink);
-    // console.log(formData);
-    // Array.from(formData.entries()).forEach(([key, value]) => {
-    //   console.log(key, value);
-    // });
-
     try {
       // Make the API request
       const response = await axios.post(apiLink, formData, config);
 
-      console.log(response);
+      console.log('Response:', response.data);
 
       if (response.status === 200) {
         // Create a new object to ensure we're using the latest values
@@ -177,14 +196,33 @@ const HomePageContent = ({
 
   const handleNewFiles = async (newFiles: File[]) => {
     const updatedFiles = [...pdfFiles];
+
+    // Convert sizes from KB to MB for validation
+    const maxFiles = toolInfo.totalFiles;
+    const maxSizeMB = toolInfo.totalFileSize / 1024; // Convert total file size from KB to MB
+    const pageSize = toolInfo.totalPages;
+    const minSingleFileSizeKB = toolInfo.minSingleFileSize;
+    const maxSingleFileSizeKB = toolInfo.maxSingleFileSize;
+
     const isCorrupted = await helpers.validatePdfFiles(
       fileArrayToFileList([...updatedFiles, ...newFiles]),
-      4,
-      50,
-      200
+      maxFiles,
+      maxSizeMB,
+      pageSize,
+      minSingleFileSizeKB,
+      maxSingleFileSizeKB
     );
     if (isCorrupted.valid) {
       setPdfFiles([...updatedFiles, ...newFiles]);
+      const initialRotations = newFiles.reduce(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (acc: { [key: number]: number }, _, index) => {
+          acc[index] = 0;
+          return acc;
+        },
+        {}
+      );
+      setFileRotations(initialRotations);
     } else {
       isCorrupted.messages.map(each => {
         CustomToast({
@@ -197,18 +235,53 @@ const HomePageContent = ({
 
   const handleUpdatedFiles = (updatedFiles: File[]) => {
     setPdfFiles(updatedFiles);
+    const initialRotations = updatedFiles.reduce(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (acc: { [key: number]: number }, _, index) => {
+        acc[index] = 0;
+        return acc;
+      },
+      {}
+    );
+    setFileRotations(initialRotations);
   };
 
   const handleDeleteFile = async (index: number) => {
+    // Create a copy of files and rotations
     const updatedFiles = [...pdfFiles];
+    const updatedRotations = { ...fileRotations };
+
+    // Remove file at specific index
     updatedFiles.splice(index, 1);
+
+    // Remove rotation for that specific index
+    delete updatedRotations[index];
+
+    // Remap rotations to maintain correct indexing
+    const remappedRotations = Object.keys(updatedRotations).reduce(
+      (acc: { [key: number]: number }, key) => {
+        const currentIndex = Number(key);
+        const newIndex = currentIndex > index ? currentIndex - 1 : currentIndex;
+
+        acc[newIndex] = updatedRotations[currentIndex];
+        return acc;
+      },
+      {}
+    );
+
+    // Update both files and rotations states
     setPdfFiles(updatedFiles);
+    setFileRotations(remappedRotations);
+
+    // Reset file input
     const fileInput = document.getElementById(
       'file-upload'
     ) as HTMLInputElement | null;
     if (fileInput) {
       fileInput.value = '';
     }
+
+    // Check if no files remain
     if (updatedFiles.length === 0) {
       const isPresent = await getItemFromDB(uid || '');
       if (isPresent) {
@@ -218,23 +291,26 @@ const HomePageContent = ({
     }
   };
 
-  // Rotate file clockwise
-  const rotateClockwise = (index: number) => {
-    setFileRotations(prevRotations => ({
-      ...prevRotations,
-      [index]: ((prevRotations[index] || 0) + 90) % 360,
-    }));
+  const rotateAnticlockwise = (index: number) => {
+    setFileRotations(prevRotations => {
+      const currentRotation = prevRotations[index] || 0;
+      const newRotation = (currentRotation - 90 + 360) % 360;
+      return {
+        ...prevRotations,
+        [index]: newRotation,
+      };
+    });
   };
 
-  // Rotate file anticlockwise
-  const rotateAnticlockwise = (index: number) => {
-    setFileRotations(prevRotations => ({
-      ...prevRotations,
-      [index]:
-        (prevRotations[index] || 0) === 0
-          ? 270
-          : (prevRotations[index] - 90) % 360,
-    }));
+  const rotateClockwise = (index: number) => {
+    setFileRotations(prevRotations => {
+      const currentRotation = prevRotations[index] || 0;
+      const newRotation = (currentRotation + 90) % 360;
+      return {
+        ...prevRotations,
+        [index]: newRotation,
+      };
+    });
   };
 
   // useEffect(() => {
@@ -252,8 +328,9 @@ const HomePageContent = ({
   const LoadingBlock = (
     <LoadingUpload
       progress={progressValue}
-      title="Uploading"
-      description="Please do not close your browser. Wait until your files are uploading and processed! This might take a few minutes. :)"
+      imageAlt={t('uploading.imageAlt')}
+      title={t('uploading.title')}
+      description={t('uploading.description')}
     />
   );
 
@@ -272,6 +349,8 @@ const HomePageContent = ({
       rotateAnticlockwise={rotateAnticlockwise}
       fileRotations={fileRotations}
       uid={uid || ''}
+      toolInfo={toolInfo}
+      setFileRotations={setFileRotations}
     />
   );
 
@@ -288,12 +367,13 @@ const HomePageContent = ({
         <GradientOne />
         <SectionContainer className="hero-section text-center flex flex-col md:flex-row gap-[30px] md:gap-[51px] lg:gap-[39px] xl:gap-[51px] 2xl:gap-[39px] 3xl:gap-[134px] pt-[35px] md:pt-[85px] xl:pt-[115px] 2xl:pt-[130px] 3xl:pt-[160px]">
           {children[0]}
-          <div className="relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]">
+          <div className="relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F] h-fit">
             {/* <div className="appear-anim relative w-full md:w-1/2 shadow-2xl rounded-[15.49px] hover:scale-[1.01] transition-all duration-300 ease-in bg-[#FAFAFA] dark:bg-[#2F2F2F]"> */}
             <BeforeUpload
               handleFileChange={handleFileChange}
               handleNewFiles={handleNewFiles}
               tool={tool}
+              toolInfo={toolInfo}
             />
             <Image
               className="star-top float hidden md:block absolute w-[28px] h-auto top-0 -mt-6 -ml-8 z-10 rotate-6"

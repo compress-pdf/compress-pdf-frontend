@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { validatePdfLink } from '@/services/helpers';
 import UrlIcon from '@/assets/icons/svgs/upload-client/urlIcon';
 import { useLoading } from '@/context/UploadingContext';
+import { ToolsDataType } from '@/constants/toolsData';
 
 import Modal from '../core/Modal';
 import { Button } from '../core/Button';
@@ -14,12 +15,14 @@ type Props = {
   handleNewFiles: (files: File[]) => void;
   onDropdown?: boolean;
   modalRef?: React.Ref<HTMLDivElement>;
+  toolInfo: ToolsDataType;
 };
 
 const LinkComponent = ({
   handleNewFiles,
   onDropdown = false,
   modalRef,
+  toolInfo,
 }: Props) => {
   const t = useTranslations('common');
   const { setLoading } = useLoading();
@@ -43,9 +46,8 @@ const LinkComponent = ({
       setLoading(true);
 
       const validationResult = await validatePdfLink(
-        URL,
-        50,
-        t('urlModal.errorMessage')
+        `/api/proxy?url=${URL}`,
+        toolInfo.totalFileSize
       );
 
       try {
@@ -53,7 +55,7 @@ const LinkComponent = ({
           setValidationMessages(validationResult.messages);
           return;
         }
-        const response = await fetch(URL);
+        const response = await fetch(`/api/proxy?url=${URL}`);
         const blob = await response.blob();
         const file = new File([blob], 'file.pdf', { type: 'application/pdf' });
         if (file) {

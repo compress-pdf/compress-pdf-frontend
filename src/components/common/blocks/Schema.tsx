@@ -2,14 +2,19 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 
 interface SchemaProps {
-  tool: string; // The tool name, assuming you fetch translations based on the tool
+  tool: string; // The tool name for fetching translations
 }
 
 const Schema = ({ tool }: SchemaProps) => {
-  const t = useTranslations(`${tool}`);
+  const t = useTranslations(tool);
 
-  // Fetch the entire schema array (assuming it returns the list of schemas)
-  const schemaArray = t.raw('schema');
+  // Fetch the schema array (fallback to an empty array if undefined)
+  const schemaArray = t.raw('schema') || [];
+
+  // If no schemas are provided
+  if (!Array.isArray(schemaArray) || schemaArray.length === 0) {
+    return null;
+  }
 
   return (
     <section>

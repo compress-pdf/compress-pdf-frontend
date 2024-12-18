@@ -58,8 +58,8 @@ body {
 
 .fullwidth-container {
   position: relative;
-  width: 100vw;
-  max-width: 100vw;
+  /* width: 100vw; */
+  /* mawidth: 100vw; */
   margin-inline: calc(-50vw + 50%);
 }
 

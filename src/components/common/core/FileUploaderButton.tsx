@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import { Button } from '@/components/common/core/Button';
 import helpers from '@/services/helpers';
+import { ToolsDataType } from '@/constants/toolsData';
 
 import browseIcon from '@assets/icons/pngs/browseFileIcon.png';
 
@@ -11,7 +12,8 @@ type FileUploaderButtonProps = {
   handleFileChange: (files: FileList) => void;
   buttonLabel: string;
   iconAlt: string; // Alt text for the icon
-  inputId?: string; // Custom ID for the input
+  inputId?: string; // Custom ID for the input\
+  toolInfo: ToolsDataType;
 };
 
 const FileUploaderButton: React.FC<FileUploaderButtonProps> = ({
@@ -19,6 +21,7 @@ const FileUploaderButton: React.FC<FileUploaderButtonProps> = ({
   buttonLabel,
   iconAlt,
   inputId = 'file-upload', // Default ID for the input
+  toolInfo,
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -31,11 +34,20 @@ const FileUploaderButton: React.FC<FileUploaderButtonProps> = ({
   const onFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     handleFileChange(event.target.files as FileList);
     // Clear the input by setting its value to an empty string
+
+    const maxFiles = toolInfo.totalFiles;
+    const maxSizeMB = toolInfo.totalFileSize / 1024; // Convert total file size from KB to MB
+    const pageSize = toolInfo.totalPages;
+    const minSingleFileSizeKB = toolInfo.minSingleFileSize;
+    const maxSingleFileSizeKB = toolInfo.maxSingleFileSize;
+
     const isCorrupted = await helpers.validatePdfFiles(
       event.target.files as FileList,
-      4,
-      50,
-      200
+      maxFiles,
+      maxSizeMB,
+      pageSize,
+      minSingleFileSizeKB,
+      maxSingleFileSizeKB
     );
     if (fileInputRef.current && !isCorrupted.valid) {
       fileInputRef.current.value = ''; // Clear the input

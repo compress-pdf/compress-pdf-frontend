@@ -24,12 +24,16 @@ interface DraggableFlatProps {
   rotateAnticlockwise: (index: number) => void;
   rotateClockwise: (index: number) => void;
   fileRotations: Record<number, number>;
+  setFileRotations: React.Dispatch<
+    React.SetStateAction<Record<number, number>>
+  >;
 }
 
 const DraggableFlat: React.FC<DraggableFlatProps> = ({
   files,
   onDeleteFile,
   onUpdateFiles,
+  setFileRotations,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   convertsNonPdfFile = false,
   rotateAnticlockwise,
@@ -63,6 +67,13 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
     fileIndex: number,
     { numPages }: { numPages: number }
   ) => {
+    // Update total pages
+    setTotalPages(prevPageNumbers => ({
+      ...prevPageNumbers,
+      [fileIndex]: numPages,
+    }));
+
+    // Ensure rotation is initialized to 0 if not already set
     setTotalPages(prevPageNumbers => ({
       ...prevPageNumbers,
       [fileIndex]: numPages,
@@ -88,14 +99,55 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
   const handleDragSorting = debounce(
     (dragItemIndex: number | null, dragOverItemIndex: number | null) => {
       if (dragItemIndex !== null && dragOverItemIndex !== null) {
+        // Create copies of files and rotations
         const sortedFiles = [...files];
+        const sortedRotations = { ...fileRotations };
+
+        // Remove dragged item from files
         const draggedItemContent = sortedFiles.splice(dragItemIndex, 1)[0];
+
+        // Insert dragged item at new position
         sortedFiles.splice(dragOverItemIndex, 0, draggedItemContent);
+
+        // Preserve rotations during swap
+        const draggedItemRotation = sortedRotations[dragItemIndex];
+
+        // Remove the original rotation entry
+        delete sortedRotations[dragItemIndex];
+
+        // Adjust remaining rotation entries
+        const adjustedRotations = Object.keys(sortedRotations).reduce(
+          (acc, key) => {
+            const currentIndex = Number(key);
+            let newIndex = currentIndex;
+
+            if (currentIndex > dragItemIndex) {
+              newIndex =
+                currentIndex < dragOverItemIndex
+                  ? currentIndex - 1
+                  : currentIndex;
+            } else if (currentIndex >= dragOverItemIndex) {
+              newIndex = currentIndex + 1;
+            }
+
+            acc[newIndex] = sortedRotations[currentIndex];
+            return acc;
+          },
+          {} as { [key: number]: number }
+        );
+
+        // Add back the dragged item's rotation at new index
+        adjustedRotations[dragOverItemIndex] = draggedItemRotation;
+
+        // Update files and rotations
         onUpdateFiles(sortedFiles);
+        setFileRotations(adjustedRotations);
       }
     },
-    300 // Adjust the delay as needed, 300ms is a reasonable debounce time.
+    300 // Debounce delay
   );
+
+  console.log('files:', fileRotations);
 
   return (
     <>
@@ -198,10 +250,12 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                       }
                     >
                       <Page
-                        rotate={fileRotations[index] || 0}
+                        rotate={fileRotations[index]} // Ensure default is 0
                         pageNumber={1}
-                        className="border-2 border-gray shadow text-green-500"
                         width={197}
+                        renderTextLayer={false} // Disable text layer to prevent rendering issues
+                        renderAnnotationLayer={false} // Disable annotation layer
+                        className="border-2 border-gray shadow text-green-500"
                       />
                     </Document>
                   </div>

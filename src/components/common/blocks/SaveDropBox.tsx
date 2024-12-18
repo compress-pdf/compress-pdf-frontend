@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import CustomToast from '../core/ToastMessage';
 
@@ -23,6 +23,8 @@ type Props = {
 };
 
 const SaveDropBox = ({ filename, url, children }: Props) => {
+  const [isDropboxLoaded, setIsDropboxLoaded] = useState(false);
+
   useEffect(() => {
     // Load Dropbox Chooser SDK dynamically
     const script = document.createElement('script');
@@ -33,19 +35,48 @@ const SaveDropBox = ({ filename, url, children }: Props) => {
       'data-app-key',
       process.env.NEXT_PUBLIC_DROPBOX_APP_KEY as string
     );
+
+    // Set the Dropbox SDK as loaded once the script is fully loaded
+    script.onload = () => {
+      setIsDropboxLoaded(true);
+    };
+
+    // Error handling if Dropbox SDK fails to load
+    script.onerror = () => {
+      CustomToast({
+        type: 'error',
+        message: 'Failed to load Dropbox SDK. Please try again later.',
+      });
+    };
+
     document.body.appendChild(script);
 
+    // Clean up the script from the DOM on component unmount
     return () => {
       document.body.removeChild(script);
     };
   }, []);
 
   const handleDropboxSave = () => {
+    if (!isDropboxLoaded) {
+      CustomToast({
+        type: 'error',
+        message:
+          'Dropbox SDK not loaded yet. Please wait a moment and try again.',
+      });
+      return;
+    }
+
     const options: DropboxSaveOptions = {
       files: [
         {
-          url: url, // URL of the file to save
-          filename: filename, // Desired name of the file in Dropbox
+          url,
+          filename:
+            filename.endsWith('.zip') || filename.endsWith('.pdf')
+              ? filename
+              : filename === 'compressed'
+                ? `${filename}.zip`
+                : `${filename}.pdf`,
         },
       ],
       success: () => {
@@ -56,10 +87,10 @@ const SaveDropBox = ({ filename, url, children }: Props) => {
       },
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       progress: progress => {
+        // Optional: Handle progress update
         // console.log('Progress:', progress);
       },
       cancel: () => {
-        // console.log('User canceled saving the file.');
         CustomToast({
           type: 'error',
           message: 'Process Cancelled',

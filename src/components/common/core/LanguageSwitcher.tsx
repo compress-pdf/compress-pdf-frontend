@@ -24,7 +24,7 @@ export default function LanguageSwitcher() {
   const changeLocale = (newLocale: { label: string; value: string }) => {
     setSelectedLocale(newLocale);
     router.replace(pathname, {
-      locale: newLocale.value as 'en' | 'de' | 'fr' | undefined,
+      locale: newLocale.value as 'en' | undefined,
     });
   };
 

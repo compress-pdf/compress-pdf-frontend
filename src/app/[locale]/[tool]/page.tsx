@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Schema from '@/components/common/blocks/Schema';
 import CompressPdf from '@/components/pages/compress-pdf';
 import { generatePageMetadata } from '@/services/metadata';
+import { toolsData, ToolsDataType } from '@/constants/toolsData';
 
 interface Params {
   params: {
@@ -12,25 +13,25 @@ interface Params {
 }
 
 export async function generateMetadata({ params: { tool } }: Params) {
-  const tools = ['100kb', '200kb'];
+  const toolInfo = toolsData.find(item => item.url === tool);
 
-  if (!tools.includes(tool)) {
+  if (!toolInfo) {
     return notFound();
   }
   return generatePageMetadata(`${tool}.metaData`);
 }
 
 const ToolPage = ({ params: { tool } }: Params) => {
-  const tools = ['100kb', '200kb'];
+  const toolInfo = toolsData.find(item => item.url === tool);
 
-  if (!tools.includes(tool)) {
+  if (!toolInfo) {
     return notFound();
   }
 
   return (
     <>
       <Schema tool={tool} />
-      <CompressPdf tool={tool} />
+      <CompressPdf tool={tool} toolInfo={toolInfo as ToolsDataType} />
     </>
   );
 };
