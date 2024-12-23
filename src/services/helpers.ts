@@ -580,6 +580,12 @@ export async function fetchDropboxFileSize(file: DropboxFile): Promise<number> {
   }
 }
 
+const formatFileSize = (size: number): string => {
+  return size < 1024
+    ? `${size.toFixed(2)} KB`
+    : `${(size / 1024).toFixed(2)} MB`;
+};
+
 const helpers = {
   hexToRgb,
   sortAsc,
@@ -597,6 +603,7 @@ const helpers = {
   memorize,
   debounce,
   checkFileSizeWithLength,
+  formatFileSize,
 };
 
 export default helpers;

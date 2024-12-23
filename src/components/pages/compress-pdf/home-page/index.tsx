@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 import React, { ReactNode, useEffect, useState } from 'react';
 import { pdfjs } from 'react-pdf';
@@ -168,29 +169,41 @@ const HomePageContent = ({
       // Make the API request
       const response = await axios.post(apiLink, formData, config);
 
-      console.log('Response:', response.data);
+      // Extract the data from the response
+      const { data } = response;
 
-      if (response.status === 200) {
-        // Create a new object to ensure we're using the latest values
+      // Check for the success field or specific status codes
+      if (
+        data.status_code === 207 ||
+        data.status_code === 400 ||
+        data.status_code === 200
+      ) {
         const updatedState = {
           compressType: state.compressType,
           compressLevel: state.compressLevel,
           enhancementLevel: state.enhancementLevel,
           dpi: state.dpi,
           rgb: state.rgb,
-          rotationParameters: { ...state.rotationParameters, ...fileRotations }, // Merge with latest rotations
+          rotationParameters: { ...state.rotationParameters, ...fileRotations },
         };
 
-        await setFilesAndUid(pdfFiles, response.data.uid, updatedState);
-
-        router.push(`/download/${response.data.uid}`);
+        await setFilesAndUid(pdfFiles, data.uid, updatedState);
+        router.push(`/download/${data.uid}`);
       } else {
-        console.error('Failed to compress files:', response);
+        console.error('Failed to compress files:', data.message || response);
       }
-    } catch (error) {
-      console.error('Error during file upload:', error);
-    } finally {
-      // router.refresh();
+    } catch (error: any) {
+      // Handle errors explicitly
+      if (error.response?.status === 400) {
+        // Ensure UID exists in the error response
+        if (error.response.data?.uid) {
+          router.push(`/download/${error.response.data.uid}`);
+        } else {
+          console.error('Error: Missing UID in response.', error.response.data);
+        }
+      } else {
+        console.error('Error during file upload:', error.message);
+      }
     }
   };
 

@@ -20,7 +20,7 @@ import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { API_URL } from '@/constants/credentials/const';
 import { FileData } from '@/types/General';
 import { clearDB, getItemFromDB } from '@/services/indexedDB';
-import {
+import helpers, {
   calculateTimeLeft,
   convertToTimeFormat,
   findEarliestExpireTime,
@@ -348,7 +348,10 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                   </h1>
                   <p className="text-xs md:text-sm lg:text-md xl:text-sm 2xl:text-[0.875rem] text-center md:text-left">
                     {totalPdf} {t('header.filesTitle')} |{' '}
-                    {totalInitialSize.toFixed(2)} MB {t('header.total')}
+                    {helpers.formatFileSize(
+                      parseFloat(totalInitialSize.toFixed(2))
+                    )}
+                    {t('header.total')}
                   </p>
                 </div>
 
@@ -357,7 +360,9 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                     {compressionRatio.toFixed(2)}%
                   </p>
                   <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-4 md:leading-6 mt-0">
-                    {totalUltimateSize.toFixed(2)} MB
+                    {helpers.formatFileSize(
+                      parseFloat(totalUltimateSize.toFixed(2))
+                    )}
                   </p>
                 </div>
               </div>
