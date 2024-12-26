@@ -80,10 +80,6 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
     }));
   };
 
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-  };
-
   //introduce a debouncing mechanism for the handleDragSorting function.
   const debounce = (func: Function, wait: number) => {
     let timeout: ReturnType<typeof setTimeout>;
@@ -109,35 +105,12 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
         // Insert dragged item at new position
         sortedFiles.splice(dragOverItemIndex, 0, draggedItemContent);
 
-        // Preserve rotations during swap
-        const draggedItemRotation = sortedRotations[dragItemIndex];
-
-        // Remove the original rotation entry
-        delete sortedRotations[dragItemIndex];
-
-        // Adjust remaining rotation entries
-        const adjustedRotations = Object.keys(sortedRotations).reduce(
-          (acc, key) => {
-            const currentIndex = Number(key);
-            let newIndex = currentIndex;
-
-            if (currentIndex > dragItemIndex) {
-              newIndex =
-                currentIndex < dragOverItemIndex
-                  ? currentIndex - 1
-                  : currentIndex;
-            } else if (currentIndex >= dragOverItemIndex) {
-              newIndex = currentIndex + 1;
-            }
-
-            acc[newIndex] = sortedRotations[currentIndex];
-            return acc;
-          },
-          {} as { [key: number]: number }
-        );
-
-        // Add back the dragged item's rotation at new index
-        adjustedRotations[dragOverItemIndex] = draggedItemRotation;
+        // Create a new rotation object matching the new order of files
+        const adjustedRotations: { [key: number]: number } = {};
+        sortedFiles.forEach((_, newIndex) => {
+          const originalIndex = files.indexOf(sortedFiles[newIndex]);
+          adjustedRotations[newIndex] = sortedRotations[originalIndex] ?? 0;
+        });
 
         // Update files and rotations
         onUpdateFiles(sortedFiles);
@@ -162,7 +135,6 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
             // className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[41.42px] md:pt-[55px]`}
             className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[21.42px] md:pt-[25px]`}
             onDrop={handleNewFiles}
-            onDragOver={handleDragOver}
           >
             {files?.map((file: File, index: number) => (
               <div key={index}>

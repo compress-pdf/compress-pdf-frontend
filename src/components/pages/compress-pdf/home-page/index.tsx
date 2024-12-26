@@ -76,8 +76,10 @@ const HomePageContent = ({
     const minSingleFileSizeKB = toolInfo.minSingleFileSize;
     const maxSingleFileSizeKB = toolInfo.maxSingleFileSize;
 
+    const selectedFilesArray = Array.from(selectedFiles);
+
     const validationResults = await helpers.validatePdfFiles(
-      selectedFiles,
+      fileArrayToFileList([...pdfFiles, ...selectedFilesArray]),
       maxFiles,
       maxSizeMB,
       pageSize,
@@ -86,16 +88,24 @@ const HomePageContent = ({
     );
 
     if (validationResults.valid) {
-      setPdfFiles(Array.from(selectedFiles));
-      const initialRotations = Array.from(selectedFiles).reduce(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (acc: { [key: number]: number }, _, index) => {
-          acc[index] = 0;
-          return acc;
-        },
-        {}
-      );
-      setFileRotations(initialRotations);
+      // Merge the new files with the existing ones
+      const updatedFiles = [...pdfFiles, ...selectedFilesArray];
+
+      // Preserve existing rotations and add new rotations for the new files
+      const updatedRotations = {
+        ...fileRotations, // Preserve existing rotations
+        ...selectedFilesArray.reduce(
+          (acc, _, index) => {
+            acc[pdfFiles.length + index] = 0; // Initialize rotation for new files
+            return acc;
+          },
+          {} as { [key: number]: number }
+        ),
+      };
+
+      // Update files and rotations
+      setPdfFiles(updatedFiles);
+      setFileRotations(updatedRotations);
     } else {
       validationResults.messages.forEach(message => {
         CustomToast({
@@ -225,17 +235,25 @@ const HomePageContent = ({
       minSingleFileSizeKB,
       maxSingleFileSizeKB
     );
+
     if (isCorrupted.valid) {
-      setPdfFiles([...updatedFiles, ...newFiles]);
-      const initialRotations = newFiles.reduce(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (acc: { [key: number]: number }, _, index) => {
-          acc[index] = 0;
-          return acc;
-        },
-        {}
-      );
-      setFileRotations(initialRotations);
+      const newFilesWithRotations = [...updatedFiles, ...newFiles];
+
+      // Preserve existing rotations and add initial rotations for new files
+      const updatedRotations = {
+        ...fileRotations, // Preserve existing rotations
+        ...newFiles.reduce(
+          (acc, _, index) => {
+            acc[updatedFiles.length + index] = 0; // Assign rotation 0 for new files
+            return acc;
+          },
+          {} as { [key: number]: number }
+        ),
+      };
+
+      // Update files and rotations
+      setPdfFiles(newFilesWithRotations);
+      setFileRotations(updatedRotations);
     } else {
       isCorrupted.messages.map(each => {
         CustomToast({

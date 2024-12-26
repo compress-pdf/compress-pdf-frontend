@@ -141,6 +141,8 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
               <ToggleButtonGroup
                 files={files}
                 setSortedFiles={setSortedFiles}
+                fileRotations={fileRotations}
+                setFileRotations={setFileRotations}
               />
             </div>
 
