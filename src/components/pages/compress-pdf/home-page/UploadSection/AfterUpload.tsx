@@ -18,6 +18,7 @@ import helpers, { fileListToFileArray } from '@/services/helpers';
 import { getItemFromDB } from '@/services/indexedDB';
 import { useRouter } from '@/i18n/routing';
 import { ToolsDataType } from '@/constants/toolsData';
+import CustomToast from '@/components/common/core/ToastMessage';
 
 import arrowIcon from '@assets/icons/pngs/customize-page/arrow.png';
 
@@ -63,6 +64,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
   const modalRef = useRef<HTMLDivElement | null>(null);
   const t = useTranslations('common.custom');
   const router = useRouter();
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     const fetchFiles = async () => {
@@ -125,15 +127,47 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
       </div> */}
       <SectionContainer className="overflow-x-clip">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <DraggableFlat
-            files={files}
-            onDeleteFile={handleDeleteFile}
-            onUpdateFiles={handleUpdatedFiles}
-            rotateClockwise={rotateClockwise}
-            rotateAnticlockwise={rotateAnticlockwise}
-            fileRotations={fileRotations}
-            setFileRotations={setFileRotations}
-          />
+          <div
+            className={`bg-white ${
+              isDragging
+                ? ' border-2 border-dashed border-gray-300 rounded-lg bg-blue-50 transition-all duration-100 ease-in'
+                : ''
+            }`}
+            onDragOver={e => {
+              e.preventDefault();
+              setIsDragging(true);
+            }}
+            onDragLeave={e => {
+              e.preventDefault();
+              setIsDragging(false);
+            }}
+            onDrop={e => {
+              e.preventDefault();
+              setIsDragging(false);
+              const droppedFiles = Array.from(e.dataTransfer.files);
+              if (droppedFiles.some(file => file.type !== 'application/pdf')) {
+                CustomToast({
+                  type: 'error',
+                  message: 'Only PDF files are allowed',
+                });
+                return;
+              }
+
+              if (droppedFiles.length > 0 && files.length < 5) {
+                handleNewFiles(droppedFiles);
+              }
+            }}
+          >
+            <DraggableFlat
+              files={files}
+              onDeleteFile={handleDeleteFile}
+              onUpdateFiles={handleUpdatedFiles}
+              rotateClockwise={rotateClockwise}
+              rotateAnticlockwise={rotateAnticlockwise}
+              fileRotations={fileRotations}
+              setFileRotations={setFileRotations}
+            />
+          </div>
           <SectionContainer className="relative flex flex-col-reverse gap-4 md:gap-0 md:flex-row-reverse items-center justify-between w-full text-sm md:text-[0.875rem] 3xl:text-base pt-4 md:pt-0">
             {/* For md+ devices, this will be the 1st element. For md- devices, it will be the 2nd element. */}
             <div className="flex items-center gap-2 order-1 md:order-2">

@@ -56,12 +56,12 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
     checkOverflow(containerId);
   }, [files, height, width]);
 
-  const handleNewFiles = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const droppedFiles = Array.from(event.dataTransfer.files);
-    const updatedFiles = [...files, ...droppedFiles];
-    onUpdateFiles(updatedFiles);
-  };
+  // const handleNewFiles = (event: React.DragEvent<HTMLDivElement>) => {
+  //   event.preventDefault();
+  //   const droppedFiles = Array.from(event.dataTransfer.files);
+  //   const updatedFiles = [...files, ...droppedFiles];
+  //   onUpdateFiles(updatedFiles);
+  // };
 
   const handleDocumentLoadSuccess = (
     fileIndex: number,
@@ -132,7 +132,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
           <div
             // className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[41.42px] md:pt-[55px]`}
             className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[21.42px] md:pt-[25px]`}
-            onDrop={handleNewFiles}
+            // onDrop={handleNewFiles}
           >
             {files?.map((file: File, index: number) => (
               <div key={index}>

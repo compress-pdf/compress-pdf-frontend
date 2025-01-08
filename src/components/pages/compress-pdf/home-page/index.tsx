@@ -218,11 +218,20 @@ const HomePageContent = ({
   };
 
   const handleNewFiles = async (newFiles: File[]) => {
+    // First check if adding new files would exceed the max files limit
+    if (pdfFiles.length + newFiles.length > toolInfo.totalFiles) {
+      CustomToast({
+        type: 'error',
+        message: `Cannot add more files. Maximum ${toolInfo.totalFiles} files allowed.`,
+      });
+      return; // Exit early before any state updates
+    }
+
     const updatedFiles = [...pdfFiles];
 
     // Convert sizes from KB to MB for validation
     const maxFiles = toolInfo.totalFiles;
-    const maxSizeMB = toolInfo.totalFileSize / 1024; // Convert total file size from KB to MB
+    const maxSizeMB = toolInfo.totalFileSize / 1024;
     const pageSize = toolInfo.totalPages;
     const minSingleFileSizeKB = toolInfo.minSingleFileSize;
     const maxSingleFileSizeKB = toolInfo.maxSingleFileSize;
@@ -236,32 +245,33 @@ const HomePageContent = ({
       maxSingleFileSizeKB
     );
 
-    if (isCorrupted.valid) {
-      const newFilesWithRotations = [...updatedFiles, ...newFiles];
-
-      // Preserve existing rotations and add initial rotations for new files
-      const updatedRotations = {
-        ...fileRotations, // Preserve existing rotations
-        ...newFiles.reduce(
-          (acc, _, index) => {
-            acc[updatedFiles.length + index] = 0; // Assign rotation 0 for new files
-            return acc;
-          },
-          {} as { [key: number]: number }
-        ),
-      };
-
-      // Update files and rotations
-      setPdfFiles(newFilesWithRotations);
-      setFileRotations(updatedRotations);
-    } else {
-      isCorrupted.messages.map(each => {
+    if (!isCorrupted.valid) {
+      isCorrupted.messages.forEach(each => {
         CustomToast({
           type: 'error',
           message: each,
         });
       });
+      return; // Exit without updating state
     }
+
+    const newFilesWithRotations = [...updatedFiles, ...newFiles];
+
+    // Preserve existing rotations and add initial rotations for new files
+    const updatedRotations = {
+      ...fileRotations,
+      ...newFiles.reduce(
+        (acc, _, index) => {
+          acc[updatedFiles.length + index] = 0;
+          return acc;
+        },
+        {} as { [key: number]: number }
+      ),
+    };
+
+    // Update files and rotations
+    setPdfFiles(newFilesWithRotations);
+    setFileRotations(updatedRotations);
   };
 
   const handleUpdatedFiles = (updatedFiles: File[]) => {
