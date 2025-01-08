@@ -253,7 +253,11 @@ const FileItem: React.FC<FileItemProps> = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-[10px] justify-normal items-start bg-[#FDE9D4] dark:bg-[#2F2F2F] md:p-4 p-2 w-full border-b-4 border-white dark:border-gray-800">
+    <div
+      className={`flex flex-col md:flex-row gap-[10px] justify-normal items-start bg-[#FDE9D4] dark:bg-[#2F2F2F] md:p-4 p-2 w-full border-b-4 border-white dark:border-gray-800 ${
+        file.status_code === 400 ? 'pointer-events-none opacity-90' : ''
+      }`}
+    >
       <div className="flex flex-row items-start gap-1 w-full md:w-[56%] lg:w-[56%] xl:w-[56%] 3xl:w-[56%]">
         <div className="mr-2 md:mr-4 rounded">
           <div className="w-10 h-12">
