@@ -401,291 +401,305 @@ const FileItem: React.FC<FileItemProps> = ({
             </span>
           </p>
         </div>
-        <div className="ml-auto">
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] text-[#163B45] dark:text-slate-50 font-[1.15rem] leading-6">
-              {file?.compression_ratio?.toFixed(2)}%
-            </p>
-            <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-6 mt-0 text-slate-900 dark:text-white">
-              {/* {file?.output_file_size?.toFixed(2)}MB */}
-              {helpers.formatFileSize(
-                parseFloat(file?.output_file_size?.toFixed(2))
-              )}
-            </p>
+        {file.status_code !== 400 && (
+          <div className="ml-auto">
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-xs md:text-[0.875rem] lg:text-[0.875rem] xl:text-[0.875rem] 2xl:text-[0.875rem] text-[#163B45] dark:text-slate-50 font-[1.15rem] leading-6">
+                {file?.compression_ratio?.toFixed(2)}%
+              </p>
+              <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-6 mt-0 text-slate-900 dark:text-white">
+                {/* {file?.output_file_size?.toFixed(2)}MB */}
+                {helpers.formatFileSize(
+                  parseFloat(file?.output_file_size?.toFixed(2))
+                )}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
-      <div className="w-full md:w-[44%] lg:w-[44%] xl:w-[44%] 3xl:w-[44%] flex flex-row flex-wrap gap-2 items-center justify-between md:justify-end">
-        <div className="flex gap-1 2xl:gap-2 items-center">
-          <ModalWithButton
-            buttonLabel={
+      {file.status_code === 400 ? (
+        <div className="text-red-500 mx-auto md:pt-5">
+          <p> Your PDF file is already very well compressed</p>
+        </div>
+      ) : (
+        <>
+          <div className="w-full md:w-[44%] lg:w-[44%] xl:w-[44%] 3xl:w-[44%] flex flex-row flex-wrap gap-2 items-center justify-between md:justify-end">
+            <div className="flex gap-1 2xl:gap-2 items-center">
+              <ModalWithButton
+                buttonLabel={
+                  <span
+                    aria-label="share"
+                    className="bg-orange-200 dark:bg-[#A6BFD2] dark:invert rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
+                  >
+                    <Image
+                      width={0}
+                      height={0}
+                      src={ShareIcon}
+                      className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
+                      alt="share-logo"
+                    />
+                  </span>
+                }
+              >
+                {/* Modal Content */}
+                <div>
+                  <div className="flex flex-col my-2 items-center gap-3">
+                    <p className="text-[#163B45] dark:text-white text-[1.125rem] font-bold w-full text-center mb-5">
+                      {t('body.shareModal.title')}
+                    </p>
+
+                    <div className="flex items-center gap-4 md:gap-6 mt-2">
+                      <div className="flex flex-col items-center">
+                        <FacebookShareButton url={url}>
+                          <div className="flex flex-col w-full items-center justify-center">
+                            <button
+                              type="button"
+                              className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
+                              onClick={() =>
+                                handleFileExpiryUpdate(file?.file_token)
+                              }
+                              title="facebook share"
+                            >
+                              <Image
+                                src={fbLogo}
+                                className="w-[25px] h-[25px] cursor-pointer"
+                                width={0}
+                                height={0}
+                                alt="facebook share"
+                                unoptimized={true}
+                              />
+                            </button>
+                            <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
+                              Facebook
+                            </p>
+                          </div>
+                        </FacebookShareButton>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <LinkedinShareButton url={url}>
+                          <div className="flex flex-col w-full items-center justify-center">
+                            <button
+                              type="button"
+                              className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
+                              onClick={() =>
+                                handleFileExpiryUpdate(file?.file_token)
+                              }
+                              title="linkedin share"
+                            >
+                              <Image
+                                src={linkedinLogo}
+                                className="w-[25px] h-[25px] cursor-pointer"
+                                width={0}
+                                height={0}
+                                alt="linkedin share"
+                                unoptimized={true}
+                              />
+                            </button>
+                            <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
+                              LinkedIn
+                            </p>
+                          </div>
+                        </LinkedinShareButton>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <TwitterShareButton url={url}>
+                          <div className="flex flex-col w-full items-center justify-center">
+                            <button
+                              type="button"
+                              className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
+                              onClick={() =>
+                                handleFileExpiryUpdate(file?.file_token)
+                              }
+                              title="x(twitter)"
+                            >
+                              <Image
+                                src={xLogo}
+                                className="w-[25px] h-[25px] cursor-pointer dark:invert dark:brightness-50"
+                                width={0}
+                                height={0}
+                                alt="social-x"
+                                unoptimized={true}
+                              />
+                            </button>
+                            <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
+                              X(Twitter)
+                            </p>
+                          </div>
+                        </TwitterShareButton>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <EmailShareButton url={url}>
+                          <div className="flex flex-col w-full items-center justify-center">
+                            <button
+                              type="button"
+                              className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
+                              onClick={() =>
+                                handleFileExpiryUpdate(file?.file_token)
+                              }
+                              title="mail share"
+                            >
+                              <Image
+                                src={mailLogo}
+                                className="w-[25px] h-auto cursor-pointer"
+                                width={0}
+                                height={0}
+                                alt="mail share"
+                                unoptimized={true}
+                              />
+                            </button>
+                            <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
+                              Mail
+                            </p>
+                          </div>
+                        </EmailShareButton>
+                      </div>
+                    </div>
+
+                    <div className="relative flex w-full border border-[#D8DAE5] dark:bg-[#353535] dark:border-transparent text-sm items-center rounded-[8px]">
+                      <input
+                        type="text"
+                        placeholder={'https://example.com/result'}
+                        value={url}
+                        disabled
+                        className="py-4 px-[18px] ps-4 w-full focus:outline-none h-8 bg-transparent rounded-[4px] font-light text-[#163B45] dark:text-[#ffffff] text-[0.875rem] pe-6"
+                      />
+                      <Button
+                        onClick={() => {
+                          handleFileExpiryUpdate(file?.file_token);
+                          handleCopyURL();
+                        }}
+                        className="rounded-[7px] my-1 me-1"
+                      >
+                        {t('body.shareModal.btn')}
+                      </Button>
+                    </div>
+                    <p className="text-sm text-[#F81818] mt-[13px]">
+                      {t('body.shareModal.alert', {
+                        hour: timeLeft.hours,
+                        min: timeLeft.minutes,
+                        sec: timeLeft.seconds,
+                      })}
+                    </p>
+                  </div>
+                </div>
+              </ModalWithButton>
               <span
-                aria-label="share"
+                aria-label="print"
+                role="button"
+                tabIndex={0}
+                onKeyDown={() => {}}
                 className="bg-orange-200 dark:bg-[#A6BFD2] dark:invert rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
+                onClick={handlePrint}
               >
                 <Image
                   width={0}
                   height={0}
-                  src={ShareIcon}
+                  src={PrinterIcon}
                   className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
-                  alt="share-logo"
+                  alt="print-logo"
                 />
               </span>
-            }
-          >
-            {/* Modal Content */}
-            <div>
-              <div className="flex flex-col my-2 items-center gap-3">
-                <p className="text-[#163B45] dark:text-white text-[1.125rem] font-bold w-full text-center mb-5">
-                  {t('body.shareModal.title')}
-                </p>
-
-                <div className="flex items-center gap-4 md:gap-6 mt-2">
-                  <div className="flex flex-col items-center">
-                    <FacebookShareButton url={url}>
-                      <div className="flex flex-col w-full items-center justify-center">
-                        <button
-                          type="button"
-                          className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          onClick={() =>
-                            handleFileExpiryUpdate(file?.file_token)
-                          }
-                          title="facebook share"
-                        >
-                          <Image
-                            src={fbLogo}
-                            className="w-[25px] h-[25px] cursor-pointer"
-                            width={0}
-                            height={0}
-                            alt="facebook share"
-                            unoptimized={true}
-                          />
-                        </button>
-                        <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
-                          Facebook
-                        </p>
-                      </div>
-                    </FacebookShareButton>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <LinkedinShareButton url={url}>
-                      <div className="flex flex-col w-full items-center justify-center">
-                        <button
-                          type="button"
-                          className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          onClick={() =>
-                            handleFileExpiryUpdate(file?.file_token)
-                          }
-                          title="linkedin share"
-                        >
-                          <Image
-                            src={linkedinLogo}
-                            className="w-[25px] h-[25px] cursor-pointer"
-                            width={0}
-                            height={0}
-                            alt="linkedin share"
-                            unoptimized={true}
-                          />
-                        </button>
-                        <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
-                          LinkedIn
-                        </p>
-                      </div>
-                    </LinkedinShareButton>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <TwitterShareButton url={url}>
-                      <div className="flex flex-col w-full items-center justify-center">
-                        <button
-                          type="button"
-                          className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          onClick={() =>
-                            handleFileExpiryUpdate(file?.file_token)
-                          }
-                          title="x(twitter)"
-                        >
-                          <Image
-                            src={xLogo}
-                            className="w-[25px] h-[25px] cursor-pointer dark:invert dark:brightness-50"
-                            width={0}
-                            height={0}
-                            alt="social-x"
-                            unoptimized={true}
-                          />
-                        </button>
-                        <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
-                          X(Twitter)
-                        </p>
-                      </div>
-                    </TwitterShareButton>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <EmailShareButton url={url}>
-                      <div className="flex flex-col w-full items-center justify-center">
-                        <button
-                          type="button"
-                          className="w-12 h-12 cursor-pointer relative rounded-full bottom-1 bg-transparent border dark:border-0 dark:bg-[#353535] flex items-center justify-center hover:scale-125 transition-all duration-200 ease-in-out"
-                          onClick={() =>
-                            handleFileExpiryUpdate(file?.file_token)
-                          }
-                          title="mail share"
-                        >
-                          <Image
-                            src={mailLogo}
-                            className="w-[25px] h-auto cursor-pointer"
-                            width={0}
-                            height={0}
-                            alt="mail share"
-                            unoptimized={true}
-                          />
-                        </button>
-                        <p className="pt-1 font-medium text-sm text-[#163B45] dark:text-white">
-                          Mail
-                        </p>
-                      </div>
-                    </EmailShareButton>
-                  </div>
-                </div>
-
-                <div className="relative flex w-full border border-[#D8DAE5] dark:bg-[#353535] dark:border-transparent text-sm items-center rounded-[8px]">
-                  <input
-                    type="text"
-                    placeholder={'https://example.com/result'}
-                    value={url}
-                    disabled
-                    className="py-4 px-[18px] ps-4 w-full focus:outline-none h-8 bg-transparent rounded-[4px] font-light text-[#163B45] dark:text-[#ffffff] text-[0.875rem] pe-6"
-                  />
-                  <Button
-                    onClick={() => {
-                      handleFileExpiryUpdate(file?.file_token);
-                      handleCopyURL();
-                    }}
-                    className="rounded-[7px] my-1 me-1"
-                  >
-                    {t('body.shareModal.btn')}
-                  </Button>
-                </div>
-                <p className="text-sm text-[#F81818] mt-[13px]">
-                  {t('body.shareModal.alert', {
-                    hour: timeLeft.hours,
-                    min: timeLeft.minutes,
-                    sec: timeLeft.seconds,
-                  })}
-                </p>
-              </div>
+              <iframe
+                ref={iframeRef}
+                style={{ display: 'none' }}
+                title="print"
+              />
+              <Preview url={url}>
+                <Image
+                  width={0}
+                  height={0}
+                  src={ViewIcon}
+                  className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
+                  alt="view-logo"
+                />
+              </Preview>
             </div>
-          </ModalWithButton>
-          <span
-            aria-label="print"
-            role="button"
-            tabIndex={0}
-            onKeyDown={() => {}}
-            className="bg-orange-200 dark:bg-[#A6BFD2] dark:invert rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center"
-            onClick={handlePrint}
-          >
-            <Image
-              width={0}
-              height={0}
-              src={PrinterIcon}
-              className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
-              alt="print-logo"
-            />
-          </span>
-          <iframe ref={iframeRef} style={{ display: 'none' }} title="print" />
-          <Preview url={url}>
-            <Image
-              width={0}
-              height={0}
-              src={ViewIcon}
-              className="dark:mix-blend-multiply dark:brightness-100 dark:contrast-200 dark:grayscale"
-              alt="view-logo"
-            />
-          </Preview>
-        </div>
 
-        <div className="text-end">
-          <SplitButton
-            modalRef={modalRef}
-            label={
-              <ModalWithButton
-                disabled={!showModal}
-                // disabled={false}
-                buttonLabel={
-                  <button
-                    onClick={() => handleDownload(file?.file_token)}
-                    className="flex items-center gap-2"
+            <div className="text-end">
+              <SplitButton
+                modalRef={modalRef}
+                label={
+                  <ModalWithButton
+                    disabled={!showModal}
+                    // disabled={false}
+                    buttonLabel={
+                      <button
+                        onClick={() => handleDownload(file?.file_token)}
+                        className="flex items-center gap-2"
+                      >
+                        <Image
+                          width={18}
+                          height={18}
+                          src={downloadIcon}
+                          alt="download icon"
+                        />
+                        {t('body.downloadModal.label')}
+                      </button>
+                    }
                   >
-                    <Image
-                      width={18}
-                      height={18}
-                      src={downloadIcon}
-                      alt="download icon"
-                    />
-                    {t('body.downloadModal.label')}
-                  </button>
+                    <p className="text-[1.125rem] font-bold text-[#163B45] dark:text-slate-50 text-center">
+                      Rate this!
+                    </p>
+                    <StarRating onRate={handleRatingSubmit} toolId={1} />
+                  </ModalWithButton>
                 }
-              >
-                <p className="text-[1.125rem] font-bold text-[#163B45] dark:text-slate-50 text-center">
-                  Rate this!
-                </p>
-                <StarRating onRate={handleRatingSubmit} toolId={1} />
-              </ModalWithButton>
-            }
-            dropdownActions={[
-              {
-                label: (
-                  <SaveDropBox url={url} filename={fileName}>
-                    <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
-                      <Image
-                        src={dropBoxIcon}
-                        height={14}
-                        width={14}
-                        alt={t('body.downloadModal.dropbox')}
-                      />
-                      {t('body.downloadModal.dropbox')}
-                    </span>
-                  </SaveDropBox>
-                ),
-              },
-              // {
-              //   label: (
-              //     <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
-              //       <Image
-              //         src={oneDriveIcon}
-              //         height={14}
-              //         width={14}
-              //         alt={t('body.downloadModal.onedrive')}
-              //       />
-              //       {t('body.downloadModal.onedrive')}
-              //     </span>
-              //   ),
-              // },
-              {
-                label: (
-                  <SaveDrive PDF_URL={url}>
-                    <span className="font-bold text-[#FAFAFA] flex items-center gap-3 text-left">
-                      <Image
-                        src={googleDriveIcon}
-                        height={14}
-                        width={14}
-                        alt={t('body.downloadModal.drive')}
-                      />
-                      {t('body.downloadModal.drive')}
-                    </span>
-                  </SaveDrive>
-                ),
-              },
-            ]}
-            onMainClick={() => {
-              //console.log('Download clicked')
-            }}
-            className="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white focus:outline-none text-sm md:text-[0.875rem] border-0 border-e-[1px] dark:border-0 dark:border-e-[1px] dark:border-[#dbdbdbe0] h-full"
-            classNameDropdownIcon="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white border-0 dark:border-s-transparent"
-            classNameDropdown="bg-[#FF8224] dark:bg-[#FF8224] dark:hover:bg-[#ff7044] hover:bg-[#ff7044] text-white"
-          />
-        </div>
-      </div>
+                dropdownActions={[
+                  {
+                    label: (
+                      <SaveDropBox url={url} filename={fileName}>
+                        <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
+                          <Image
+                            src={dropBoxIcon}
+                            height={14}
+                            width={14}
+                            alt={t('body.downloadModal.dropbox')}
+                          />
+                          {t('body.downloadModal.dropbox')}
+                        </span>
+                      </SaveDropBox>
+                    ),
+                  },
+                  // {
+                  //   label: (
+                  //     <span className="font-bold text-[#FAFAFA] flex items-center gap-3">
+                  //       <Image
+                  //         src={oneDriveIcon}
+                  //         height={14}
+                  //         width={14}
+                  //         alt={t('body.downloadModal.onedrive')}
+                  //       />
+                  //       {t('body.downloadModal.onedrive')}
+                  //     </span>
+                  //   ),
+                  // },
+                  {
+                    label: (
+                      <SaveDrive PDF_URL={url}>
+                        <span className="font-bold text-[#FAFAFA] flex items-center gap-3 text-left">
+                          <Image
+                            src={googleDriveIcon}
+                            height={14}
+                            width={14}
+                            alt={t('body.downloadModal.drive')}
+                          />
+                          {t('body.downloadModal.drive')}
+                        </span>
+                      </SaveDrive>
+                    ),
+                  },
+                ]}
+                onMainClick={() => {
+                  //console.log('Download clicked')
+                }}
+                className="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white focus:outline-none text-sm md:text-[0.875rem] border-0 border-e-[1px] dark:border-0 dark:border-e-[1px] dark:border-[#dbdbdbe0] h-full"
+                classNameDropdownIcon="bg-gradient-to-tl from-[#ff8224] to-[#b33f40] dark:bg-gradient-to-tl dark:from-[#ff8224] dark:to-[#b33f40] hover:bg-gradient-to-tl hover:from-[#ff8224] hover:to-[#b33f40] dark:hover:bg-gradient-to-tl dark:hover:from-[#ff8224] dark:hover:to-[#b33f40] text-white border-0 dark:border-s-transparent"
+                classNameDropdown="bg-[#FF8224] dark:bg-[#FF8224] dark:hover:bg-[#ff7044] hover:bg-[#ff7044] text-white"
+              />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -120,8 +120,6 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
     300 // Debounce delay
   );
 
-  console.log('files:', fileRotations);
-
   return (
     <>
       {loading ? (
