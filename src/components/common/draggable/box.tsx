@@ -28,7 +28,7 @@ const DraggableBox = ({ children, handleFileChange }: Props) => {
 
   return (
     <div
-      className={`bg-white w-full ${
+      className={`bg-white dark:bg-[#2F2F2F] w-full ${
         draggedOver
           ? ' border-2 border-dashed border-gray-300 rounded-lg bg-blue-50 transition-all duration-100'
           : ''

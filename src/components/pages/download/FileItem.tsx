@@ -267,14 +267,27 @@ const FileItem: React.FC<FileItemProps> = ({
         <div className="self-start max-w-[70%] flex flex-col flex-wrap">
           <span className="text-md text-[#163B45] dark:text-white font-bold flex flex-row items-center gap-[2px] max-w-full flex-wrap">
             {isEditing ? (
-              <span className="flex items-center max-w-full flex-nowrap">
-                <input
-                  aria-label="edit filename"
-                  type="text"
-                  value={fileName}
-                  onChange={handleInputChange}
-                  onKeyDown={e => {
-                    if (e.key === 'Enter') {
+              file.status_code !== 400 && (
+                <span className="flex items-center max-w-full flex-nowrap">
+                  <input
+                    aria-label="edit filename"
+                    type="text"
+                    value={fileName}
+                    onChange={handleInputChange}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') {
+                        handleNameChange(
+                          file?.file_token,
+                          fileName,
+                          file?.file_index
+                        );
+                        setIsEditing(false);
+                        setErrorMessage('');
+                      }
+                    }}
+                    // eslint-disable-next-line jsx-a11y/no-autofocus
+                    autoFocus
+                    onBlur={() => {
                       handleNameChange(
                         file?.file_token,
                         fileName,
@@ -282,23 +295,12 @@ const FileItem: React.FC<FileItemProps> = ({
                       );
                       setIsEditing(false);
                       setErrorMessage('');
-                    }
-                  }}
-                  // eslint-disable-next-line jsx-a11y/no-autofocus
-                  autoFocus
-                  onBlur={() => {
-                    handleNameChange(
-                      file?.file_token,
-                      fileName,
-                      file?.file_index
-                    );
-                    setIsEditing(false);
-                    setErrorMessage('');
-                  }}
-                  className="text-[#163B45] dark:text-white font-normal text-sm md:text-xs lg:text-sm xl:text-xs 2xl:text-sm 3xl:text-[0.875rem] bg-white border-none outline-none w-full rounded-md dark:bg-[#2e150e50] px-1 py-2"
-                />
-                <p className="ml-2">.pdf</p>
-              </span>
+                    }}
+                    className="text-[#163B45] dark:text-white font-normal text-sm md:text-xs lg:text-sm xl:text-xs 2xl:text-sm 3xl:text-[0.875rem] bg-white border-none outline-none w-full rounded-md dark:bg-[#2e150e50] px-1 py-2"
+                  />
+                  <p className="ml-2">.pdf</p>
+                </span>
+              )
             ) : (
               <p
                 className="text-[#163B45] dark:text-white font-bold text-start text-sm md:text-xs lg:text-sm xl:text-xs 2xl:text-sm 3xl:text-[0.875rem] break-words whitespace-normal max-w-full"

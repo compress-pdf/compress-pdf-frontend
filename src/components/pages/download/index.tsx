@@ -285,7 +285,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   };
 
   const handleDownloadZip = async () => {
-    const url = `${API_URL}/v2/download-as-zip?UID=${uid}`;
+    const url = `${API_URL}/v2/download-as-zip?uid=${uid}`;
 
     try {
       const response = await axios.get(url, {

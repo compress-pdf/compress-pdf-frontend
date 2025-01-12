@@ -8,7 +8,7 @@ import lightIcon from '@assets/icons/pngs/header/light-icon.png';
 import darkIcon from '@assets/icons/pngs/header/dark-icon.png';
 
 export default function ThemeSwitcher() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -20,10 +20,10 @@ export default function ThemeSwitcher() {
   return (
     <button
       type="button"
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
       className="flex items-center justify-center"
     >
-      {theme === 'dark' ? (
+      {resolvedTheme === 'dark' ? (
         <Image src={lightIcon} alt="light" className="w-4 h-4" />
       ) : (
         <Image src={darkIcon} alt="dark" className="w-4 h-4" />

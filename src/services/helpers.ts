@@ -581,6 +581,7 @@ export async function fetchDropboxFileSize(file: DropboxFile): Promise<number> {
 }
 
 const formatFileSize = (size: number): string => {
+  console.log(size);
   return size < 1024
     ? `${size.toFixed(2)} KB`
     : `${(size / 1024).toFixed(2)} MB`;

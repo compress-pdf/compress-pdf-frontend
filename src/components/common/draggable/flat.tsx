@@ -166,8 +166,9 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                           className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
                           type="button"
                         >
-                          {helpers.getFileSize(file)}
-                          {t('viewPage.mb')}
+                          {helpers.formatFileSize(file.size / 1024)}
+                          {/* {helpers.getFileSize(file)} */}
+                          {/* {t('viewPage.mb')} */}
                         </button>
                       </div>
                       <div className="absolute bottom-[11px] left-1/2 transform -translate-x-1/2 flex gap-[10px]">
