@@ -24,7 +24,7 @@ const LoadingUpload = ({
 }: Props) => {
   if (title === 'Loading') {
     return (
-      <FullwidthContainer className="relative">
+      <FullwidthContainer className="relative min-h-[81vh] ">
         <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
           <div className="inline-block w-[20%] h-auto aspect-square opacity-50 absolute bg-orange-300 dark:bg-[#731818ee] -top-10 -right-10 blur-[190px]" />
           <div className="inline-block w-[20%] h-auto aspect-square opacity-40 absolute bg-blue-500 dark:bg-[#B33F40] -top-10 -left-10 blur-[190px]" />
@@ -41,7 +41,7 @@ const LoadingUpload = ({
     );
   } else if (progress < 100) {
     return (
-      <FullwidthContainer className="relative">
+      <FullwidthContainer className="relative min-h-[81vh]">
         <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
           <div className="inline-block w-[20%] h-auto aspect-square opacity-50 absolute bg-orange-300 dark:bg-[#731818ee] -top-10 -right-10 blur-[190px]" />
           <div className="inline-block w-[20%] h-auto aspect-square opacity-40 absolute bg-blue-500 dark:bg-[#B33F40] -top-10 -left-10 blur-[190px]" />
@@ -96,7 +96,7 @@ const LoadingUpload = ({
     );
   } else {
     return (
-      <FullwidthContainer className="relative">
+      <FullwidthContainer className="relative min-h-[81vh]">
         <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
           <div className="inline-block w-[20%] h-auto aspect-square opacity-50 absolute bg-orange-300 dark:bg-[#731818ee] -top-10 -right-10 blur-[190px]" />
           <div className="inline-block w-[20%] h-auto aspect-square opacity-40 absolute bg-blue-500 dark:bg-[#B33F40] -top-10 -left-10 blur-[190px]" />

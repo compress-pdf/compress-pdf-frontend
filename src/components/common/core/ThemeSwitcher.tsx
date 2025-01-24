@@ -7,7 +7,11 @@ import Image from 'next/image';
 import lightIcon from '@assets/icons/pngs/header/light-icon.png';
 import darkIcon from '@assets/icons/pngs/header/dark-icon.png';
 
-export default function ThemeSwitcher() {
+type Props = {
+  text: boolean;
+};
+
+export default function ThemeSwitcher({ text }: Props) {
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -24,9 +28,21 @@ export default function ThemeSwitcher() {
       className="flex items-center justify-center"
     >
       {resolvedTheme === 'dark' ? (
-        <Image src={lightIcon} alt="light" className="w-4 h-4" />
+        !text ? (
+          <Image src={lightIcon} alt="light" className="h-4 w-4" />
+        ) : (
+          <div className="flex items-center gap-2">
+            <Image src={lightIcon} alt="light" className="h-3 w-3" />{' '}
+            <span className="text-[8px]">Light Mode</span>
+          </div>
+        )
+      ) : !text ? (
+        <Image src={darkIcon} alt="dark" className="w-4 h-4 " />
       ) : (
-        <Image src={darkIcon} alt="dark" className="w-4 h-4" />
+        <div className="flex items-center gap-2">
+          <Image src={darkIcon} alt="dark" className="h-3 w-3" />{' '}
+          <span className="text-[8px] text-[#163B45]">Dark Mode</span>
+        </div>
       )}
     </button>
   );

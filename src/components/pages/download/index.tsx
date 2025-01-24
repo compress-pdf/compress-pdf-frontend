@@ -5,16 +5,9 @@ import Image from 'next/image';
 import QRCode from 'qrcode';
 import { useTranslations } from 'next-intl';
 import axios from 'axios';
-import {
-  TwitterShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  EmailShareButton,
-} from 'react-share';
 
 import SplitButton from '@/components/common/core/SplitButton';
 import ModalWithButton from '@/components/common/core/ModalWithButton';
-import { Button } from '@/components/common/core/Button';
 import CustomToast from '@/components/common/core/ToastMessage';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { API_URL } from '@/constants/credentials/const';
@@ -24,7 +17,6 @@ import helpers, {
   calculateTimeLeft,
   convertToTimeFormat,
   findEarliestExpireTime,
-  transformToArray,
 } from '@/services/helpers';
 import SaveDropBox from '@/components/common/blocks/SaveDropBox';
 import { useRatingContext } from '@/context/RatingContext';
@@ -36,13 +28,7 @@ import FileItem from './FileItem';
 import DownloadSkeleton from './DownloadSkeleton';
 import DownloadFooter from './Footer';
 
-import FacebookIcon from '@assets/icons/pngs/facebook.png';
-import TwitterIcon from '@assets/icons/pngs/twitter.png';
-import MailIcon from '@assets/icons/pngs/email.png';
-import LinkedinIcon from '@assets/icons/pngs/linkedin.png';
-import QRIcon from '@assets/icons/pngs/qrBar.png';
 import dropBoxIcon from '@assets/icons/pngs/dropboxWhite.png';
-import oneDriveIcon from '@assets/icons/pngs/onedriveWhite.png';
 import goBackIcon from '@assets/icons/pngs/go-back.png';
 import googleDriveIcon from '@assets/icons/pngs/googledriveWhite.png';
 

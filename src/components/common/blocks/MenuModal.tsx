@@ -36,7 +36,7 @@ export default function MenuModal({ menus }: Props) {
           anchor="bottom end"
           className="rounded-[10px] dark:bg-[#232323] px-[40px] pb-6 z-50 border transition duration-100 ease-out  from-white/20 to-transparent backdrop-blur-[99.5px]"
         >
-          <p className="text-[18px] font-bold pt-[25px] pb-[16px] dark:text-[#FFFFFF]">
+          <p className="text-[18px] text-[#163B45] font-bold pt-[25px] pb-[16px] dark:text-[#FFF]">
             Compress PDF to
           </p>
           <div className="grid grid-cols-6 gap-8 text-[#163B45]">

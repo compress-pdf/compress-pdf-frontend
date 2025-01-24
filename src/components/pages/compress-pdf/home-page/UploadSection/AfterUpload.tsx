@@ -128,9 +128,9 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
       <SectionContainer className="overflow-x-clip">
         <form onSubmit={handleSubmit} encType="multipart/form-data">
           <div
-            className={`bg-white ${
+            className={` ${
               isDragging
-                ? ' border-2 border-dashed border-gray-300 rounded-lg bg-blue-50 transition-all duration-100 ease-in'
+                ? ' border-2 border-dashed border-gray-300 rounded-lg transition-all duration-100 ease-in'
                 : ''
             }`}
             onDragOver={e => {
