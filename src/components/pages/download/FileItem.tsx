@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
-import React, { useState, ChangeEvent, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  ChangeEvent,
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import Image from 'next/image';
 import {
   TwitterShareButton,
@@ -52,6 +59,8 @@ interface FileItemProps {
   showModal: boolean;
   setShowModal: any;
   handleRatingSubmit: any;
+  isOpen: boolean; // Optionally control isOpen externally
+  setIsOpen: Dispatch<SetStateAction<boolean>>; // Optional external setState
 }
 
 const FileItem: React.FC<FileItemProps> = ({
@@ -66,6 +75,8 @@ const FileItem: React.FC<FileItemProps> = ({
   addRating,
   showModal,
   setShowModal,
+  isOpen,
+  setIsOpen,
 }) => {
   const deleteIcon = (
     <svg
@@ -119,7 +130,11 @@ const FileItem: React.FC<FileItemProps> = ({
   );
   const t = useTranslations('common.download');
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(file?.expire));
-  const url = `${API_URL}/${file?.file_path}`;
+  const url = `${API_URL}/${
+    file?.file_path.endsWith('.pdf')
+      ? file?.file_path
+      : file?.file_path + '.pdf'
+  }`;
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [triggerPrint, setTriggerPrint] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -625,6 +640,8 @@ const FileItem: React.FC<FileItemProps> = ({
                   <ModalWithButton
                     disabled={!showModal}
                     // disabled={false}
+                    setIsOpen={setIsOpen}
+                    isOpen={isOpen}
                     buttonLabel={
                       <button
                         onClick={() => handleDownload(file?.file_token)}

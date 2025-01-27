@@ -56,6 +56,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   const toolId = 1;
   const { isRated, addRating } = useRatingContext();
   const [showModal, setShowModal] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -172,6 +173,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     // Submit rating and close the modal
     await addRating(toolId, rating);
     setShowModal(false);
+    setIsOpen(false);
   };
 
   const generateQR = async (link: string): Promise<string | null> => {
@@ -194,7 +196,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     index: number
   ) => {
     try {
-      const newFileName = `${name}.pdf`;
+      const newFileName = `${name}`;
       const url = `${API_URL}/v2/filename?file_token=${file_token}&new_file_name=${newFileName}&file_index=${index}`;
 
       await axios.patch(url);
@@ -369,6 +371,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                     label={
                       <ModalWithButton
                         disabled={!showModal}
+                        setIsOpen={setIsOpen}
+                        isOpen={isOpen}
                         // disabled={false}
                         buttonLabel={
                           <button
@@ -461,6 +465,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 showModal={showModal}
                 setShowModal={setShowModal}
                 handleRatingSubmit={handleRatingSubmit}
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
               />
             ))}
 
