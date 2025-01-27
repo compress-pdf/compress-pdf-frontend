@@ -230,9 +230,9 @@ const SaveDrive = ({ PDF_URL, children }: TypeSaveDrive) => {
           className="relative z-50"
         >
           <div className="fixed inset-0 flex items-center justify-center p-4">
-            <DialogPanel className="relative w-[600px] max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl h-[60vh] max-h-[90vh] border rounded-md overflow-auto bg-[#fafafa] dark:bg-[#262626] shadow-xl dark:shadow-[#ffffff05] dark:border-slate-900 dark:border">
+            <DialogPanel className="relative w-[600px] max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-xl h-auto border rounded-md overflow-auto bg-[#fafafa] dark:bg-[#262626] shadow-xl dark:shadow-[#ffffff05] dark:border-slate-900 dark:border">
               <div className="flex justify-center">
-                <div className="flex flex-col items-center  loader mt-[15%] mb-[10%]">
+                <div className="flex flex-col items-center loader mb-[10%]">
                   <div className="">
                     <div className="my-8">
                       <div className="bg-slate-400 dark:bg-slate-800 shadow-xl dark:shadow-[#ffffff05] dark:border-slate-900 dark:border relative h-8 w-full rounded-2xl">

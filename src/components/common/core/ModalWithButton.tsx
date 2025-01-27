@@ -1,5 +1,11 @@
 'use client';
-import React, { useState, ReactNode, Fragment } from 'react';
+import React, {
+  useState,
+  ReactNode,
+  Fragment,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { twMerge } from 'tailwind-merge';
 
@@ -8,6 +14,8 @@ type ModalWithButtonProps = {
   buttonStyle?: string; // Classes for button styling
   children: ReactNode; // Content for the modal
   disabled?: boolean;
+  isOpen?: boolean; // Optionally control isOpen externally
+  setIsOpen?: Dispatch<SetStateAction<boolean>>; // Optional external setState
 };
 
 const ModalWithButton: React.FC<ModalWithButtonProps> = ({
@@ -15,8 +23,15 @@ const ModalWithButton: React.FC<ModalWithButtonProps> = ({
   buttonStyle,
   children,
   disabled = false,
+  isOpen: externalIsOpen,
+  setIsOpen: externalSetIsOpen,
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  // Internal state as fallback
+  const [internalIsOpen, internalSetIsOpen] = useState<boolean>(false);
+
+  // Use external state if provided, otherwise fallback to internal state
+  const isOpen = externalIsOpen ?? internalIsOpen;
+  const setIsOpen = externalSetIsOpen ?? internalSetIsOpen;
 
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);

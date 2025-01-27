@@ -56,12 +56,12 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
     checkOverflow(containerId);
   }, [files, height, width]);
 
-  const handleNewFiles = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    const droppedFiles = Array.from(event.dataTransfer.files);
-    const updatedFiles = [...files, ...droppedFiles];
-    onUpdateFiles(updatedFiles);
-  };
+  // const handleNewFiles = (event: React.DragEvent<HTMLDivElement>) => {
+  //   event.preventDefault();
+  //   const droppedFiles = Array.from(event.dataTransfer.files);
+  //   const updatedFiles = [...files, ...droppedFiles];
+  //   onUpdateFiles(updatedFiles);
+  // };
 
   const handleDocumentLoadSuccess = (
     fileIndex: number,
@@ -78,10 +78,6 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
       ...prevPageNumbers,
       [fileIndex]: numPages,
     }));
-  };
-
-  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
-    event.preventDefault();
   };
 
   //introduce a debouncing mechanism for the handleDragSorting function.
@@ -109,35 +105,12 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
         // Insert dragged item at new position
         sortedFiles.splice(dragOverItemIndex, 0, draggedItemContent);
 
-        // Preserve rotations during swap
-        const draggedItemRotation = sortedRotations[dragItemIndex];
-
-        // Remove the original rotation entry
-        delete sortedRotations[dragItemIndex];
-
-        // Adjust remaining rotation entries
-        const adjustedRotations = Object.keys(sortedRotations).reduce(
-          (acc, key) => {
-            const currentIndex = Number(key);
-            let newIndex = currentIndex;
-
-            if (currentIndex > dragItemIndex) {
-              newIndex =
-                currentIndex < dragOverItemIndex
-                  ? currentIndex - 1
-                  : currentIndex;
-            } else if (currentIndex >= dragOverItemIndex) {
-              newIndex = currentIndex + 1;
-            }
-
-            acc[newIndex] = sortedRotations[currentIndex];
-            return acc;
-          },
-          {} as { [key: number]: number }
-        );
-
-        // Add back the dragged item's rotation at new index
-        adjustedRotations[dragOverItemIndex] = draggedItemRotation;
+        // Create a new rotation object matching the new order of files
+        const adjustedRotations: { [key: number]: number } = {};
+        sortedFiles.forEach((_, newIndex) => {
+          const originalIndex = files.indexOf(sortedFiles[newIndex]);
+          adjustedRotations[newIndex] = sortedRotations[originalIndex] ?? 0;
+        });
 
         // Update files and rotations
         onUpdateFiles(sortedFiles);
@@ -146,8 +119,6 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
     },
     300 // Debounce delay
   );
-
-  console.log('files:', fileRotations);
 
   return (
     <>
@@ -161,8 +132,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
           <div
             // className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[41.42px] md:pt-[55px]`}
             className={`relative draggable-flat flex justify-center flex-nowrap gap-[20px] md:gap-[40px] lg:gap-[43.73px] xl:gap-[36.6px] 2xl:gap-[43.23px] 3xl:gap-[30px] mx-auto pb-[12px] pt-[21.42px] md:pt-[25px]`}
-            onDrop={handleNewFiles}
-            onDragOver={handleDragOver}
+            // onDrop={handleNewFiles}
           >
             {files?.map((file: File, index: number) => (
               <div key={index}>
@@ -196,8 +166,9 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                           className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
                           type="button"
                         >
-                          {helpers.getFileSize(file)}
-                          {t('viewPage.mb')}
+                          {helpers.formatFileSize(file.size / 1024)}
+                          {/* {helpers.getFileSize(file)} */}
+                          {/* {t('viewPage.mb')} */}
                         </button>
                       </div>
                       <div className="absolute bottom-[11px] left-1/2 transform -translate-x-1/2 flex gap-[10px]">

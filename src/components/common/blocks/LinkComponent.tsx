@@ -50,6 +50,8 @@ const LinkComponent = ({
         toolInfo.totalFileSize
       );
 
+      console.log('validationResult', validationResult);
+
       try {
         if (!validationResult.valid) {
           setValidationMessages(validationResult.messages);
@@ -57,6 +59,7 @@ const LinkComponent = ({
         }
         const response = await fetch(`/api/proxy?url=${URL}`);
         const blob = await response.blob();
+
         const file = new File([blob], 'file.pdf', { type: 'application/pdf' });
         if (file) {
           handleNewFiles([file]);

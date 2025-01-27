@@ -41,7 +41,7 @@ const Footer = () => {
       <footer className="bg-[#ECECEC] dark:bg-[#3C3C3C] w-full py-4 mx-auto">
         <SectionContainer className="flex 2xl:flex-row flex-col gap-y-2 justify-between items-center text-sm font-normal md:font-semibold">
           <div className="flex gap-2 items-center text-xs md:text-[0.875rem] text-[#949494] dark:text-[#FAFAFA]">
-            <p>A Product of</p>
+            <p>Development Partner</p>
             <Link href={url || ''} target="_blank">
               <Image
                 src={SoftekoLogo}

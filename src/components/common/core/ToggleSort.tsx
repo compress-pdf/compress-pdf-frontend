@@ -6,11 +6,17 @@ import React, { useState } from 'react';
 interface ToggleButtonGroupProps {
   files: File[]; // Native `File` type
   setSortedFiles: (files: File[]) => void;
+  fileRotations: Record<number, number>;
+  setFileRotations: React.Dispatch<
+    React.SetStateAction<Record<number, number>>
+  >;
 }
 
 const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
   files,
   setSortedFiles,
+  fileRotations,
+  setFileRotations,
 }) => {
   const [activeSorting, setActiveSorting] = useState<
     'alphabetical' | 'size' | null
@@ -22,36 +28,76 @@ const ToggleButtonGroup: React.FC<ToggleButtonGroupProps> = ({
     useState<boolean>(false);
   const [loadingSize, setLoadingSize] = useState<boolean>(false);
 
-  // Handle A-Z/Z-A sorting
   const handleAZClick = () => {
     setLoadingAlphabetical(true); // Start loading for alphabetical
     setActiveSorting('alphabetical');
-    setIsAlphabeticalAsc(!isAlphabeticalAsc); // Toggle between A-Z and Z-A
+    setIsAlphabeticalAsc(prev => !prev); // Toggle between A-Z and Z-A
 
     // Simulate a delay for sorting (optional, to demonstrate loading)
     setTimeout(() => {
-      const sortedFiles = [...files].sort((a, b) =>
+      // Create an array of file indices for sorting
+      const fileIndices = files.map((_, index) => index);
+
+      // Sort files and keep track of their indices
+      const sortedIndices = fileIndices.sort((a, b) =>
         isAlphabeticalAsc
-          ? a.name.localeCompare(b.name)
-          : b.name.localeCompare(a.name)
+          ? files[a].name.localeCompare(files[b].name)
+          : files[b].name.localeCompare(files[a].name)
       );
+
+      // Reorder files and rotations based on sorted indices
+      const sortedFiles = sortedIndices.map(index => files[index]);
+      const sortedRotations = sortedIndices.map(index => fileRotations[index]);
+
+      // Convert sorted rotations back to the correct mapping
+      const updatedRotations = sortedRotations.reduce(
+        (acc, rotation, index) => {
+          acc[index] = rotation;
+          return acc;
+        },
+        {} as { [key: number]: number }
+      );
+
+      // Update state
       setSortedFiles(sortedFiles);
+      setFileRotations(updatedRotations);
       setLoadingAlphabetical(false); // End loading for alphabetical
     }, 500);
   };
 
-  // Handle Min-Max/Max-Min sorting
   const handleMinMaxClick = () => {
     setLoadingSize(true); // Start loading for size
     setActiveSorting('size');
-    setIsSizeAsc(!isSizeAsc); // Toggle between Min-Max and Max-Min
+    setIsSizeAsc(prev => !prev); // Toggle between Min-Max and Max-Min
 
     // Simulate a delay for sorting (optional, to demonstrate loading)
     setTimeout(() => {
-      const sortedFiles = [...files].sort((a, b) =>
-        isSizeAsc ? a.size - b.size : b.size - a.size
+      // Create an array of file indices for sorting
+      const fileIndices = files.map((_, index) => index);
+
+      // Sort files and keep track of their indices
+      const sortedIndices = fileIndices.sort((a, b) =>
+        isSizeAsc
+          ? files[a].size - files[b].size
+          : files[b].size - files[a].size
       );
+
+      // Reorder files and rotations based on sorted indices
+      const sortedFiles = sortedIndices.map(index => files[index]);
+      const sortedRotations = sortedIndices.map(index => fileRotations[index]);
+
+      // Convert sorted rotations back to the correct mapping
+      const updatedRotations = sortedRotations.reduce(
+        (acc, rotation, index) => {
+          acc[index] = rotation;
+          return acc;
+        },
+        {} as { [key: number]: number }
+      );
+
+      // Update state
       setSortedFiles(sortedFiles);
+      setFileRotations(updatedRotations);
       setLoadingSize(false); // End loading for size
     }, 500);
   };

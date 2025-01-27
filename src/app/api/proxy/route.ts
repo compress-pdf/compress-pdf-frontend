@@ -1,4 +1,3 @@
-// For Next.js 13+ app directory
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
@@ -6,6 +5,7 @@ export async function GET(req: NextRequest) {
   const externalURL = searchParams.get('url');
 
   if (!externalURL) {
+    console.error('Missing URL parameter');
     return NextResponse.json(
       { error: 'Missing URL parameter' },
       { status: 400 }
@@ -19,6 +19,8 @@ export async function GET(req: NextRequest) {
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Fetch error:', errorText);
       return NextResponse.json(
         { error: `Failed to fetch: ${response.statusText}` },
         { status: response.status }
@@ -35,6 +37,7 @@ export async function GET(req: NextRequest) {
       },
     });
   } catch (error) {
+    console.error('Fetch exception:', error);
     return NextResponse.json(
       { error: (error as Error).message },
       { status: 500 }

@@ -4,9 +4,14 @@ import { twMerge } from 'tailwind-merge';
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 
-import { HamburgerClose, HamburgerOpen } from '@/assets/icons/svgs/Hamburger';
+import { HamburgerOpen } from '@/assets/icons/svgs/Hamburger';
+import { Link } from '@/i18n/routing';
 
-const Hamburger = () => {
+type Props = {
+  menus: { label: string; path: string }[];
+};
+
+const Hamburger = ({ menus }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const path = usePathname();
@@ -57,19 +62,40 @@ const Hamburger = () => {
       <div
         ref={sidebarRef}
         className={twMerge(
-          'fixed top-0 right-0 h-full w-64 bg-[#FBFBFB] dark:bg-[#232323] shadow-lg transition-transform duration-300 ease-in-out transform',
+          'fixed top-0 right-0 h-full w-[123px] bg-[#FBFBFB] dark:bg-[#232323] shadow-lg transition-transform duration-300 ease-in-out transform',
           isOpen ? 'translate-x-0' : 'translate-x-full'
         )}
       >
-        <div className="p-4">
-          {/* Hamburger Close Button */}
-          <button
-            title="hamburger-close"
-            onClick={toggleMenu}
-            className="text-orange-600 focus:outline-none bg-transparent shadow-none p-2"
-          >
-            <HamburgerClose />
-          </button>
+        <div className="px-[5px] pt-4">
+          <div>
+            {/* Hamburger Close Button */}
+            <button
+              title="hamburger-close"
+              onClick={toggleMenu}
+              className="text-orange-600 focus:outline-none bg-transparent shadow-none p-2"
+            >
+              <HamburgerOpen />
+            </button>
+          </div>
+
+          <h3 className="text-[#FF8224] text-[10px] font-semibold leading-4 pt-[10px] ">
+            Convert PDF To
+          </h3>
+
+          <ul className="overflow-y-auto h-screen">
+            {menus.map(
+              (menu: { label: string; path: string }, index: number) => (
+                <li key={index} className="px-3 py-2 ">
+                  <Link
+                    href={menu.path}
+                    className="text-[#163B45] text-[10px] font-semibold leading-4"
+                  >
+                    {menu.label}
+                  </Link>
+                </li>
+              )
+            )}
+          </ul>
         </div>
       </div>
     </div>

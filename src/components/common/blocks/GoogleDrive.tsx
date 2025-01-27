@@ -51,6 +51,32 @@ const GoogleDrive = ({
       viewMimeTypes: 'application/pdf',
       callbackFunction: async data => {
         if (data.action === 'picked') {
+          let totalSize: number = 0;
+
+          for (let i = 0; i < data.docs.length; i++) {
+            const doc = data.docs[i];
+
+            totalSize += doc.sizeBytes / 1024; // Convert bytes to KB
+
+            if (doc.mimeType !== 'application/pdf') {
+              CustomToast({
+                type: 'error',
+                message: 'Only PDF files are allowed',
+              });
+              return;
+            } else if (totalSize > toolInfo.maxSingleFileSize) {
+              CustomToast({
+                type: 'error',
+                message: `File size exceeds the limit of ${
+                  toolInfo.maxSingleFileSize > 1024
+                    ? `${(toolInfo.maxSingleFileSize / 1024).toFixed(2)} MB`
+                    : `${toolInfo.maxSingleFileSize} KB`
+                }`,
+              });
+              return;
+            }
+          }
+
           if (isAnyLarge(data.docs)) {
             return; // Exit the function to prevent further processing
           }
@@ -64,6 +90,8 @@ const GoogleDrive = ({
     try {
       setLoading(true); // Start loading
       setProgress(0); // Reset progress
+
+      console.log(docs);
 
       const fetchedFiles: File[] = [];
 

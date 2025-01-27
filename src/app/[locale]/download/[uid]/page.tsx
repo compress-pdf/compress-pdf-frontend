@@ -17,7 +17,7 @@ export async function generateMetadata() {
 
 const DownloadPage = ({ params }: Props) => {
   return (
-    <FullwidthContainer className="min-h-[80vh] relative" as={'div'}>
+    <FullwidthContainer className="min-h-[81vh] relative" as={'div'}>
       <div className="absolute inset-0 -z-10 blur-2xl hidden md:block">
         <div className="inline-block w-[20%] h-auto aspect-square opacity-50 absolute bg-orange-300 dark:bg-[#731818ee] -top-10 -right-10 blur-[190px]" />
         <div className="inline-block w-[20%] h-auto aspect-square opacity-40 absolute bg-blue-500 dark:bg-[#B33F40] -top-10 -left-10 blur-[190px]" />

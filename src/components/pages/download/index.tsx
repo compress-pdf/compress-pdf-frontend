@@ -5,16 +5,9 @@ import Image from 'next/image';
 import QRCode from 'qrcode';
 import { useTranslations } from 'next-intl';
 import axios from 'axios';
-import {
-  TwitterShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  EmailShareButton,
-} from 'react-share';
 
 import SplitButton from '@/components/common/core/SplitButton';
 import ModalWithButton from '@/components/common/core/ModalWithButton';
-import { Button } from '@/components/common/core/Button';
 import CustomToast from '@/components/common/core/ToastMessage';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { API_URL } from '@/constants/credentials/const';
@@ -24,7 +17,6 @@ import helpers, {
   calculateTimeLeft,
   convertToTimeFormat,
   findEarliestExpireTime,
-  transformToArray,
 } from '@/services/helpers';
 import SaveDropBox from '@/components/common/blocks/SaveDropBox';
 import { useRatingContext } from '@/context/RatingContext';
@@ -36,13 +28,7 @@ import FileItem from './FileItem';
 import DownloadSkeleton from './DownloadSkeleton';
 import DownloadFooter from './Footer';
 
-import FacebookIcon from '@assets/icons/pngs/facebook.png';
-import TwitterIcon from '@assets/icons/pngs/twitter.png';
-import MailIcon from '@assets/icons/pngs/email.png';
-import LinkedinIcon from '@assets/icons/pngs/linkedin.png';
-import QRIcon from '@assets/icons/pngs/qrBar.png';
 import dropBoxIcon from '@assets/icons/pngs/dropboxWhite.png';
-import oneDriveIcon from '@assets/icons/pngs/onedriveWhite.png';
 import goBackIcon from '@assets/icons/pngs/go-back.png';
 import googleDriveIcon from '@assets/icons/pngs/googledriveWhite.png';
 
@@ -70,6 +56,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   const toolId = 1;
   const { isRated, addRating } = useRatingContext();
   const [showModal, setShowModal] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -186,6 +173,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     // Submit rating and close the modal
     await addRating(toolId, rating);
     setShowModal(false);
+    setIsOpen(false);
   };
 
   const generateQR = async (link: string): Promise<string | null> => {
@@ -208,7 +196,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
     index: number
   ) => {
     try {
-      const newFileName = `${name}.pdf`;
+      const newFileName = `${name}`;
       const url = `${API_URL}/v2/filename?file_token=${file_token}&new_file_name=${newFileName}&file_index=${index}`;
 
       await axios.patch(url);
@@ -285,7 +273,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   };
 
   const handleDownloadZip = async () => {
-    const url = `${API_URL}/v2/download-as-zip?UID=${uid}`;
+    const url = `${API_URL}/v2/download-as-zip?uid=${uid}`;
 
     try {
       const response = await axios.get(url, {
@@ -383,6 +371,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                     label={
                       <ModalWithButton
                         disabled={!showModal}
+                        setIsOpen={setIsOpen}
+                        isOpen={isOpen}
                         // disabled={false}
                         buttonLabel={
                           <button
@@ -475,6 +465,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                 showModal={showModal}
                 setShowModal={setShowModal}
                 handleRatingSubmit={handleRatingSubmit}
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
               />
             ))}
 

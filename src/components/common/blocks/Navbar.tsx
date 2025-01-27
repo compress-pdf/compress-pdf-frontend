@@ -41,9 +41,9 @@ export default function Navbar() {
                   <MenuModal menus={menus} />
                 </div>
               </div>
-              <ThemeSwitcher />
+              <ThemeSwitcher text={false} />
               {/* <LanguageSwitcher /> */}
-              <Hamburger />
+              <Hamburger menus={menus} />
             </div>
           </div>
         </SectionContainer>
