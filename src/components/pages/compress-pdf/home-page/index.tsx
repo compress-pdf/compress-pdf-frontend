@@ -26,7 +26,11 @@ import GradientOne from './backgrounds/gradient-one';
 import BeforeUpload from './UploadSection/BeforeUpload';
 import AfterUpload from './UploadSection/AfterUpload';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   'pdfjs-dist/build/pdf.worker.min.mjs',
+//   import.meta.url
+// ).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 const HomePageContent = ({
   children,
