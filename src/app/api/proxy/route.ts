@@ -18,6 +18,7 @@ export async function GET(req: NextRequest) {
       headers: req.headers,
     });
 
+    console.log('response', response);
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Fetch error:', errorText);
