@@ -46,11 +46,9 @@ const LinkComponent = ({
       setLoading(true);
 
       const validationResult = await validatePdfLink(
-        `/api/proxy?url=${URL}`,
+        URL,
         toolInfo.totalFileSize
       );
-
-      console.log('validationResult', validationResult);
 
       try {
         if (!validationResult.valid) {

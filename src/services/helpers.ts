@@ -390,37 +390,31 @@ export const validatePdfLink = async (
   };
 
   try {
-    // Step 1: Check if the link is a PDF by checking the extension
-    // if (!link.toLowerCase().endsWith('.pdf')) {
-    //   validationResult.valid = false;
-    //   validationResult.messages.push('The link does not point to a PDF file.');
-    //   return validationResult;
-    // }
-
-    // Step 2: Make a HEAD request to check the file type and size before downloading
-    const response = await fetch(link, {
+    console.log('Validating PDF link:', link);
+    const response = await fetch(`/api/proxy?url=${link}`, {
       method: 'HEAD',
       headers: {
         'Content-Type': 'application/pdf',
       },
     });
 
+    console.log('HEAD response status:', response.status);
     if (!response.ok) {
       validationResult.valid = false;
       validationResult.messages.push('Unable to access the PDF file.');
       return validationResult;
     }
 
-    // Step 3: Check Content-Type to ensure it’s a PDF
     const contentType = response.headers.get('content-type');
+    console.log('Content-Type:', contentType);
     if (!contentType || !contentType.startsWith('application/pdf')) {
       validationResult.valid = false;
       validationResult.messages.push('The link is not a valid PDF.');
       return validationResult;
     }
 
-    // Step 4: Check the Content-Length to ensure the file size is within the allowed limit
     const contentLength = response.headers.get('content-length');
+    console.log('Content-Length:', contentLength);
     if (contentLength) {
       const fileSizeKB = Number(contentLength) / 1024; // Convert to KB
       if (fileSizeKB > maxSizeKB) {
@@ -432,9 +426,9 @@ export const validatePdfLink = async (
       }
     }
 
-    // If everything passes, return a valid result
     return validationResult;
   } catch (error) {
+    console.error('Error validating PDF link:', error);
     validationResult.valid = false;
     validationResult.messages.push(
       'An error occurred while validating the PDF link.'
@@ -442,6 +436,69 @@ export const validatePdfLink = async (
     return validationResult;
   }
 };
+
+// export const validatePdfLink = async (
+//   link: string,
+//   maxSizeKB: number
+// ): Promise<ValidationResult> => {
+//   const validationResult: ValidationResult = {
+//     valid: true,
+//     messages: [],
+//   };
+
+//   try {
+//     // Step 1: Check if the link is a PDF by checking the extension
+//     // if (!link.toLowerCase().endsWith('.pdf')) {
+//     //   validationResult.valid = false;
+//     //   validationResult.messages.push('The link does not point to a PDF file.');
+//     //   return validationResult;
+//     // }
+
+//     // Step 2: Make a HEAD request to check the file type and size before downloading
+//     const response = await fetch(`/api/proxy?url=${link}`, {
+//       method: 'HEAD',
+//       headers: {
+//         'Content-Type': 'application/pdf',
+//       },
+//     });
+
+//     if (!response.ok) {
+//       validationResult.valid = false;
+//       validationResult.messages.push('Unable to access the PDF file.');
+//       return validationResult;
+//     }
+
+//     // Step 3: Check Content-Type to ensure it’s a PDF
+//     const contentType = response.headers.get('content-type');
+//     if (!contentType || !contentType.startsWith('application/pdf')) {
+//       validationResult.valid = false;
+//       validationResult.messages.push('The link is not a valid PDF.');
+//       return validationResult;
+//     }
+
+//     // Step 4: Check the Content-Length to ensure the file size is within the allowed limit
+//     const contentLength = response.headers.get('content-length');
+//     if (contentLength) {
+//       const fileSizeKB = Number(contentLength) / 1024; // Convert to KB
+//       if (fileSizeKB > maxSizeKB) {
+//         validationResult.valid = false;
+//         validationResult.messages.push(
+//           `The PDF file exceeds the maximum allowed size of ${maxSizeKB} KB.`
+//         );
+//         return validationResult;
+//       }
+//     }
+
+//     // If everything passes, return a valid result
+//     return validationResult;
+//   } catch (error) {
+//     validationResult.valid = false;
+//     validationResult.messages.push(
+//       'An error occurred while validating the PDF link.'
+//     );
+//     return validationResult;
+//   }
+// };
 
 export function fileArrayToFileList(filesArray: File[]) {
   const dataTransfer = new DataTransfer(); // Use DataTransfer to create a FileList-like object

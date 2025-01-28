@@ -13,6 +13,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
+    console.log('Fetching external URL:', externalURL);
     const response = await fetch(externalURL, {
       method: req.method,
       headers: req.headers,
