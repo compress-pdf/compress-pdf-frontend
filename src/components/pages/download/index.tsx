@@ -260,7 +260,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
 
   const handleCopyURL = () => {
     navigator.clipboard
-      .writeText(url)
+      ?.writeText(url)
       .then(() => {
         CustomToast({
           type: 'success',
