@@ -306,7 +306,7 @@
         "title": "Compress PDF Files Without Losing Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -569,7 +569,7 @@
         "title": "Compress PDF to 1MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -733,7 +733,6 @@
           ]
         }
       },
-
       {
         "article": {
           "@context": "https://schema.org",
@@ -824,7 +823,7 @@
         "title": "Compress PDF to 2MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -1078,7 +1077,7 @@
         "title": "Compress PDF to 3MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -1332,7 +1331,7 @@
         "title": "Compress PDF to 4MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -1574,7 +1573,7 @@
         "title": "Compress PDF to 5MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -1815,7 +1814,7 @@
         "title": "Compress PDF to 6MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -2068,7 +2067,7 @@
         "title": "Compress PDF to 10MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -2309,7 +2308,7 @@
         "title": "Compress PDF to 20MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -2562,7 +2561,7 @@
         "title": "Compress PDF to 25MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -2807,7 +2806,7 @@
         "title": "Compress PDF to 50MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -3060,7 +3059,7 @@
         "title": "Compress PDF to 100MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -3301,7 +3300,7 @@
         "title": "Compress PDF to 10KB Without Losing Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -3550,7 +3549,7 @@
         "title": "Compress PDF to 20KB Without Losing Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -3800,7 +3799,7 @@
         "title": "Compress PDF to 30KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -4050,7 +4049,7 @@
         "title": "Compress PDF to 40KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -4300,7 +4299,7 @@
         "title": "Compress PDF to 50KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -4550,7 +4549,7 @@
         "title": "Compress PDF to 60KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -4800,7 +4799,7 @@
         "title": "Compress PDF to 70KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -5074,7 +5073,7 @@
         "title": "Compress PDF to 80KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -5348,7 +5347,7 @@
         "title": "Compress PDF to 90KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -5622,7 +5621,7 @@
         "title": "Compress PDF to 100KB Without Losing Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -5896,7 +5895,7 @@
         "title": "Compress PDF to 150KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -6146,7 +6145,7 @@
         "title": "Compress PDF to 200KB Without Losing Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -6396,7 +6395,7 @@
         "title": "Compress PDF to 250KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -6672,7 +6671,7 @@
         "title": "Compress PDF to 300KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -6922,7 +6921,7 @@
         "title": "Compress PDF to 400KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -7175,7 +7174,7 @@
         "title": "Compress PDF to 500KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -7440,7 +7439,7 @@
         "title": "Compress PDF to 600KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -7705,7 +7704,7 @@
         "title": "Compress PDF to 700KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -7959,7 +7958,7 @@
         "title": "Compress PDF to 900KB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",

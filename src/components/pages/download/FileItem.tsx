@@ -23,7 +23,7 @@ import SplitButton from '@/components/common/core/SplitButton';
 import Tooltip from '@/components/common/core/Tooltip';
 import ModalWithButton from '@/components/common/core/ModalWithButton';
 import { Button } from '@/components/common/core/Button';
-import helpers, { calculateTimeLeft } from '@/services/helpers';
+import helpers, { calculateTimeLeft, formatFileSize } from '@/services/helpers';
 import CustomToast from '@/components/common/core/ToastMessage';
 import { FileData } from '@/types/General';
 import { API_URL } from '@/constants/credentials/const';
@@ -428,9 +428,7 @@ const FileItem: React.FC<FileItemProps> = ({
               </p>
               <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-6 mt-0 text-slate-900 dark:text-white">
                 {/* {file?.output_file_size?.toFixed(2)}MB */}
-                {helpers.formatFileSize(
-                  parseFloat(file?.output_file_size?.toFixed(2))
-                )}
+                {formatFileSize(parseFloat(file?.output_file_size?.toFixed(2)))}
               </p>
             </div>
           </div>
@@ -439,7 +437,7 @@ const FileItem: React.FC<FileItemProps> = ({
 
       {file.status_code === 400 ? (
         <div className="text-red-500 mx-auto md:pt-5">
-          <p> Your PDF file is already very well compressed</p>
+          <p>{file.message}</p>
         </div>
       ) : (
         <>

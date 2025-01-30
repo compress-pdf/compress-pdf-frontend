@@ -1,3 +1,8 @@
+import {
+  INVALID_FILE_TYPE,
+  PASSWORD_PROTECTED_FILE,
+} from '@/constants/messages/constants';
+
 describe('Hero Section E2E Tests', () => {
   // Ensure the site is visited before each test
   beforeEach(() => {
@@ -24,10 +29,7 @@ describe('Hero Section E2E Tests', () => {
         });
 
         // Check for the toast indicating that only PDFs are allowed
-        cy.get('.toast-message').should(
-          'contain.text',
-          'Only PDF files are allowed.'
-        );
+        cy.get('.toast-message').should('contain.text', INVALID_FILE_TYPE);
       });
 
       it('Tries to upload a corrupted PDF', () => {
@@ -55,7 +57,7 @@ describe('Hero Section E2E Tests', () => {
         // Check for the toast indicating the PDF is password-protected
         cy.get('.toast-message').should(
           'contain.text',
-          'Password-protected PDFs cannot be compressed.'
+          PASSWORD_PROTECTED_FILE
         );
       });
 
@@ -100,7 +102,7 @@ describe('Hero Section E2E Tests', () => {
         // Check for the toast indicating the PDF is password protected
         cy.get('.toast-message').should(
           'contain.text',
-          'Password-protected PDFs cannot be compressed.'
+          PASSWORD_PROTECTED_FILE
         );
       });
 
@@ -135,10 +137,7 @@ describe('Hero Section E2E Tests', () => {
         });
 
         // Check for the toast indicating that only PDFs are allowed
-        cy.get('.toast-message').should(
-          'contain.text',
-          'Only PDF files are allowed.'
-        );
+        cy.get('.toast-message').should('contain.text', INVALID_FILE_TYPE);
       });
 
       // it.only('Tries to upload corrupted and protected PDFs via drag and drop 100 times', () => {
@@ -163,7 +162,7 @@ describe('Hero Section E2E Tests', () => {
       //     } else {
       //       cy.get('.toast-message').should(
       //         'contain.text',
-      //         'Password-protected PDFs cannot be compressed.'
+      //         PASSWORD_PROTECTED_FILE
       //       );
       //     }
       //   }
@@ -192,7 +191,7 @@ describe('Hero Section E2E Tests', () => {
         // Check for the toast indicating the PDF is password-protected
         cy.get('.toast-message').should(
           'contain.text',
-          'Password-protected PDFs cannot be compressed.'
+          PASSWORD_PROTECTED_FILE
         );
       });
 
@@ -236,7 +235,7 @@ describe('Hero Section E2E Tests', () => {
         // Check for the toast indicating the PDF is password protected
         cy.get('.toast-message').should(
           'contain.text',
-          'Password-protected PDFs cannot be compressed.'
+          PASSWORD_PROTECTED_FILE
         );
       });
 
