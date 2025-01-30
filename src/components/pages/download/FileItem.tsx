@@ -124,10 +124,12 @@ const FileItem: React.FC<FileItemProps> = ({
       </defs>
     </svg>
   );
+
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [fileName, setFileName] = useState<string>(
     file?.file_name?.replace(/(\.pdf)+$/i, '') || ''
   );
+  const shareURL = `https://compresspdf.to/share/${file?.file_token}`;
   const t = useTranslations('common.download');
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(file?.expire));
   const url = `${API_URL}/${
@@ -205,7 +207,7 @@ const FileItem: React.FC<FileItemProps> = ({
 
   const handleCopyURL = () => {
     navigator.clipboard
-      .writeText(url)
+      ?.writeText(shareURL)
       .then(() => {
         CustomToast({
           type: 'success',
@@ -577,13 +579,13 @@ const FileItem: React.FC<FileItemProps> = ({
                       <input
                         type="text"
                         placeholder={'https://example.com/result'}
-                        value={url}
+                        value={shareURL}
                         disabled
                         className="py-4 px-[18px] ps-4 w-full focus:outline-none h-8 bg-transparent rounded-[4px] font-light text-[#163B45] dark:text-[#ffffff] text-[0.875rem] pe-6"
                       />
                       <Button
                         onClick={() => {
-                          handleFileExpiryUpdate(file?.file_token);
+                          // handleFileExpiryUpdate(file?.file_token);
                           handleCopyURL();
                         }}
                         className="rounded-[7px] my-1 me-1"

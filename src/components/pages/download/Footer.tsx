@@ -177,7 +177,7 @@ const DownloadFooter = ({
                   />
                   <Button
                     onClick={() => {
-                      handlePageExpired();
+                      // handlePageExpired();
                       handleCopyURL();
                     }}
                     className="rounded-[7px] my-1 me-1"
