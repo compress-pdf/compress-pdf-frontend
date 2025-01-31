@@ -67,7 +67,7 @@ const Footer = () => {
       <hr className="my-3 border[0.2px] border-gray dark:border-[#727272]" />
       <SectionContainer className="flex flex-col md:flex-row justify-center items-center">
         <p className="text-[10px] md:text-sm 2xl:text-md text-[#949494] dark:text-[#FAFAFA] leading-4">
-          {t('footer.copyright')}
+          {t('footer.copyright', { year: new Date().getFullYear() })}
         </p>
       </SectionContainer>
     </footer>
