@@ -21,6 +21,7 @@ import { useFooterContext } from '@/context/FooterContext';
 import { clearDB, getItemFromDB } from '@/services/indexedDB';
 import { useLoading } from '@/context/UploadingContext';
 import { ToolsDataType } from '@/constants/toolsData';
+import { MAX_FILE_NUMBERS } from '@/constants/messages/constants';
 
 import GradientOne from './backgrounds/gradient-one';
 import BeforeUpload from './UploadSection/BeforeUpload';
@@ -227,7 +228,7 @@ const HomePageContent = ({
     if (pdfFiles.length + newFiles.length > toolInfo.totalFiles) {
       CustomToast({
         type: 'error',
-        message: `Cannot add more files. Maximum ${toolInfo.totalFiles} files allowed.`,
+        message: MAX_FILE_NUMBERS(toolInfo.totalFiles),
       });
       return; // Exit early before any state updates
     }

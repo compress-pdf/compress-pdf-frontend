@@ -47,7 +47,9 @@ const LinkComponent = ({
 
       const validationResult = await validatePdfLink(
         URL,
-        toolInfo.totalFileSize
+        toolInfo.totalFileSize,
+        toolInfo.minSingleFileSize,
+        toolInfo.maxSingleFileSize
       );
 
       try {
