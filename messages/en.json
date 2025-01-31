@@ -153,7 +153,7 @@
           "link": "/terms-and-conditions/"
         }
       ],
-      "copyright": "Copyright © 2024 compresspdf.to | All rights Reserved."
+      "copyright": "Copyright © {year} compresspdf.to | All rights Reserved."
     },
     "heroSectionTooltip": {
       "cloudInfo": "or, drop the files here",
