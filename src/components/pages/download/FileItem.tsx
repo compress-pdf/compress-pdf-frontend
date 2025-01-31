@@ -129,7 +129,7 @@ const FileItem: React.FC<FileItemProps> = ({
   const [fileName, setFileName] = useState<string>(
     file?.file_name?.replace(/(\.pdf)+$/i, '') || ''
   );
-  const shareURL = `https://compresspdf.to/share/${file?.file_token}`;
+  const shareURL = `${window.location.origin}/share/${file?.file_token}`;
   const t = useTranslations('common.download');
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(file?.expire));
   const url = `${API_URL}/${
@@ -330,7 +330,7 @@ const FileItem: React.FC<FileItemProps> = ({
               </p>
             )}
 
-            {storedState && (
+            {storedState && file.status_code !== 400 && (
               <>
                 <Tooltip content={t('body.editTooltip')}>
                   <button
@@ -415,7 +415,7 @@ const FileItem: React.FC<FileItemProps> = ({
               {/* {file?.input_file_size?.toFixed(2)}MB */}
 
               {helpers.formatFileSize(
-                parseFloat(file?.input_file_size?.toFixed(2))
+                parseFloat(file?.input_file_size?.toFixed(2)) / 1024
               )}
             </span>
           </p>
@@ -428,7 +428,9 @@ const FileItem: React.FC<FileItemProps> = ({
               </p>
               <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-6 mt-0 text-slate-900 dark:text-white">
                 {/* {file?.output_file_size?.toFixed(2)}MB */}
-                {formatFileSize(parseFloat(file?.output_file_size?.toFixed(2)))}
+                {formatFileSize(
+                  parseFloat(file?.output_file_size?.toFixed(2)) / 1024
+                )}
               </p>
             </div>
           </div>
