@@ -8,6 +8,7 @@ import { useLoading } from '@/context/UploadingContext'; // Import loading conte
 import helpers, { fileArrayToFileList, isAnyLarge } from '@/services/helpers';
 import GoogledriveIcon from '@/assets/icons/svgs/upload-client/googledriveIcon';
 import { ToolsDataType } from '@/constants/toolsData';
+import { INVALID_FILE_TYPE } from '@/constants/messages/constants';
 
 import CustomToast from '../core/ToastMessage';
 
@@ -61,7 +62,7 @@ const GoogleDrive = ({
             if (doc.mimeType !== 'application/pdf') {
               CustomToast({
                 type: 'error',
-                message: 'Only PDF files are allowed',
+                message: INVALID_FILE_TYPE,
               });
               return;
             } else if (totalSize > toolInfo.maxSingleFileSize) {
@@ -77,7 +78,14 @@ const GoogleDrive = ({
             }
           }
 
-          if (isAnyLarge(data.docs)) {
+          if (
+            isAnyLarge(
+              data.docs,
+              toolInfo.totalFileSize,
+              toolInfo.minSingleFileSize,
+              toolInfo.maxSingleFileSize
+            )
+          ) {
             return; // Exit the function to prevent further processing
           }
           setFilesPicked(data.docs);

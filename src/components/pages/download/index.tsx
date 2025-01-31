@@ -17,6 +17,7 @@ import helpers, {
   calculateTimeLeft,
   convertToTimeFormat,
   findEarliestExpireTime,
+  formatFileSize,
 } from '@/services/helpers';
 import SaveDropBox from '@/components/common/blocks/SaveDropBox';
 import { useRatingContext } from '@/context/RatingContext';
@@ -59,43 +60,60 @@ const DownloadMain = ({ uid }: { uid: string }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    let isSubscribed = true; // Add a flag to prevent state updates after unmount
+
     const fetchData = async () => {
       try {
         const response = await axios.get(
           `${API_URL}/v2/download-page-data?uid=${uid}`
         );
 
-        if (response.status !== 200 || response.data?.error) {
-          // Show an error message
-          CustomToast({
-            type: 'error',
-            message: 'Your files have expired. Please upload again.',
-          });
+        // Check if component is still mounted
+        if (!isSubscribed) return;
 
-          // Redirect to home page if status is not 200 or if there is an error in response data
-          router.push('/');
+        if (response.status !== 200 || response.data?.error) {
+          const errorMessage =
+            response.data?.message ||
+            'Your files have expired. Please upload again.';
+
+          // Show toast and redirect only if component is still mounted
+          if (isSubscribed) {
+            CustomToast({
+              type: 'error',
+              message: errorMessage,
+            });
+            await new Promise(resolve => setTimeout(resolve, 100));
+            router.push('/');
+          }
           return;
         }
-        const responseData = response.data as FileData[];
-        setData(responseData);
-        setLoading(false);
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
-        CustomToast({
-          type: 'error',
-          message:
-            error.status === 404
-              ? 'Your files have expired. Please upload again.'
-              : error.message,
-        });
-        // Optionally, you can handle redirection or other actions here
-        router.push('/');
+
+        if (isSubscribed) {
+          const responseData = response.data as FileData[];
+          setData(responseData);
+          setLoading(false);
+        }
+      } catch (error: unknown) {
+        // Only show error and redirect if component is still mounted
+        if (isSubscribed) {
+          CustomToast({
+            type: 'error',
+            message: 'Your PDF cannot be compressed/is already compressed!',
+          });
+          await new Promise(resolve => setTimeout(resolve, 100));
+          router.push('/');
+        }
       }
     };
 
     if (uid) {
       fetchData();
     }
+
+    // Cleanup function to prevent updates after unmount
+    return () => {
+      isSubscribed = false;
+    };
   }, [uid, router]);
 
   useEffect(() => {
@@ -336,8 +354,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                   </h1>
                   <p className="text-xs md:text-sm lg:text-md xl:text-sm 2xl:text-[0.875rem] text-center md:text-left">
                     {totalPdf} {t('header.filesTitle')} |{' '}
-                    {helpers.formatFileSize(
-                      parseFloat(totalInitialSize.toFixed(2))
+                    {formatFileSize(
+                      parseFloat(totalInitialSize.toFixed(2)) / 1024
                     )}
                     {t('header.total')}
                   </p>
@@ -348,8 +366,8 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                     {compressionRatio.toFixed(2)}%
                   </p>
                   <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-4 md:leading-6 mt-0">
-                    {helpers.formatFileSize(
-                      parseFloat(totalUltimateSize.toFixed(2))
+                    {formatFileSize(
+                      parseFloat(totalUltimateSize.toFixed(2)) / 1024
                     )}
                   </p>
                 </div>

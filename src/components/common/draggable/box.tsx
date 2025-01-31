@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
+import { INVALID_FILE_TYPE } from '@/constants/messages/constants';
+
 import CustomToast from '../core/ToastMessage';
 
 import uploadLogo from '@assets/icons/gifs/file-upload.gif';
@@ -49,7 +51,7 @@ const DraggableBox = ({ children, handleFileChange }: Props) => {
         if (droppedFiles.some(file => file.type !== 'application/pdf')) {
           CustomToast({
             type: 'error',
-            message: 'Only PDF files are allowed',
+            message: INVALID_FILE_TYPE,
           });
           return;
         }

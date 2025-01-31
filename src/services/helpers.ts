@@ -3,6 +3,15 @@ import * as pdfjsLib from 'pdfjs-dist';
 
 import CustomToast from '@/components/common/core/ToastMessage';
 import { FileData } from '@/types/General';
+import {
+  CORRUPTED_FILE,
+  INVALID_FILE_TYPE,
+  INVALID_LINK,
+  MAX_FILE_NUMBERS,
+  PAGE_LIMIT_EXCEEDED,
+  PASSWORD_PROTECTED_FILE,
+  SIZE_LIMIT,
+} from '@/constants/messages/constants';
 
 // Define types for the objects with 'name' property
 interface NamedObject {
@@ -42,6 +51,25 @@ const sortAsc = (a: NamedObject, b: NamedObject): number => {
 
   // If all common parts are the same, the shorter string should come first
   return partsA.length - partsB.length;
+};
+
+export const formatFileSize = (sizeInMB: number) => {
+  // Convert MB to KB
+  const sizeInKB = sizeInMB * 1024;
+
+  // Helper function to format number
+  const formatNumber = (num: number) => {
+    // Check if number has decimal places
+    return Number.isInteger(num) ? num.toString() : num.toFixed(2);
+  };
+
+  if (sizeInKB < 1024) {
+    // If less than 1024 KB, show in KB
+    return `${formatNumber(sizeInKB)} KB`;
+  } else {
+    // If 1024 KB or more, show in MB
+    return `${formatNumber(sizeInMB)} MB`;
+  }
 };
 
 const debounce = (func: (...args: unknown[]) => void, wait: number) => {
@@ -307,14 +335,16 @@ const validatePdfFiles = async (
   );
 
   if (files.length > maxFiles) {
-    messages.push(
-      `Maximum upload limit exceeded: Only ${maxFiles} files are allowed.`
-    );
+    messages.push(MAX_FILE_NUMBERS(maxFiles));
   }
 
   if (totalSizeMB > maxSizeMB) {
     messages.push(
-      `Maximum size limit exceeded: Total size must be under ${maxSizeMB} MB.`
+      SIZE_LIMIT(
+        formatFileSize(minSingleFileSizeKB / 1024).toString(),
+        formatFileSize(maxSingleFileSizeKB / 1024).toString(),
+        formatFileSize(maxSizeMB).toString()
+      )
     );
     return { valid: false, messages }; // Early exit if size exceeds the limit
   }
@@ -324,23 +354,31 @@ const validatePdfFiles = async (
     Array.from(files).map(async file => {
       // Validate file type
       if (!file.type || !file.type.startsWith('application/pdf')) {
-        messages.push('Only PDF files are allowed.');
+        messages.push(INVALID_FILE_TYPE);
         return;
       }
 
       // Validate single file size in KB
       const fileSizeKB = file.size / 1024; // Convert file size from bytes to KB
       if (fileSizeKB < minSingleFileSizeKB) {
-        messages.push(`Each file must be at least ${minSingleFileSizeKB} KB.`);
+        messages.push(
+          SIZE_LIMIT(
+            formatFileSize(minSingleFileSizeKB / 1024).toString(),
+            formatFileSize(maxSingleFileSizeKB / 1024).toString(),
+            formatFileSize(maxSizeMB).toString()
+          )
+        );
         return;
       }
       if (fileSizeKB > maxSingleFileSizeKB) {
         // Determine whether to show size in KB or MB
-        const maxSizeMessage =
-          maxSingleFileSizeKB >= 1024
-            ? `${(maxSingleFileSizeKB / 1024).toFixed(2)} MB`
-            : `${maxSingleFileSizeKB} KB`;
-        messages.push(`Each file must not exceed ${maxSizeMessage}.`);
+        messages.push(
+          SIZE_LIMIT(
+            formatFileSize(minSingleFileSizeKB / 1024).toString(),
+            formatFileSize(maxSingleFileSizeKB / 1024).toString(),
+            formatFileSize(maxSizeMB).toString()
+          )
+        );
         return;
       }
 
@@ -355,16 +393,16 @@ const validatePdfFiles = async (
         // Step 4: Check individual file page count
         if (pdfDoc.numPages > maxSingleFilePages) {
           messages.push(
-            `File "${file.name}" exceeds the maximum allowed page count of ${maxSingleFilePages}.`
+            PAGE_LIMIT_EXCEEDED(maxSingleFilePages, pdfDoc.numPages)
           );
           return;
         }
       } catch (error) {
         if (error instanceof Error && error.name === 'PasswordException') {
-          messages.push('Password-protected PDFs cannot be compressed.');
+          messages.push(PASSWORD_PROTECTED_FILE);
         } else {
           console.error('Error reading PDF:', error);
-          messages.push(`An error occurred while processing "${file.name}".`);
+          messages.push(CORRUPTED_FILE);
         }
       }
     })
@@ -382,7 +420,9 @@ export type ValidationResult = {
 
 export const validatePdfLink = async (
   link: string,
-  maxSizeKB: number
+  maxSizeKB: number,
+  minSingleFileSizeKB: number,
+  maxSingleFileSizeKB: number
 ): Promise<ValidationResult> => {
   const validationResult: ValidationResult = {
     valid: true,
@@ -390,7 +430,6 @@ export const validatePdfLink = async (
   };
 
   try {
-    console.log('Validating PDF link:', link);
     const response = await fetch(`/api/proxy?url=${link}`, {
       method: 'HEAD',
       headers: {
@@ -398,29 +437,30 @@ export const validatePdfLink = async (
       },
     });
 
-    console.log('HEAD response status:', response.status);
     if (!response.ok) {
       validationResult.valid = false;
-      validationResult.messages.push('Unable to access the PDF file.');
+      validationResult.messages.push(INVALID_LINK);
       return validationResult;
     }
 
     const contentType = response.headers.get('content-type');
-    console.log('Content-Type:', contentType);
     if (!contentType || !contentType.startsWith('application/pdf')) {
       validationResult.valid = false;
-      validationResult.messages.push('The link is not a valid PDF.');
+      validationResult.messages.push(INVALID_LINK);
       return validationResult;
     }
 
     const contentLength = response.headers.get('content-length');
-    console.log('Content-Length:', contentLength);
     if (contentLength) {
       const fileSizeKB = Number(contentLength) / 1024; // Convert to KB
       if (fileSizeKB > maxSizeKB) {
         validationResult.valid = false;
         validationResult.messages.push(
-          `The PDF file exceeds the maximum allowed size of ${maxSizeKB} KB.`
+          SIZE_LIMIT(
+            formatFileSize(minSingleFileSizeKB / 1024).toString(),
+            formatFileSize(maxSingleFileSizeKB / 1024).toString(),
+            formatFileSize(maxSizeKB).toString()
+          )
         );
         return validationResult;
       }
@@ -430,9 +470,7 @@ export const validatePdfLink = async (
   } catch (error) {
     console.error('Error validating PDF link:', error);
     validationResult.valid = false;
-    validationResult.messages.push(
-      'An error occurred while validating the PDF link.'
-    );
+    validationResult.messages.push(INVALID_LINK);
     return validationResult;
   }
 };
@@ -493,9 +531,7 @@ export const validatePdfLink = async (
 //     return validationResult;
 //   } catch (error) {
 //     validationResult.valid = false;
-//     validationResult.messages.push(
-//       'An error occurred while validating the PDF link.'
-//     );
+//     validationResult.messages.push(INVALID_LINK);
 //     return validationResult;
 //   }
 // };
@@ -584,7 +620,12 @@ export const apiTracker = async () => {
   return data;
 };
 
-export function isAnyLarge(files: { sizeBytes?: number; bytes?: number }[]) {
+export function isAnyLarge(
+  files: { sizeBytes?: number; bytes?: number }[],
+  total: number,
+  minSize: number,
+  maxSize: number
+): boolean {
   // Calculate the total size of all picked files in bytes, accounting for both Google Drive and Dropbox file size fields
   const totalSize = files.reduce((acc, file) => {
     return acc + (file.sizeBytes || file.bytes || 0); // Add sizeBytes for Google Drive or bytes for Dropbox
@@ -598,7 +639,11 @@ export function isAnyLarge(files: { sizeBytes?: number; bytes?: number }[]) {
     // Display a message or handle error
     CustomToast({
       type: 'error',
-      message: `Maximum size limit exceeded: Total size must be under 50 MB.`,
+      message: SIZE_LIMIT(
+        formatFileSize(minSize / 1024).toString(),
+        formatFileSize(maxSize / 1024).toString(),
+        formatFileSize(total).toString()
+      ),
     });
     // You can replace the console.error with a custom toast or error handler
     return true;
@@ -608,14 +653,23 @@ export function isAnyLarge(files: { sizeBytes?: number; bytes?: number }[]) {
   }
 }
 
-export const isAnyLargeDropbox = (files: DropboxFile[]): boolean => {
+export const isAnyLargeDropbox = (
+  files: DropboxFile[],
+  minSize: number,
+  maxSize: number,
+  total: number
+): boolean => {
   const limit = 50 * 1024 * 1024; // 50MB in bytes
   const largeFile = files.some(file => file.bytes > limit);
 
   if (largeFile) {
     CustomToast({
       type: 'error',
-      message: `Maximum size limit exceeded: Total size must be under 50 MB.`,
+      message: SIZE_LIMIT(
+        formatFileSize(minSize / 1024).toString(),
+        formatFileSize(maxSize / 1024).toString(),
+        formatFileSize(total).toString()
+      ),
     });
     return true; // File is too large
   }
@@ -636,12 +690,6 @@ export async function fetchDropboxFileSize(file: DropboxFile): Promise<number> {
     return 0; // Return 0 if there's an error fetching the file size
   }
 }
-
-const formatFileSize = (size: number): string => {
-  return size < 1024
-    ? `${size.toFixed(2)} KB`
-    : `${(size / 1024).toFixed(2)} MB`;
-};
 
 const helpers = {
   hexToRgb,

@@ -931,7 +931,7 @@
         "title": "Compress PDF to 20MB With Superior Quality",
         "subtitle": "Reduce Size, Not the Quality",
         "imageAlt": "Upload PDF files",
-        "fileInfo": "Maximum {file} files, upto {size} MB & {page} pages"
+        "fileInfo": "Up to {file} files, {min_single} – {max_single} per file, {size} total, max {page} pages"
       },
       "sectionOne": {
         "title": "What is a PDF Compressor?",
@@ -1088,7 +1088,6 @@
       }
     ]
   },
-
   "about": {
     "heading": "О Compresspdf.to",
     "description": "Добро пожаловать в Online Compress PDF, ваше надежное решение для эффективного и высококачественного сжатия PDF. Независимо от того, являетесь ли вы профессионалом, работающим с большими отчетами, студентом, отправляющим задания, или владельцем малого бизнеса, архивирующим документы, мы здесь, чтобы упростить ваш процесс управления PDF.",
@@ -1341,7 +1340,6 @@
       }
     }
   },
-
   "cookiePolicy": {
     "heading": "Политика Использования Файлов Cookie",
     "description": "На CompressPDF.to, управляемом Softeko, в настоящее время мы не используем файлы cookie для рекламных или подобных целей. Однако эта Политика использования файлов cookie объясняет, что такое файлы cookie, как мы используем их в нашей текущей настройке и как мы могли бы использовать их в будущем, если мы внедрим рекламу или другие функции, требующие использования файлов cookie.",
@@ -1444,7 +1442,6 @@
       }
     }
   },
-
   "termsAndConditions": {
     "heading": "Условия Использования",
     "description": "Добро пожаловать на CompressPDF.to, управляемый компанией Softeko. Настоящие Условия использования (\"Условия\") регулируют использование вами нашего веб-сайта, расположенного по адресу https://compresspdf.to/ (\"Сайт\"). Получая доступ или используя наш Сайт, вы соглашаетесь соблюдать эти Условия и быть связанными ими. Если вы не согласны с этими Условиями, пожалуйста, не используйте наш Сайт.",
@@ -1518,17 +1515,14 @@
             "href": "https://compresspdf.to/terms-and-conditions/",
             "hreflang": "en"
           },
-
           {
             "href": "https://compresspdf.to/fr/termes-et-conditions/",
             "hreflang": "fr"
           },
-
           {
             "href": "https://compresspdf.to/ru/terms-and-conditions/",
             "hreflang": "ru"
           },
-
           {
             "href": "https://compresspdf.to/de/geschaftsbedingungen/",
             "hreflang": "de"

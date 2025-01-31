@@ -43,7 +43,11 @@ declare global {
   }
 }
 
-const DropBox: React.FC<Props> = ({ handleNewFiles, onDropdown = false }) => {
+const DropBox: React.FC<Props> = ({
+  handleNewFiles,
+  onDropdown = false,
+  toolInfo,
+}) => {
   const t = useTranslations('common.custom.add');
   const { setLoading, setProgress } = useLoading(); // Get loading and progress handlers
 
@@ -95,7 +99,14 @@ const DropBox: React.FC<Props> = ({ handleNewFiles, onDropdown = false }) => {
     window.Dropbox.choose({
       success: async function (files: DropboxFile[]) {
         // Validate file sizes using 'bytes' property before downloading
-        if (isAnyLargeDropbox(files)) {
+        if (
+          isAnyLargeDropbox(
+            files,
+            toolInfo.minSingleFileSize,
+            toolInfo.maxSingleFileSize,
+            toolInfo.totalFileSize
+          )
+        ) {
           return; // Stop further processing if any file is too large
         }
 

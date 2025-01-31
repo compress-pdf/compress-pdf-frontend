@@ -18,6 +18,7 @@ import helpers, { fileListToFileArray } from '@/services/helpers';
 import { getItemFromDB } from '@/services/indexedDB';
 import { useRouter } from '@/i18n/routing';
 import { ToolsDataType } from '@/constants/toolsData';
+import { INVALID_FILE_TYPE } from '@/constants/messages/constants';
 import CustomToast from '@/components/common/core/ToastMessage';
 
 import arrowIcon from '@assets/icons/pngs/customize-page/arrow.png';
@@ -148,7 +149,7 @@ const AfterUpload: React.FC<AfterUploadProps> = ({
               if (droppedFiles.some(file => file.type !== 'application/pdf')) {
                 CustomToast({
                   type: 'error',
-                  message: 'Only PDF files are allowed',
+                  message: INVALID_FILE_TYPE,
                 });
                 return;
               }
