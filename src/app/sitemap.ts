@@ -10,13 +10,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: 'https://compresspdf.to',
       lastModified: currentDate,
-      changeFrequency: 'yearly' as const, // Use 'as const' for literal type
       priority: 1,
     },
     {
       url: 'https://compresspdf.to/about',
       lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
   ];
@@ -25,7 +23,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const dynamicToolUrls = toolsData.map(tool => ({
     url: `https://compresspdf.to/${tool.url}`,
     lastModified: currentDate,
-    changeFrequency: 'weekly' as const, // Enforce literal type
     priority: 0.5,
   }));
 

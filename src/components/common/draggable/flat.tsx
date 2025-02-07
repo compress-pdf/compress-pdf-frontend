@@ -7,7 +7,7 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import { GrRotateLeft, GrRotateRight } from 'react-icons/gr';
 import { useTranslations } from 'next-intl';
 
-import helpers from '@/services/helpers';
+import helpers, { formatFileSize } from '@/services/helpers';
 import { useLoading } from '@/context/UploadingContext';
 import { useOverflow } from '@/context/OverflowContext';
 import useWindowSize from '@/hooks/useWindowSize';
@@ -166,7 +166,7 @@ const DraggableFlat: React.FC<DraggableFlatProps> = ({
                           className="cursor-pointer p-[6.5px] bg-white dark:bg-gray-800 dark:text-slate-100 rounded-[3.11px]"
                           type="button"
                         >
-                          {helpers.formatFileSize(file.size / 1024)}
+                          {formatFileSize(file.size / 1024)}
                           {/* {helpers.getFileSize(file)} */}
                           {/* {t('viewPage.mb')} */}
                         </button>

@@ -4,8 +4,9 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      disallow: '/',
+      allow: '/',
+      disallow: ['/api/', '?_rsc=', '*_rsc=', '?q=cal', '*q=cal'],
     },
-    sitemap: 'https://dev.compresspdf.to/sitemap.xml',
+    sitemap: 'https://compresspdf.to/sitemap.xml',
   };
 }

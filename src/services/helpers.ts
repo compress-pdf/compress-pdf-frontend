@@ -53,13 +53,9 @@ const sortAsc = (a: NamedObject, b: NamedObject): number => {
   return partsA.length - partsB.length;
 };
 
-export const formatFileSize = (sizeInMB: number) => {
-  // Convert MB to KB
-  const sizeInKB = sizeInMB * 1024;
-
+export const formatFileSize = (sizeInKB: number) => {
   // Helper function to format number
   const formatNumber = (num: number) => {
-    // Check if number has decimal places
     return Number.isInteger(num) ? num.toString() : num.toFixed(2);
   };
 
@@ -67,7 +63,8 @@ export const formatFileSize = (sizeInMB: number) => {
     // If less than 1024 KB, show in KB
     return `${formatNumber(sizeInKB)} KB`;
   } else {
-    // If 1024 KB or more, show in MB
+    // If 1024 KB or more, convert to MB and show
+    const sizeInMB = sizeInKB / 1024;
     return `${formatNumber(sizeInMB)} MB`;
   }
 };
