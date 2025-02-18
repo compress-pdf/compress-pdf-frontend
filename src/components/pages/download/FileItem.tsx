@@ -415,7 +415,7 @@ const FileItem: React.FC<FileItemProps> = ({
               {/* {file?.input_file_size?.toFixed(2)}MB */}
 
               {helpers.formatFileSize(
-                parseFloat(file?.input_file_size?.toFixed(2)) / 1024
+                parseFloat(file?.input_file_size?.toFixed(2))
               )}
             </span>
           </p>
@@ -428,9 +428,7 @@ const FileItem: React.FC<FileItemProps> = ({
               </p>
               <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-6 mt-0 text-slate-900 dark:text-white">
                 {/* {file?.output_file_size?.toFixed(2)}MB */}
-                {formatFileSize(
-                  parseFloat(file?.output_file_size?.toFixed(2)) / 1024
-                )}
+                {formatFileSize(parseFloat(file?.output_file_size?.toFixed(2)))}
               </p>
             </div>
           </div>

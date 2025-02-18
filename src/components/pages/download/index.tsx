@@ -354,9 +354,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                   </h1>
                   <p className="text-xs md:text-sm lg:text-md xl:text-sm 2xl:text-[0.875rem] text-center md:text-left">
                     {totalPdf} {t('header.filesTitle')} |{' '}
-                    {formatFileSize(
-                      parseFloat(totalInitialSize.toFixed(2)) / 1024
-                    )}
+                    {formatFileSize(parseFloat(totalInitialSize.toFixed(2)))}
                     {t('header.total')}
                   </p>
                 </div>
@@ -366,9 +364,7 @@ const DownloadMain = ({ uid }: { uid: string }) => {
                     {compressionRatio.toFixed(2)}%
                   </p>
                   <p className="text-xs md:text-sm lg:text-[0.875rem] xl:text-sm 2xl:text-[0.875rem] 3xl:text-[0.875rem] font-bold leading-4 md:leading-6 mt-0">
-                    {formatFileSize(
-                      parseFloat(totalUltimateSize.toFixed(2)) / 1024
-                    )}
+                    {formatFileSize(parseFloat(totalUltimateSize.toFixed(2)))}
                   </p>
                 </div>
               </div>
