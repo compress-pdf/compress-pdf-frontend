@@ -3,15 +3,15 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { pdfjs } from 'react-pdf';
 import axios, { AxiosProgressEvent } from 'axios';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import helpers, { fileArrayToFileList } from '@/services/helpers';
 import FullwidthContainer from '@/components/common/containers/FullwidthContainer';
 import SectionContainer from '@/components/common/containers/SectionContainer';
 import CustomToast from '@/components/common/core/ToastMessage';
-import pinkStarIcon from '@/assets/icons/svgs/pinkStar.svg';
-import brownStarIcon from '@/assets/icons/svgs/brownStar.svg';
+// import pinkStarIcon from '@/assets/icons/svgs/pinkStar.svg';
+// import brownStarIcon from '@/assets/icons/svgs/brownStar.svg';
 // import { useLoading } from '@/context/UploadingContext';
 import { useCompressionContext } from '@/context/CompressionContext';
 import { useRouter } from '@/i18n/routing';
@@ -422,7 +422,7 @@ const HomePageContent = ({
               tool={tool}
               toolInfo={toolInfo}
             />
-            <Image
+            {/* <Image
               className="star-top float hidden md:block absolute w-[28px] h-auto top-0 -mt-6 -ml-8 z-10 rotate-6"
               width={0}
               height={0}
@@ -435,7 +435,7 @@ const HomePageContent = ({
               height={0}
               src={pinkStarIcon}
               alt="cursor-logo"
-            />
+            /> */}
           </div>
         </SectionContainer>
       </FullwidthContainer>

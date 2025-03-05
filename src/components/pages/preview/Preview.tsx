@@ -29,7 +29,7 @@ const Preview = ({ url, children, noStyle = false }: TypePreview) => {
         className={
           noStyle
             ? ''
-            : 'bg-orange-200 dark:bg-[#A6BFD2] dark:invert rounded w-8 h-8 2xl:w-10 2xl:h-10 flex items-center justify-center'
+            : ' dark:invert rounded w-8 h-8 p-0 flex items-center justify-center'
         }
         onClick={handleClick}
       >
