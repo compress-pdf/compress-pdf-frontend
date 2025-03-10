@@ -40,15 +40,22 @@ const Footer = () => {
   return (
     <footer className="bg-[#ECECEC] dark:bg-[#3C3C3C] w-full py-4 mx-auto">
       <SectionContainer className="flex 2xl:flex-row flex-col gap-y-2 justify-between items-center text-sm font-normal md:font-semibold">
-        <div className="flex gap-2 items-center text-xs md:text-[0.875rem] text-[#949494] dark:text-[#FAFAFA]">
-          <p>Development Partner</p>
-          <Link href={url || ''} target="_blank">
-            <Image
-              src={SoftekoLogo}
-              className="w-[90px] h-auto"
-              alt="Softeko Logo"
+        <div className="flex items-center gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 36 35"
+            fill="none"
+          >
+            <path
+              d="M35.9821 12.8948H22.2353L18.0036 -0.175903L13.7468 12.8948L0 12.8698L11.1176 20.9576L6.86088 34.0284L17.9785 25.9405L29.0962 34.0284L24.8644 20.9576L35.9821 12.8948Z"
+              fill="#00B67A"
             />
-          </Link>
+          </svg>
+          <p className="dark:text-[#FAFAFA] text-[#163B45] text-[20px] leading-7 mt-2">
+            Trustpilot
+          </p>
         </div>
 
         <ul className="flex items-center flex-wrap gap-x-5 gap-y-1 md:mt-4 mt-1 2xl:mt-0 justify-center">
@@ -65,7 +72,17 @@ const Footer = () => {
         </ul>
       </SectionContainer>
       <hr className="my-3 border[0.2px] border-gray dark:border-[#727272]" />
-      <SectionContainer className="flex flex-col md:flex-row justify-center items-center">
+      <SectionContainer className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex gap-2 items-center text-xs md:text-[0.875rem] text-[#949494] dark:text-[#FAFAFA]">
+          <p>Development Partner</p>
+          <Link href={url || ''} target="_blank">
+            <Image
+              src={SoftekoLogo}
+              className="w-[90px] h-auto"
+              alt="Softeko Logo"
+            />
+          </Link>
+        </div>
         <p className="text-[10px] md:text-sm 2xl:text-md text-[#949494] dark:text-[#FAFAFA] leading-4">
           {t('footer.copyright', { year: new Date().getFullYear() })}
         </p>
