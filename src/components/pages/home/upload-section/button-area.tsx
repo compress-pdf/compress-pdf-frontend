@@ -31,7 +31,7 @@ const ButtonArea = ({ label }: Props) => {
 
   return (
     <UploadButton
-      className="custom-button-class bg-[#FF8224] py-5"
+      className="custom-button-class bg-[#FF8224] pt-[14px] lg:pt-[20px] pb-[18px] lg:pb-[23px]"
       modalRef={modalRef}
       label={
         <>
@@ -46,7 +46,7 @@ const ButtonArea = ({ label }: Props) => {
             className="hidden"
           />
           <label
-            className="h-full w-full flex items-center gap-4 justify-center text-[1.125rem] md:text-[1.25rem] lg:text-[1.5rem] xl:text-[1.25rem] 2xl:text-[1.5rem] leading-[120%] font-bold cursor-pointer"
+            className="h-full text-[#FFF] w-full flex items-center  justify-center gap-4  text-[20px] xl:text-[24px] leading-6 xl:leading-7 font-bold cursor-pointer"
             htmlFor={inputId}
           >
             <Image

@@ -68,7 +68,7 @@ const ItemRow = () => {
 
   return (
     <div className="border border-[#E6E6E6] bg-[#FFF] rounded my-1">
-      <div className="flex justify-between items-center w-[600px] p-3">
+      <div className="flex justify-between items-center p-3">
         <div className="flex flex-col gap-[6.5px]">
           <div className="flex items-center gap-2">
             <h2 className="text-[#163B45] text-md font-semibold">

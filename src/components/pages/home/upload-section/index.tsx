@@ -1,10 +1,14 @@
 import dynamic from 'next/dynamic';
 
-const InputArea = dynamic(() => import('./input-area'), { ssr: false });
+import AppSection from './app-section';
+import AddsBanner from './adds-banner';
+
+const InputArea = dynamic(() => import('./input-area'));
 
 const PropsData = {
   label: 'Select PDF Files',
-  toolInfo: 'Up to 4 files, 0 KB - 50 Kb per file, 100 pages per file',
+  toolInfo:
+    ' Up to 4 files , 0 KB - 50 KB per file, 500 KB total, max 200 pages',
   dropzoneText: 'Or, drop the files here',
 };
 
@@ -14,13 +18,15 @@ type Props = {
 
 const UploadSection = ({ children }: Props) => {
   return (
-    <section className="mt-[15px]">
+    <section className="mt-[25px] xl:mt-[15px]">
       {children}
       <InputArea
         dropzoneText={PropsData.dropzoneText}
         label={PropsData.label}
         toolInfo={PropsData.toolInfo}
       />
+      <AppSection />
+      <AddsBanner />
     </section>
   );
 };

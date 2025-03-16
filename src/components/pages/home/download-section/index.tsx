@@ -60,23 +60,26 @@ const restart = (
 
 const DownloadSection = () => {
   return (
-    <section className="border-[#FFD2AF] border-2 border-dashed bg-[#FAFAFA] rounded-lg my-5 p-2">
-      <h2 className="text-[#525E6F] text-center text-md w-[600px] mx-auto font-semibold px-6 py-1 rounded-[4px] bg-[#FEFDF4] border-[#E6E6E6] mt-[37px] mb-[7.5px]">
-        {' '}
-        {`DPI:144,Image quality: 75, Color: No change`}
-      </h2>
-
-      <div className="flex gap-3">
-        <AdsSection />
-        <div>
-          {Array.from({ length: 4 }).map((_, index) => (
-            <ItemRow key={index} />
-          ))}
-
-          {/* <ItemRow /> */}
+    <section className="border-[#FFD2AF] border-2 border-dashed bg-[#FAFAFA] rounded-lg my-36 ">
+      <div className="flex 2xl:gap-[11px] pt-[37px] px-[17px]">
+        <div className="w-[300px]">
+          <AdsSection />
         </div>
-        <AdsSection />
+        <div className="flex-1">
+          <h2 className="text-[#525E6F] text-center text-md font-semibold rounded-[4px] bg-[#FEFDF4] border-[#E6E6E6] mb-[7.5px]">
+            {`DPI:144,Image quality: 75, Color: No change`}
+          </h2>
+          {Array(4)
+            .fill('')
+            .map((_, i) => (
+              <ItemRow key={i} />
+            ))}
+        </div>
+        <div className="w-[300px]">
+          <AdsSection />
+        </div>
       </div>
+
       <div className="border border-[#E6E6E6] bg-[#FFF] w-[600px] mx-auto rounded my-1">
         <div className="flex justify-center items-center p-3">
           <DownloadButton />
