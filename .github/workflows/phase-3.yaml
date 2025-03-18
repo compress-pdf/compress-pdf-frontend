@@ -3,7 +3,7 @@ name: Automated Build and Deployment with Docker (Development)
 on:
   push:
     branches:
-      - dev
+      - phase-3
 
 jobs:
   build:
