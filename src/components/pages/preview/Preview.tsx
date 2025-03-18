@@ -29,7 +29,7 @@ const Preview = ({ url, children, noStyle = false }: TypePreview) => {
         className={
           noStyle
             ? ''
-            : ' dark:invert rounded w-8 h-8 p-0 flex items-center justify-center'
+            : ' dark:invert rounded p-0 flex items-center justify-center'
         }
         onClick={handleClick}
       >

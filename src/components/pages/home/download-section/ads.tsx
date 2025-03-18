@@ -3,7 +3,7 @@ import React from 'react';
 
 const AdsSection = () => {
   return (
-    <div className="h-300 w-300 ">
+    <div className="lg:w-[180px] xl:w-[300px] h-[300px]">
       <Image
         src="https://placehold.jp/300x300.png"
         alt="Ads"

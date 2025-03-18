@@ -11,10 +11,10 @@ type Props = {
 
 const FooterButton = ({ icon, text, className, btnClassName }: Props) => {
   return (
-    <div className={twMerge('border rounded', className)}>
+    <div className={twMerge('border rounded-[3px] md:rounded', className)}>
       <button
         className={twMerge(
-          'flex text-[18px] justify-center items-center gap-1 px-[10px] py-[5px]',
+          'flex text-[14px] md:text-[18px] justify-center items-center gap-[2.25px] md:gap-[3px] px-[7.5px] md:px-[10px] py-[6px] md:py-2 leading-5 md:leading-7',
           btnClassName
         )}
       >
