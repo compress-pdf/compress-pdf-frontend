@@ -13,7 +13,7 @@
     "format:fix": "npm run prettier -- --write",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "husky",
+    "prepare": "",
     "cypress:open": "cypress open"
   },
   "dependencies": {

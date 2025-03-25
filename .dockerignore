@@ -3,7 +3,7 @@
 .gitignore
 .dockerignore
 
-public
+# public
 README.md
 Dockerfile
 node_modules
